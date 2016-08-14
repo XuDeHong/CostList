@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+//定义协议和方法
+@protocol MonthPickerViewControllerDelegate <NSObject>
+
+-(void)chooseMonthAndYear:(NSString *)yearAndMonth;
+
+@end
+
 @interface MonthPickerViewController : UIViewController
+
+@property (nonatomic,weak) id <MonthPickerViewControllerDelegate> delegate;//指向代理
+
+//取消MonthPickerViewController的显示
+-(void)dismissFromParentViewController;
+//显示MonthPickerViewController
+-(void)presentInParentViewController:(UIViewController *)parentViewController;
 
 @end
