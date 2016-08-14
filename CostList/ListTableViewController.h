@@ -9,6 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface ListTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
-
-
 @end

@@ -47,7 +47,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sgn-aB-p4j" id="HNV-Bm-hvZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -67,16 +67,16 @@
                                                 <rect key="frame" x="187" y="8" width="1" height="51"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiG-tm-LWS">
-                                                <rect key="frame" x="188" y="0.0" width="191" height="66"/>
+                                                <rect key="frame" x="188" y="0.0" width="195" height="66"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总支出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYh-0B-fas">
-                                                        <rect key="frame" x="75" y="8" width="54" height="22"/>
+                                                        <rect key="frame" x="77" y="8" width="54" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="830-nN-VPN">
-                                                        <rect key="frame" x="61" y="38" width="83" height="24"/>
+                                                        <rect key="frame" x="63" y="38" width="83" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -93,16 +93,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3b-O1-bSu">
-                                                <rect key="frame" x="-4" y="0.0" width="192" height="66"/>
+                                                <rect key="frame" x="-8" y="0.0" width="196" height="66"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZQ-2y-8OT">
-                                                        <rect key="frame" x="47" y="38" width="85" height="24"/>
+                                                        <rect key="frame" x="49" y="38" width="85" height="24"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总收入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qby-vh-PET">
-                                                        <rect key="frame" x="63" y="8" width="54" height="22"/>
+                                                        <rect key="frame" x="65" y="8" width="54" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -142,12 +142,12 @@
                                     <navigationItem id="XnM-ry-22t">
                                         <nil key="title"/>
                                         <barButtonItem key="leftBarButtonItem" image="Hamburger Menu Button" id="uOz-KI-6Ga"/>
-                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0a9-MS-kqp">
-                                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUG-UC-oNM">
+                                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="2016年8月8日"/>
+                                            <state key="normal" title="Year and Month"/>
                                             <connections>
-                                                <action selector="dateButtonLabelDidClick:" destination="Xop-uj-W6F" eventType="touchUpInside" id="DJw-mC-T43"/>
+                                                <action selector="monthPickerButtonDidClick:" destination="Xop-uj-W6F" eventType="touchUpInside" id="WWg-8m-Dpx"/>
                                             </connections>
                                         </button>
                                         <rightBarButtonItems>
@@ -165,11 +165,11 @@
                             <constraint firstItem="hJ6-CR-UyG" firstAttribute="top" secondItem="cZp-2E-4ic" secondAttribute="top" id="OaC-fT-Qov"/>
                             <constraint firstItem="hJ6-CR-UyG" firstAttribute="leading" secondItem="cZp-2E-4ic" secondAttribute="leading" id="VZE-Xh-DP3"/>
                             <constraint firstItem="XiG-tm-LWS" firstAttribute="top" secondItem="tYb-Kz-zak" secondAttribute="bottom" constant="43" id="WOt-yF-u4S"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XiG-tm-LWS" secondAttribute="trailing" constant="-20" id="XF7-Tl-NuY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XiG-tm-LWS" secondAttribute="trailing" constant="-24" id="XF7-Tl-NuY"/>
                             <constraint firstItem="CSR-7i-LnE" firstAttribute="leading" secondItem="cZp-2E-4ic" secondAttribute="leading" id="XvX-2J-D6l"/>
                             <constraint firstAttribute="trailing" secondItem="hJ6-CR-UyG" secondAttribute="trailing" id="cFT-4B-hk7"/>
                             <constraint firstItem="O05-cI-eGg" firstAttribute="top" secondItem="CSR-7i-LnE" secondAttribute="bottom" id="dBc-8i-R6V"/>
-                            <constraint firstItem="k3b-O1-bSu" firstAttribute="leading" secondItem="cZp-2E-4ic" secondAttribute="leadingMargin" constant="-20" id="h0O-Gc-aLX"/>
+                            <constraint firstItem="k3b-O1-bSu" firstAttribute="leading" secondItem="cZp-2E-4ic" secondAttribute="leadingMargin" constant="-24" id="h0O-Gc-aLX"/>
                             <constraint firstItem="qC3-qg-lOA" firstAttribute="top" secondItem="RQF-pi-34M" secondAttribute="bottom" constant="-1" id="ioC-mo-5yM"/>
                             <constraint firstItem="hJ6-CR-UyG" firstAttribute="top" secondItem="RQF-pi-34M" secondAttribute="bottom" constant="-64" id="mhm-kF-jrL"/>
                             <constraint firstItem="RQF-pi-34M" firstAttribute="leading" secondItem="cZp-2E-4ic" secondAttribute="leading" id="p8g-Ye-mmM"/>
@@ -180,13 +180,14 @@
                     <tabBarItem key="tabBarItem" title="明细" image="ListIcon - Inactive" id="lhD-b3-291"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="monthPickerButton" destination="sUG-UC-oNM" id="3ii-4W-T71"/>
                         <outlet property="navigationBar" destination="RQF-pi-34M" id="34X-9V-Xjx"/>
                         <outlet property="upBackgroundView" destination="hJ6-CR-UyG" id="1cq-Rd-Cn4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktt-dU-puH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="521.5" y="-215.5"/>
+            <point key="canvasLocation" x="563.5" y="-222.5"/>
         </scene>
         <!--报表-->
         <scene sceneID="m92-qJ-yei">
@@ -221,7 +222,7 @@
                                         <nil key="title"/>
                                         <barButtonItem key="leftBarButtonItem" image="Hamburger Menu Button" id="ZOU-Cg-Yf5"/>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fP6-ju-QHW">
-                                            <rect key="frame" x="113" y="8" width="150" height="29"/>
+                                            <rect key="frame" x="112.5" y="7.5" width="150" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="比例"/>
@@ -263,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXo-iT-Z52" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="521.5" y="548.5"/>
+            <point key="canvasLocation" x="557.5" y="548.5"/>
         </scene>
     </scenes>
     <resources>
