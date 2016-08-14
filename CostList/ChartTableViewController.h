@@ -10,4 +10,6 @@
 
 @interface ChartTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIButton *monthPickerButton;  //月份选择器按钮
+
 @end
