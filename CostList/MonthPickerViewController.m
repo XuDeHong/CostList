@@ -36,18 +36,26 @@
     _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
     
     [self customizeAppearence]; //设置UI元素
-    
-    //创建日期格式器
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM"];
-    //获取当前月份
-    NSString *thisMonth = [formatter stringFromDate:[NSDate date]];
-    int month = [thisMonth intValue];
-    
-    //设置月份选择器为当前年月
-    [self.monthPickerView selectRow:month-1 inComponent:monthComponent animated:NO];
-    [self.monthPickerView selectRow:[self.yearArray count]-1 inComponent:yearComponent animated:NO];
+}
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    //从月份选择器按钮获取年月
+    NSString *year = [self.currentYearAndMonth substringWithRange:NSMakeRange(0, 4)];
+    NSString *month = [self.currentYearAndMonth substringWithRange:NSMakeRange(5, 2)];
+    //计算年份在数组的序号
+    int thisYear = [year intValue] - ([[[self.yearArray lastObject] substringWithRange:NSMakeRange(0, 4)]  intValue] - 4);
+    
+    //设置月份选择器为月份选择器按钮的年月（初始化）
+    [self.monthPickerView selectRow:[month intValue] - 1 inComponent:monthComponent animated:NO];
+    [self.monthPickerView selectRow:thisYear inComponent:yearComponent animated:NO];
+}
+
+-(void)dealloc
+{
+    self.delegate = nil;
 }
 
 //惰性实例化
