@@ -8,6 +8,8 @@
 
 #import "ListTableViewController.h"
 #import "MonthPickerViewController.h"
+#import "MyTabBarController.h"
+
 
 static NSString *ListCellIdentifier = @"ListCell";
 
@@ -16,6 +18,7 @@ static NSString *ListCellIdentifier = @"ListCell";
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView;  //指向界面上部的视图，用于设置背景色
 @property (weak,nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong,nonatomic) MonthPickerViewController *monthPickerViewController;
+@property (weak,nonatomic) MyTabBarController *myTabBarController;
 @end
 
 @implementation ListTableViewController
@@ -70,6 +73,15 @@ static NSString *ListCellIdentifier = @"ListCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)menuButtonDidClick:(id)sender
+{
+    if(!self.myTabBarController)
+    {
+        self.myTabBarController = (MyTabBarController *)self.tabBarController;
+    }
+    [self.myTabBarController showSlideMenuController];
 }
 
 #pragma mark - MonthPicker

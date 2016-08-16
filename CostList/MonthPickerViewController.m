@@ -51,11 +51,7 @@
     //设置月份选择器为月份选择器按钮的年月（初始化）
     [self.monthPickerView selectRow:[month intValue] - 1 inComponent:monthComponent animated:NO];
     [self.monthPickerView selectRow:thisYear inComponent:yearComponent animated:NO];
-}
-
--(void)dealloc
-{
-    self.delegate = nil;
+    
 }
 
 //惰性实例化
@@ -105,6 +101,9 @@
     //设置半透明黑色背景
     _backgroundView.backgroundColor = [UIColor blackColor];
     _backgroundView.alpha = 0.0;//初始先是全透明
+    
+    //设置整个月份选择器水平居中
+    self.pickerPopView.centerX = (SCREENWIDTH / 2.0f);
 }
 
 - (void)didReceiveMemoryWarning {
