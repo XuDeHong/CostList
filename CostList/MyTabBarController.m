@@ -9,6 +9,7 @@
 #import "MyTabBarController.h"
 #import "MyTabBar.h"
 
+
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
 
 @end
@@ -33,6 +34,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)showSlideMenuController
+{
+}
+
 #pragma mark - MyTabBarDelegate
 -(void)addButtonClick:(MyTabBar *)tabBar
 {
@@ -42,4 +47,5 @@
     [controller addAction:action];
     [self presentViewController:controller animated:YES completion:nil];
 }
+
 @end

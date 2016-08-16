@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "ListTableViewController.h"
 #import "ChartTableViewController.h"
+#import "SlideMenuViewController.h"
+#import "MyTabBarController.h"
+
 
 @interface AppDelegate ()
 
@@ -20,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //获取TabBarController和TabBar
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
     UITabBar *tabBar = tabBarController.tabBar;
     
     //设置TabBar上第一个Item（明细）选中时的图片
@@ -35,6 +38,12 @@
     UITabBarItem *chartItem = tabBar.items[1];
     //始终按照原图片渲染
     chartItem.selectedImage = [chartActive imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    //创建侧栏菜单视图控制器，从StoryBoard中的单独控制器创建
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//    SlideMenuViewController *slideMenuViewController = [storyBoard instantiateViewControllerWithIdentifier:@"SlideMenuViewController"];
+    
     
     return YES;
 }
