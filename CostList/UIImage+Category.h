@@ -1,5 +1,5 @@
 //
-//  SlideMenuViewController.h
+//  UIImage+Category.h
 //  CostList
 //
 //  Created by 许德鸿 on 16/8/16.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SlideMenuViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface UIImage (Category)
+
++(UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size;
 
 @end

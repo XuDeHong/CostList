@@ -18,7 +18,8 @@
 		84068E051D58135D003B6F5E /* ChartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068E041D58135D003B6F5E /* ChartTableViewController.m */; };
 		843084D91D5D9B8E0091F0BC /* MonthPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843084D81D5D9B8E0091F0BC /* MonthPickerViewController.xib */; };
 		843084E01D5DA3F70091F0BC /* MonthPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843084DE1D5DA3F70091F0BC /* MonthPickerViewController.m */; };
-		844CC2281D61E7A800B2050B /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CC2261D61E7A800B2050B /* SlideMenuViewController.m */; };
+		845E62851D63062A00224162 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E62841D63062A00224162 /* SlideMenuViewController.m */; };
+		845E62881D6313DD00224162 /* UIImage+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E62871D6313DD00224162 /* UIImage+Category.m */; };
 		8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487858B1D58C96800A2EBFB /* MyTabBar.m */; };
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
@@ -64,9 +65,11 @@
 		843084D81D5D9B8E0091F0BC /* MonthPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthPickerViewController.xib; sourceTree = "<group>"; };
 		843084DD1D5DA3F70091F0BC /* MonthPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPickerViewController.h; sourceTree = "<group>"; };
 		843084DE1D5DA3F70091F0BC /* MonthPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthPickerViewController.m; sourceTree = "<group>"; };
-		844CC2251D61E7A800B2050B /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
-		844CC2261D61E7A800B2050B /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
 		844CC22A1D61F11A00B2050B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		845E62831D63062A00224162 /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
+		845E62841D63062A00224162 /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
+		845E62861D6313DD00224162 /* UIImage+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Category.h"; sourceTree = "<group>"; };
+		845E62871D6313DD00224162 /* UIImage+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Category.m"; sourceTree = "<group>"; };
 		8464BC871D5DCB4C00774350 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8487858A1D58C96800A2EBFB /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
 		8487858B1D58C96800A2EBFB /* MyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBar.m; sourceTree = "<group>"; };
@@ -209,8 +212,8 @@
 				843084DD1D5DA3F70091F0BC /* MonthPickerViewController.h */,
 				843084DE1D5DA3F70091F0BC /* MonthPickerViewController.m */,
 				843084D81D5D9B8E0091F0BC /* MonthPickerViewController.xib */,
-				844CC2251D61E7A800B2050B /* SlideMenuViewController.h */,
-				844CC2261D61E7A800B2050B /* SlideMenuViewController.m */,
+				845E62831D63062A00224162 /* SlideMenuViewController.h */,
+				845E62841D63062A00224162 /* SlideMenuViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -229,6 +232,8 @@
 			children = (
 				848785921D58D25100A2EBFB /* UIView+Category.h */,
 				848785931D58D25100A2EBFB /* UIView+Category.m */,
+				845E62861D6313DD00224162 /* UIImage+Category.h */,
+				845E62871D6313DD00224162 /* UIImage+Category.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -418,7 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844CC2281D61E7A800B2050B /* SlideMenuViewController.m in Sources */,
+				845E62851D63062A00224162 /* SlideMenuViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,
 				848785941D58D25100A2EBFB /* UIView+Category.m in Sources */,
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
@@ -427,6 +432,7 @@
 				84068E051D58135D003B6F5E /* ChartTableViewController.m in Sources */,
 				84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */,
 				84068E021D58130E003B6F5E /* ListTableViewController.m in Sources */,
+				845E62881D6313DD00224162 /* UIImage+Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

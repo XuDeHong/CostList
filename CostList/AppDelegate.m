@@ -11,6 +11,8 @@
 #import "ChartTableViewController.h"
 #import "SlideMenuViewController.h"
 #import "MyTabBarController.h"
+#import "UIImage+Category.h"
+#import "RESideMenu.h"
 
 
 @interface AppDelegate ()
@@ -40,10 +42,18 @@
     chartItem.selectedImage = [chartActive imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //创建侧栏菜单视图控制器，从StoryBoard中的单独控制器创建
-//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    
-//    SlideMenuViewController *slideMenuViewController = [storyBoard instantiateViewControllerWithIdentifier:@"SlideMenuViewController"];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    SlideMenuViewController *mySlideMenuViewController = [storyBoard instantiateViewControllerWithIdentifier:@"SlideMenuViewController"];
+    //创建侧栏效果控制器
+    RESideMenu *sideMenuVC = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController rightMenuViewController:nil];
+    //允许手势
+    sideMenuVC.panGestureEnabled = YES;
+    //设置背景图片
+    UIImage *background = [UIImage imageNamed:@"SlideMenuBackground"];
+    sideMenuVC.backgroundImage = background;
+    //设置为根控制器
+    self.window.rootViewController = sideMenuVC;
     
     return YES;
 }

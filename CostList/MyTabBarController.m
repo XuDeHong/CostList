@@ -8,6 +8,8 @@
 
 #import "MyTabBarController.h"
 #import "MyTabBar.h"
+#import "UIViewController+RESideMenu.h"
+#import "RESideMenu.h"
 
 
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
@@ -36,6 +38,8 @@
 
 -(void)showSlideMenuController
 {
+    //显示侧栏
+    [self.sideMenuViewController presentLeftMenuViewController];
 }
 
 #pragma mark - MyTabBarDelegate
