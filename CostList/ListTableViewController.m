@@ -86,6 +86,16 @@ static NSString *ListCellIdentifier = @"ListCell";
 
 #pragma mark - MonthPicker
 
+-(MonthPickerViewController *)monthPickerViewController
+{
+    if(!_monthPickerViewController)
+    {
+        _monthPickerViewController = [[MonthPickerViewController alloc] initWithNibName:MonthPickerViewControllerNibName bundle:nil];
+    }
+    
+    return _monthPickerViewController;
+}
+
 -(void)initMonthPickerButton
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -107,8 +117,7 @@ static NSString *ListCellIdentifier = @"ListCell";
 }
 
 - (IBAction)monthPickerButtonDidClick:(id)sender {
-    //创建月份选择器，并设置代理和当前年月
-    self.monthPickerViewController = [[MonthPickerViewController alloc] initWithNibName:MonthPickerViewControllerNibName bundle:nil];
+    //设置代理和当前年月
     self.monthPickerViewController.delegate = self;
     self.monthPickerViewController.currentYearAndMonth = self.monthPickerButton.titleLabel.text;
     //显示月份选择器，将MonthPickerViewController嵌入到MyTabBarController

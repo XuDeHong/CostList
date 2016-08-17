@@ -23,6 +23,8 @@
 		8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487858B1D58C96800A2EBFB /* MyTabBar.m */; };
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
+		84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD441E1D63F2150045A375 /* AddItemViewController.m */; };
+		84DD44251D640E460045A375 /* ChooseIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD44241D640E460045A375 /* ChooseIconViewController.m */; };
 		917F2AB0EAE47E48DC89AD02 /* libPods-CostList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D34A4823120E7210FD7336B3 /* libPods-CostList.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,10 @@
 		848785931D58D25100A2EBFB /* UIView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
 		84B7CB1A1D58C56E0062A48D /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
 		84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
+		84DD441D1D63F2150045A375 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		84DD441E1D63F2150045A375 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		84DD44231D640E460045A375 /* ChooseIconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseIconViewController.h; sourceTree = "<group>"; };
+		84DD44241D640E460045A375 /* ChooseIconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseIconViewController.m; sourceTree = "<group>"; };
 		8B2B7D10C1730534FB6BFDF4 /* Pods-CostList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostList.release.xcconfig"; path = "Pods/Target Support Files/Pods-CostList/Pods-CostList.release.xcconfig"; sourceTree = "<group>"; };
 		D34A4823120E7210FD7336B3 /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30EC2DCAC117C66385B7AEF /* Pods-CostList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CostList/Pods-CostList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +220,10 @@
 				843084D81D5D9B8E0091F0BC /* MonthPickerViewController.xib */,
 				845E62831D63062A00224162 /* SlideMenuViewController.h */,
 				845E62841D63062A00224162 /* SlideMenuViewController.m */,
+				84DD441D1D63F2150045A375 /* AddItemViewController.h */,
+				84DD441E1D63F2150045A375 /* AddItemViewController.m */,
+				84DD44231D640E460045A375 /* ChooseIconViewController.h */,
+				84DD44241D640E460045A375 /* ChooseIconViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -424,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845E62851D63062A00224162 /* SlideMenuViewController.m in Sources */,
+				84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,
 				848785941D58D25100A2EBFB /* UIView+Category.m in Sources */,
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
@@ -432,6 +443,7 @@
 				84068E051D58135D003B6F5E /* ChartTableViewController.m in Sources */,
 				84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */,
 				84068E021D58130E003B6F5E /* ListTableViewController.m in Sources */,
+				84DD44251D640E460045A375 /* ChooseIconViewController.m in Sources */,
 				845E62881D6313DD00224162 /* UIImage+Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

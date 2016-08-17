@@ -49,7 +49,7 @@
     RESideMenu *sideMenuVC = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController rightMenuViewController:nil];
     //允许手势
     sideMenuVC.panGestureEnabled = YES;
-    //设置背景图片
+    //设置侧栏背景图片
     UIImage *background = [UIImage imageNamed:@"SlideMenuBackground"];
     sideMenuVC.backgroundImage = background;
     //设置为根控制器
