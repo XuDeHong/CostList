@@ -20,8 +20,6 @@
 @property (nonatomic,weak) id <MonthPickerViewControllerDelegate> delegate;//指向代理
 @property (nonatomic,strong) NSString *currentYearAndMonth;
 
-//取消MonthPickerViewController的显示
--(void)dismissFromParentViewController;
 //显示MonthPickerViewController
 -(void)presentInParentViewController:(UIViewController *)parentViewController;
 
