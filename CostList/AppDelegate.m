@@ -13,9 +13,12 @@
 #import "MyTabBarController.h"
 #import "UIImage+Category.h"
 #import "RESideMenu.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 @interface AppDelegate ()
+
+@property (strong,nonatomic) CLLocationManager * locationManager;
 
 @end
 
@@ -54,6 +57,13 @@
     sideMenuVC.backgroundImage = background;
     //设置为根控制器
     self.window.rootViewController = sideMenuVC;
+    
+    //请求用户获取位置的权限
+    self.locationManager = [[CLLocationManager alloc] init];
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
+    {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
     
     return YES;
 }
