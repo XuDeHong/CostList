@@ -10,12 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 #import "UIView+Category.h"
 
-@interface AddItemViewController() <CLLocationManagerDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *photoLabel;
 
 
 @end
@@ -26,16 +28,33 @@
     CLLocation *_location;  //位置
     CLGeocoder *_geocoder;  //编码器
     CLPlacemark *_placemark;    //地标
+    
+    UIImagePickerController *_imagePicker;
+    UIImage *_image;
 }
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
+    //监听app进入后台事件
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    
     //去除多余的空行和分割线
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     [self getLocation];  //获取位置
+}
+
+- (void)applicationDidEnterBackground
+{
+    if (_imagePicker != nil) {
+        [self dismissViewControllerAnimated:NO completion:nil];
+        _imagePicker = nil;
+    }
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
@@ -45,6 +64,78 @@
 
 - (IBAction)saveButtonClick:(id)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - About add photo methods
+
+- (void)takePhoto
+{
+    _imagePicker = [[UIImagePickerController alloc] init];
+    _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    _imagePicker.delegate = self;
+    _imagePicker.allowsEditing = YES;
+    _imagePicker.view.tintColor = GLOBALTINTCOLOR;
+    [self presentViewController:_imagePicker animated:YES completion:nil];
+}
+
+- (void)choosePhotoFromLibrary
+{
+    _imagePicker = [[UIImagePickerController alloc] init];
+    _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    _imagePicker.delegate = self;
+    _imagePicker.allowsEditing = YES;
+    _imagePicker.view.tintColor = GLOBALTINTCOLOR;
+    [self presentViewController:_imagePicker animated:YES completion:nil];
+}
+
+- (void)showPhotoMenu
+{
+    //测试摄像头是否可用
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"添加图片" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *takePhotoBtn = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self takePhoto];   //调用拍照方法
+        }];
+        UIAlertAction *choosePhotoBtn = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self choosePhotoFromLibrary];  //从相册中选择
+        }];
+        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        
+        [controller addAction:takePhotoBtn];
+        [controller addAction:choosePhotoBtn];
+        [controller addAction:cancelBtn];
+        
+        [self presentViewController:controller animated:YES completion:nil];
+    } else {
+        [self choosePhotoFromLibrary];  //从相册中选择
+    }
+}
+
+- (void)showImage:(UIImage *)image
+{
+    self.imageView.image = image;
+    self.imageView.hidden = NO;
+    self.imageView.frame = CGRectMake(46, 14, 260, 260);
+    self.photoLabel.hidden = YES;
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    _image = info[UIImagePickerControllerEditedImage];  //获得图片
+    
+    [self showImage:_image];    //显示图片
+    [self.tableView reloadData];    //更新tableview
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+    _imagePicker = nil;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    _imagePicker = nil;
 }
 
 #pragma mark - About get location methods
@@ -201,7 +292,26 @@
     {
         [self showLocationMenu];    //显示位置编辑菜单
     }
+    else if(indexPath.row == 3) //添加照片那一行
+    {
+        [self showPhotoMenu];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row == 3)  //添加照片那一行
+    {
+        if(self.imageView.hidden)
+            return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+        else
+            return 280;
+    }
+    else
+    {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
 }
 
 @end
