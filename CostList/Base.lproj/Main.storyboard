@@ -223,8 +223,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="commentTextField" destination="udq-f4-HJW" id="p53-bn-wAF"/>
+                        <outlet property="imageView" destination="tih-ly-MvX" id="1Bk-J0-Ft7"/>
                         <outlet property="locationLabel" destination="o98-3u-HHr" id="Rdh-EH-1aT"/>
                         <outlet property="moneyTextField" destination="EaM-iu-FxK" id="DWP-cv-n7w"/>
+                        <outlet property="photoLabel" destination="534-Le-AaC" id="Q8O-mF-dKc"/>
                         <outlet property="timeLabel" destination="IdZ-k5-Zyo" id="fIF-w9-kes"/>
                     </connections>
                 </tableViewController>
