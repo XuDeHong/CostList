@@ -9,8 +9,10 @@
 #import "AddItemViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIView+Category.h"
+#import "UIImage+Category.h"
+#import "EditLocationViewController.h"
 
-@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,EditLocationViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField;
@@ -18,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *photoLabel;
-
+@property (strong,nonatomic) EditLocationViewController *editLocationViewController;
 
 @end
 
@@ -74,7 +76,16 @@
     _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;
-    _imagePicker.view.tintColor = GLOBALTINTCOLOR;
+    
+    CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + StatusBarHeight);
+    UIImage *background = [UIImage imageWithColor:GLOBALTINTCOLOR andSize:backgroundSize];
+    //设置导航栏背景图片
+    [_imagePicker.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
+    //设置导航栏按钮字体颜色
+    _imagePicker.navigationBar.tintColor = [UIColor whiteColor];
+    //设置导航栏标题字体颜色
+    [_imagePicker.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     [self presentViewController:_imagePicker animated:YES completion:nil];
 }
 
@@ -84,7 +95,16 @@
     _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;
-    _imagePicker.view.tintColor = GLOBALTINTCOLOR;
+    
+    CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + StatusBarHeight);
+    UIImage *background = [UIImage imageWithColor:GLOBALTINTCOLOR andSize:backgroundSize];
+    //设置导航栏背景图片
+    [_imagePicker.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
+    //设置导航栏按钮字体颜色
+    _imagePicker.navigationBar.tintColor = [UIColor whiteColor];
+    //设置导航栏标题字体颜色
+    [_imagePicker.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     [self presentViewController:_imagePicker animated:YES completion:nil];
 }
 
@@ -229,7 +249,7 @@
 {
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择位置获取方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *editLocationAction = [UIAlertAction actionWithTitle:@"编辑位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        [self showEditLocationAlert];   //显示编辑位置弹框
+        [self showEditLocationView];   //显示编辑位置弹框
     }];
     UIAlertAction *autoGetAction = [UIAlertAction actionWithTitle:@"自动获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self getLocation];   //获取位置
@@ -243,28 +263,33 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
--(void)showEditLocationAlert        //有问题
+-(void)showEditLocationView
 {
-    __block int tag=0;
-    __block NSString *editLocation;
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"编辑位置" message:@"请输入你想要保存的地理位置" preferredStyle:UIAlertControllerStyleAlert];
-    [controller addTextFieldWithConfigurationHandler:^(UITextField *textField){
-        editLocation = textField.text;
-    }];
-    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
-    UIAlertAction *saveBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        tag = 1;
-    }];
+    //设置代理和当前位置
+    self.editLocationViewController.delegate = self;
+    self.editLocationViewController.currentLocation = self.locationLabel.text;
+    //显示位置编辑视图
+    [self.editLocationViewController presentInParentViewController:self.navigationController];
     
-    if(tag)
+}
+
+#pragma mark - EditLocation View
+-(EditLocationViewController *)editLocationViewController
+{
+    if(!_editLocationViewController)
     {
-        self.locationLabel.text = editLocation;
+        _editLocationViewController = [[EditLocationViewController alloc] initWithNibName:@"EditLocationViewController" bundle:nil];
     }
-    
-    [controller addAction:cancelBtn];
-    [controller addAction:saveBtn];
-    
-    [self presentViewController:controller animated:YES completion:nil];
+    return _editLocationViewController;
+}
+
+
+#pragma mark - EditLocationViewControllerDelegate
+
+-(void)editedLocation:(NSString *)location
+{
+    //保存编辑后的位置
+    self.locationLabel.text = location;
 }
 
 #pragma mark - CLLocationManagerDelegate

@@ -24,6 +24,8 @@
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
 		84B878F11D64882400AA1896 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B878F01D64882400AA1896 /* CoreLocation.framework */; };
+		84CD5D311D6695F0004898C7 /* EditLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD5D2F1D6695F0004898C7 /* EditLocationViewController.m */; };
+		84CD5D321D6695F0004898C7 /* EditLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CD5D301D6695F0004898C7 /* EditLocationViewController.xib */; };
 		84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD441E1D63F2150045A375 /* AddItemViewController.m */; };
 		84DD44251D640E460045A375 /* ChooseIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD44241D640E460045A375 /* ChooseIconViewController.m */; };
 		917F2AB0EAE47E48DC89AD02 /* libPods-CostList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D34A4823120E7210FD7336B3 /* libPods-CostList.a */; };
@@ -81,6 +83,9 @@
 		84B7CB1A1D58C56E0062A48D /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
 		84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		84B878F01D64882400AA1896 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		84CD5D2E1D6695F0004898C7 /* EditLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLocationViewController.h; sourceTree = "<group>"; };
+		84CD5D2F1D6695F0004898C7 /* EditLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLocationViewController.m; sourceTree = "<group>"; };
+		84CD5D301D6695F0004898C7 /* EditLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLocationViewController.xib; sourceTree = "<group>"; };
 		84DD441D1D63F2150045A375 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
 		84DD441E1D63F2150045A375 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
 		84DD44231D640E460045A375 /* ChooseIconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseIconViewController.h; sourceTree = "<group>"; };
@@ -226,6 +231,9 @@
 				845E62841D63062A00224162 /* SlideMenuViewController.m */,
 				84DD441D1D63F2150045A375 /* AddItemViewController.h */,
 				84DD441E1D63F2150045A375 /* AddItemViewController.m */,
+				84CD5D2E1D6695F0004898C7 /* EditLocationViewController.h */,
+				84CD5D2F1D6695F0004898C7 /* EditLocationViewController.m */,
+				84CD5D301D6695F0004898C7 /* EditLocationViewController.xib */,
 				84DD44231D640E460045A375 /* ChooseIconViewController.h */,
 				84DD44241D640E460045A375 /* ChooseIconViewController.m */,
 			);
@@ -361,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CD5D321D6695F0004898C7 /* EditLocationViewController.xib in Resources */,
 				84068DDD1D580F39003B6F5E /* LaunchScreen.storyboard in Resources */,
 				84068DDA1D580F39003B6F5E /* Assets.xcassets in Resources */,
 				84068DD81D580F39003B6F5E /* Main.storyboard in Resources */,
@@ -437,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CD5D311D6695F0004898C7 /* EditLocationViewController.m in Sources */,
 				845E62851D63062A00224162 /* SlideMenuViewController.m in Sources */,
 				84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,
