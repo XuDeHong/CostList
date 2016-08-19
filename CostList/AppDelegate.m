@@ -14,6 +14,7 @@
 #import "UIImage+Category.h"
 #import "RESideMenu.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIViewController+Category.h"
 
 
 @interface AppDelegate ()
@@ -44,10 +45,8 @@
     //始终按照原图片渲染
     chartItem.selectedImage = [chartActive imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    //创建侧栏菜单视图控制器，从StoryBoard中的单独控制器创建
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    SlideMenuViewController *mySlideMenuViewController = [storyBoard instantiateViewControllerWithIdentifier:@"SlideMenuViewController"];
+    //创建侧栏菜单视图控制器，从Main.StoryBoard中的单独控制器创建
+    SlideMenuViewController *mySlideMenuViewController = [SlideMenuViewController instanceFromStoryboardV2];
     //创建侧栏效果控制器
     RESideMenu *sideMenuVC = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController rightMenuViewController:nil];
     //允许手势
