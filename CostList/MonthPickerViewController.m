@@ -39,9 +39,11 @@
 }
 
 -(void)viewDidLayoutSubviews
+//!!!注意，这个方法只在第一次弹出月份选择器时调用一两次，因为是从NIB文件中加载的。而对于月份这个数据，只有月份选择器可以改变，月份选择器按钮显示结果。而在添加账目的地理位置那里，地理位置Label的修改可以是通过自动获取，也可以是通过位置编辑弹框修改
 {
     [super viewDidLayoutSubviews];
     
+    //以下代码如果放在viewDidLoad则会出错，因为在NIB文件中引用了self.view，这时viewDidLoad会提前加载，而控制器的一些属性，变量等就还没加载完，所以只能把这些代码放在viewDidLayoutSubviews
     //从月份选择器按钮获取年月
     NSString *year = [self.currentYearAndMonth substringWithRange:NSMakeRange(0, 4)];
     NSString *month = [self.currentYearAndMonth substringWithRange:NSMakeRange(5, 2)];
@@ -138,8 +140,6 @@
     } completion:^(BOOL finished){
         [self didMoveToParentViewController:self.parentViewController];
     }];
-
-
 }
 
 -(void)dismissFromParentViewController

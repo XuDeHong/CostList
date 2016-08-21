@@ -35,9 +35,6 @@ static NSString *ListCellIdentifier = @"ListCell";
 
 -(void)customizeAppearence
 {
-    //设置TabBar的tintColor
-    self.tabBarController.tabBar.tintColor = GLOBALTINTCOLOR;
-    
     //设置界面上部的View的背景色
     self.upBackgroundView.backgroundColor = GLOBALTINTCOLOR;
     

@@ -20,7 +20,4 @@
 @property (nonatomic,weak) id <EditLocationViewControllerDelegate> delegate;//指向代理
 @property (nonatomic,strong) NSString *currentLocation;
 
-//显示EditLocationViewController
--(void)presentInParentViewController:(UIViewController *)parentViewController;
-
 @end

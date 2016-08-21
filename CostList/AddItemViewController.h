@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddItemViewController : UITableViewController <UINavigationControllerDelegate>
+@interface AddItemViewController : UITableViewController
 
 @end
