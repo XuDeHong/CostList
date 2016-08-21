@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong,nonatomic) MonthPickerViewController *monthPickerViewController;
 @property (weak,nonatomic) MyTabBarController *myTabBarController;
-
 @end
 
 @implementation ChartTableViewController
@@ -30,11 +29,9 @@
     [self initMonthPickerButton]; //初始化月份选择器按钮
 }
 
+
 -(void)customizeAppearence
 {
-    //设置TabBar的tintColor
-    self.tabBarController.tabBar.tintColor = GLOBALTINTCOLOR;
-    
     //设置界面上部的View的背景色
     self.upBackgroundView.backgroundColor = GLOBALTINTCOLOR;
     
@@ -129,6 +126,7 @@
     [self.monthPickerButton setTitle:[NSString stringWithFormat:@"%@",yearAndMonth] forState:UIControlStateNormal];
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -148,7 +146,6 @@
     return cell;
 }
 */
-
 
 
 @end

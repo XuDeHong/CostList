@@ -26,6 +26,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //设置TabBar上第一个Item（明细）选中时的图片
+    UIImage *listActive = [UIImage imageNamed:@"ListIcon - Active(blue)"];
+    UITabBarItem *listItem = self.tabBar.items[0];
+    //始终按照原图片渲染
+    listItem.selectedImage = [listActive imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    
+    //设置TabBar上第二个Item（报表）选中时的图片
+    UIImage *chartActive = [UIImage imageNamed:@"ChartIcon - Active(blue)"];
+    UITabBarItem *chartItem = self.tabBar.items[1];
+    //始终按照原图片渲染
+    chartItem.selectedImage = [chartActive imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
     //创建自定义TabBar
     MyTabBar *myTabBar = [[MyTabBar alloc] init];
     myTabBar.myTabBarDelegate = self;
@@ -33,6 +46,13 @@
     //利用KVC替换默认的TabBar
     [self setValue:myTabBar forKey:@"tabBar"];
     
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    //设置TabBar的tintColor
+    self.tabBar.tintColor = GLOBALTINTCOLOR;
 }
 
 - (void)didReceiveMemoryWarning {

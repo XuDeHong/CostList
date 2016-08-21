@@ -12,7 +12,7 @@
 #import "UIImage+Category.h"
 #import "EditLocationViewController.h"
 
-@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,EditLocationViewControllerDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField;
@@ -57,6 +57,11 @@
         [self dismissViewControllerAnimated:NO completion:nil];
         _imagePicker = nil;
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
@@ -173,18 +178,30 @@
             _placemark = nil;
             [self startLocationManager];    //开始获取位置
             self.locationLabel.text = @"正在获取位置...";
+            self.locationLabel.textColor = [UIColor lightGrayColor];
         }
         else
         {
             self.locationLabel.text = @"禁止获取位置";
+            self.locationLabel.textColor = [UIColor lightGrayColor];
         }
     }
     else
     {
         self.locationLabel.text = @"位置服务未开启";
+        self.locationLabel.textColor = [UIColor lightGrayColor];
     }
 }
 
+-(void)didTimeOut:(id)obj   //获取位置超时方法
+{
+    [self stopLocationManager]; //停止获取位置
+    if(_location == nil)
+    {
+        self.locationLabel.text = @"无法获取位置";
+        self.locationLabel.textColor = [UIColor lightGrayColor];
+    }
+}
 
 -(void)startLocationManager
 {
@@ -192,7 +209,7 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; //设置精准度
     [_locationManager startUpdatingLocation];   //开始获取位置
     
-    [self performSelector:@selector(didTimeOut:) withObject:nil afterDelay:50];  //设置超时方法
+    [self performSelector:@selector(didTimeOut:) withObject:nil afterDelay:25];  //设置超时方法
 }
 
 -(void)stopLocationManager
@@ -212,7 +229,10 @@
 {
     if(_geocoder != nil)
     {
+        [self performSelector:@selector(geocoderTimeOut:) withObject:nil afterDelay:25];  //设置超时方法
         [_geocoder reverseGeocodeLocation:_location completionHandler:^(NSArray *placemarks,NSError *error){
+            //取消超时方法
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(geocoderTimeOut:) object:nil];
             if(error == nil && [placemarks count] > 0)
             {
                 _placemark = [placemarks lastObject];   //获得地标
@@ -226,22 +246,26 @@
                 else
                 {
                     self.locationLabel.text = @"无法获取位置";
+                    self.locationLabel.textColor = [UIColor lightGrayColor];
                 }
             }
             else
             {
                 self.locationLabel.text = @"无法获取位置";
+                self.locationLabel.textColor = [UIColor lightGrayColor];
             }
+            
         }];
     }
 }
 
--(void)didTimeOut:(id)obj
+-(void)geocoderTimeOut:(id)obj  //反编码超时方法
 {
-    [self stopLocationManager]; //停止获取位置
-    if(_location == nil)
+    [_geocoder cancelGeocode]; //停止反编码
+    if(_placemark == nil)
     {
         self.locationLabel.text = @"无法获取位置";
+        self.locationLabel.textColor = [UIColor lightGrayColor];
     }
 }
 
@@ -267,10 +291,12 @@
 {
     //设置代理和当前位置
     self.editLocationViewController.delegate = self;
-    self.editLocationViewController.currentLocation = self.locationLabel.text;
+    if(self.locationLabel.textColor == [UIColor blackColor])    //如果是获取到正常的地理位置则赋值，否则置空字符串
+        self.editLocationViewController.currentLocation = self.locationLabel.text;
+    else
+        self.editLocationViewController.currentLocation = @"";
     //显示位置编辑视图
-    [self.editLocationViewController presentInParentViewController:self.navigationController];
-    
+    [self presentViewController:self.editLocationViewController animated:YES completion:nil];
 }
 
 #pragma mark - EditLocation View
@@ -290,6 +316,7 @@
 {
     //保存编辑后的位置
     self.locationLabel.text = location;
+    self.locationLabel.textColor = [UIColor blackColor];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -300,6 +327,7 @@
     if(error!=nil)
     {
         self.locationLabel.text = @"无法获取位置";
+        self.locationLabel.textColor = [UIColor lightGrayColor];
     }
 }
 
