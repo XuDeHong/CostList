@@ -60,7 +60,7 @@
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
+    if((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
     {
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;    //设置显示方式
         //设置显示动画，交叉溶解显示动画，月份选择器的显示动画是从上滑下来
