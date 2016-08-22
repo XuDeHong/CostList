@@ -16,10 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwP-ks-MtW">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwP-ks-MtW">
                     <rect key="frame" x="0.0" y="434" width="375" height="233"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKQ-d3-hfV">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKQ-d3-hfV">
                             <rect key="frame" x="315" y="5" width="34" height="33"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="确定"/>
@@ -27,10 +27,10 @@
                                 <action selector="sureBtnClick:" destination="-1" eventType="touchUpInside" id="5tk-rz-ucq"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCm-4j-ZZi">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCm-4j-ZZi">
                             <rect key="frame" x="0.0" y="43" width="375" height="190"/>
                             <subviews>
-                                <datePicker clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sab-Ps-hT0">
+                                <datePicker clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sab-Ps-hT0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <date key="date" timeIntervalSinceReferenceDate="493467515.436912">
@@ -39,12 +39,16 @@
                                 </datePicker>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="0.044477370689655175" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="sab-Ps-hT0" firstAttribute="centerX" secondItem="oCm-4j-ZZi" secondAttribute="centerX" id="4Ya-kP-hWX"/>
+                                <constraint firstItem="sab-Ps-hT0" firstAttribute="width" secondItem="oCm-4j-ZZi" secondAttribute="width" id="OTn-cc-TaI"/>
+                                <constraint firstAttribute="bottom" secondItem="sab-Ps-hT0" secondAttribute="bottom" id="fPw-Os-Apv"/>
+                                <constraint firstItem="sab-Ps-hT0" firstAttribute="leading" secondItem="oCm-4j-ZZi" secondAttribute="leading" id="g2L-9d-s2T"/>
+                                <constraint firstAttribute="trailing" secondItem="sab-Ps-hT0" secondAttribute="trailing" id="oWA-I1-SRI"/>
+                                <constraint firstItem="sab-Ps-hT0" firstAttribute="height" secondItem="oCm-4j-ZZi" secondAttribute="height" id="zBI-Ls-ry7"/>
+                            </constraints>
                         </view>
-                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUP-ld-vAI">
-                            <rect key="frame" x="67" y="10" width="240" height="33"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahE-O3-UYH">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahE-O3-UYH">
                             <rect key="frame" x="25" y="5" width="34" height="33"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="取消">
@@ -56,9 +60,27 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="oCm-4j-ZZi" firstAttribute="top" secondItem="jwP-ks-MtW" secondAttribute="top" constant="43" id="8ZX-zT-jMl"/>
+                        <constraint firstAttribute="bottom" secondItem="oCm-4j-ZZi" secondAttribute="bottom" id="Beu-Wv-0lZ"/>
+                        <constraint firstItem="oCm-4j-ZZi" firstAttribute="width" secondItem="jwP-ks-MtW" secondAttribute="width" id="DnP-ww-Icd"/>
+                        <constraint firstItem="oCm-4j-ZZi" firstAttribute="leading" secondItem="jwP-ks-MtW" secondAttribute="leading" id="Dqa-J4-uLG"/>
+                        <constraint firstItem="ahE-O3-UYH" firstAttribute="leading" secondItem="jwP-ks-MtW" secondAttribute="leading" constant="25" id="Du4-6z-Trg"/>
+                        <constraint firstAttribute="height" constant="233" id="HBn-Fe-0Vb"/>
+                        <constraint firstAttribute="trailing" secondItem="mKQ-d3-hfV" secondAttribute="trailing" constant="26" id="O5c-X1-7Tl"/>
+                        <constraint firstAttribute="trailing" secondItem="oCm-4j-ZZi" secondAttribute="trailing" id="ltN-Pq-i6A"/>
+                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="mKQ-d3-hfV" secondAttribute="bottom" constant="5" id="neZ-0N-7Xv"/>
+                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="ahE-O3-UYH" secondAttribute="bottom" constant="5" id="yzR-FP-7l4"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jwP-ks-MtW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5fn-vM-Ewk"/>
+                <constraint firstItem="jwP-ks-MtW" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="8G3-nM-ZBd"/>
+                <constraint firstAttribute="trailing" secondItem="jwP-ks-MtW" secondAttribute="trailing" id="Mae-w5-Dsl"/>
+                <constraint firstAttribute="bottom" secondItem="jwP-ks-MtW" secondAttribute="bottom" id="SeS-k0-MZb"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="990.5" y="557.5"/>
         </view>

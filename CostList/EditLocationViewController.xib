@@ -20,31 +20,23 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="C8u-ND-L9z">
-                    <rect key="frame" x="84" y="62" width="206" height="234"/>
+                    <rect key="frame" x="84" y="62" width="206" height="166"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="iGu-54-iL8">
-                            <rect key="frame" x="0.0" y="191" width="206" height="1"/>
+                            <rect key="frame" x="1" y="123" width="206" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
                         <view contentMode="scaleToFill" id="py4-mb-CDR">
-                            <rect key="frame" x="103" y="191" width="1" height="43"/>
+                            <rect key="frame" x="102" y="123" width="1" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9PN-IC-31m">
-                            <rect key="frame" x="1" y="191" width="103" height="43"/>
+                            <rect key="frame" x="0.0" y="123" width="103" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="取消"/>
                             <connections>
                                 <action selector="cancelBtnClick:" destination="-1" eventType="touchUpInside" id="qHb-mO-j1t"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xb8-YK-xqL">
-                            <rect key="frame" x="103" y="191" width="103" height="43"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="确定"/>
-                            <connections>
-                                <action selector="sureBtnClick:" destination="-1" eventType="touchUpInside" id="wYr-t3-G76"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="位置编辑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IEt-4f-1nT">
@@ -55,12 +47,20 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="lHu-WF-R2C">
-                            <rect key="frame" x="8" y="58" width="190" height="118"/>
+                            <rect key="frame" x="8" y="58" width="190" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xb8-YK-xqL">
+                            <rect key="frame" x="102" y="123" width="103" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="确定"/>
+                            <connections>
+                                <action selector="sureBtnClick:" destination="-1" eventType="touchUpInside" id="wYr-t3-G76"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.94620150859999996" colorSpace="calibratedWhite"/>
                 </view>
