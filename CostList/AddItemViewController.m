@@ -60,7 +60,7 @@
     //进入后台后，将图片选择器，日期选择器，位置编辑器和键盘等全部消失
     if (_imagePicker != nil)
     {
-        [self dismissViewControllerAnimated:NO completion:nil];
+        [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
         _imagePicker = nil;
     }
     if(self.datePickerController != nil)
@@ -85,12 +85,12 @@
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (IBAction)saveButtonClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - About dismiss keyboard methods
@@ -201,13 +201,13 @@
     [self showImage:_image];    //显示图片
     [self.tableView reloadData];    //更新tableview
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
     _imagePicker = nil;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
     _imagePicker = nil;
 }
 
@@ -426,25 +426,31 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 1)  //填写金额那一行
+    if(indexPath.section == 0)
     {
-        [self.moneyTextField becomeFirstResponder]; //使TextField响应
+        if(indexPath.row == 1)  //填写金额那一行
+        {
+            [self.moneyTextField becomeFirstResponder]; //使TextField响应
+        }
+        else if(indexPath.row == 2) //填写备注那一行
+        {
+            [self.commentTextField becomeFirstResponder];   //使TextField响应
+        }
     }
-    else if(indexPath.row == 2) //填写备注那一行
-    {
-        [self.commentTextField becomeFirstResponder];   //使TextField响应
-    }
-    else if(indexPath.row == 3) //添加照片那一行
+    else if(indexPath.section == 1) //添加照片那一行
     {
         [self showPhotoMenu];   //显示获取图片方式的菜单
     }
-    else if(indexPath.row == 4) //选择日期那一行
+    else
     {
-        [self showDatePickerView];  //显示选择日期
-    }
-    else if(indexPath.row == 5)  //地理位置那一行
-    {
-        [self showLocationMenu];    //显示位置编辑菜单
+        if(indexPath.row == 0) //选择日期那一行
+        {
+            [self showDatePickerView];  //显示选择日期
+        }
+        else if(indexPath.row == 1)  //地理位置那一行
+        {
+            [self showLocationMenu];    //显示位置编辑菜单
+        }
     }
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -452,7 +458,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 3)  //添加照片那一行
+    if(indexPath.section == 1)  //添加照片那一行
     {
         if(self.imageView.hidden)
             return [super tableView:tableView heightForRowAtIndexPath:indexPath];

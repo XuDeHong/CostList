@@ -73,7 +73,7 @@
 
 
 - (IBAction)cancelBtnClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     //半透明黑色背景消失
     [_background removeFromSuperview];
@@ -88,7 +88,7 @@
     //调用代理方法
     [self.delegate didChooseDate:dateStr];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     //半透明黑色背景消失
     [_background removeFromSuperview];
