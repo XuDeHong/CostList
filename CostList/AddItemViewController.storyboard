@@ -22,7 +22,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSd-ah-h8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-366.5" y="-663.5"/>
+            <point key="canvasLocation" x="-458.5" y="-1161.5"/>
         </scene>
         <!--添加账目-->
         <scene sceneID="ZFf-sF-h0l">
@@ -204,7 +204,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-hr-ViR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141.5" y="-663.5"/>
+            <point key="canvasLocation" x="99.5" y="-1161.5"/>
         </scene>
         <!--选择类别-->
         <scene sceneID="T0Y-pB-n2z">
@@ -237,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWR-Fs-Ryh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="688.5" y="-663.5"/>
+            <point key="canvasLocation" x="606.5" y="-1161.5"/>
         </scene>
     </scenes>
     <resources>

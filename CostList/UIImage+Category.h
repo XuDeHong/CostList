@@ -10,6 +10,6 @@
 
 @interface UIImage (Category)
 
-+(UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size;
++(UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size;   //根据颜色和大小生成一张纯色图片
 
 @end

@@ -10,12 +10,12 @@
 
 @interface UIView (Category)
 
-@property (nonatomic, assign)CGFloat centerX;
-@property (nonatomic, assign)CGFloat centerY;
-@property (nonatomic, assign)CGFloat height;
-@property (nonatomic, assign)CGFloat width;
-@property (nonatomic, assign)CGFloat x;
-@property (nonatomic, assign)CGFloat y;
-@property (nonatomic, assign)CGSize size;
+@property (nonatomic, assign)CGFloat centerX;   //中心横坐标
+@property (nonatomic, assign)CGFloat centerY;   //中心纵坐标
+@property (nonatomic, assign)CGFloat height;    //高度
+@property (nonatomic, assign)CGFloat width;     //宽度
+@property (nonatomic, assign)CGFloat x;         //原点（视图左上角）横坐标
+@property (nonatomic, assign)CGFloat y;         //原点（视图左上角）纵坐标
+@property (nonatomic, assign)CGSize size;       //视图大小
 
 @end

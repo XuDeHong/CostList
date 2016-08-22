@@ -11,8 +11,9 @@
 #import "UIView+Category.h"
 #import "UIImage+Category.h"
 #import "EditLocationViewController.h"
+#import "MyDatePickerController.h"
 
-@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *photoLabel;
 @property (strong,nonatomic) EditLocationViewController *editLocationViewController;
+@property (strong,nonatomic) MyDatePickerController *datePickerController;
 
 @end
 
@@ -49,6 +51,7 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     [self getLocation];  //获取位置
+    [self getCurrentDate];  //获取当前时间
 }
 
 - (void)applicationDidEnterBackground
@@ -78,7 +81,7 @@
 - (void)takePhoto
 {
     _imagePicker = [[UIImagePickerController alloc] init];
-    _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;  //设置为相机
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;
     
@@ -97,7 +100,7 @@
 - (void)choosePhotoFromLibrary
 {
     _imagePicker = [[UIImagePickerController alloc] init];
-    _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;    //设置为从相册中获取
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;
     
@@ -140,7 +143,7 @@
 {
     self.imageView.image = image;
     self.imageView.hidden = NO;
-    self.imageView.frame = CGRectMake(46, 14, 260, 260);
+    self.imageView.frame = CGRectMake(self.photoLabel.x, self.photoLabel.y, 260, 260);
     self.photoLabel.hidden = YES;
 }
 
@@ -149,7 +152,6 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     _image = info[UIImagePickerControllerEditedImage];  //获得图片
-    
     [self showImage:_image];    //显示图片
     [self.tableView reloadData];    //更新tableview
 
@@ -337,18 +339,60 @@
     [self stopLocationManager]; //停止获取位置
 }
 
+#pragma mark - About choose date methods
+
+-(void)getCurrentDate
+{
+    //获取当前时间
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *now = [NSDate date];
+    self.timeLabel.text = [formatter stringFromDate:now];
+}
+
+-(MyDatePickerController *)datePickerController
+{
+    if(!_datePickerController)
+    {
+        _datePickerController = [[MyDatePickerController alloc] initWithNibName:@"MyDatePickerController" bundle:nil];
+    }
+    return _datePickerController;
+}
+
+-(void)showDatePickerView
+{
+    //设置日期选择器的时间为标签中显示的时间
+    self.datePickerController.currentDate = self.timeLabel.text;
+    //设置代理
+    self.datePickerController.delegate = self;
+    //显示选择日期
+    [self presentViewController:self.datePickerController animated:YES completion:nil];
+}
+
+#pragma mark - MyDatePickerController Delegate
+-(void)didChooseDate:(NSString *)date
+{
+    //更新时间标签
+    self.timeLabel.text = date;
+}
+
 #pragma mark - TableView Delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 5)  //地理位置那一行
+    if(indexPath.row == 3) //添加照片那一行
+    {
+        [self showPhotoMenu];   //显示获取图片方式的菜单
+    }
+    else if(indexPath.row == 4) //选择日期那一行
+    {
+        [self showDatePickerView];  //显示选择日期
+    }
+    else if(indexPath.row == 5)  //地理位置那一行
     {
         [self showLocationMenu];    //显示位置编辑菜单
     }
-    else if(indexPath.row == 3) //添加照片那一行
-    {
-        [self showPhotoMenu];
-    }
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
