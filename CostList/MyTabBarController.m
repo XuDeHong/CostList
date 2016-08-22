@@ -83,6 +83,8 @@
     UIImage *background = [UIImage imageWithColor:GLOBALTINTCOLOR andSize:backgroundSize];
     //设置导航栏背景图片
     [addItemViewController.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
+    //设置导航栏不透明
+    [addItemViewController.navigationBar setTranslucent:NO];
     //设置导航栏按钮字体颜色
     addItemViewController.navigationBar.tintColor = [UIColor whiteColor];
     //设置导航栏标题字体颜色

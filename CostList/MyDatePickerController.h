@@ -17,7 +17,9 @@
 
 @interface MyDatePickerController : UIViewController
 
+
 @property (nonatomic,weak) id <MyDatePickerControllerDelegate> delegate;//指向代理
 @property (nonatomic,strong) NSString *currentDate;
+@property (nonatomic,strong) UIView *background;    //半透明黑色背景
 
 @end

@@ -28,7 +28,7 @@
         <scene sceneID="ZFf-sF-h0l">
             <objects>
                 <tableViewController id="ggu-TA-TOI" customClass="AddItemViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="XXT-Ef-4MX">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="XXT-Ef-4MX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,16 +67,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金额" textAlignment="natural" minimumFontSize="17" id="EJ2-RC-XsV">
-                                                    <rect key="frame" x="48" y="9" width="319" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Money" id="zk0-DC-Ee3">
                                                     <rect key="frame" x="8" y="9" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金额" textAlignment="natural" minimumFontSize="17" id="EJ2-RC-XsV">
+                                                    <rect key="frame" x="48" y="9" width="319" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="dismissKeyBoard:" destination="ggu-TA-TOI" eventType="editingDidEndOnExit" id="tgJ-mk-H6v"/>
+                                                        <outlet property="delegate" destination="ggu-TA-TOI" id="mWR-s4-TzV"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -91,7 +95,10 @@
                                                     <rect key="frame" x="48" y="10" width="319" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="dismissKeyBoard:" destination="ggu-TA-TOI" eventType="editingDidEndOnExit" id="Rgf-ua-Ewb"/>
+                                                    </connections>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Text" id="5gw-GT-i4I">
                                                     <rect key="frame" x="8" y="10" width="30" height="30"/>
@@ -186,7 +193,7 @@
                                 <action selector="cancelButtonClick:" destination="ggu-TA-TOI" id="eIM-XE-fbg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="nm3-C4-Lyg">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="保存" id="nm3-C4-Lyg">
                             <connections>
                                 <action selector="saveButtonClick:" destination="ggu-TA-TOI" id="Rgx-o3-F1M"/>
                             </connections>
@@ -199,6 +206,7 @@
                         <outlet property="locationLabel" destination="A4N-Tn-VyR" id="edH-tt-jaq"/>
                         <outlet property="moneyTextField" destination="EJ2-RC-XsV" id="RTH-Ar-LbA"/>
                         <outlet property="photoLabel" destination="NJj-r4-0yj" id="h5W-Xe-Wgt"/>
+                        <outlet property="saveButton" destination="nm3-C4-Lyg" id="NC4-qj-D0Z"/>
                         <outlet property="timeLabel" destination="r41-YN-3w0" id="eP1-BY-PvY"/>
                     </connections>
                 </tableViewController>

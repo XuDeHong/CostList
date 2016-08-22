@@ -15,9 +15,6 @@
 @end
 
 @implementation MyDatePickerController
-{
-    UIView *_background;    //半透明黑色背景
-}
 
 
 -(void)viewDidLoad
@@ -25,7 +22,7 @@
     [super viewDidLoad];
     
     //创建半透明黑色背景
-    _background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    self.background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
 
     //设置日期选择器全局tint color颜色
     self.view.tintColor = GLOBALTINTCOLOR;
@@ -55,8 +52,8 @@
     [super viewWillAppear:animated];
     
     //设置和显示半透明黑色背景
-    _background.backgroundColor = [UIColor blackColor];
-    _background.alpha = 0.5;
+    self.background.backgroundColor = [UIColor blackColor];
+    self.background.alpha = 0.5;
     [self.presentingViewController.view addSubview:_background];
     
     //初始化时间
@@ -76,7 +73,7 @@
 
 
 - (IBAction)cancelBtnClick:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     //半透明黑色背景消失
     [_background removeFromSuperview];
@@ -91,7 +88,7 @@
     //调用代理方法
     [self.delegate didChooseDate:dateStr];
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     //半透明黑色背景消失
     [_background removeFromSuperview];

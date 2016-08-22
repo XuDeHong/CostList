@@ -13,16 +13,17 @@
 #import "EditLocationViewController.h"
 #import "MyDatePickerController.h"
 
-@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
-@property (weak, nonatomic) IBOutlet UITextField *commentTextField;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *photoLabel;
+@property (weak, nonatomic) IBOutlet UITextField *moneyTextField;   //金额
+@property (weak, nonatomic) IBOutlet UITextField *commentTextField; //备注
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;    //时间
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;    //位置
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;    //图片
+@property (weak, nonatomic) IBOutlet UILabel *photoLabel;   //添加图片文字标签
 @property (strong,nonatomic) EditLocationViewController *editLocationViewController;
 @property (strong,nonatomic) MyDatePickerController *datePickerController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;   //“保存”按钮
 
 @end
 
@@ -33,8 +34,8 @@
     CLGeocoder *_geocoder;  //编码器
     CLPlacemark *_placemark;    //地标
     
-    UIImagePickerController *_imagePicker;
-    UIImage *_image;
+    UIImagePickerController *_imagePicker;  //图片选择器
+    UIImage *_image;    //图片
 }
 
 -(void)viewDidLoad
@@ -56,24 +57,69 @@
 
 - (void)applicationDidEnterBackground
 {
-    if (_imagePicker != nil) {
+    //进入后台后，将图片选择器，日期选择器，位置编辑器和键盘等全部消失
+    if (_imagePicker != nil)
+    {
         [self dismissViewControllerAnimated:NO completion:nil];
         _imagePicker = nil;
     }
+    if(self.datePickerController != nil)
+    {
+        [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+        //去掉半透明黑色背景
+        [self.datePickerController.background removeFromSuperview];
+        self.datePickerController = nil;
+    }
+    if(self.editLocationViewController != nil)
+    {
+        [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+        self.editLocationViewController = nil;
+    }
+    [self.view endEditing:YES];
 }
 
 - (void)dealloc
 {
+    //取消监听
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (IBAction)saveButtonClick:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - About dismiss keyboard methods
+
+-(IBAction)dismissKeyBoard :(id)sender
+{
+    //键盘的return Key按下后键盘消失
+    [sender resignFirstResponder];
+}
+
+
+#pragma mark - UITextField Delegate
+
+- (BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    //只有金额输入框设置了delegate，所以只有填写金额时才触发这个方法，只有金额输入框有内容时才使“保存”按钮可见可交互
+    NSString *newText = [theTextField.text stringByReplacingCharactersInRange:range withString:string];
+    self.saveButton.enabled = ([newText length] > 0);
+    
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if([textField.text isEqualToString:@""])
+    {
+        //当编辑完成时，金额输入框为空则“保存”按钮不可见不可交互
+        self.saveButton.enabled = NO;
+    }
 }
 
 #pragma mark - About add photo methods
@@ -120,7 +166,7 @@
 {
     //测试摄像头是否可用
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"添加图片" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *takePhotoBtn = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self takePhoto];   //调用拍照方法
         }];
@@ -273,7 +319,7 @@
 
 -(void)showLocationMenu
 {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择位置获取方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *editLocationAction = [UIAlertAction actionWithTitle:@"编辑位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self showEditLocationView];   //显示编辑位置弹框
     }];
@@ -380,7 +426,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 3) //添加照片那一行
+    if(indexPath.row == 1)  //填写金额那一行
+    {
+        [self.moneyTextField becomeFirstResponder]; //使TextField响应
+    }
+    else if(indexPath.row == 2) //填写备注那一行
+    {
+        [self.commentTextField becomeFirstResponder];   //使TextField响应
+    }
+    else if(indexPath.row == 3) //添加照片那一行
     {
         [self showPhotoMenu];   //显示获取图片方式的菜单
     }

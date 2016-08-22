@@ -71,14 +71,14 @@
 
 
 - (IBAction)cancelBtnClick:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)sureBtnClick:(id)sender {
     
     //调用协议方法
     [self.delegate editedLocation:self.textView.text];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
