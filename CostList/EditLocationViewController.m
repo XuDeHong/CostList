@@ -71,11 +71,12 @@
 
 
 - (IBAction)cancelBtnClick:(id)sender {
+    [self.textView resignFirstResponder]; //键盘消失
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)sureBtnClick:(id)sender {
-    
+    [self.textView resignFirstResponder]; //键盘消失
     //调用协议方法
     [self.delegate editedLocation:self.textView.text];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

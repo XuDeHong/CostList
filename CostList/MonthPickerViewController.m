@@ -95,7 +95,7 @@
     self.view.tintColor = GLOBALTINTCOLOR;
     
     //设置两条分割线的颜色
-    self.separator1View.backgroundColor=self.separator2View.backgroundColor=GLOBALTINTCOLOR;
+    self.separator1View.backgroundColor = self.separator2View.backgroundColor=GLOBALTINTCOLOR;
     
     //设置圆角
     self.pickerPopView.layer.cornerRadius = 10.0f;
@@ -201,6 +201,22 @@ numberOfRowsInComponent:(NSInteger)component {
     } else {
         return self.monthArray[row];
     }
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* pickerLabel = (UILabel*)view;
+    if (!pickerLabel){
+        pickerLabel = [[UILabel alloc] init];
+        // Setup label properties - frame, font, colors etc
+        //adjustsFontSizeToFitWidth property to YES
+        pickerLabel.adjustsFontSizeToFitWidth = YES;
+        pickerLabel.textAlignment = NSTextAlignmentCenter;
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        [pickerLabel setFont:[UIFont systemFontOfSize:18.0f]];
+    }
+    // Fill the label text here
+    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    return pickerLabel;
 }
 
 /*
