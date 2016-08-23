@@ -12,6 +12,7 @@
 #import "UIImage+Category.h"
 #import "EditLocationViewController.h"
 #import "MyDatePickerController.h"
+#import <KVNProgress/KVNProgress.h>
 
 @interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate>
 
@@ -85,12 +86,22 @@
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
+    [self.view endEditing:YES]; //键盘消失
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (IBAction)saveButtonClick:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.view endEditing:YES]; //键盘消失
+    KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+    configuration.circleSize = 60.0f;   //设置success图标大小
+    configuration.successColor = GLOBALTINTCOLOR;   //设置success图标颜色
+    configuration.minimumSuccessDisplayTime = 0.9f; //设置动画时间
+    configuration.statusFont = [UIFont systemFontOfSize:15.0f]; //设置字体大小
+    [KVNProgress setConfiguration:configuration];
+    [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 #pragma mark - About dismiss keyboard methods

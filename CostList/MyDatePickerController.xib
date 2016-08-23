@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="434" width="375" height="233"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKQ-d3-hfV">
-                            <rect key="frame" x="315" y="5" width="34" height="33"/>
+                            <rect key="frame" x="315" y="4" width="34" height="33"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="确定"/>
                             <connections>
@@ -49,7 +49,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahE-O3-UYH">
-                            <rect key="frame" x="25" y="5" width="34" height="33"/>
+                            <rect key="frame" x="25" y="4" width="34" height="33"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="取消">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,8 +69,8 @@
                         <constraint firstAttribute="height" constant="233" id="HBn-Fe-0Vb"/>
                         <constraint firstAttribute="trailing" secondItem="mKQ-d3-hfV" secondAttribute="trailing" constant="26" id="O5c-X1-7Tl"/>
                         <constraint firstAttribute="trailing" secondItem="oCm-4j-ZZi" secondAttribute="trailing" id="ltN-Pq-i6A"/>
-                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="mKQ-d3-hfV" secondAttribute="bottom" constant="5" id="neZ-0N-7Xv"/>
-                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="ahE-O3-UYH" secondAttribute="bottom" constant="5" id="yzR-FP-7l4"/>
+                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="mKQ-d3-hfV" secondAttribute="bottom" constant="6" id="neZ-0N-7Xv"/>
+                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="ahE-O3-UYH" secondAttribute="bottom" constant="6" id="yzR-FP-7l4"/>
                     </constraints>
                 </view>
             </subviews>
@@ -82,7 +82,7 @@
                 <constraint firstAttribute="bottom" secondItem="jwP-ks-MtW" secondAttribute="bottom" id="SeS-k0-MZb"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="990.5" y="557.5"/>
+            <point key="canvasLocation" x="630.5" y="415.5"/>
         </view>
     </objects>
 </document>

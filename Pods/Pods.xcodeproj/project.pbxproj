@@ -7,86 +7,176 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06128EACE34CB9B570100074DCD9E773 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0B5C34B0704CE42DB8ACE437DB6B71 /* QuartzCore.framework */; };
-		32FFC3F2E80FA22D09A1629A9C3404D0 /* Pods-CostList-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */; };
-		5D1FAC0DED29D5611A00E5E2D7232FE1 /* RECommonFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = ED7E9F16B2AA98734172037E463643C9 /* RECommonFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5F40F0211806958DE711A6DAE6F74DED /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C89622E224947A15030C562F990416B /* RECommonFunctions.m */; };
-		8227F2724D8F72209627596E6DCF4EE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90AAE8973B935FD4979EEDFB8B1E12AC /* Foundation.framework */; };
-		900F8A6715D1548A9BBFBFBDB1917806 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CA8B732F5BDFC0EAE884FCB2248340 /* RESideMenu.m */; };
-		A85DB0C7E01888D91FC297D0B39D4343 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD59457AF9B8E39F3893328C540408 /* UIViewController+RESideMenu.m */; };
-		BB2D04A11F97439BF17EED68C25818FF /* RESideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE6D08148AE98B6553EF9721FB4F3AC /* RESideMenu-dummy.m */; };
-		BC753AB8DB1FBE74BF0F63C08807D8C8 /* RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 81578034A7B1E40B9EBA575F3999E8C6 /* RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB5302853790FC991A6A1E31DB7A9C73 /* UIViewController+RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A4DC9B3732C2ADAE686612F8AAD8CD35 /* UIViewController+RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC8EE05AC9B97364C173DEF47F339DA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90AAE8973B935FD4979EEDFB8B1E12AC /* Foundation.framework */; };
+		05B208F7E81623386BBF86340CF804E4 /* UIColor+KVNContrast.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F2741DFED49D84D7B349909A7D6148 /* UIColor+KVNContrast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10C61F53F08D339A020912CF52073D27 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3066BAD7A680D36BE22BEE71BD87F8 /* RECommonFunctions.m */; };
+		130EEA03DA4EE790FBA855365A3A9161 /* UIImage+KVNEmpty.h in Headers */ = {isa = PBXBuildFile; fileRef = B27E6E25769617D19407B44BC9C26007 /* UIImage+KVNEmpty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CA33CD3FBFBDB06EECA1A1F10EB62E0 /* RECommonFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BBC2776F1B1D53C091CD52F57451534 /* RECommonFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22D5B2DF535CA0B3D258FF12BD9A2910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		2361F6D73F0F46118DDD64DB8A092B9D /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ABC12120D38DC0AEAB0DCF9BA691B /* RESideMenu.m */; };
+		2818C0EDAE6535619F3299149B5C8736 /* UIImage+KVNImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 205766086DE5EA0F05C1309E2D6FBB11 /* UIImage+KVNImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BD41592697377249734DDDD55947947 /* RESideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A6991D6BD8773936D9D4A69EDA0B /* RESideMenu-dummy.m */; };
+		50DEBC04FA7D48D5155AE4CE15045A12 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD9ACFCE7DD2FD62D0D20F99DF2942 /* UIImage+KVNEmpty.m */; };
+		561F5A1AF65EDC5CD6CDD8DB8307B567 /* UIViewController+RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B2D1688AEB412345EEF62E3F8DA9B5 /* UIViewController+RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		59FBC6DCC9B2186785F8E40F1C755C4A /* KVNProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = D5B413B4B0BE89712B514DF1FF9C7DC1 /* KVNProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EC523DF935717375ED3A8B79E6E6578 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954D5ED9316237831B4DCABAE713C6D /* UIViewController+RESideMenu.m */; };
+		62B10D82DD5E910C64961BEC3BA94D45 /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB7DFEF60F2FF231342795A394182A2 /* UIColor+KVNContrast.m */; };
+		68A0224A63EA6C3E90D57333DC086DFC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */; };
+		693D0B53AD38E042FF722E1ECC701A4C /* KVNProgressConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DBB9AB18C4316237385F4E8F623882 /* KVNProgressConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A7059BB74D81BC7B6945747C5EDD66C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */; };
+		6B84D3F20AF05FCCE8B6B6ECCA9370DF /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D680FC29D9245CE75AD1BB13986AB /* UIImage+KVNImageEffects.m */; };
+		6C7383ECFDA828D6866A1530E56622E3 /* KVNProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A893342676BFF59B874AEBC843895C4 /* KVNProgress-dummy.m */; };
+		75F9566458E5454B476490CB39DF4C00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		79D5381B519D9C27E636D09D3A82B2AF /* RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 51E5800408E128758ADE9FF16047749F /* RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E206D1887ABD2F24BE3B3C19286825 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */; };
+		C6A0191F9A28BEE45BB5B97151867EC0 /* Pods-CostList-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */; };
+		D45787E82CB702636E892C0D2AD4481E /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4213E29B6BDE1F53AC8F4E4144FAF /* KVNProgressConfiguration.m */; };
+		E9B3A3B059C36E1F3A36A5C2E3DFC6C7 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B820BEF943D70E2CD9FC627F3CBA9A /* KVNProgress.m */; };
+		F246AEC820E5C9B76D0FC27670893783 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8F11D858D78750CD1800A84FFEAB48E8 /* PBXContainerItemProxy */ = {
+		12E0B63372EDB6EDDC645C61E72DD853 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 73B0977D5EBCFDB0E822879A7A489EB0;
+			remoteGlobalIDString = 06B2232CE73059846F04E5C3DFEE0D38;
+			remoteInfo = KVNProgress;
+		};
+		54A1DF8C47A97939D3D32B55E69D1DB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4891C9A9357ED09CB1EB14096F50493;
 			remoteInfo = RESideMenu;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00DBB9AB18C4316237385F4E8F623882 /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgressConfiguration.h; path = KVNProgress/Classes/KVNProgressConfiguration.h; sourceTree = "<group>"; };
+		08F5A6991D6BD8773936D9D4A69EDA0B /* RESideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RESideMenu-dummy.m"; sourceTree = "<group>"; };
+		0BF9295BDDF5FF573056BA3C8E5D7F44 /* libRESideMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRESideMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		166ABC12120D38DC0AEAB0DCF9BA691B /* RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RESideMenu.m; path = RESideMenu/RESideMenu.m; sourceTree = "<group>"; };
+		16B820BEF943D70E2CD9FC627F3CBA9A /* KVNProgress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgress.m; path = KVNProgress/Classes/KVNProgress.m; sourceTree = "<group>"; };
+		205766086DE5EA0F05C1309E2D6FBB11 /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNImageEffects.h"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
+		250D680FC29D9245CE75AD1BB13986AB /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNImageEffects.m"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
 		2EB0D4EE46F3BCC7D57D2A2FB046324F /* Pods-CostList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CostList.debug.xcconfig"; sourceTree = "<group>"; };
-		2EE6D08148AE98B6553EF9721FB4F3AC /* RESideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RESideMenu-dummy.m"; sourceTree = "<group>"; };
+		2EC4213E29B6BDE1F53AC8F4E4144FAF /* KVNProgressConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgressConfiguration.m; path = KVNProgress/Classes/KVNProgressConfiguration.m; sourceTree = "<group>"; };
 		334F70F37715E2A79A0788B47C39AA3A /* Pods-CostList-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CostList-acknowledgements.markdown"; sourceTree = "<group>"; };
+		35AEA5C1F08DE20B8BD1A3DC1CA7F9E6 /* KVNProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KVNProgress.xcconfig; sourceTree = "<group>"; };
+		3A893342676BFF59B874AEBC843895C4 /* KVNProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KVNProgress-dummy.m"; sourceTree = "<group>"; };
 		4A448ED70C88FD67D564358AF8C6E05E /* Pods-CostList-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CostList-acknowledgements.plist"; sourceTree = "<group>"; };
-		4C89622E224947A15030C562F990416B /* RECommonFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = RESideMenu/RECommonFunctions.m; sourceTree = "<group>"; };
-		5B06D133CEA6DFC70DE6F37280B6DC60 /* libRESideMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRESideMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B6FDB15172540B3DE8DE1CD8302F8A7 /* RESideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RESideMenu.xcconfig; sourceTree = "<group>"; };
-		80CA8B732F5BDFC0EAE884FCB2248340 /* RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RESideMenu.m; path = RESideMenu/RESideMenu.m; sourceTree = "<group>"; };
-		81578034A7B1E40B9EBA575F3999E8C6 /* RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RESideMenu.h; path = RESideMenu/RESideMenu.h; sourceTree = "<group>"; };
-		90AAE8973B935FD4979EEDFB8B1E12AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		51E5800408E128758ADE9FF16047749F /* RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RESideMenu.h; path = RESideMenu/RESideMenu.h; sourceTree = "<group>"; };
+		554A0144477DFFF8A326BEF0D84614AF /* RESideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RESideMenu.xcconfig; sourceTree = "<group>"; };
+		69D28310589A21E2737260A7F340BF3E /* RESideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RESideMenu-prefix.pch"; sourceTree = "<group>"; };
+		6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		6BBC2776F1B1D53C091CD52F57451534 /* RECommonFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = RESideMenu/RECommonFunctions.h; sourceTree = "<group>"; };
+		6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
+		7858DA5CD0BF0A50D68082B4846DCB49 /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7954D5ED9316237831B4DCABAE713C6D /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+RESideMenu.m"; path = "RESideMenu/UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		86B2D1688AEB412345EEF62E3F8DA9B5 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+RESideMenu.h"; path = "RESideMenu/UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		878F8FE5F1BC5AE121A25356CA099FAC /* libKVNProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKVNProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9A7DAC3F434C71BDF8F6CD489521D85B /* KVNProgressView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = KVNProgressView.xib; path = KVNProgress/Resources/KVNProgressView.xib; sourceTree = "<group>"; };
 		9AE8612EA0DFCAB59656F99FA65DC8DC /* Pods-CostList-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CostList-frameworks.sh"; sourceTree = "<group>"; };
 		9BEAA6A1F6F92563BFA39F20EE172277 /* Pods-CostList-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CostList-resources.sh"; sourceTree = "<group>"; };
 		9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CostList-dummy.m"; sourceTree = "<group>"; };
-		A4DC9B3732C2ADAE686612F8AAD8CD35 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+RESideMenu.h"; path = "RESideMenu/UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		B27E6E25769617D19407B44BC9C26007 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNEmpty.h"; path = "KVNProgress/Categories/UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
 		B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CostList.release.xcconfig"; sourceTree = "<group>"; };
-		EB0B5C34B0704CE42DB8ACE437DB6B71 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		ED7E9F16B2AA98734172037E463643C9 /* RECommonFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = RESideMenu/RECommonFunctions.h; sourceTree = "<group>"; };
-		F7A754B9269C00782706A436A7C8DD77 /* RESideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RESideMenu-prefix.pch"; sourceTree = "<group>"; };
-		F7FD59457AF9B8E39F3893328C540408 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+RESideMenu.m"; path = "RESideMenu/UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
-		F9994A8E205F1FFD5E27C2602D634BB1 /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBBD9ACFCE7DD2FD62D0D20F99DF2942 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNEmpty.m"; path = "KVNProgress/Categories/UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		BE3066BAD7A680D36BE22BEE71BD87F8 /* RECommonFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = RESideMenu/RECommonFunctions.m; sourceTree = "<group>"; };
+		D3F2741DFED49D84D7B349909A7D6148 /* UIColor+KVNContrast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+KVNContrast.h"; path = "KVNProgress/Categories/UIColor+KVNContrast.h"; sourceTree = "<group>"; };
+		D5B413B4B0BE89712B514DF1FF9C7DC1 /* KVNProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgress.h; path = KVNProgress/Classes/KVNProgress.h; sourceTree = "<group>"; };
+		D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EA47629596F8C3EF742FBCC924D7CF25 /* KVNProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KVNProgress-prefix.pch"; sourceTree = "<group>"; };
+		FBB7DFEF60F2FF231342795A394182A2 /* UIColor+KVNContrast.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KVNContrast.m"; path = "KVNProgress/Categories/UIColor+KVNContrast.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		047BE3D9CD942451086D287169992D71 /* Frameworks */ = {
+		6DB5FFD867585A286F33E3AFE86107DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8227F2724D8F72209627596E6DCF4EE9 /* Foundation.framework in Frameworks */,
+				75F9566458E5454B476490CB39DF4C00 /* Foundation.framework in Frameworks */,
+				68A0224A63EA6C3E90D57333DC086DFC /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2770293A53C58ACAD51D2FDB0DC2A08F /* Frameworks */ = {
+		7B67021760DF798E3E57CD5E82BFDCFE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC8EE05AC9B97364C173DEF47F339DA7 /* Foundation.framework in Frameworks */,
-				06128EACE34CB9B570100074DCD9E773 /* QuartzCore.framework in Frameworks */,
+				22D5B2DF535CA0B3D258FF12BD9A2910 /* Foundation.framework in Frameworks */,
+				6A7059BB74D81BC7B6945747C5EDD66C /* GLKit.framework in Frameworks */,
+				C3E206D1887ABD2F24BE3B3C19286825 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE6ED3FA3C3EF55FF602DB78EA3E4A40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F246AEC820E5C9B76D0FC27670893783 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				89F803C7E2D77E11F2120CB28FE0B795 /* iOS */,
+				356CAE8572C7C75FCB05E984CEB70677 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5CAC5E507715BCF8A5904F14310E860E /* Pods */ = {
+		1E4FBEE47DD23E28E23E7519891ECCFC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				82D22D92FAE7F41E7C15DC141043D76C /* RESideMenu */,
+				9A7DAC3F434C71BDF8F6CD489521D85B /* KVNProgressView.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3352D2F270D076F0F48775180C0B96B5 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				6BBC2776F1B1D53C091CD52F57451534 /* RECommonFunctions.h */,
+				BE3066BAD7A680D36BE22BEE71BD87F8 /* RECommonFunctions.m */,
+				51E5800408E128758ADE9FF16047749F /* RESideMenu.h */,
+				166ABC12120D38DC0AEAB0DCF9BA691B /* RESideMenu.m */,
+				86B2D1688AEB412345EEF62E3F8DA9B5 /* UIViewController+RESideMenu.h */,
+				7954D5ED9316237831B4DCABAE713C6D /* UIViewController+RESideMenu.m */,
+				B14D3A8A3E799E1FF5633D72F4D93F11 /* Support Files */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		356CAE8572C7C75FCB05E984CEB70677 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */,
+				6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */,
+				6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		35FA5B3C1600E324D2F75AD513B4E254 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				878F8FE5F1BC5AE121A25356CA099FAC /* libKVNProgress.a */,
+				7858DA5CD0BF0A50D68082B4846DCB49 /* libPods-CostList.a */,
+				0BF9295BDDF5FF573056BA3C8E5D7F44 /* libRESideMenu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7768314377BCAC50FBF7BA03900D82A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E74EF9CF66DC18ACE14F4F46C495F5EA /* KVNProgress */,
+				3352D2F270D076F0F48775180C0B96B5 /* RESideMenu */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -95,9 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				5CAC5E507715BCF8A5904F14310E860E /* Pods */,
-				E6405E743C00D7CD1E1C382AA76DF94A /* Products */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				7768314377BCAC50FBF7BA03900D82A6 /* Pods */,
+				35FA5B3C1600E324D2F75AD513B4E254 /* Products */,
 				8EC47BE667DEE76ED6800F64EACEEECA /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -117,29 +207,6 @@
 			path = "Target Support Files/Pods-CostList";
 			sourceTree = "<group>";
 		};
-		82D22D92FAE7F41E7C15DC141043D76C /* RESideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				ED7E9F16B2AA98734172037E463643C9 /* RECommonFunctions.h */,
-				4C89622E224947A15030C562F990416B /* RECommonFunctions.m */,
-				81578034A7B1E40B9EBA575F3999E8C6 /* RESideMenu.h */,
-				80CA8B732F5BDFC0EAE884FCB2248340 /* RESideMenu.m */,
-				A4DC9B3732C2ADAE686612F8AAD8CD35 /* UIViewController+RESideMenu.h */,
-				F7FD59457AF9B8E39F3893328C540408 /* UIViewController+RESideMenu.m */,
-				C1729E123D8B5CDB85B13E99F84202B9 /* Support Files */,
-			);
-			path = RESideMenu;
-			sourceTree = "<group>";
-		};
-		89F803C7E2D77E11F2120CB28FE0B795 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				90AAE8973B935FD4979EEDFB8B1E12AC /* Foundation.framework */,
-				EB0B5C34B0704CE42DB8ACE437DB6B71 /* QuartzCore.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		8EC47BE667DEE76ED6800F64EACEEECA /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,66 +215,117 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		C1729E123D8B5CDB85B13E99F84202B9 /* Support Files */ = {
+		B14D3A8A3E799E1FF5633D72F4D93F11 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6B6FDB15172540B3DE8DE1CD8302F8A7 /* RESideMenu.xcconfig */,
-				2EE6D08148AE98B6553EF9721FB4F3AC /* RESideMenu-dummy.m */,
-				F7A754B9269C00782706A436A7C8DD77 /* RESideMenu-prefix.pch */,
+				554A0144477DFFF8A326BEF0D84614AF /* RESideMenu.xcconfig */,
+				08F5A6991D6BD8773936D9D4A69EDA0B /* RESideMenu-dummy.m */,
+				69D28310589A21E2737260A7F340BF3E /* RESideMenu-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/RESideMenu";
 			sourceTree = "<group>";
 		};
-		E6405E743C00D7CD1E1C382AA76DF94A /* Products */ = {
+		E74EF9CF66DC18ACE14F4F46C495F5EA /* KVNProgress */ = {
 			isa = PBXGroup;
 			children = (
-				F9994A8E205F1FFD5E27C2602D634BB1 /* libPods-CostList.a */,
-				5B06D133CEA6DFC70DE6F37280B6DC60 /* libRESideMenu.a */,
+				D5B413B4B0BE89712B514DF1FF9C7DC1 /* KVNProgress.h */,
+				16B820BEF943D70E2CD9FC627F3CBA9A /* KVNProgress.m */,
+				00DBB9AB18C4316237385F4E8F623882 /* KVNProgressConfiguration.h */,
+				2EC4213E29B6BDE1F53AC8F4E4144FAF /* KVNProgressConfiguration.m */,
+				D3F2741DFED49D84D7B349909A7D6148 /* UIColor+KVNContrast.h */,
+				FBB7DFEF60F2FF231342795A394182A2 /* UIColor+KVNContrast.m */,
+				B27E6E25769617D19407B44BC9C26007 /* UIImage+KVNEmpty.h */,
+				BBBD9ACFCE7DD2FD62D0D20F99DF2942 /* UIImage+KVNEmpty.m */,
+				205766086DE5EA0F05C1309E2D6FBB11 /* UIImage+KVNImageEffects.h */,
+				250D680FC29D9245CE75AD1BB13986AB /* UIImage+KVNImageEffects.m */,
+				1E4FBEE47DD23E28E23E7519891ECCFC /* Resources */,
+				EBB6A9F455F626839587B5E7E15F99E5 /* Support Files */,
 			);
-			name = Products;
+			path = KVNProgress;
+			sourceTree = "<group>";
+		};
+		EBB6A9F455F626839587B5E7E15F99E5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				35AEA5C1F08DE20B8BD1A3DC1CA7F9E6 /* KVNProgress.xcconfig */,
+				3A893342676BFF59B874AEBC843895C4 /* KVNProgress-dummy.m */,
+				EA47629596F8C3EF742FBCC924D7CF25 /* KVNProgress-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/KVNProgress";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		02970F8212A9DBF87D7525BD8F7B20E4 /* Headers */ = {
+		A7D8C431004735E82306FC0920D84A0F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D1FAC0DED29D5611A00E5E2D7232FE1 /* RECommonFunctions.h in Headers */,
-				BC753AB8DB1FBE74BF0F63C08807D8C8 /* RESideMenu.h in Headers */,
-				CB5302853790FC991A6A1E31DB7A9C73 /* UIViewController+RESideMenu.h in Headers */,
+				59FBC6DCC9B2186785F8E40F1C755C4A /* KVNProgress.h in Headers */,
+				693D0B53AD38E042FF722E1ECC701A4C /* KVNProgressConfiguration.h in Headers */,
+				05B208F7E81623386BBF86340CF804E4 /* UIColor+KVNContrast.h in Headers */,
+				130EEA03DA4EE790FBA855365A3A9161 /* UIImage+KVNEmpty.h in Headers */,
+				2818C0EDAE6535619F3299149B5C8736 /* UIImage+KVNImageEffects.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5D653D7FF6378DE564F884192EC47B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CA33CD3FBFBDB06EECA1A1F10EB62E0 /* RECommonFunctions.h in Headers */,
+				79D5381B519D9C27E636D09D3A82B2AF /* RESideMenu.h in Headers */,
+				561F5A1AF65EDC5CD6CDD8DB8307B567 /* UIViewController+RESideMenu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1F0D1638237CDC2DF6C0F76867CCD029 /* Pods-CostList */ = {
+		06B2232CE73059846F04E5C3DFEE0D38 /* KVNProgress */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91985D1CC90921CD131B5970DFA6A107 /* Build configuration list for PBXNativeTarget "Pods-CostList" */;
+			buildConfigurationList = 5C42693EBD852E65FECE2D08CB1E3987 /* Build configuration list for PBXNativeTarget "KVNProgress" */;
 			buildPhases = (
-				134C1569C7D44D029055176BE38A9F21 /* Sources */,
-				047BE3D9CD942451086D287169992D71 /* Frameworks */,
+				BE6B28B677F3AEC2D94A734FDFBF7ACE /* Sources */,
+				7B67021760DF798E3E57CD5E82BFDCFE /* Frameworks */,
+				A7D8C431004735E82306FC0920D84A0F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				55F98E0CFC6FAEB7716BA4B5F965BAEA /* PBXTargetDependency */,
+			);
+			name = KVNProgress;
+			productName = KVNProgress;
+			productReference = 878F8FE5F1BC5AE121A25356CA099FAC /* libKVNProgress.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5C9D6A1CDE1F13533C2673659E26C54D /* Pods-CostList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD54152DE8164BEC89FE8DC4BDF445E2 /* Build configuration list for PBXNativeTarget "Pods-CostList" */;
+			buildPhases = (
+				AD09535D9A1DE0733B825A25D5CD7EF2 /* Sources */,
+				AE6ED3FA3C3EF55FF602DB78EA3E4A40 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFDFE195819BD905816194E78D5A2FCA /* PBXTargetDependency */,
+				04FBB02AE0C4985F84C518D29FCA5E8F /* PBXTargetDependency */,
 			);
 			name = "Pods-CostList";
 			productName = "Pods-CostList";
-			productReference = F9994A8E205F1FFD5E27C2602D634BB1 /* libPods-CostList.a */;
+			productReference = 7858DA5CD0BF0A50D68082B4846DCB49 /* libPods-CostList.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		73B0977D5EBCFDB0E822879A7A489EB0 /* RESideMenu */ = {
+		B4891C9A9357ED09CB1EB14096F50493 /* RESideMenu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F68746D6ED2E948E7923D2C089E3368 /* Build configuration list for PBXNativeTarget "RESideMenu" */;
+			buildConfigurationList = 80E78D9F025BBF9EF9B105A3D6736F8C /* Build configuration list for PBXNativeTarget "RESideMenu" */;
 			buildPhases = (
-				1C0F9E97F08676A357999E308C3D451E /* Sources */,
-				2770293A53C58ACAD51D2FDB0DC2A08F /* Frameworks */,
-				02970F8212A9DBF87D7525BD8F7B20E4 /* Headers */,
+				0CEFAF6459E8AA5565434AD31C082EA9 /* Sources */,
+				6DB5FFD867585A286F33E3AFE86107DD /* Frameworks */,
+				D5D653D7FF6378DE564F884192EC47B6 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -215,7 +333,7 @@
 			);
 			name = RESideMenu;
 			productName = RESideMenu;
-			productReference = 5B06D133CEA6DFC70DE6F37280B6DC60 /* libRESideMenu.a */;
+			productReference = 0BF9295BDDF5FF573056BA3C8E5D7F44 /* libRESideMenu.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -235,49 +353,90 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = E6405E743C00D7CD1E1C382AA76DF94A /* Products */;
+			productRefGroup = 35FA5B3C1600E324D2F75AD513B4E254 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1F0D1638237CDC2DF6C0F76867CCD029 /* Pods-CostList */,
-				73B0977D5EBCFDB0E822879A7A489EB0 /* RESideMenu */,
+				06B2232CE73059846F04E5C3DFEE0D38 /* KVNProgress */,
+				5C9D6A1CDE1F13533C2673659E26C54D /* Pods-CostList */,
+				B4891C9A9357ED09CB1EB14096F50493 /* RESideMenu */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		134C1569C7D44D029055176BE38A9F21 /* Sources */ = {
+		0CEFAF6459E8AA5565434AD31C082EA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32FFC3F2E80FA22D09A1629A9C3404D0 /* Pods-CostList-dummy.m in Sources */,
+				10C61F53F08D339A020912CF52073D27 /* RECommonFunctions.m in Sources */,
+				4BD41592697377249734DDDD55947947 /* RESideMenu-dummy.m in Sources */,
+				2361F6D73F0F46118DDD64DB8A092B9D /* RESideMenu.m in Sources */,
+				5EC523DF935717375ED3A8B79E6E6578 /* UIViewController+RESideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1C0F9E97F08676A357999E308C3D451E /* Sources */ = {
+		AD09535D9A1DE0733B825A25D5CD7EF2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F40F0211806958DE711A6DAE6F74DED /* RECommonFunctions.m in Sources */,
-				BB2D04A11F97439BF17EED68C25818FF /* RESideMenu-dummy.m in Sources */,
-				900F8A6715D1548A9BBFBFBDB1917806 /* RESideMenu.m in Sources */,
-				A85DB0C7E01888D91FC297D0B39D4343 /* UIViewController+RESideMenu.m in Sources */,
+				C6A0191F9A28BEE45BB5B97151867EC0 /* Pods-CostList-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE6B28B677F3AEC2D94A734FDFBF7ACE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C7383ECFDA828D6866A1530E56622E3 /* KVNProgress-dummy.m in Sources */,
+				E9B3A3B059C36E1F3A36A5C2E3DFC6C7 /* KVNProgress.m in Sources */,
+				D45787E82CB702636E892C0D2AD4481E /* KVNProgressConfiguration.m in Sources */,
+				62B10D82DD5E910C64961BEC3BA94D45 /* UIColor+KVNContrast.m in Sources */,
+				50DEBC04FA7D48D5155AE4CE15045A12 /* UIImage+KVNEmpty.m in Sources */,
+				6B84D3F20AF05FCCE8B6B6ECCA9370DF /* UIImage+KVNImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		55F98E0CFC6FAEB7716BA4B5F965BAEA /* PBXTargetDependency */ = {
+		04FBB02AE0C4985F84C518D29FCA5E8F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RESideMenu;
-			target = 73B0977D5EBCFDB0E822879A7A489EB0 /* RESideMenu */;
-			targetProxy = 8F11D858D78750CD1800A84FFEAB48E8 /* PBXContainerItemProxy */;
+			target = B4891C9A9357ED09CB1EB14096F50493 /* RESideMenu */;
+			targetProxy = 54A1DF8C47A97939D3D32B55E69D1DB2 /* PBXContainerItemProxy */;
+		};
+		CFDFE195819BD905816194E78D5A2FCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KVNProgress;
+			target = 06B2232CE73059846F04E5C3DFEE0D38 /* KVNProgress */;
+			targetProxy = 12E0B63372EDB6EDDC645C61E72DD853 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0BA08F52AF5955529B52639CEB57DAAC /* Debug */ = {
+		3658A9DB6B904B10996D055592B6391A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 554A0144477DFFF8A326BEF0D84614AF /* RESideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RESideMenu/RESideMenu-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -312,37 +471,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		27DA3B935EE8D9EC6125DC4AEB7D47F0 /* Release */ = {
+		713453ECF934DFD883A32FFE98C13FDD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		2FFCFF1928A346D2EDE5DD7527E32839 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B6FDB15172540B3DE8DE1CD8302F8A7 /* RESideMenu.xcconfig */;
+			baseConfigurationReference = 554A0144477DFFF8A326BEF0D84614AF /* RESideMenu.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -361,7 +499,49 @@
 			};
 			name = Debug;
 		};
-		7107B52D33DDFB0057D055247EAE7B41 /* Release */ = {
+		9D952EFF10C5A3B14A9AA9A2BBB377AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35AEA5C1F08DE20B8BD1A3DC1CA7F9E6 /* KVNProgress.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KVNProgress/KVNProgress-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A660E5502DE7A2DE1AA4DACB29408069 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35AEA5C1F08DE20B8BD1A3DC1CA7F9E6 /* KVNProgress.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KVNProgress/KVNProgress-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -392,35 +572,35 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		B449DC82FE5EFCFEA5CAE67E8E470515 /* Release */ = {
+		AE52CF87008D83D79B39AD718581AB15 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B6FDB15172540B3DE8DE1CD8302F8A7 /* RESideMenu.xcconfig */;
+			baseConfigurationReference = B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RESideMenu/RESideMenu-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		CED999419B233C9170DAD5A5D0ECDE71 /* Debug */ = {
+		F43FA23E0708B94E85A6C335B349670E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EB0D4EE46F3BCC7D57D2A2FB046324F /* Pods-CostList.debug.xcconfig */;
 			buildSettings = {
@@ -428,7 +608,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -444,29 +624,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0F68746D6ED2E948E7923D2C089E3368 /* Build configuration list for PBXNativeTarget "RESideMenu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2FFCFF1928A346D2EDE5DD7527E32839 /* Debug */,
-				B449DC82FE5EFCFEA5CAE67E8E470515 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0BA08F52AF5955529B52639CEB57DAAC /* Debug */,
-				7107B52D33DDFB0057D055247EAE7B41 /* Release */,
+				47BEF9D903506B003EA5C2B249729489 /* Debug */,
+				AAF678CED40D3499169D10F63CA0719E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91985D1CC90921CD131B5970DFA6A107 /* Build configuration list for PBXNativeTarget "Pods-CostList" */ = {
+		5C42693EBD852E65FECE2D08CB1E3987 /* Build configuration list for PBXNativeTarget "KVNProgress" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CED999419B233C9170DAD5A5D0ECDE71 /* Debug */,
-				27DA3B935EE8D9EC6125DC4AEB7D47F0 /* Release */,
+				9D952EFF10C5A3B14A9AA9A2BBB377AD /* Debug */,
+				A660E5502DE7A2DE1AA4DACB29408069 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80E78D9F025BBF9EF9B105A3D6736F8C /* Build configuration list for PBXNativeTarget "RESideMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				713453ECF934DFD883A32FFE98C13FDD /* Debug */,
+				3658A9DB6B904B10996D055592B6391A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD54152DE8164BEC89FE8DC4BDF445E2 /* Build configuration list for PBXNativeTarget "Pods-CostList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43FA23E0708B94E85A6C335B349670E /* Debug */,
+				AE52CF87008D83D79B39AD718581AB15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
