@@ -9,7 +9,7 @@
 #import "EditLocationViewController.h"
 #import "UIView+Category.h"
 
-@interface EditLocationViewController ()
+@interface EditLocationViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *separator1View; //横向分割线
 @property (weak, nonatomic) IBOutlet UIView *separator2View; //纵向分割线
@@ -80,6 +80,17 @@
     //调用协议方法
     [self.delegate editedLocation:self.textView.text];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UITextView Delegate
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
+        //在这里做你响应return键的代码
+        [self performSelector:@selector(sureBtnClick:) withObject:nil];     //调用“确定”按钮响应方法
+        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+    }
+    return YES;
 }
 
 

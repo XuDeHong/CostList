@@ -216,6 +216,13 @@
     self.imageView.hidden = NO;
     self.imageView.frame = CGRectMake(self.photoLabel.x, self.photoLabel.y, 260, 260);
     self.photoLabel.hidden = YES;
+    
+//    [self.tableView setContentSize:CGSizeMake(self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
+//    
+//    if(self.tableView.contentSize.height > SCREENHEIGHT || self.tableView.contentSize.height == SCREENHEIGHT)
+//    {
+//        self.tableView.scrollEnabled = YES;
+//    }
 }
 
 #pragma mark - UIImagePickerControllerDelegate
