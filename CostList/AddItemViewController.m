@@ -52,6 +52,7 @@
     //去除多余的空行和分割线
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
+    [self addGestureToDismissKeyboard]; //添加手势，点击界面其他地方时使键盘消失
     [self getLocation];  //获取位置
     [self getCurrentDate];  //获取当前时间
 }
@@ -112,6 +113,20 @@
     [sender resignFirstResponder];
 }
 
+-(void)addGestureToDismissKeyboard
+{
+    //添加手势
+    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    tapGr.cancelsTouchesInView =NO;
+    [self.view addGestureRecognizer:tapGr];
+}
+
+-(void)viewTapped:(UITapGestureRecognizer*)tapGr{
+    //点击界面其他地方时使键盘消失
+    [self.moneyTextField resignFirstResponder];
+    [self.commentTextField resignFirstResponder];
+}
+
 
 #pragma mark - UITextField Delegate
 
@@ -150,7 +165,7 @@
     _imagePicker.navigationBar.tintColor = [UIColor whiteColor];
     //设置导航栏标题字体颜色
     [_imagePicker.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
+
     [self presentViewController:_imagePicker animated:YES completion:nil];
 }
 
@@ -169,7 +184,6 @@
     _imagePicker.navigationBar.tintColor = [UIColor whiteColor];
     //设置导航栏标题字体颜色
     [_imagePicker.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
     [self presentViewController:_imagePicker animated:YES completion:nil];
 }
 
@@ -482,4 +496,11 @@
     }
 }
 
+#pragma mark - ScrollView Delegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //一旦TableView有滑动就使键盘消失
+    [self.moneyTextField resignFirstResponder];
+    [self.commentTextField resignFirstResponder];
+}
 @end
