@@ -280,9 +280,8 @@
 {
     self.locationLabel.text = text;
     self.locationLabel.textColor = color;
-    //更新位置的cell
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:2];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+
+    [self.tableView reloadData];//更新tableview
 }
 
 -(void)getLocation
@@ -531,7 +530,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if((indexPath.section == 2)&&(indexPath.row == 1))
+    if((indexPath.section == 2)&&(indexPath.row == 1))  //添加位置那一行
     {
         //根据文本，字体，和标签宽度来计算高度并使标签自适应
         [self setTextAndAdjustLabel:self.locationLabel.text withLabel:self.locationLabel];
