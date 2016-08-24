@@ -15,7 +15,7 @@
 #import <KVNProgress/KVNProgress.h>
 #import <SDAutoLayout/SDAutoLayout.h>
 
-#define NavigationBarHeight self.navigationController.navigationBar.height
+#define NavigationBarHeight self.navigationController.navigationBar.height  //导航栏高度
 
 #define ImageViewWidth 260  //图片宽度
 #define ImageViewHeight 260 //图片高度
@@ -81,6 +81,14 @@
     UIImageView *icon = nil;
     UITableViewCell *cell = nil;
     
+    //时间cell布局
+    indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    contentView = cell.contentView;
+    icon = (UIImageView *)[contentView viewWithTag:504];
+    icon.sd_layout.widthIs(IconWidth).heightIs(IconHeight).topSpaceToView(contentView,IconUpPadding).leftSpaceToView(contentView,IconLeftPadding);  //图标布局
+    self.timeLabel.sd_layout.topSpaceToView(contentView,LabelUpPadding).leftSpaceToView(icon,LabelLeftPadding).rightSpaceToView(contentView,LabelRightPadding).bottomSpaceToView(contentView,LabelDownPadding); //标签布局
+    
     //位置cell布局
     indexPath = [NSIndexPath indexPathForRow:1 inSection:2];
     cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -89,6 +97,7 @@
     icon.sd_layout.widthIs(IconWidth).heightIs(IconHeight).topSpaceToView(contentView,IconUpPadding).leftSpaceToView(contentView,IconLeftPadding);  //图标布局
     self.locationLabel.sd_layout.topSpaceToView(contentView,LabelUpPadding).leftSpaceToView(icon,LabelLeftPadding).rightSpaceToView(contentView,LabelRightPadding); //标签布局
 }
+
 
 - (void)applicationDidEnterBackground
 {
