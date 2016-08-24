@@ -15,6 +15,8 @@
 #import <KVNProgress/KVNProgress.h>
 #import <SDAutoLayout/SDAutoLayout.h>
 
+#define NavigationBarHeight self.navigationController.navigationBar.height
+
 #define ImageViewWidth 260  //图片宽度
 #define ImageViewHeight 260 //图片高度
 #define ImageCellHeight 278  //图片cell高度
@@ -136,6 +138,18 @@
     }];
 }
 
+-(void)enableTableViewScroll
+{
+    if((self.tableView.contentSize.height + NavigationBarHeight) > SCREENHEIGHT || (self.tableView.contentSize.height + NavigationBarHeight) == SCREENHEIGHT)
+    {
+        self.tableView.scrollEnabled = YES;
+    }
+    else
+    {
+        self.tableView.scrollEnabled = NO;
+    }
+}
+
 #pragma mark - About dismiss keyboard methods
 
 -(IBAction)dismissKeyBoard :(id)sender
@@ -247,13 +261,7 @@
     self.imageView.hidden = NO;
     self.imageView.frame = CGRectMake(self.photoLabel.x,self.imageView.y,ImageViewWidth,ImageCellHeight);
     self.photoLabel.hidden = YES;
-    
-//    [self.tableView setContentSize:CGSizeMake(self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
-//    
-//    if(self.tableView.contentSize.height > SCREENHEIGHT || self.tableView.contentSize.height == SCREENHEIGHT)
-//    {
-//        self.tableView.scrollEnabled = YES;
-//    }
+
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -263,7 +271,9 @@
     _image = info[UIImagePickerControllerEditedImage];  //获得图片
     [self showImage:_image];    //显示图片
     [self.tableView reloadData];    //更新tableview
-
+    
+    [self enableTableViewScroll]; //检测是否可滚动
+    
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
     _imagePicker = nil;
 }
@@ -282,6 +292,7 @@
     self.locationLabel.textColor = color;
 
     [self.tableView reloadData];//更新tableview
+    [self enableTableViewScroll]; //检测是否可滚动
 }
 
 -(void)getLocation
