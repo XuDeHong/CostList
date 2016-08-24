@@ -13,6 +13,20 @@
 #import "EditLocationViewController.h"
 #import "MyDatePickerController.h"
 #import <KVNProgress/KVNProgress.h>
+#import <SDAutoLayout/SDAutoLayout.h>
+
+#define ImageViewWidth 260  //图片宽度
+#define ImageViewHeight 260 //图片高度
+#define ImageCellHeight 278  //图片cell高度
+#define IconWidth 30    //图标宽度
+#define IconHeight 30   //图标高度
+#define IconUpPadding  9    //图标上边空隙
+#define IconLeftPadding 8   //图标左边空隙
+#define LabelUpPadding 14   //标签上边空隙
+#define LabelLeftPadding 8  //标签左边空隙
+#define LabelRightPadding 8 //标签右边空隙
+#define LabelDownPadding 14 //标签下边空隙
+#define LocationLabelUpAndDownWhileSpace 28 //位置cell的标签上边和下边空隙之和
 
 @interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate>
 
@@ -55,6 +69,23 @@
     [self addGestureToDismissKeyboard]; //添加手势，点击界面其他地方时使键盘消失
     [self getLocation];  //获取位置
     [self getCurrentDate];  //获取当前时间
+    [self setupAutoLayout]; //设置自动布局
+}
+
+-(void)setupAutoLayout
+{
+    NSIndexPath *indexPath = nil;
+    UIView *contentView = nil;
+    UIImageView *icon = nil;
+    UITableViewCell *cell = nil;
+    
+    //位置cell布局
+    indexPath = [NSIndexPath indexPathForRow:1 inSection:2];
+    cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    contentView = cell.contentView;
+    icon = (UIImageView *)[contentView viewWithTag:505];
+    icon.sd_layout.widthIs(IconWidth).heightIs(IconHeight).topSpaceToView(contentView,IconUpPadding).leftSpaceToView(contentView,IconLeftPadding);  //图标布局
+    self.locationLabel.sd_layout.topSpaceToView(contentView,LabelUpPadding).leftSpaceToView(icon,LabelLeftPadding).rightSpaceToView(contentView,LabelRightPadding); //标签布局
 }
 
 - (void)applicationDidEnterBackground
@@ -214,7 +245,7 @@
 {
     self.imageView.image = image;
     self.imageView.hidden = NO;
-    self.imageView.frame = CGRectMake(self.photoLabel.x, self.photoLabel.y, 260, 260);
+    self.imageView.frame = CGRectMake(self.photoLabel.x,self.imageView.y,ImageViewWidth,ImageCellHeight);
     self.photoLabel.hidden = YES;
     
 //    [self.tableView setContentSize:CGSizeMake(self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
@@ -245,6 +276,15 @@
 
 #pragma mark - About get location methods
 
+-(void)updateLocationLabel:(NSString *)text withColor:(UIColor *)color      //根据文本和颜色更新标签
+{
+    self.locationLabel.text = text;
+    self.locationLabel.textColor = color;
+    //更新位置的cell
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:2];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 -(void)getLocation
 {
     if([CLLocationManager locationServicesEnabled])     //测试位置服务是否开启
@@ -257,19 +297,16 @@
             _location = nil;
             _placemark = nil;
             [self startLocationManager];    //开始获取位置
-            self.locationLabel.text = @"正在获取位置...";
-            self.locationLabel.textColor = [UIColor lightGrayColor];
+            [self updateLocationLabel:@"正在获取位置..." withColor:[UIColor lightGrayColor]];
         }
         else
         {
-            self.locationLabel.text = @"禁止获取位置";
-            self.locationLabel.textColor = [UIColor lightGrayColor];
+            [self updateLocationLabel:@"禁止获取位置" withColor:[UIColor lightGrayColor]];
         }
     }
     else
     {
-        self.locationLabel.text = @"位置服务未开启";
-        self.locationLabel.textColor = [UIColor lightGrayColor];
+        [self updateLocationLabel:@"位置服务未开启" withColor:[UIColor lightGrayColor]];
     }
 }
 
@@ -278,8 +315,7 @@
     [self stopLocationManager]; //停止获取位置
     if(_location == nil)
     {
-        self.locationLabel.text = @"无法获取位置";
-        self.locationLabel.textColor = [UIColor lightGrayColor];
+        [self updateLocationLabel:@"无法获取位置" withColor:[UIColor lightGrayColor]];
     }
 }
 
@@ -320,19 +356,16 @@
                 {
                     NSArray *lines = _placemark.addressDictionary[@"FormattedAddressLines"];
                     NSString *addressString = [lines componentsJoinedByString:@"\n"];
-                    self.locationLabel.textColor = [UIColor blackColor];
-                    self.locationLabel.text = addressString;
+                    [self updateLocationLabel:addressString withColor:[UIColor blackColor]];
                 }
                 else
                 {
-                    self.locationLabel.text = @"无法获取位置";
-                    self.locationLabel.textColor = [UIColor lightGrayColor];
+                    [self updateLocationLabel:@"无法获取位置" withColor:[UIColor lightGrayColor]];
                 }
             }
             else
             {
-                self.locationLabel.text = @"无法获取位置";
-                self.locationLabel.textColor = [UIColor lightGrayColor];
+                [self updateLocationLabel:@"无法获取位置" withColor:[UIColor lightGrayColor]];
             }
             
         }];
@@ -344,8 +377,7 @@
     [_geocoder cancelGeocode]; //停止反编码
     if(_placemark == nil)
     {
-        self.locationLabel.text = @"无法获取位置";
-        self.locationLabel.textColor = [UIColor lightGrayColor];
+        [self updateLocationLabel:@"无法获取位置" withColor:[UIColor lightGrayColor]];
     }
 }
 
@@ -394,9 +426,7 @@
 
 -(void)editedLocation:(NSString *)location
 {
-    //保存编辑后的位置
-    self.locationLabel.text = location;
-    self.locationLabel.textColor = [UIColor blackColor];
+    [self updateLocationLabel:location withColor:[UIColor blackColor]];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -406,8 +436,7 @@
     [self stopLocationManager]; //停止获取位置
     if(error!=nil)
     {
-        self.locationLabel.text = @"无法获取位置";
-        self.locationLabel.textColor = [UIColor lightGrayColor];
+        [self updateLocationLabel:@"无法获取位置" withColor:[UIColor lightGrayColor]];
     }
 }
 
@@ -488,14 +517,32 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)setTextAndAdjustLabel:(NSString *)text withLabel:(UILabel *)label
+{
+    CGFloat maxWidth = label.frame.size.width;  //获取标签宽度
+    //根据文本，标签宽度，字体来计算尺寸
+    CGRect rect = [text boundingRectWithSize:CGSizeMake(maxWidth, CGFLOAT_MAX)
+                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                  attributes:@{NSFontAttributeName:label.font}
+                                     context:nil];
+    //更新标签的frame
+    label.frame = CGRectMake(label.frame.origin.x,label.frame.origin.y,maxWidth,rect.size.height);
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 1)  //添加照片那一行
+    if((indexPath.section == 2)&&(indexPath.row == 1))
+    {
+        //根据文本，字体，和标签宽度来计算高度并使标签自适应
+        [self setTextAndAdjustLabel:self.locationLabel.text withLabel:self.locationLabel];
+        return self.locationLabel.height + LocationLabelUpAndDownWhileSpace;   //返回cell高度
+    }
+    else if(indexPath.section == 1)  //添加照片那一行
     {
         if(self.imageView.hidden)
             return [super tableView:tableView heightForRowAtIndexPath:indexPath];
         else
-            return 280;
+            return ImageCellHeight;
     }
     else
     {
