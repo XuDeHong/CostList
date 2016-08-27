@@ -7,7 +7,6 @@
 //
 
 #import "MyTabBar.h"
-#import "UIView+Category.h"
 
 #define AddButtonMargin 10
 

@@ -43,7 +43,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="500" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travel" id="zTd-VD-Ihw">
+                                                <imageView userInteractionEnabled="NO" tag="500" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nothing" id="zTd-VD-Ihw">
                                                     <rect key="frame" x="8" y="9" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -75,7 +75,7 @@
                                                     <rect key="frame" x="46" y="9" width="319" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="dismissKeyBoard:" destination="ggu-TA-TOI" eventType="editingDidEndOnExit" id="tgJ-mk-H6v"/>
                                                         <outlet property="delegate" destination="ggu-TA-TOI" id="mWR-s4-TzV"/>
@@ -223,18 +223,55 @@
             <objects>
                 <viewController title="选择类别" id="U3P-7Y-7fS" customClass="ChooseIconViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZPA-Nn-1j6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="ASe-iX-iSo">
+                                <rect key="frame" x="0.0" y="45" width="375" height="558"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CostCategoryCell" id="Zxy-mi-NvJ">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zxy-mi-NvJ" id="OVN-NW-oDN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="U3P-7Y-7fS" id="7MM-rj-QRh"/>
+                                    <outlet property="delegate" destination="U3P-7Y-7fS" id="OzZ-Gw-SlE"/>
+                                </connections>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="84m-Yc-Xw8">
+                                <rect key="frame" x="147" y="9" width="81" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="支出"/>
+                                    <segment title="收入"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlChange:" destination="U3P-7Y-7fS" eventType="valueChanged" id="ghH-ce-L2y"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="选择类别" id="Xe8-6H-2Hn"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="84m-Yc-Xw8" id="8qB-CV-GTb"/>
+                        <outlet property="tableView" destination="ASe-iX-iSo" id="alK-Vg-rFM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWR-Fs-Ryh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606.5" y="-1161.5"/>
+            <point key="canvasLocation" x="613.5" y="-1161.5"/>
         </scene>
     </scenes>
     <resources>
@@ -243,6 +280,6 @@
         <image name="Money" width="20" height="16"/>
         <image name="Text" width="18" height="20"/>
         <image name="Time" width="18" height="20"/>
-        <image name="travel" width="35" height="35"/>
+        <image name="nothing" width="30" height="30"/>
     </resources>
 </document>

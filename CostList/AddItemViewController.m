@@ -8,8 +8,6 @@
 
 #import "AddItemViewController.h"
 #import <CoreLocation/CoreLocation.h>
-#import "UIView+Category.h"
-#import "UIImage+Category.h"
 #import "EditLocationViewController.h"
 #import "MyDatePickerController.h"
 #import <KVNProgress/KVNProgress.h>
