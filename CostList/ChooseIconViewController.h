@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ChooseIconViewControllerDelegate <NSObject>
+
+
+@end
+
 @interface ChooseIconViewController : UIViewController
 
 @end

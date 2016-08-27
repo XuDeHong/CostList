@@ -12,6 +12,9 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+#import "UIImage+Category.h"
+#import "UIView+Category.h"
+
 //定义APP全局主题tint color
 #define GLOBALTINTCOLOR [UIColor colorWithRed:89/255.0 green:217/255.0 blue:247/255.0 alpha:1.0]
 //屏幕宽度

@@ -7,7 +7,6 @@
 //
 
 #import "MonthPickerViewController.h"
-#import "UIView+Category.h"
 
 #define yearComponent 0
 #define monthComponent 1

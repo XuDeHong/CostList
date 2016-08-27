@@ -11,8 +11,6 @@
 #import "UIViewController+RESideMenu.h"
 #import "RESideMenu.h"
 #import "AddItemViewController.h"
-#import "UIImage+Category.h"
-#import "UIView+Category.h"
 #import "UIViewController+Category.h"
 
 

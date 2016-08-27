@@ -7,7 +7,6 @@
 //
 
 #import "EditLocationViewController.h"
-#import "UIView+Category.h"
 
 @interface EditLocationViewController () <UITextViewDelegate>
 

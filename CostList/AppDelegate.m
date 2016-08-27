@@ -11,7 +11,6 @@
 #import "ChartTableViewController.h"
 #import "SlideMenuViewController.h"
 #import "MyTabBarController.h"
-#import "UIImage+Category.h"
 #import "RESideMenu.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIViewController+Category.h"
