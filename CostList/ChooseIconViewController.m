@@ -106,7 +106,7 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
 #pragma mark TableView Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self.delegate chooseIconViewController:self didChooseIcon:@"Name"];
 }
 
 @end

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MonthPickerViewController;
+
 //定义协议和方法
 @protocol MonthPickerViewControllerDelegate <NSObject>
 
--(void)chooseMonthAndYear:(NSString *)yearAndMonth;
+-(void)monthPickerViewController:(MonthPickerViewController *)controller chooseMonthAndYear:(NSString *)yearAndMonth;
 
 @end
 

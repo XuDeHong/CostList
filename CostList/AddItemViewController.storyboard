@@ -57,7 +57,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="U3P-7Y-7fS" kind="push" id="7HP-9g-jDk"/>
+                                            <segue destination="U3P-7Y-7fS" kind="push" identifier="ChooseIcon" id="7HP-9g-jDk"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JPe-jn-9b1">

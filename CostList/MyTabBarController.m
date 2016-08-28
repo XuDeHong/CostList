@@ -66,7 +66,7 @@
 
 
 
-#pragma mark - MyTabBarDelegate
+#pragma mark - MyTabBar Delegate
 -(void)addButtonClick:(MyTabBar *)tabBar
 {
 //    //测试中间“+”按钮是否可以点击并处理事件

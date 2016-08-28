@@ -173,7 +173,7 @@
     NSString *selectedMonth = self.monthArray[monthRow];
     
     //调用协议方法
-    [self.delegate chooseMonthAndYear:[NSString stringWithFormat:@"%@%@",selectedYear,selectedMonth]];
+    [self.delegate monthPickerViewController:self chooseMonthAndYear:[NSString stringWithFormat:@"%@%@",selectedYear,selectedMonth]];
     [self dismissFromParentViewController];
 }
 

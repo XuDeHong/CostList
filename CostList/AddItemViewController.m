@@ -12,6 +12,7 @@
 #import "MyDatePickerController.h"
 #import <KVNProgress/KVNProgress.h>
 #import <SDAutoLayout/SDAutoLayout.h>
+#import "ChooseIconViewController.h"
 
 #define NavigationBarHeight self.navigationController.navigationBar.height  //导航栏高度
 
@@ -28,7 +29,7 @@
 #define LabelDownPadding 14 //标签下边空隙
 #define LocationLabelUpAndDownWhileSpace 28 //位置cell的标签上边和下边空隙之和
 
-@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate,ChooseIconViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;   //金额
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField; //备注
@@ -155,6 +156,22 @@
     {
         self.tableView.scrollEnabled = NO;
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ChooseIcon"]) {
+        //设置代理
+        ChooseIconViewController *controller = segue.destinationViewController;
+        controller.delegate = self;
+    }
+}
+
+#pragma mark - ChooseIconViewController Delegate
+-(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName
+{
+    NSLog(@"chooseIcon : %@",iconName);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - About dismiss keyboard methods

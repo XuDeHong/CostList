@@ -121,9 +121,9 @@ static NSString *ListCellIdentifier = @"ListCell";
     [self.monthPickerViewController presentInParentViewController:self.parentViewController];
 }
 
-#pragma mark - MonthPickerViewControllerDelegate
+#pragma mark - MonthPickerViewController Delegate
 
--(void)chooseMonthAndYear:(NSString *)yearAndMonth
+-(void)monthPickerViewController:(MonthPickerViewController *)controller chooseMonthAndYear:(NSString *)yearAndMonth
 {
     //设置选中的年月为月份选择标题
     [self.monthPickerButton setTitle:[NSString stringWithFormat:@"%@",yearAndMonth] forState:UIControlStateNormal];
