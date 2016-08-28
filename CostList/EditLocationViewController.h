@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class EditLocationViewController;
+
 //定义协议和方法
 @protocol EditLocationViewControllerDelegate <NSObject>
 
--(void)editedLocation:(NSString *)location;
+-(void)editLocationViewController:(EditLocationViewController *)controller editedLocation:(NSString *)location;
 
 @end
 

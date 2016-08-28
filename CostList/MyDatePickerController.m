@@ -86,7 +86,7 @@
     NSDate *chooseDate = self.datePicker.date;
     NSString *dateStr = [formatter stringFromDate:chooseDate];
     //调用代理方法
-    [self.delegate didChooseDate:dateStr];
+    [self.delegate myDatePickerController:self didChooseDate:dateStr];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     

@@ -10,6 +10,7 @@
 
 @class ChooseIconViewController;
 
+//定义协议和方法
 @protocol ChooseIconViewControllerDelegate <NSObject>
 
 -(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName;
@@ -18,6 +19,6 @@
 
 @interface ChooseIconViewController : UIViewController
 
-@property (nonatomic,weak) id <ChooseIconViewControllerDelegate> delegate;
+@property (nonatomic,weak) id <ChooseIconViewControllerDelegate> delegate;  //指向代理
 
 @end

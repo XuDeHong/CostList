@@ -458,7 +458,7 @@
 
 #pragma mark - EditLocationViewControllerDelegate
 
--(void)editedLocation:(NSString *)location
+-(void)editLocationViewController:(EditLocationViewController *)controller editedLocation:(NSString *)location
 {
     [self updateLocationLabel:location withColor:[UIColor blackColor]];
 }
@@ -511,7 +511,7 @@
 }
 
 #pragma mark - MyDatePickerController Delegate
--(void)didChooseDate:(NSString *)date
+-(void)myDatePickerController:(MyDatePickerController *)controller didChooseDate:(NSString *)date
 {
     //更新时间标签
     self.timeLabel.text = date;
