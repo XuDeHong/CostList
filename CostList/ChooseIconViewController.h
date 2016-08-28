@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChooseIconViewController;
+
 @protocol ChooseIconViewControllerDelegate <NSObject>
 
+-(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName;
 
 @end
 
 @interface ChooseIconViewController : UIViewController
+
+@property (nonatomic,weak) id <ChooseIconViewControllerDelegate> delegate;
 
 @end
