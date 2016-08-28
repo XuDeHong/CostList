@@ -29,6 +29,7 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    //初始化数组
     _spendArray = @[@{@"IconName":@"travel",    @"DisplayName":@"旅行"},
                    @{@"IconName":@"traffic",    @"DisplayName":@"交通"},
                    @{@"IconName":@"eat",        @"DisplayName":@"吃饭"},
@@ -45,10 +46,22 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
                    @{@"IconName":@"daily",      @"DisplayName":@"日用品"},
                    @{@"IconName":@"cosmetic",   @"DisplayName":@"化妆品"},
                    @{@"IconName":@"other",      @"DisplayName":@"其他"}];
-    _incomeArray = @[];
+    
+    _incomeArray = @[@{@"IconName":@"salary",      @"DisplayName":@"工资"},
+                     @{@"IconName":@"bonus",      @"DisplayName":@"奖金"},
+                     @{@"IconName":@"pocket money",      @"DisplayName":@"零花钱"},
+                     @{@"IconName":@"investment",      @"DisplayName":@"投资"},
+                     @{@"IconName":@"red packet",      @"DisplayName":@"红包"},
+                     @{@"IconName":@"other",      @"DisplayName":@"其他"}];
+    
+    //去除多余的空行和分割线
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (IBAction)segmentedControlChange:(id)sender {
+    //设置是否可滚动
+    self.tableView.scrollEnabled = (self.segmentedControl.selectedSegmentIndex == 0) ? YES : NO;
+    //更新tableview
     [self.tableView reloadData];
 }
 
