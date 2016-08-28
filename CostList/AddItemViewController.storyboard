@@ -205,6 +205,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="chooseCategory" destination="sPo-G4-kZc" id="bM2-6h-Abd"/>
+                        <outlet property="chooseIcon" destination="zTd-VD-Ihw" id="wVi-jt-xrc"/>
                         <outlet property="commentTextField" destination="sPs-zV-hBQ" id="S93-ST-Yde"/>
                         <outlet property="imageView" destination="STd-E2-RZV" id="YAf-uT-CzZ"/>
                         <outlet property="locationLabel" destination="xFu-pX-fVP" id="jaU-Pv-YKr"/>

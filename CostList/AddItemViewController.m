@@ -37,6 +37,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;    //位置
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;    //图片
 @property (weak, nonatomic) IBOutlet UILabel *photoLabel;   //添加图片文字标签
+@property (weak, nonatomic) IBOutlet UIImageView *chooseIcon;   //选择类别图标
+@property (weak, nonatomic) IBOutlet UILabel *chooseCategory;   //选择类别标签
+
 @property (strong,nonatomic) EditLocationViewController *editLocationViewController;
 @property (strong,nonatomic) MyDatePickerController *datePickerController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;   //“保存”按钮
@@ -168,9 +171,12 @@
 }
 
 #pragma mark - ChooseIconViewController Delegate
--(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName
+-(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName andDisplayName:(NSAttributedString *)displayName
 {
-    NSLog(@"chooseIcon : %@",iconName);
+    self.chooseIcon.image = [UIImage imageNamed:iconName];  //更新图标
+    self.chooseCategory.text = [displayName string];    //更新文本
+    NSDictionary *dict = [displayName attributesAtIndex:0 effectiveRange:NULL];
+    self.chooseCategory.textColor = dict[@"NSColor"];   //设置颜色
     [self.navigationController popViewControllerAnimated:YES];
 }
 

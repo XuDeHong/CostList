@@ -13,7 +13,7 @@
 //定义协议和方法
 @protocol ChooseIconViewControllerDelegate <NSObject>
 
--(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName;
+-(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName andDisplayName:(NSAttributedString *)displayName;
 
 @end
 

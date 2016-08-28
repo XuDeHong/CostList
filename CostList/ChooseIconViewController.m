@@ -88,17 +88,14 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
     if(self.segmentedControl.selectedSegmentIndex == 0)
     {
         dict = _spendArray[indexPath.row];
-        image = [UIImage imageNamed:[dict objectForKey:@"IconName"]];  //设置图标
-        cell.imageView.image = image;
-        cell.textLabel.text = [dict objectForKey:@"DisplayName"];   //设置名称
     }
     else
     {
         dict = _incomeArray[indexPath.row];
-        image = [UIImage imageNamed:[dict objectForKey:@"IconName"]];  //设置图标
-        cell.imageView.image = image;
-        cell.textLabel.text = [dict objectForKey:@"DisplayName"];   //设置名称
     }
+    image = [UIImage imageNamed:[dict objectForKey:@"IconName"]];  //设置图标
+    cell.imageView.image = image;
+    cell.textLabel.text = [dict objectForKey:@"DisplayName"];   //设置名称
     
     return cell;
 }
@@ -106,7 +103,20 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
 #pragma mark TableView Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate chooseIconViewController:self didChooseIcon:@"Name"];
+    NSDictionary *dict = nil;
+    NSAttributedString *str = nil;
+    
+    if(self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        dict = _spendArray[indexPath.row];
+        str = [[NSAttributedString alloc] initWithString:[dict objectForKey:@"DisplayName"] attributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];   //支出的字体设为红色
+    }
+    else
+    {
+        dict = _incomeArray[indexPath.row];
+        str = [[NSAttributedString alloc] initWithString:[dict objectForKey:@"DisplayName"] attributes:@{NSForegroundColorAttributeName:[UIColor greenColor]}];     //收入的字体设为绿色
+    }
+    [self.delegate chooseIconViewController:self didChooseIcon:[dict objectForKey:@"IconName"] andDisplayName:str];
 }
 
 @end
