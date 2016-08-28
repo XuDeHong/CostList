@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MyDatePickerController;
+
 //定义协议和方法
 @protocol MyDatePickerControllerDelegate <NSObject>
 
--(void)didChooseDate:(NSString *)date;
+-(void)myDatePickerController:(MyDatePickerController *)controller didChooseDate:(NSString *)date;
 
 @end
 
