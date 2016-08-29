@@ -19,14 +19,23 @@
 #define ImageViewWidth 260  //图片宽度
 #define ImageViewHeight 260 //图片高度
 #define ImageCellHeight 278  //图片cell高度
+
 #define IconWidth 30    //图标宽度
 #define IconHeight 30   //图标高度
 #define IconUpPadding  9    //图标上边空隙
 #define IconLeftPadding 8   //图标左边空隙
+
 #define LabelUpPadding 14   //标签上边空隙
 #define LabelLeftPadding 8  //标签左边空隙
 #define LabelRightPadding 8 //标签右边空隙
 #define LabelDownPadding 14 //标签下边空隙
+
+#define TextFieldUpPadding 9    //输入框上边空隙
+#define TextFieldLeftPadding 8  //输入框左边空隙
+#define TextFieldRightPadding 8 //输入框右边空隙
+#define TextFieldDownPadding 9 //输入框下边空隙
+
+
 #define LocationLabelUpAndDownWhileSpace 28 //位置cell的标签上边和下边空隙之和
 
 @interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate,ChooseIconViewControllerDelegate>
@@ -82,6 +91,14 @@
     UIView *contentView = nil;
     UIImageView *icon = nil;
     UITableViewCell *cell = nil;
+    
+    //金额cell布局
+    indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    contentView = cell.contentView;
+    icon = (UIImageView *)[contentView viewWithTag:501];
+    icon.sd_layout.widthIs(IconWidth).heightIs(IconHeight).topSpaceToView(contentView,IconUpPadding).leftSpaceToView(contentView,IconLeftPadding);  //图标布局
+    self.moneyTextField.sd_layout.topSpaceToView(contentView,TextFieldUpPadding).leftSpaceToView(icon,TextFieldLeftPadding).rightSpaceToView(contentView,TextFieldRightPadding).bottomSpaceToView(contentView,TextFieldDownPadding); //输入框布局
     
     //时间cell布局
     indexPath = [NSIndexPath indexPathForRow:0 inSection:2];

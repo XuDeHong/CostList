@@ -7,6 +7,7 @@
 //
 
 #import "ChooseIconViewController.h"
+#import <SDAutoLayout/SDAutoLayout.h>
 
 #define CellImageViewWidth 30   //图标宽度
 #define CellImageViewHeight 30  //图标高度
@@ -56,6 +57,10 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
     
     //去除多余的空行和分割线
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    //设置自动布局
+    self.tableView.sd_layout.leftSpaceToView(self.view,0).topSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(self.view,0);
+
 }
 
 - (IBAction)segmentedControlChange:(id)sender {
@@ -96,7 +101,7 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
     image = [UIImage imageNamed:[dict objectForKey:@"IconName"]];  //设置图标
     cell.imageView.image = image;
     cell.textLabel.text = [dict objectForKey:@"DisplayName"];   //设置名称
-    
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     return cell;
 }
 
