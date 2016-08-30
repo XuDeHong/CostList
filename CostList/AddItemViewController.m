@@ -13,6 +13,7 @@
 #import <KVNProgress/KVNProgress.h>
 #import <SDAutoLayout/SDAutoLayout.h>
 #import "ChooseIconViewController.h"
+#import "SCNumberKeyBoard.h"
 
 #define NavigationBarHeight self.navigationController.navigationBar.height  //导航栏高度
 
@@ -83,6 +84,12 @@
     [self getLocation];  //获取位置
     [self getCurrentDate];  //获取当前时间
     [self setupAutoLayout]; //设置自动布局
+    
+    [SCNumberKeyBoard showWithTextField:self.moneyTextField enter:^(UITextField *textField,NSString *number){
+        
+    } close:^(UITextField *textField,NSString *number){
+    
+    }];
 }
 
 -(void)setupAutoLayout
