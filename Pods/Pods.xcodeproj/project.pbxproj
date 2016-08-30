@@ -1,2070 +1,982 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>010758E3C9A8C60943BFAD0EFF0BB0D4</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>RESideMenu</string>
-			<key>target</key>
-			<string>427336C7CBAF1AA8A25E34DCE020B717</string>
-			<key>targetProxy</key>
-			<string>99B025977FAF0CDF9EF44FF27A875C69</string>
-		</dict>
-		<key>027D5909607364CEB53FA0C864726EF6</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>551DF7EB03D075ABDBDBD73CD283DABA</string>
-				<string>2894B6D19D000AD0E5E0ECC84698AEB8</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>05B208F7E81623386BBF86340CF804E4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E9A568513877B75DD853D40DCD3F2839</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>06B2232CE73059846F04E5C3DFEE0D38</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>5C42693EBD852E65FECE2D08CB1E3987</string>
-			<key>buildPhases</key>
-			<array>
-				<string>BE6B28B677F3AEC2D94A734FDFBF7ACE</string>
-				<string>7B67021760DF798E3E57CD5E82BFDCFE</string>
-				<string>A7D8C431004735E82306FC0920D84A0F</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>KVNProgress</string>
-			<key>productName</key>
-			<string>KVNProgress</string>
-			<key>productReference</key>
-			<string>67D758492328254A80DD2FAC072E6A30</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>0ED14AE8245C56530FB42669C384367F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIView+SDAutoLayout.m</string>
-			<key>path</key>
-			<string>SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0F1503A9213F3AD01B949D359C12600A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>RESideMenu.h</string>
-			<key>path</key>
-			<string>RESideMenu/RESideMenu.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0F2A9EC8F3D6412E47C7DC38378C4B86</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>KVNProgressView.xib</string>
-			<key>path</key>
-			<string>KVNProgress/Resources/KVNProgressView.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>112D12CAA684D918D01C032D2A54A703</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>98D495444C679A26B9D7E1672FE67F1F</string>
-				<string>CC4E4C19FDFE423DD010DA035D8F8E30</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>11D7A0337C48EAA060346EAF3F6ECFFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8BD77FEBECDB7C42A60E8A649AD234DF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>122DA2E5084A4393C29BE363C764795C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B3BE697900F50FFA6B448836E4591321</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>12E4A590B44420BE74E23DB3D0528016</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0F1503A9213F3AD01B949D359C12600A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>130EEA03DA4EE790FBA855365A3A9161</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B92449D7A5335B112C636C71B6EC548C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>1A9CD3065D3B15282A144A589ED745CE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4ACB2CE3D1A019DC01B453E0E370F83C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>1F055E7EA6B6FF3A461B5F216753643D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FE60A595F0E5F7801D3F6D1AC79510E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>20E41AFFBC10667E25EB6C09DCB45AF3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UITableView+SDAutoTableViewCellHeight.m</string>
-			<key>path</key>
-			<string>SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>24B781E2AC7DD89396CB72377EB1EECE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>SDAutoLayout.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>256BDA2B6B23A5A865861C4EF816810A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>67D758492328254A80DD2FAC072E6A30</string>
-				<string>5E07304FB309713B3ACFCFE617FB0DB6</string>
-				<string>8A5301D97E6EAC0126213127050C8CAD</string>
-				<string>EC5748DDAD9879EAB1B023438A7FCFAB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>27E506E90579EE436E1DC8B7720D2E74</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>SDAutoLayout</string>
-			<key>target</key>
-			<string>677E955B053021FBF77CEA32A21ED521</string>
-			<key>targetProxy</key>
-			<string>3F42ABB47F3CE316742623180CE8EC2C</string>
-		</dict>
-		<key>2818C0EDAE6535619F3299149B5C8736</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9F825A6A4FCB28FAE3EEF89AE9A19138</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>2894B6D19D000AD0E5E0ECC84698AEB8</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>B33DC41D1F455B6E6B2D37FCB8D33E24</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>299BC2FD65B0C01E3C62AF488EF0CE1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0ED14AE8245C56530FB42669C384367F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>A70CDAD61F90AC503C7D04CC22DA2923</string>
-				<string>FB45FFD90572718D82AB9092B750F0CA</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>2EB0D4EE46F3BCC7D57D2A2FB046324F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-CostList.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>32190E74CD8E1A4C761A27C54CE099A2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B17A2C077951E9D14F041BDD841FE986</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>334F70F37715E2A79A0788B47C39AA3A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-CostList-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>350EB2BA650DDF2C61A665D7C0B5BD5F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>KVNProgress.h</string>
-			<key>path</key>
-			<string>KVNProgress/Classes/KVNProgress.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3F42ABB47F3CE316742623180CE8EC2C</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>677E955B053021FBF77CEA32A21ED521</string>
-			<key>remoteInfo</key>
-			<string>SDAutoLayout</string>
-		</dict>
-		<key>4263670EB66BD022B383743783B61E1B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B5826AE0E08CBF8107DF7CBC9F971C76</string>
-				<string>8344457203BD36D8C51719AED6297053</string>
-				<string>86FFE01983A1112F26D175E94D7722C5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/KVNProgress</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>427336C7CBAF1AA8A25E34DCE020B717</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>8A7BAB989E9E2EEC1D6E2F37C22223AB</string>
-			<key>buildPhases</key>
-			<array>
-				<string>CE2981BC101FE87C634E17853A058FF4</string>
-				<string>6E96E72C447F126AB3D7C0F665EB6351</string>
-				<string>8A75ACD71AE65DE564FC37FAB99B6852</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>RESideMenu</string>
-			<key>productName</key>
-			<string>RESideMenu</string>
-			<key>productReference</key>
-			<string>8A5301D97E6EAC0126213127050C8CAD</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>4A448ED70C88FD67D564358AF8C6E05E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-CostList-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4ACB2CE3D1A019DC01B453E0E370F83C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>RECommonFunctions.h</string>
-			<key>path</key>
-			<string>RESideMenu/RECommonFunctions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4DC09CF7664D268D28D563B57154F746</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>CB5793E754382D98B37259F02E24A837</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>4FE60A595F0E5F7801D3F6D1AC79510E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SDAutoLayout-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>50DEBC04FA7D48D5155AE4CE15045A12</key>
-		<dict>
-			<key>fileRef</key>
-			<string>622AE4EAFE24A2392996E890A57B7F9C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>5284E97DC708A495BC50F2180E79648C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SDAutoLayout-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>551DF7EB03D075ABDBDBD73CD283DABA</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>2EB0D4EE46F3BCC7D57D2A2FB046324F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>59FBC6DCC9B2186785F8E40F1C755C4A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>350EB2BA650DDF2C61A665D7C0B5BD5F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>5C42693EBD852E65FECE2D08CB1E3987</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B33741D25826020AE59643BC90F8321C</string>
-				<string>5E0D110F3CC859ED050C13CEC7B7F6CE</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>5DF3D957959E7A5193E47D1A45A3144F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>6B30644BBCDD652B8D277D6AC8DCC80C</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/RESideMenu/RESideMenu-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>5E07304FB309713B3ACFCFE617FB0DB6</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libPods-CostList.a</string>
-			<key>path</key>
-			<string>libPods-CostList.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>5E0D110F3CC859ED050C13CEC7B7F6CE</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>B5826AE0E08CBF8107DF7CBC9F971C76</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/KVNProgress/KVNProgress-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>609DC12E475658497A16BD885FC15FAB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIColor+KVNContrast.m</string>
-			<key>path</key>
-			<string>KVNProgress/Categories/UIColor+KVNContrast.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>622AE4EAFE24A2392996E890A57B7F9C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIImage+KVNEmpty.m</string>
-			<key>path</key>
-			<string>KVNProgress/Categories/UIImage+KVNEmpty.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>62B10D82DD5E910C64961BEC3BA94D45</key>
-		<dict>
-			<key>fileRef</key>
-			<string>609DC12E475658497A16BD885FC15FAB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>62DA47EFBA779EED356BFA9FAE2A472C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>CF0160A96C7C5054B6325ED4DB534178</string>
-				<string>925A6AB971711D2CB1B0412153D9C031</string>
-				<string>20E41AFFBC10667E25EB6C09DCB45AF3</string>
-				<string>6E4388A39EA86BD09FF1393AF3FC6C59</string>
-				<string>0ED14AE8245C56530FB42669C384367F</string>
-				<string>D20EAC07F22DF42F13081992F44EAD1F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>SDAutoLayout</string>
-			<key>path</key>
-			<string>SDAutoLayout</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>677E955B053021FBF77CEA32A21ED521</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>112D12CAA684D918D01C032D2A54A703</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F2A80DED0D6CE08319887EFDDD730414</string>
-				<string>AD10C62F9D66459C477160D4D37EB76B</string>
-				<string>A24685FB746D91792DD0AA4357C39016</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>SDAutoLayout</string>
-			<key>productName</key>
-			<string>SDAutoLayout</string>
-			<key>productReference</key>
-			<string>EC5748DDAD9879EAB1B023438A7FCFAB</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>67D758492328254A80DD2FAC072E6A30</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libKVNProgress.a</string>
-			<key>path</key>
-			<string>libKVNProgress.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>688DFC4A6F2DB75A0D14B8D0742DBB56</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>RESideMenu-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>693D0B53AD38E042FF722E1ECC701A4C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D8DC291452B2B6D50D78EEA25E8A604C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>6AD594B71568699D25B7BF5B026D7C98</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>981419F5651596194E6682D0F10C8633</string>
-				<string>AE68D55AE503FA649F314C9A83A07506</string>
-				<string>62DA47EFBA779EED356BFA9FAE2A472C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6B30644BBCDD652B8D277D6AC8DCC80C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>RESideMenu.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6B84D3F20AF05FCCE8B6B6ECCA9370DF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C1617F79F6C448093B2B56E258C49BDC</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>6C7383ECFDA828D6866A1530E56622E3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8344457203BD36D8C51719AED6297053</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>6E4388A39EA86BD09FF1393AF3FC6C59</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIView+SDAutoLayout.h</string>
-			<key>path</key>
-			<string>SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6E96E72C447F126AB3D7C0F665EB6351</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>7ABF7ABE8D25041673FCF7191C70F3CC</string>
-				<string>AE4195B52F8C088BFF90C6DFE7618E9F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>726DAC0BF2E0E7B870D9EDC7960BDFED</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C8E1D525FC60D38299B8AA6FE3B91778</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>75B310644E6DB748B90A0927DE785A56</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0F2A9EC8F3D6412E47C7DC38378C4B86</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Resources</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7663E8C1334F336B6E55058E165363A8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C63C5AE33FCD9B1D5B872925143A942C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7ABF7ABE8D25041673FCF7191C70F3CC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C8E1D525FC60D38299B8AA6FE3B91778</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7B67021760DF798E3E57CD5E82BFDCFE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>FEBE2DEA46250A43A6722893915EB1EC</string>
-				<string>11D7A0337C48EAA060346EAF3F6ECFFB</string>
-				<string>CD4C84CC432133FA1BA490D0C2C5B15D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7DB346D0F39D3F0E887471402A8071AB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
-				<string>122DA2E5084A4393C29BE363C764795C</string>
-				<string>6AD594B71568699D25B7BF5B026D7C98</string>
-				<string>256BDA2B6B23A5A865861C4EF816810A</string>
-				<string>8EC47BE667DEE76ED6800F64EACEEECA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>810E148023CD55C1E741324E8E5E3360</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>334F70F37715E2A79A0788B47C39AA3A</string>
-				<string>4A448ED70C88FD67D564358AF8C6E05E</string>
-				<string>9C4B22D288AF276E67BBF24740EB1789</string>
-				<string>9AE8612EA0DFCAB59656F99FA65DC8DC</string>
-				<string>9BEAA6A1F6F92563BFA39F20EE172277</string>
-				<string>2EB0D4EE46F3BCC7D57D2A2FB046324F</string>
-				<string>B33DC41D1F455B6E6B2D37FCB8D33E24</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-CostList</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-CostList</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8344457203BD36D8C51719AED6297053</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>KVNProgress-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>86FFE01983A1112F26D175E94D7722C5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>KVNProgress-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>892DCE0DCF0C90DF47297BC917588061</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F2A501DE3D21CF36DFC6B9B43AB6B0B6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>8A5301D97E6EAC0126213127050C8CAD</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libRESideMenu.a</string>
-			<key>path</key>
-			<string>libRESideMenu.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>8A75ACD71AE65DE564FC37FAB99B6852</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>1A9CD3065D3B15282A144A589ED745CE</string>
-				<string>12E4A590B44420BE74E23DB3D0528016</string>
-				<string>C9F2B940742410862FBDF31A361C25E6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>8A7BAB989E9E2EEC1D6E2F37C22223AB</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>5DF3D957959E7A5193E47D1A45A3144F</string>
-				<string>B7D495C55F71A2F25C77AF69B82E66F3</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>8BD77FEBECDB7C42A60E8A649AD234DF</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GLKit.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/GLKit.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>8E888D0CD1FEE5E1C4F2CB55B1EE2639</key>
-		<dict>
-			<key>fileRef</key>
-			<string>6E4388A39EA86BD09FF1393AF3FC6C59</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>8EC47BE667DEE76ED6800F64EACEEECA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>810E148023CD55C1E741324E8E5E3360</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8ED6D87AEDF4301E2867609E0937BC31</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIViewController+RESideMenu.h</string>
-			<key>path</key>
-			<string>RESideMenu/UIViewController+RESideMenu.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>925A6AB971711D2CB1B0412153D9C031</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UITableView+SDAutoTableViewCellHeight.h</string>
-			<key>path</key>
-			<string>SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>981419F5651596194E6682D0F10C8633</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>350EB2BA650DDF2C61A665D7C0B5BD5F</string>
-				<string>B9574E4AAF50DBAC33EEBD7DF3842F57</string>
-				<string>D8DC291452B2B6D50D78EEA25E8A604C</string>
-				<string>F7E5C8D8285C5D22AEF4241BEE4AAFEF</string>
-				<string>E9A568513877B75DD853D40DCD3F2839</string>
-				<string>609DC12E475658497A16BD885FC15FAB</string>
-				<string>B92449D7A5335B112C636C71B6EC548C</string>
-				<string>622AE4EAFE24A2392996E890A57B7F9C</string>
-				<string>9F825A6A4FCB28FAE3EEF89AE9A19138</string>
-				<string>C1617F79F6C448093B2B56E258C49BDC</string>
-				<string>75B310644E6DB748B90A0927DE785A56</string>
-				<string>4263670EB66BD022B383743783B61E1B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>KVNProgress</string>
-			<key>path</key>
-			<string>KVNProgress</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>98D495444C679A26B9D7E1672FE67F1F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>24B781E2AC7DD89396CB72377EB1EECE</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>99B025977FAF0CDF9EF44FF27A875C69</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>427336C7CBAF1AA8A25E34DCE020B717</string>
-			<key>remoteInfo</key>
-			<string>RESideMenu</string>
-		</dict>
-		<key>9AE8612EA0DFCAB59656F99FA65DC8DC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-CostList-frameworks.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9BEAA6A1F6F92563BFA39F20EE172277</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-CostList-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9C4B22D288AF276E67BBF24740EB1789</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-CostList-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9CA6F076FD7D4B1BA739EE5ED4AB33B5</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>6B30644BBCDD652B8D277D6AC8DCC80C</string>
-				<string>CDC2B9B80B99042CE31CA75F51B9D374</string>
-				<string>688DFC4A6F2DB75A0D14B8D0742DBB56</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/RESideMenu</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9F825A6A4FCB28FAE3EEF89AE9A19138</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIImage+KVNImageEffects.h</string>
-			<key>path</key>
-			<string>KVNProgress/Categories/UIImage+KVNImageEffects.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A24685FB746D91792DD0AA4357C39016</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E5047C158C20C2D9343680E5CBD8DE1C</string>
-				<string>F8F4101E7DDD0DDF6EE43815FB0731EF</string>
-				<string>8E888D0CD1FEE5E1C4F2CB55B1EE2639</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A2BB32C6ADB374048B43F9E51D4D552F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>KVNProgress</string>
-			<key>target</key>
-			<string>06B2232CE73059846F04E5C3DFEE0D38</string>
-			<key>targetProxy</key>
-			<string>B62FA83D5CB555F8B69D31940A5E61A2</string>
-		</dict>
-		<key>A70CDAD61F90AC503C7D04CC22DA2923</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>A7D8C431004735E82306FC0920D84A0F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>59FBC6DCC9B2186785F8E40F1C755C4A</string>
-				<string>693D0B53AD38E042FF722E1ECC701A4C</string>
-				<string>05B208F7E81623386BBF86340CF804E4</string>
-				<string>130EEA03DA4EE790FBA855365A3A9161</string>
-				<string>2818C0EDAE6535619F3299149B5C8736</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AD10C62F9D66459C477160D4D37EB76B</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>726DAC0BF2E0E7B870D9EDC7960BDFED</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AE4195B52F8C088BFF90C6DFE7618E9F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>BAA67F2A9BFD0FE2388B40BD869E59A2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE68D55AE503FA649F314C9A83A07506</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4ACB2CE3D1A019DC01B453E0E370F83C</string>
-				<string>C63C5AE33FCD9B1D5B872925143A942C</string>
-				<string>0F1503A9213F3AD01B949D359C12600A</string>
-				<string>B17A2C077951E9D14F041BDD841FE986</string>
-				<string>8ED6D87AEDF4301E2867609E0937BC31</string>
-				<string>EDB383A46049E7F3BBB42C0402157245</string>
-				<string>9CA6F076FD7D4B1BA739EE5ED4AB33B5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>RESideMenu</string>
-			<key>path</key>
-			<string>RESideMenu</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AFBD7155CA8F4D473B8F13682D538A03</key>
-		<dict>
-			<key>fileRef</key>
-			<string>20E41AFFBC10667E25EB6C09DCB45AF3</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B17A2C077951E9D14F041BDD841FE986</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>RESideMenu.m</string>
-			<key>path</key>
-			<string>RESideMenu/RESideMenu.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B33741D25826020AE59643BC90F8321C</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>B5826AE0E08CBF8107DF7CBC9F971C76</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/KVNProgress/KVNProgress-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B33DC41D1F455B6E6B2D37FCB8D33E24</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-CostList.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B3BE697900F50FFA6B448836E4591321</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>C8E1D525FC60D38299B8AA6FE3B91778</string>
-				<string>8BD77FEBECDB7C42A60E8A649AD234DF</string>
-				<string>BAA67F2A9BFD0FE2388B40BD869E59A2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>iOS</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B5826AE0E08CBF8107DF7CBC9F971C76</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>KVNProgress.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B62FA83D5CB555F8B69D31940A5E61A2</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>06B2232CE73059846F04E5C3DFEE0D38</string>
-			<key>remoteInfo</key>
-			<string>KVNProgress</string>
-		</dict>
-		<key>B7D495C55F71A2F25C77AF69B82E66F3</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>6B30644BBCDD652B8D277D6AC8DCC80C</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/RESideMenu/RESideMenu-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B92449D7A5335B112C636C71B6EC548C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIImage+KVNEmpty.h</string>
-			<key>path</key>
-			<string>KVNProgress/Categories/UIImage+KVNEmpty.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B9574E4AAF50DBAC33EEBD7DF3842F57</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>KVNProgress.m</string>
-			<key>path</key>
-			<string>KVNProgress/Classes/KVNProgress.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BA6428E9F66FD5A23C0A2E06ED26CD2F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>name</key>
-			<string>Podfile</string>
-			<key>path</key>
-			<string>../Podfile</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-			<key>xcLanguageSpecificationIdentifier</key>
-			<string>xcode.lang.ruby</string>
-		</dict>
-		<key>BAA67F2A9BFD0FE2388B40BD869E59A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>QuartzCore.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>BE6B28B677F3AEC2D94A734FDFBF7ACE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>6C7383ECFDA828D6866A1530E56622E3</string>
-				<string>E9B3A3B059C36E1F3A36A5C2E3DFC6C7</string>
-				<string>D45787E82CB702636E892C0D2AD4481E</string>
-				<string>62B10D82DD5E910C64961BEC3BA94D45</string>
-				<string>50DEBC04FA7D48D5155AE4CE15045A12</string>
-				<string>6B84D3F20AF05FCCE8B6B6ECCA9370DF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>C1617F79F6C448093B2B56E258C49BDC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIImage+KVNImageEffects.m</string>
-			<key>path</key>
-			<string>KVNProgress/Categories/UIImage+KVNImageEffects.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C516F538A472B42B9C892BE835D19662</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EDB383A46049E7F3BBB42C0402157245</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C55D237A31C3869CD9DDF9C32DE28A58</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>027D5909607364CEB53FA0C864726EF6</string>
-			<key>buildPhases</key>
-			<array>
-				<string>4DC09CF7664D268D28D563B57154F746</string>
-				<string>892DCE0DCF0C90DF47297BC917588061</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>A2BB32C6ADB374048B43F9E51D4D552F</string>
-				<string>010758E3C9A8C60943BFAD0EFF0BB0D4</string>
-				<string>27E506E90579EE436E1DC8B7720D2E74</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-CostList</string>
-			<key>productName</key>
-			<string>Pods-CostList</string>
-			<key>productReference</key>
-			<string>5E07304FB309713B3ACFCFE617FB0DB6</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>C63C5AE33FCD9B1D5B872925143A942C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>RECommonFunctions.m</string>
-			<key>path</key>
-			<string>RESideMenu/RECommonFunctions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C8E1D525FC60D38299B8AA6FE3B91778</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>C9F2B940742410862FBDF31A361C25E6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8ED6D87AEDF4301E2867609E0937BC31</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>CB5793E754382D98B37259F02E24A837</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9C4B22D288AF276E67BBF24740EB1789</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>CC4E4C19FDFE423DD010DA035D8F8E30</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>24B781E2AC7DD89396CB72377EB1EECE</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>CD4C84CC432133FA1BA490D0C2C5B15D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>BAA67F2A9BFD0FE2388B40BD869E59A2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>CDC2B9B80B99042CE31CA75F51B9D374</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>RESideMenu-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CE2981BC101FE87C634E17853A058FF4</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>7663E8C1334F336B6E55058E165363A8</string>
-				<string>E3EC484FC712F06628D5F9074C7CB19C</string>
-				<string>32190E74CD8E1A4C761A27C54CE099A2</string>
-				<string>C516F538A472B42B9C892BE835D19662</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>CF0160A96C7C5054B6325ED4DB534178</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>SDAutoLayout.h</string>
-			<key>path</key>
-			<string>SDAutoLayoutDemo/SDAutoLayout/SDAutoLayout.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D20EAC07F22DF42F13081992F44EAD1F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>24B781E2AC7DD89396CB72377EB1EECE</string>
-				<string>4FE60A595F0E5F7801D3F6D1AC79510E</string>
-				<string>5284E97DC708A495BC50F2180E79648C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/SDAutoLayout</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D41D8CD98F00B204E9800998ECF8427E</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastSwiftUpdateCheck</key>
-				<string>0700</string>
-				<key>LastUpgradeCheck</key>
-				<string>0700</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>7DB346D0F39D3F0E887471402A8071AB</string>
-			<key>productRefGroup</key>
-			<string>256BDA2B6B23A5A865861C4EF816810A</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>06B2232CE73059846F04E5C3DFEE0D38</string>
-				<string>C55D237A31C3869CD9DDF9C32DE28A58</string>
-				<string>427336C7CBAF1AA8A25E34DCE020B717</string>
-				<string>677E955B053021FBF77CEA32A21ED521</string>
-			</array>
-		</dict>
-		<key>D45787E82CB702636E892C0D2AD4481E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7E5C8D8285C5D22AEF4241BEE4AAFEF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D8DC291452B2B6D50D78EEA25E8A604C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>KVNProgressConfiguration.h</string>
-			<key>path</key>
-			<string>KVNProgress/Classes/KVNProgressConfiguration.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E3EC484FC712F06628D5F9074C7CB19C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CDC2B9B80B99042CE31CA75F51B9D374</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E5047C158C20C2D9343680E5CBD8DE1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CF0160A96C7C5054B6325ED4DB534178</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>E9A568513877B75DD853D40DCD3F2839</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIColor+KVNContrast.h</string>
-			<key>path</key>
-			<string>KVNProgress/Categories/UIColor+KVNContrast.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E9B3A3B059C36E1F3A36A5C2E3DFC6C7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B9574E4AAF50DBAC33EEBD7DF3842F57</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>EC5748DDAD9879EAB1B023438A7FCFAB</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libSDAutoLayout.a</string>
-			<key>path</key>
-			<string>libSDAutoLayout.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>EDB383A46049E7F3BBB42C0402157245</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIViewController+RESideMenu.m</string>
-			<key>path</key>
-			<string>RESideMenu/UIViewController+RESideMenu.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2A501DE3D21CF36DFC6B9B43AB6B0B6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C8E1D525FC60D38299B8AA6FE3B91778</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2A80DED0D6CE08319887EFDDD730414</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>1F055E7EA6B6FF3A461B5F216753643D</string>
-				<string>AFBD7155CA8F4D473B8F13682D538A03</string>
-				<string>299BC2FD65B0C01E3C62AF488EF0CE1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7E5C8D8285C5D22AEF4241BEE4AAFEF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>KVNProgressConfiguration.m</string>
-			<key>path</key>
-			<string>KVNProgress/Classes/KVNProgressConfiguration.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F8F4101E7DDD0DDF6EE43815FB0731EF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>925A6AB971711D2CB1B0412153D9C031</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>FB45FFD90572718D82AB9092B750F0CA</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>RELEASE=1</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>FEBE2DEA46250A43A6722893915EB1EC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C8E1D525FC60D38299B8AA6FE3B91778</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>D41D8CD98F00B204E9800998ECF8427E</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08EBB4EB3B9C6F1A87E058BE79DA02ED /* UIView+SDAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 680A5AB936C0A26AE06DCDBF09F90410 /* UIView+SDAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C77D0DDE9E7C8906BF1DAF85AC353B8 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 594CA8E1D0424FE7894B6A8A16AFC456 /* KVNProgress.m */; };
+		0E7F9066B2982ADB69FD13299DAE0909 /* KVNProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B96D46DC0FEDB7C8D60733D0735EF6BA /* KVNProgress-dummy.m */; };
+		15306CEA1B9CF8A9AC903AE67BD9BD61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		1FBF2487DD046A9C7260E2DC7D14688B /* SDAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E44DD4E8009D5BFB86FB4C7FE9C234D2 /* SDAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2ECBEEB2DA17B8B062E6DBA1589DAA05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		31AB4051AA0D6F82C7AD767375286A74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		35BFAEF9F8A16F9B166F4F74EE618689 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */; };
+		37B81CFFC72DF8A895E28BB7488F025C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */; };
+		3F7FE82D7D1A93AF6A536D4B9D138D13 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F0CE0C5D9AB62BF5D8EA04FC6B7E22 /* UITableView+SDAutoTableViewCellHeight.m */; };
+		49B439D0B5EBB8A424DD78B4F2D84668 /* UIColor+KVNContrast.h in Headers */ = {isa = PBXBuildFile; fileRef = 594A684F69EA5C154ACFEA15B81517B0 /* UIColor+KVNContrast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C48862222B2C5FDA36BE77D9C0ABBF3 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D10AAB22A311F1C34EDA86F49BF5AA8D /* UIViewController+RESideMenu.m */; };
+		5F762D50EB15579B10009D8AAE0924D2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */; };
+		5F845D5BF15CD215F37C7F2B0503851D /* KVNRotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AC613D061D6D080772E191D1AC71E /* KVNRotationViewController.m */; };
+		65EFAD47B50B156D120CB54F1AEDFB49 /* UIViewController+RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A2BCAD3A475E1D08637624575A002F5E /* UIViewController+RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6993698C8FAA18325F4FA10A2EBF7CF9 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C05DD4062535B083E1530992ECAFE8 /* UIImage+KVNImageEffects.m */; };
+		6DDD208C2F7CAD3551D5AD78BAA09499 /* SCNumberKeyBoard.h in Headers */ = {isa = PBXBuildFile; fileRef = CA26405D2B412C3D5B36E9A3B81B10B4 /* SCNumberKeyBoard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72EE76AAE715568D12A3FA25BA9C5828 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		81553D5AC569D93B8992FFF0BA1DAA53 /* RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = C86C0D2F9F0B4688D6FE750A6BB0EC2A /* RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86A1338D0C3EF34465197B5F35D46DC8 /* KVNRotationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FD8E421F7BF1E2B7FA13A2D0240D423 /* KVNRotationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A7DD634659AA8A7B5DFD4D06B788444 /* SCNumberKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD7F708EA5E8110302AF4C6209D16DB /* SCNumberKeyBoard.m */; };
+		9AB34851E6268570A1AD5B97E0FF41B6 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4940C2B23E959EF19093F78983147B86 /* UIImage+KVNEmpty.m */; };
+		9B87EFD29850A42F6AAC162E3F274D89 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 894498F79CC322A133A2580FB8B0C708 /* RESideMenu.m */; };
+		9CEE33C5081471681047DE5148A1D096 /* UIImage+KVNImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 977B60CE1257E04CB9EAFB18A31146FB /* UIImage+KVNImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A47F9A38705E4104074FF814643D8B5D /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC6C21E7410CAC265F07A8636E9396 /* UIView+SDAutoLayout.m */; };
+		A7D10F19A70CFE66BE82A418792819A6 /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F7D4E793D43A1EBD3D4C505D4076B /* KVNProgressConfiguration.m */; };
+		BAF9D309D410A53530EDAB42AE68DAC9 /* UITableView+SDAutoTableViewCellHeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E8F1C9D35D566F7DBF4FABA5D202E71 /* UITableView+SDAutoTableViewCellHeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA218ACF9D5E572A425741740832378F /* SCNumberKeyBoard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C19F0B210DFA8B957F6ACC039DB6BA10 /* SCNumberKeyBoard-dummy.m */; };
+		CB25BB296B0EF9D21597ABFF5752F9BF /* KVNProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B17DE0ABFE0FE6D8CE808F182F212EB /* KVNProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0A7C286C86146D37E8963A87E6B544C /* RECommonFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CF9698D0A5416C7AF0AD279AE735869 /* RECommonFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3D1DA11D4B2C77C77AB215083004DB3 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5131C16923D07EA58885BC46260D7B0 /* RECommonFunctions.m */; };
+		D538AAE5E886102588468B837E9BB6B6 /* RESideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99ED9B11C43CE6EB64C058B69380404E /* RESideMenu-dummy.m */; };
+		D8E09B4A16C9284CFA29824FD3676883 /* SDAutoLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 291892E973E5304307524C39809F0FB9 /* SDAutoLayout-dummy.m */; };
+		DDCCDC58C30E2F96E05397BFE3EAE96F /* UIImage+KVNEmpty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F85E938DA5B12E9BFDFD875FC26B6D7 /* UIImage+KVNEmpty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE66995DB6310E5F56A85ADB18ABF393 /* KVNProgressConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 753DA9DA0C0FE4B66ED6C156E43A3189 /* KVNProgressConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F06E051D7DBAF81FAE8F02BE8576B2A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		F76436F9945FEBCB8C7CF5615C61D959 /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ECA3BE19E7796AD390FF0BBDE2ECF7 /* UIColor+KVNContrast.m */; };
+		F82C7CC845F8682B462D3514A8E61221 /* Pods-CostList-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5BB0F23E6F0A9C7A619BDE80166A3505 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1DFC20A7C2E1B9514D9644A61A1F12E0;
+			remoteInfo = SCNumberKeyBoard;
+		};
+		7131D7B2AC48D6E49B3CA395013EE6A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 104DF525D6B14F1EAB1434B4E9D44AA4;
+			remoteInfo = RESideMenu;
+		};
+		EBC91D00FBB3359036E34B8267B685FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69D86FB01D0465CE9558B290844B8212;
+			remoteInfo = SDAutoLayout;
+		};
+		F3EABF7D732DF6CC50BD9AD6895E3247 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4789BDA0DA41FF5A32F1C496408A2C0E;
+			remoteInfo = KVNProgress;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01BA32A293C53DAD32FC5C07AFD78F2C /* KVNProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KVNProgress-prefix.pch"; sourceTree = "<group>"; };
+		03B24D199D77F200755E446DECCEAB45 /* SCNumberKeyBoard.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SCNumberKeyBoard.bundle; path = Resources/SCNumberKeyBoard.bundle; sourceTree = "<group>"; };
+		03ECA3BE19E7796AD390FF0BBDE2ECF7 /* UIColor+KVNContrast.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KVNContrast.m"; path = "KVNProgress/Categories/UIColor+KVNContrast.m"; sourceTree = "<group>"; };
+		111AC25D39650A8AB1720F126C3AC195 /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C0AC613D061D6D080772E191D1AC71E /* KVNRotationViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNRotationViewController.m; path = KVNProgress/Classes/KVNRotationViewController.m; sourceTree = "<group>"; };
+		1CF9698D0A5416C7AF0AD279AE735869 /* RECommonFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = RESideMenu/RECommonFunctions.h; sourceTree = "<group>"; };
+		1FD8E421F7BF1E2B7FA13A2D0240D423 /* KVNRotationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNRotationViewController.h; path = KVNProgress/Classes/KVNRotationViewController.h; sourceTree = "<group>"; };
+		25F0CE0C5D9AB62BF5D8EA04FC6B7E22 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+SDAutoTableViewCellHeight.m"; path = "SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
+		291892E973E5304307524C39809F0FB9 /* SDAutoLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDAutoLayout-dummy.m"; sourceTree = "<group>"; };
+		2C7618536447581C2D32052B7BF461E0 /* libSCNumberKeyBoard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSCNumberKeyBoard.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EB0D4EE46F3BCC7D57D2A2FB046324F /* Pods-CostList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CostList.debug.xcconfig"; sourceTree = "<group>"; };
+		332F24812D9483BAE55A089EBA38AEE5 /* KVNProgressView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = KVNProgressView.xib; path = KVNProgress/Resources/KVNProgressView.xib; sourceTree = "<group>"; };
+		334F70F37715E2A79A0788B47C39AA3A /* Pods-CostList-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CostList-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3F85E938DA5B12E9BFDFD875FC26B6D7 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNEmpty.h"; path = "KVNProgress/Categories/UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
+		4940C2B23E959EF19093F78983147B86 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNEmpty.m"; path = "KVNProgress/Categories/UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		4A448ED70C88FD67D564358AF8C6E05E /* Pods-CostList-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CostList-acknowledgements.plist"; sourceTree = "<group>"; };
+		57E03F086D04E760B5E10DC958EC8CC6 /* RESideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RESideMenu-prefix.pch"; sourceTree = "<group>"; };
+		594A684F69EA5C154ACFEA15B81517B0 /* UIColor+KVNContrast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+KVNContrast.h"; path = "KVNProgress/Categories/UIColor+KVNContrast.h"; sourceTree = "<group>"; };
+		594CA8E1D0424FE7894B6A8A16AFC456 /* KVNProgress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgress.m; path = KVNProgress/Classes/KVNProgress.m; sourceTree = "<group>"; };
+		5D5F7D4E793D43A1EBD3D4C505D4076B /* KVNProgressConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgressConfiguration.m; path = KVNProgress/Classes/KVNProgressConfiguration.m; sourceTree = "<group>"; };
+		627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RESideMenu.xcconfig; sourceTree = "<group>"; };
+		63E0354BCF15288BD0C51C3A078625BC /* libKVNProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKVNProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		680A5AB936C0A26AE06DCDBF09F90410 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+SDAutoLayout.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
+		6F5F91FDAB932DB11109972FC0480792 /* SDAutoLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDAutoLayout-prefix.pch"; sourceTree = "<group>"; };
+		753DA9DA0C0FE4B66ED6C156E43A3189 /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgressConfiguration.h; path = KVNProgress/Classes/KVNProgressConfiguration.h; sourceTree = "<group>"; };
+		7F232AF6BA58775AF98E3CB38DBD8FBC /* libSDAutoLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDAutoLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCNumberKeyBoard.xcconfig; sourceTree = "<group>"; };
+		887F1C9C9F3317BFE547F5F4D4B569FE /* libRESideMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRESideMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		894498F79CC322A133A2580FB8B0C708 /* RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RESideMenu.m; path = RESideMenu/RESideMenu.m; sourceTree = "<group>"; };
+		8B17DE0ABFE0FE6D8CE808F182F212EB /* KVNProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgress.h; path = KVNProgress/Classes/KVNProgress.h; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		977B60CE1257E04CB9EAFB18A31146FB /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNImageEffects.h"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
+		99ED9B11C43CE6EB64C058B69380404E /* RESideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RESideMenu-dummy.m"; sourceTree = "<group>"; };
+		9AE8612EA0DFCAB59656F99FA65DC8DC /* Pods-CostList-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CostList-frameworks.sh"; sourceTree = "<group>"; };
+		9BEAA6A1F6F92563BFA39F20EE172277 /* Pods-CostList-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CostList-resources.sh"; sourceTree = "<group>"; };
+		9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CostList-dummy.m"; sourceTree = "<group>"; };
+		9E8F1C9D35D566F7DBF4FABA5D202E71 /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+SDAutoTableViewCellHeight.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
+		A2BCAD3A475E1D08637624575A002F5E /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+RESideMenu.h"; path = "RESideMenu/UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KVNProgress.xcconfig; sourceTree = "<group>"; };
+		B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CostList.release.xcconfig"; sourceTree = "<group>"; };
+		B96D46DC0FEDB7C8D60733D0735EF6BA /* KVNProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KVNProgress-dummy.m"; sourceTree = "<group>"; };
+		BE34F6F4B213CDA56925FD1B6B4615D6 /* SCNumberKeyBoard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCNumberKeyBoard-prefix.pch"; sourceTree = "<group>"; };
+		C19F0B210DFA8B957F6ACC039DB6BA10 /* SCNumberKeyBoard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCNumberKeyBoard-dummy.m"; sourceTree = "<group>"; };
+		C4C05DD4062535B083E1530992ECAFE8 /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNImageEffects.m"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
+		C86C0D2F9F0B4688D6FE750A6BB0EC2A /* RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RESideMenu.h; path = RESideMenu/RESideMenu.h; sourceTree = "<group>"; };
+		CA26405D2B412C3D5B36E9A3B81B10B4 /* SCNumberKeyBoard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCNumberKeyBoard.h; path = Classes/SCNumberKeyBoard.h; sourceTree = "<group>"; };
+		D10AAB22A311F1C34EDA86F49BF5AA8D /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+RESideMenu.m"; path = "RESideMenu/UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		E44DD4E8009D5BFB86FB4C7FE9C234D2 /* SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAutoLayout.h; path = SDAutoLayoutDemo/SDAutoLayout/SDAutoLayout.h; sourceTree = "<group>"; };
+		EBD7F708EA5E8110302AF4C6209D16DB /* SCNumberKeyBoard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCNumberKeyBoard.m; path = Classes/SCNumberKeyBoard.m; sourceTree = "<group>"; };
+		EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDAutoLayout.xcconfig; sourceTree = "<group>"; };
+		F5131C16923D07EA58885BC46260D7B0 /* RECommonFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = RESideMenu/RECommonFunctions.m; sourceTree = "<group>"; };
+		F6DC6C21E7410CAC265F07A8636E9396 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+SDAutoLayout.m"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		09D5F50D03C264A0C5EF47E19E0185C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F06E051D7DBAF81FAE8F02BE8576B2A8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A9A53962724ADB73DA53F8A6C41F76B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31AB4051AA0D6F82C7AD767375286A74 /* Foundation.framework in Frameworks */,
+				5F762D50EB15579B10009D8AAE0924D2 /* GLKit.framework in Frameworks */,
+				35BFAEF9F8A16F9B166F4F74EE618689 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		283EBB320CF711554E5496A98CA832D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ECBEEB2DA17B8B062E6DBA1589DAA05 /* Foundation.framework in Frameworks */,
+				37B81CFFC72DF8A895E28BB7488F025C /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2E769CC9B43F3F35ADB64D58F26764 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72EE76AAE715568D12A3FA25BA9C5828 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAED407D4922E824DC0538E53EC66116 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15306CEA1B9CF8A9AC903AE67BD9BD61 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02A717D616BE052DFA53028ECA508B25 /* SDAutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E44DD4E8009D5BFB86FB4C7FE9C234D2 /* SDAutoLayout.h */,
+				9E8F1C9D35D566F7DBF4FABA5D202E71 /* UITableView+SDAutoTableViewCellHeight.h */,
+				25F0CE0C5D9AB62BF5D8EA04FC6B7E22 /* UITableView+SDAutoTableViewCellHeight.m */,
+				680A5AB936C0A26AE06DCDBF09F90410 /* UIView+SDAutoLayout.h */,
+				F6DC6C21E7410CAC265F07A8636E9396 /* UIView+SDAutoLayout.m */,
+				D01C7AB3E26573E5EB738814E4F4466F /* Support Files */,
+			);
+			path = SDAutoLayout;
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				356CAE8572C7C75FCB05E984CEB70677 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		275C694354811AE63F10BD69C5712442 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A664CDF18148AD5C557A5450EAB15F32 /* KVNProgress */,
+				E9F94727CB3EBC70EDD59E6BFD2E29BE /* RESideMenu */,
+				F1F34F18E469E62E5BD597588E6052D4 /* SCNumberKeyBoard */,
+				02A717D616BE052DFA53028ECA508B25 /* SDAutoLayout */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		356CAE8572C7C75FCB05E984CEB70677 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */,
+				6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */,
+				6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		594FF9A1D6FECEEB2179A822CA6EEEDF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */,
+				C19F0B210DFA8B957F6ACC039DB6BA10 /* SCNumberKeyBoard-dummy.m */,
+				BE34F6F4B213CDA56925FD1B6B4615D6 /* SCNumberKeyBoard-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SCNumberKeyBoard";
+			sourceTree = "<group>";
+		};
+		6302B7B6554105D9E1CF56DCAF7254E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63E0354BCF15288BD0C51C3A078625BC /* libKVNProgress.a */,
+				111AC25D39650A8AB1720F126C3AC195 /* libPods-CostList.a */,
+				887F1C9C9F3317BFE547F5F4D4B569FE /* libRESideMenu.a */,
+				2C7618536447581C2D32052B7BF461E0 /* libSCNumberKeyBoard.a */,
+				7F232AF6BA58775AF98E3CB38DBD8FBC /* libSDAutoLayout.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FD01CBC2633465298A3A8251F01FAEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				332F24812D9483BAE55A089EBA38AEE5 /* KVNProgressView.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				275C694354811AE63F10BD69C5712442 /* Pods */,
+				6302B7B6554105D9E1CF56DCAF7254E7 /* Products */,
+				8EC47BE667DEE76ED6800F64EACEEECA /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7EEDC3A833531D9D7CBC435476FB7EAD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */,
+				99ED9B11C43CE6EB64C058B69380404E /* RESideMenu-dummy.m */,
+				57E03F086D04E760B5E10DC958EC8CC6 /* RESideMenu-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RESideMenu";
+			sourceTree = "<group>";
+		};
+		810E148023CD55C1E741324E8E5E3360 /* Pods-CostList */ = {
+			isa = PBXGroup;
+			children = (
+				334F70F37715E2A79A0788B47C39AA3A /* Pods-CostList-acknowledgements.markdown */,
+				4A448ED70C88FD67D564358AF8C6E05E /* Pods-CostList-acknowledgements.plist */,
+				9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */,
+				9AE8612EA0DFCAB59656F99FA65DC8DC /* Pods-CostList-frameworks.sh */,
+				9BEAA6A1F6F92563BFA39F20EE172277 /* Pods-CostList-resources.sh */,
+				2EB0D4EE46F3BCC7D57D2A2FB046324F /* Pods-CostList.debug.xcconfig */,
+				B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */,
+			);
+			name = "Pods-CostList";
+			path = "Target Support Files/Pods-CostList";
+			sourceTree = "<group>";
+		};
+		8EC47BE667DEE76ED6800F64EACEEECA /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				810E148023CD55C1E741324E8E5E3360 /* Pods-CostList */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A664CDF18148AD5C557A5450EAB15F32 /* KVNProgress */ = {
+			isa = PBXGroup;
+			children = (
+				8B17DE0ABFE0FE6D8CE808F182F212EB /* KVNProgress.h */,
+				594CA8E1D0424FE7894B6A8A16AFC456 /* KVNProgress.m */,
+				753DA9DA0C0FE4B66ED6C156E43A3189 /* KVNProgressConfiguration.h */,
+				5D5F7D4E793D43A1EBD3D4C505D4076B /* KVNProgressConfiguration.m */,
+				1FD8E421F7BF1E2B7FA13A2D0240D423 /* KVNRotationViewController.h */,
+				1C0AC613D061D6D080772E191D1AC71E /* KVNRotationViewController.m */,
+				594A684F69EA5C154ACFEA15B81517B0 /* UIColor+KVNContrast.h */,
+				03ECA3BE19E7796AD390FF0BBDE2ECF7 /* UIColor+KVNContrast.m */,
+				3F85E938DA5B12E9BFDFD875FC26B6D7 /* UIImage+KVNEmpty.h */,
+				4940C2B23E959EF19093F78983147B86 /* UIImage+KVNEmpty.m */,
+				977B60CE1257E04CB9EAFB18A31146FB /* UIImage+KVNImageEffects.h */,
+				C4C05DD4062535B083E1530992ECAFE8 /* UIImage+KVNImageEffects.m */,
+				6FD01CBC2633465298A3A8251F01FAEA /* Resources */,
+				E0D8C7A397660642E824A1590E0251E1 /* Support Files */,
+			);
+			path = KVNProgress;
+			sourceTree = "<group>";
+		};
+		D01C7AB3E26573E5EB738814E4F4466F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */,
+				291892E973E5304307524C39809F0FB9 /* SDAutoLayout-dummy.m */,
+				6F5F91FDAB932DB11109972FC0480792 /* SDAutoLayout-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SDAutoLayout";
+			sourceTree = "<group>";
+		};
+		D89A506ED13E469B57F7AC79603099A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				03B24D199D77F200755E446DECCEAB45 /* SCNumberKeyBoard.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E0D8C7A397660642E824A1590E0251E1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */,
+				B96D46DC0FEDB7C8D60733D0735EF6BA /* KVNProgress-dummy.m */,
+				01BA32A293C53DAD32FC5C07AFD78F2C /* KVNProgress-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/KVNProgress";
+			sourceTree = "<group>";
+		};
+		E9F94727CB3EBC70EDD59E6BFD2E29BE /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1CF9698D0A5416C7AF0AD279AE735869 /* RECommonFunctions.h */,
+				F5131C16923D07EA58885BC46260D7B0 /* RECommonFunctions.m */,
+				C86C0D2F9F0B4688D6FE750A6BB0EC2A /* RESideMenu.h */,
+				894498F79CC322A133A2580FB8B0C708 /* RESideMenu.m */,
+				A2BCAD3A475E1D08637624575A002F5E /* UIViewController+RESideMenu.h */,
+				D10AAB22A311F1C34EDA86F49BF5AA8D /* UIViewController+RESideMenu.m */,
+				7EEDC3A833531D9D7CBC435476FB7EAD /* Support Files */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		F1F34F18E469E62E5BD597588E6052D4 /* SCNumberKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				CA26405D2B412C3D5B36E9A3B81B10B4 /* SCNumberKeyBoard.h */,
+				EBD7F708EA5E8110302AF4C6209D16DB /* SCNumberKeyBoard.m */,
+				D89A506ED13E469B57F7AC79603099A1 /* Resources */,
+				594FF9A1D6FECEEB2179A822CA6EEEDF /* Support Files */,
+			);
+			path = SCNumberKeyBoard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		12E7F2065FFCD90B12CBBCAB04127B7A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FBF2487DD046A9C7260E2DC7D14688B /* SDAutoLayout.h in Headers */,
+				BAF9D309D410A53530EDAB42AE68DAC9 /* UITableView+SDAutoTableViewCellHeight.h in Headers */,
+				08EBB4EB3B9C6F1A87E058BE79DA02ED /* UIView+SDAutoLayout.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		353FB5AF38860F49E465257C8402197A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A7C286C86146D37E8963A87E6B544C /* RECommonFunctions.h in Headers */,
+				81553D5AC569D93B8992FFF0BA1DAA53 /* RESideMenu.h in Headers */,
+				65EFAD47B50B156D120CB54F1AEDFB49 /* UIViewController+RESideMenu.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		974321208B54AC0E739866C43473B79A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB25BB296B0EF9D21597ABFF5752F9BF /* KVNProgress.h in Headers */,
+				DE66995DB6310E5F56A85ADB18ABF393 /* KVNProgressConfiguration.h in Headers */,
+				86A1338D0C3EF34465197B5F35D46DC8 /* KVNRotationViewController.h in Headers */,
+				49B439D0B5EBB8A424DD78B4F2D84668 /* UIColor+KVNContrast.h in Headers */,
+				DDCCDC58C30E2F96E05397BFE3EAE96F /* UIImage+KVNEmpty.h in Headers */,
+				9CEE33C5081471681047DE5148A1D096 /* UIImage+KVNImageEffects.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB4F4B61CBA89A44552AE5A7FC90A2CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DDD208C2F7CAD3551D5AD78BAA09499 /* SCNumberKeyBoard.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		104DF525D6B14F1EAB1434B4E9D44AA4 /* RESideMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 181F7F4BB3CA690867924DEF4AA78423 /* Build configuration list for PBXNativeTarget "RESideMenu" */;
+			buildPhases = (
+				350D76F4A5D431E76B1A4707C85000D3 /* Sources */,
+				283EBB320CF711554E5496A98CA832D1 /* Frameworks */,
+				353FB5AF38860F49E465257C8402197A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RESideMenu;
+			productName = RESideMenu;
+			productReference = 887F1C9C9F3317BFE547F5F4D4B569FE /* libRESideMenu.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1657588966FF9EEB7FD3BE4D1929CF61 /* Pods-CostList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BEB1108B1E647CAE214D8FFB8AF40E9 /* Build configuration list for PBXNativeTarget "Pods-CostList" */;
+			buildPhases = (
+				8757FDD46051FA9F21759537C5678F21 /* Sources */,
+				5B2E769CC9B43F3F35ADB64D58F26764 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA8C7AD5504AAA1E80BF0B116A643A4B /* PBXTargetDependency */,
+				55B2B95FFD7A3DC01F0AD77B884DC3A7 /* PBXTargetDependency */,
+				08571C6BEC2A1E318B3A9B969FFD5046 /* PBXTargetDependency */,
+				EEAD646F34F4DA23532240DEF74443C4 /* PBXTargetDependency */,
+			);
+			name = "Pods-CostList";
+			productName = "Pods-CostList";
+			productReference = 111AC25D39650A8AB1720F126C3AC195 /* libPods-CostList.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1DFC20A7C2E1B9514D9644A61A1F12E0 /* SCNumberKeyBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3A8C71953935B7D73A25BD2592E5C37 /* Build configuration list for PBXNativeTarget "SCNumberKeyBoard" */;
+			buildPhases = (
+				450C396F3570FC0F10CF67D2E0034D52 /* Sources */,
+				CAED407D4922E824DC0538E53EC66116 /* Frameworks */,
+				AB4F4B61CBA89A44552AE5A7FC90A2CD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SCNumberKeyBoard;
+			productName = SCNumberKeyBoard;
+			productReference = 2C7618536447581C2D32052B7BF461E0 /* libSCNumberKeyBoard.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4789BDA0DA41FF5A32F1C496408A2C0E /* KVNProgress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2C0BFAFFD5C3FE3ACD3CB6C245EE73D /* Build configuration list for PBXNativeTarget "KVNProgress" */;
+			buildPhases = (
+				BD2E53B78660A59C463E24C0692C8827 /* Sources */,
+				1A9A53962724ADB73DA53F8A6C41F76B /* Frameworks */,
+				974321208B54AC0E739866C43473B79A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KVNProgress;
+			productName = KVNProgress;
+			productReference = 63E0354BCF15288BD0C51C3A078625BC /* libKVNProgress.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		69D86FB01D0465CE9558B290844B8212 /* SDAutoLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F7E9348619B7502AFBA254361AB7B99 /* Build configuration list for PBXNativeTarget "SDAutoLayout" */;
+			buildPhases = (
+				F7D0C38C4669DDECD5DEC0FB3AA21C97 /* Sources */,
+				09D5F50D03C264A0C5EF47E19E0185C7 /* Frameworks */,
+				12E7F2065FFCD90B12CBBCAB04127B7A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDAutoLayout;
+			productName = SDAutoLayout;
+			productReference = 7F232AF6BA58775AF98E3CB38DBD8FBC /* libSDAutoLayout.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 6302B7B6554105D9E1CF56DCAF7254E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4789BDA0DA41FF5A32F1C496408A2C0E /* KVNProgress */,
+				1657588966FF9EEB7FD3BE4D1929CF61 /* Pods-CostList */,
+				104DF525D6B14F1EAB1434B4E9D44AA4 /* RESideMenu */,
+				1DFC20A7C2E1B9514D9644A61A1F12E0 /* SCNumberKeyBoard */,
+				69D86FB01D0465CE9558B290844B8212 /* SDAutoLayout */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		350D76F4A5D431E76B1A4707C85000D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3D1DA11D4B2C77C77AB215083004DB3 /* RECommonFunctions.m in Sources */,
+				D538AAE5E886102588468B837E9BB6B6 /* RESideMenu-dummy.m in Sources */,
+				9B87EFD29850A42F6AAC162E3F274D89 /* RESideMenu.m in Sources */,
+				4C48862222B2C5FDA36BE77D9C0ABBF3 /* UIViewController+RESideMenu.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		450C396F3570FC0F10CF67D2E0034D52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA218ACF9D5E572A425741740832378F /* SCNumberKeyBoard-dummy.m in Sources */,
+				9A7DD634659AA8A7B5DFD4D06B788444 /* SCNumberKeyBoard.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8757FDD46051FA9F21759537C5678F21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F82C7CC845F8682B462D3514A8E61221 /* Pods-CostList-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD2E53B78660A59C463E24C0692C8827 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E7F9066B2982ADB69FD13299DAE0909 /* KVNProgress-dummy.m in Sources */,
+				0C77D0DDE9E7C8906BF1DAF85AC353B8 /* KVNProgress.m in Sources */,
+				A7D10F19A70CFE66BE82A418792819A6 /* KVNProgressConfiguration.m in Sources */,
+				5F845D5BF15CD215F37C7F2B0503851D /* KVNRotationViewController.m in Sources */,
+				F76436F9945FEBCB8C7CF5615C61D959 /* UIColor+KVNContrast.m in Sources */,
+				9AB34851E6268570A1AD5B97E0FF41B6 /* UIImage+KVNEmpty.m in Sources */,
+				6993698C8FAA18325F4FA10A2EBF7CF9 /* UIImage+KVNImageEffects.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7D0C38C4669DDECD5DEC0FB3AA21C97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8E09B4A16C9284CFA29824FD3676883 /* SDAutoLayout-dummy.m in Sources */,
+				3F7FE82D7D1A93AF6A536D4B9D138D13 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
+				A47F9A38705E4104074FF814643D8B5D /* UIView+SDAutoLayout.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08571C6BEC2A1E318B3A9B969FFD5046 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SCNumberKeyBoard;
+			target = 1DFC20A7C2E1B9514D9644A61A1F12E0 /* SCNumberKeyBoard */;
+			targetProxy = 5BB0F23E6F0A9C7A619BDE80166A3505 /* PBXContainerItemProxy */;
+		};
+		55B2B95FFD7A3DC01F0AD77B884DC3A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RESideMenu;
+			target = 104DF525D6B14F1EAB1434B4E9D44AA4 /* RESideMenu */;
+			targetProxy = 7131D7B2AC48D6E49B3CA395013EE6A8 /* PBXContainerItemProxy */;
+		};
+		BA8C7AD5504AAA1E80BF0B116A643A4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KVNProgress;
+			target = 4789BDA0DA41FF5A32F1C496408A2C0E /* KVNProgress */;
+			targetProxy = F3EABF7D732DF6CC50BD9AD6895E3247 /* PBXContainerItemProxy */;
+		};
+		EEAD646F34F4DA23532240DEF74443C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDAutoLayout;
+			target = 69D86FB01D0465CE9558B290844B8212 /* SDAutoLayout */;
+			targetProxy = EBC91D00FBB3359036E34B8267B685FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		015A368F878AC3E2CEAE21DDE8026304 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		1B586B76C39F00D4EA1EA999073C4DC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KVNProgress/KVNProgress-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3898E91CFD9C12CA8F2C3CA0A830716B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RESideMenu/RESideMenu-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3F3F919C4A0F4F2A124C68018375FA5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KVNProgress/KVNProgress-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4CC6E60B1B700081CE859042714503EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4F0F00BB6ACBBCC27DC9417785369A9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RESideMenu/RESideMenu-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4F73D0BA9752C8BF862B86CAC6B1E3E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SCNumberKeyBoard/SCNumberKeyBoard-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		50003384B750F35498F41A9638FE5D1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SCNumberKeyBoard/SCNumberKeyBoard-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		673BBCED32AC5EC3848A9A22AEE5A28C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		901D9F56EFD07B1C5C54B5CBCC4ECE61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E00D190EBDDA63E5687FEF7D5D4C55BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EB0D4EE46F3BCC7D57D2A2FB046324F /* Pods-CostList.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		181F7F4BB3CA690867924DEF4AA78423 /* Build configuration list for PBXNativeTarget "RESideMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F0F00BB6ACBBCC27DC9417785369A9F /* Debug */,
+				3898E91CFD9C12CA8F2C3CA0A830716B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				015A368F878AC3E2CEAE21DDE8026304 /* Debug */,
+				44CDBB6D11DE06DB64D6268622BDC47E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F7E9348619B7502AFBA254361AB7B99 /* Build configuration list for PBXNativeTarget "SDAutoLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CC6E60B1B700081CE859042714503EB /* Debug */,
+				673BBCED32AC5EC3848A9A22AEE5A28C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BEB1108B1E647CAE214D8FFB8AF40E9 /* Build configuration list for PBXNativeTarget "Pods-CostList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E00D190EBDDA63E5687FEF7D5D4C55BA /* Debug */,
+				901D9F56EFD07B1C5C54B5CBCC4ECE61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2C0BFAFFD5C3FE3ACD3CB6C245EE73D /* Build configuration list for PBXNativeTarget "KVNProgress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F3F919C4A0F4F2A124C68018375FA5A /* Debug */,
+				1B586B76C39F00D4EA1EA999073C4DC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3A8C71953935B7D73A25BD2592E5C37 /* Build configuration list for PBXNativeTarget "SCNumberKeyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50003384B750F35498F41A9638FE5D1E /* Debug */,
+				4F73D0BA9752C8BF862B86CAC6B1E3E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
