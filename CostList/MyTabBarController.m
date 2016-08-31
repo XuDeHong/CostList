@@ -10,7 +10,7 @@
 #import "MyTabBar.h"
 #import "AddItemViewController.h"
 #import "UIViewController+Category.h"
-#import "RESideMenu.h"
+#import "ViewDeck/ViewDeck.h"
 
 
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
@@ -60,7 +60,7 @@
 -(void)showSlideMenuController
 {
     //显示侧栏
-    [self.sideMenuViewController presentLeftMenuViewController];
+    [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 

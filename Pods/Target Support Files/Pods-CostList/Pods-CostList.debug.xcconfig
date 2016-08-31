@@ -1,8 +1,8 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/KVNProgress" "${PODS_ROOT}/Headers/Public/RESideMenu" "${PODS_ROOT}/Headers/Public/SCNumberKeyBoard" "${PODS_ROOT}/Headers/Public/SDAutoLayout"
-LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/KVNProgress" "$PODS_CONFIGURATION_BUILD_DIR/RESideMenu" "$PODS_CONFIGURATION_BUILD_DIR/SCNumberKeyBoard" "$PODS_CONFIGURATION_BUILD_DIR/SDAutoLayout"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/KVNProgress" -isystem "${PODS_ROOT}/Headers/Public/RESideMenu" -isystem "${PODS_ROOT}/Headers/Public/SCNumberKeyBoard" -isystem "${PODS_ROOT}/Headers/Public/SDAutoLayout"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"KVNProgress" -l"RESideMenu" -l"SCNumberKeyBoard" -l"SDAutoLayout" -framework "GLKit" -framework "QuartzCore"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/KVNProgress" "${PODS_ROOT}/Headers/Public/SCNumberKeyBoard" "${PODS_ROOT}/Headers/Public/SDAutoLayout" "${PODS_ROOT}/Headers/Public/ViewDeck"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/KVNProgress" "$PODS_CONFIGURATION_BUILD_DIR/SCNumberKeyBoard" "$PODS_CONFIGURATION_BUILD_DIR/SDAutoLayout" "$PODS_CONFIGURATION_BUILD_DIR/ViewDeck"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/KVNProgress" -isystem "${PODS_ROOT}/Headers/Public/SCNumberKeyBoard" -isystem "${PODS_ROOT}/Headers/Public/SDAutoLayout" -isystem "${PODS_ROOT}/Headers/Public/ViewDeck"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"KVNProgress" -l"SCNumberKeyBoard" -l"SDAutoLayout" -l"ViewDeck" -framework "GLKit" -framework "QuartzCore"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

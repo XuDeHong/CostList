@@ -13,7 +13,7 @@
 #import "MyTabBarController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIViewController+Category.h"
-#import "RESideMenu.h"
+#import "ViewDeck/ViewDeck.h"
 
 
 @interface AppDelegate ()
@@ -34,10 +34,12 @@
     SlideMenuViewController *mySlideMenuViewController = [SlideMenuViewController instanceFromStoryboardV2];
     
     //创建侧栏效果控制器
-    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController rightMenuViewController:nil];
-    sideMenuViewController.panGestureEnabled = YES;
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:tabBarController leftViewController:[IISideController autoConstrainedSideControllerWithViewController:mySlideMenuViewController] rightViewController:nil];
+    deckController.leftSize = 100.0f;
+    deckController.maxSize = 100.0f;
+    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     //设置为根控制器
-    self.window.rootViewController = sideMenuViewController;
+    self.window.rootViewController = deckController;
     //请求用户获取位置的权限
     self.locationManager = [[CLLocationManager alloc] init];
     if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
