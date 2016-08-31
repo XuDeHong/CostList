@@ -10,7 +10,6 @@
 #import "MyTabBar.h"
 #import "AddItemViewController.h"
 #import "UIViewController+Category.h"
-#import "LGSideMenuController.h"
 
 
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
@@ -60,8 +59,7 @@
 -(void)showSlideMenuController
 {
     //显示侧栏
-    LGSideMenuController *controller = (LGSideMenuController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-    [controller showLeftViewAnimated:YES completionHandler:nil];
+
 }
 
 

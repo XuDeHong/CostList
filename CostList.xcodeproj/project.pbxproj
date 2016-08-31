@@ -33,6 +33,7 @@
 		84DD44251D640E460045A375 /* ChooseIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD44241D640E460045A375 /* ChooseIconViewController.m */; };
 		84DD5ED31D6A906700CBCA99 /* MyDatePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DD5ED21D6A906700CBCA99 /* MyDatePickerController.xib */; };
 		84EA90D81D769B9800282904 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA90D71D769B9800282904 /* SlideMenuViewController.m */; };
+		84F65B5D1D76D03E00A626B7 /* SlideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F65B5C1D76D03E00A626B7 /* SlideMenuViewController.storyboard */; };
 		CC76B3E45FFAFD1EB6CA4FD2 /* libPods-CostList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BDF009FEBDE9A22FE33EC9 /* libPods-CostList.a */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		84DD5ED21D6A906700CBCA99 /* MyDatePickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDatePickerController.xib; sourceTree = "<group>"; };
 		84EA90D61D769B9800282904 /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
 		84EA90D71D769B9800282904 /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
+		84F65B5C1D76D03E00A626B7 /* SlideMenuViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlideMenuViewController.storyboard; sourceTree = "<group>"; };
 		F49B0EDDAB5C967C9CB1FA25 /* Pods-CostList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CostList/Pods-CostList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +246,7 @@
 				84DD5ED21D6A906700CBCA99 /* MyDatePickerController.xib */,
 				84EA90D61D769B9800282904 /* SlideMenuViewController.h */,
 				84EA90D71D769B9800282904 /* SlideMenuViewController.m */,
+				84F65B5C1D76D03E00A626B7 /* SlideMenuViewController.storyboard */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				84CD5D321D6695F0004898C7 /* EditLocationViewController.xib in Resources */,
 				84068DDD1D580F39003B6F5E /* LaunchScreen.storyboard in Resources */,
+				84F65B5D1D76D03E00A626B7 /* SlideMenuViewController.storyboard in Resources */,
 				84CD5D361D66B317004898C7 /* AddItemViewController.storyboard in Resources */,
 				84DD5ED31D6A906700CBCA99 /* MyDatePickerController.xib in Resources */,
 				84068DDA1D580F39003B6F5E /* Assets.xcassets in Resources */,
