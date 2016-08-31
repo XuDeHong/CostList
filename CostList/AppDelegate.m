@@ -27,6 +27,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    
     //获取TabBarController和TabBar
     MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
     
