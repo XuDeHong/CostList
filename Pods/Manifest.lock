@@ -1,21 +1,21 @@
 PODS:
   - KVNProgress (2.3.1)
-  - RESideMenu (4.0.7)
+  - LGSideMenuController (1.0.10)
   - SCNumberKeyBoard (0.5.3)
   - SDAutoLayout (2.1.7)
 
 DEPENDENCIES:
   - KVNProgress
-  - RESideMenu (~> 4.0.7)
+  - LGSideMenuController (~> 1.0.10)
   - SCNumberKeyBoard (~> 0.5.3)
   - SDAutoLayout (~> 2.1.7)
 
 SPEC CHECKSUMS:
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
-  RESideMenu: f24c508404b49c667344c54aba7e590883533958
+  LGSideMenuController: 8682bdbd0008c1acfbce95eaf96cc3657bca5f95
   SCNumberKeyBoard: 0d246ca7cc55b603d67f76ed9d7f0c4b5de26eaf
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
 
-PODFILE CHECKSUM: cb677894dcb6c2ea3a7d7a78148d9dd02b0a04ac
+PODFILE CHECKSUM: f2e93a40d82fac329e3246bd38fed2867b16288e
 
 COCOAPODS: 1.1.0.beta.1

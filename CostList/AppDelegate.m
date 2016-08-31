@@ -11,9 +11,9 @@
 #import "ChartTableViewController.h"
 #import "SlideMenuViewController.h"
 #import "MyTabBarController.h"
-#import "RESideMenu.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIViewController+Category.h"
+#import "LGSideMenuController.h"
 
 
 @interface AppDelegate ()
@@ -32,15 +32,15 @@
     
     //创建侧栏菜单视图控制器，从Main.StoryBoard中的单独控制器创建
     SlideMenuViewController *mySlideMenuViewController = [SlideMenuViewController instanceFromStoryboardV2];
+    
     //创建侧栏效果控制器
-    RESideMenu *sideMenuVC = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController rightMenuViewController:nil];
-    //允许手势
-    sideMenuVC.panGestureEnabled = YES;
-    //设置侧栏背景图片
-    UIImage *background = [UIImage imageNamed:@"SlideMenuBackground"];
-    sideMenuVC.backgroundImage = background;
+    LGSideMenuController *sideController = [[LGSideMenuController alloc] initWithRootViewController:tabBarController];
+    [sideController setLeftViewEnabledWithWidth:100.0f presentationStyle:LGSideMenuPresentationStyleSlideBelow alwaysVisibleOptions:0];
+    [sideController.leftView addSubview:mySlideMenuViewController.view];
+
+    
     //设置为根控制器
-    self.window.rootViewController = sideMenuVC;
+    self.window.rootViewController = sideController;
     
     //请求用户获取位置的权限
     self.locationManager = [[CLLocationManager alloc] init];
