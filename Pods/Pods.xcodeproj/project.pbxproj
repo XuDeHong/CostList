@@ -7,144 +7,127 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08EBB4EB3B9C6F1A87E058BE79DA02ED /* UIView+SDAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 680A5AB936C0A26AE06DCDBF09F90410 /* UIView+SDAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C77D0DDE9E7C8906BF1DAF85AC353B8 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 594CA8E1D0424FE7894B6A8A16AFC456 /* KVNProgress.m */; };
-		0E7F9066B2982ADB69FD13299DAE0909 /* KVNProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B96D46DC0FEDB7C8D60733D0735EF6BA /* KVNProgress-dummy.m */; };
-		15306CEA1B9CF8A9AC903AE67BD9BD61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
-		1FBF2487DD046A9C7260E2DC7D14688B /* SDAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E44DD4E8009D5BFB86FB4C7FE9C234D2 /* SDAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2ECBEEB2DA17B8B062E6DBA1589DAA05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		0C77D0DDE9E7C8906BF1DAF85AC353B8 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C67505295E107F446786F2E1FF1F4924 /* KVNProgress.m */; };
+		0E7F9066B2982ADB69FD13299DAE0909 /* KVNProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 169FF5F759C437848D12AEDC3E65A3D0 /* KVNProgress-dummy.m */; };
+		1B2DAECC482A5EBE54DEBEFA5A692A4F /* SDAutoLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E5E9CC7542AB81B140569C2E095129 /* SDAutoLayout-dummy.m */; };
+		1C1BB7BA67CE075A5364A8D9FDC56B4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
 		31AB4051AA0D6F82C7AD767375286A74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
 		35BFAEF9F8A16F9B166F4F74EE618689 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */; };
-		37B81CFFC72DF8A895E28BB7488F025C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */; };
-		3F7FE82D7D1A93AF6A536D4B9D138D13 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F0CE0C5D9AB62BF5D8EA04FC6B7E22 /* UITableView+SDAutoTableViewCellHeight.m */; };
-		49B439D0B5EBB8A424DD78B4F2D84668 /* UIColor+KVNContrast.h in Headers */ = {isa = PBXBuildFile; fileRef = 594A684F69EA5C154ACFEA15B81517B0 /* UIColor+KVNContrast.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C48862222B2C5FDA36BE77D9C0ABBF3 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D10AAB22A311F1C34EDA86F49BF5AA8D /* UIViewController+RESideMenu.m */; };
+		3FF810873452BCAB56AD353AE75BCA47 /* SDAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 415E9306BCD2F0D4B0381223E2B8C894 /* SDAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42D73C88D15D29F1C0AB6A138A6469F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		49B439D0B5EBB8A424DD78B4F2D84668 /* UIColor+KVNContrast.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B6A431A6A0132D9289246149265BE6 /* UIColor+KVNContrast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		560463BFF25A288B22E2ACE7863FF3A5 /* LGSideMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA08F47D6E467A15EE38668EB0B0747 /* LGSideMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		585463BAA0E253723A00507D053131D9 /* SCNumberKeyBoard.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6ADDCC41D53A3FEABC4F07670C7AE6 /* SCNumberKeyBoard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5912CD52D9431D9496A950633388761C /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D95FF4FD7AAE1E5312DE8670309F78BE /* UIView+SDAutoLayout.m */; };
 		5F762D50EB15579B10009D8AAE0924D2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */; };
-		5F845D5BF15CD215F37C7F2B0503851D /* KVNRotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AC613D061D6D080772E191D1AC71E /* KVNRotationViewController.m */; };
-		65EFAD47B50B156D120CB54F1AEDFB49 /* UIViewController+RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A2BCAD3A475E1D08637624575A002F5E /* UIViewController+RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6993698C8FAA18325F4FA10A2EBF7CF9 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C05DD4062535B083E1530992ECAFE8 /* UIImage+KVNImageEffects.m */; };
-		6DDD208C2F7CAD3551D5AD78BAA09499 /* SCNumberKeyBoard.h in Headers */ = {isa = PBXBuildFile; fileRef = CA26405D2B412C3D5B36E9A3B81B10B4 /* SCNumberKeyBoard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72EE76AAE715568D12A3FA25BA9C5828 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
-		81553D5AC569D93B8992FFF0BA1DAA53 /* RESideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = C86C0D2F9F0B4688D6FE750A6BB0EC2A /* RESideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86A1338D0C3EF34465197B5F35D46DC8 /* KVNRotationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FD8E421F7BF1E2B7FA13A2D0240D423 /* KVNRotationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A7DD634659AA8A7B5DFD4D06B788444 /* SCNumberKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD7F708EA5E8110302AF4C6209D16DB /* SCNumberKeyBoard.m */; };
-		9AB34851E6268570A1AD5B97E0FF41B6 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4940C2B23E959EF19093F78983147B86 /* UIImage+KVNEmpty.m */; };
-		9B87EFD29850A42F6AAC162E3F274D89 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 894498F79CC322A133A2580FB8B0C708 /* RESideMenu.m */; };
-		9CEE33C5081471681047DE5148A1D096 /* UIImage+KVNImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 977B60CE1257E04CB9EAFB18A31146FB /* UIImage+KVNImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A47F9A38705E4104074FF814643D8B5D /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC6C21E7410CAC265F07A8636E9396 /* UIView+SDAutoLayout.m */; };
-		A7D10F19A70CFE66BE82A418792819A6 /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F7D4E793D43A1EBD3D4C505D4076B /* KVNProgressConfiguration.m */; };
-		BAF9D309D410A53530EDAB42AE68DAC9 /* UITableView+SDAutoTableViewCellHeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E8F1C9D35D566F7DBF4FABA5D202E71 /* UITableView+SDAutoTableViewCellHeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA218ACF9D5E572A425741740832378F /* SCNumberKeyBoard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C19F0B210DFA8B957F6ACC039DB6BA10 /* SCNumberKeyBoard-dummy.m */; };
-		CB25BB296B0EF9D21597ABFF5752F9BF /* KVNProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B17DE0ABFE0FE6D8CE808F182F212EB /* KVNProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D0A7C286C86146D37E8963A87E6B544C /* RECommonFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CF9698D0A5416C7AF0AD279AE735869 /* RECommonFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D3D1DA11D4B2C77C77AB215083004DB3 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5131C16923D07EA58885BC46260D7B0 /* RECommonFunctions.m */; };
-		D538AAE5E886102588468B837E9BB6B6 /* RESideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99ED9B11C43CE6EB64C058B69380404E /* RESideMenu-dummy.m */; };
-		D8E09B4A16C9284CFA29824FD3676883 /* SDAutoLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 291892E973E5304307524C39809F0FB9 /* SDAutoLayout-dummy.m */; };
-		DDCCDC58C30E2F96E05397BFE3EAE96F /* UIImage+KVNEmpty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F85E938DA5B12E9BFDFD875FC26B6D7 /* UIImage+KVNEmpty.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE66995DB6310E5F56A85ADB18ABF393 /* KVNProgressConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 753DA9DA0C0FE4B66ED6C156E43A3189 /* KVNProgressConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F06E051D7DBAF81FAE8F02BE8576B2A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
-		F76436F9945FEBCB8C7CF5615C61D959 /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ECA3BE19E7796AD390FF0BBDE2ECF7 /* UIColor+KVNContrast.m */; };
-		F82C7CC845F8682B462D3514A8E61221 /* Pods-CostList-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */; };
+		5F845D5BF15CD215F37C7F2B0503851D /* KVNRotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4367FAF6939250B52C0285CAAD86C303 /* KVNRotationViewController.m */; };
+		6993698C8FAA18325F4FA10A2EBF7CF9 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FBE4708ED03A43B19579BAFBC8B6C2 /* UIImage+KVNImageEffects.m */; };
+		78E1380DD0770635B433213BDBDAFC08 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 156D1120BB40A9161B7C139526A50F33 /* UITableView+SDAutoTableViewCellHeight.m */; };
+		7F2CC1303EAFEF909FD4B79A81D4238F /* Pods-CostList-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */; };
+		86A1338D0C3EF34465197B5F35D46DC8 /* KVNRotationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AB90E6D90FBAA27A92D01D2D63DB1CA /* KVNRotationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C3C8EBCF6ED9FC0D64FC96FB6E47A66 /* SCNumberKeyBoard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D976F08835B719FA115DC359EAC1CEB6 /* SCNumberKeyBoard-dummy.m */; };
+		98A0D9ECE40CA1A0963126B6F904DE87 /* UITableView+SDAutoTableViewCellHeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 133E3695579D63245A28DE9BF6F2FC7B /* UITableView+SDAutoTableViewCellHeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AB34851E6268570A1AD5B97E0FF41B6 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = F03A2DC8164C6F3464E99BAF6447FA69 /* UIImage+KVNEmpty.m */; };
+		9CEE33C5081471681047DE5148A1D096 /* UIImage+KVNImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 333340781E0ADF5C761004690259A928 /* UIImage+KVNImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7D10F19A70CFE66BE82A418792819A6 /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835960C1158B29888307A91AF99BAB7 /* KVNProgressConfiguration.m */; };
+		A94789A255BA8F0FC3EA3D72E7A875F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		BC997F172EEC0D059AB137CD2BA88FB4 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0237846CE1FC618F3648F8B71563BDE4 /* LGSideMenuController.m */; };
+		C4C073D678FC14749A6A1FC4BA12C4FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */; };
+		CB25BB296B0EF9D21597ABFF5752F9BF /* KVNProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 86355116559591E1728636EC459CDF4C /* KVNProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDCCDC58C30E2F96E05397BFE3EAE96F /* UIImage+KVNEmpty.h in Headers */ = {isa = PBXBuildFile; fileRef = 199FC3E535F583A8C4A44873361C80C2 /* UIImage+KVNEmpty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE66995DB6310E5F56A85ADB18ABF393 /* KVNProgressConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B0A4E47C68946A7FB8040574AA1FB3 /* KVNProgressConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E082A239B2B88C89AF5791B2ECA09117 /* UIView+SDAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E89BCD026E7EEA2C7E46C6BF685F7E4 /* UIView+SDAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F76436F9945FEBCB8C7CF5615C61D959 /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A05B60AB29775836604D83C40BDDB7 /* UIColor+KVNContrast.m */; };
+		F98641680EB850D23A47554D9704DD4F /* LGSideMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CF216DA67E59C4E2E0FAC1870E3664 /* LGSideMenuController-dummy.m */; };
+		F99B3AE54189DBA462F55262880D2D1C /* SCNumberKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A9E5C215A84972B414BC669064DB3D /* SCNumberKeyBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5BB0F23E6F0A9C7A619BDE80166A3505 /* PBXContainerItemProxy */ = {
+		16AAC94B271894A7D2E32B6A30F89172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1DFC20A7C2E1B9514D9644A61A1F12E0;
-			remoteInfo = SCNumberKeyBoard;
+			remoteGlobalIDString = 71B76793A3B7514D38CE8C93A9B8C8F4;
+			remoteInfo = LGSideMenuController;
 		};
-		7131D7B2AC48D6E49B3CA395013EE6A8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 104DF525D6B14F1EAB1434B4E9D44AA4;
-			remoteInfo = RESideMenu;
-		};
-		EBC91D00FBB3359036E34B8267B685FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 69D86FB01D0465CE9558B290844B8212;
-			remoteInfo = SDAutoLayout;
-		};
-		F3EABF7D732DF6CC50BD9AD6895E3247 /* PBXContainerItemProxy */ = {
+		7EE9D13E4D73F722C95C83752AC0E1E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4789BDA0DA41FF5A32F1C496408A2C0E;
 			remoteInfo = KVNProgress;
 		};
+		8620702C842B4421F9897D2794B5D7B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390931719AA5ED621052A05E47FC1E8;
+			remoteInfo = SDAutoLayout;
+		};
+		91AC7953229DF58F92D86328EB87DC2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BE655D7C60FECB8A8CC51509DEC45ED;
+			remoteInfo = SCNumberKeyBoard;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01BA32A293C53DAD32FC5C07AFD78F2C /* KVNProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KVNProgress-prefix.pch"; sourceTree = "<group>"; };
-		03B24D199D77F200755E446DECCEAB45 /* SCNumberKeyBoard.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SCNumberKeyBoard.bundle; path = Resources/SCNumberKeyBoard.bundle; sourceTree = "<group>"; };
-		03ECA3BE19E7796AD390FF0BBDE2ECF7 /* UIColor+KVNContrast.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KVNContrast.m"; path = "KVNProgress/Categories/UIColor+KVNContrast.m"; sourceTree = "<group>"; };
-		111AC25D39650A8AB1720F126C3AC195 /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C0AC613D061D6D080772E191D1AC71E /* KVNRotationViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNRotationViewController.m; path = KVNProgress/Classes/KVNRotationViewController.m; sourceTree = "<group>"; };
-		1CF9698D0A5416C7AF0AD279AE735869 /* RECommonFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = RESideMenu/RECommonFunctions.h; sourceTree = "<group>"; };
-		1FD8E421F7BF1E2B7FA13A2D0240D423 /* KVNRotationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNRotationViewController.h; path = KVNProgress/Classes/KVNRotationViewController.h; sourceTree = "<group>"; };
-		25F0CE0C5D9AB62BF5D8EA04FC6B7E22 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+SDAutoTableViewCellHeight.m"; path = "SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
-		291892E973E5304307524C39809F0FB9 /* SDAutoLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDAutoLayout-dummy.m"; sourceTree = "<group>"; };
-		2C7618536447581C2D32052B7BF461E0 /* libSCNumberKeyBoard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSCNumberKeyBoard.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0237846CE1FC618F3648F8B71563BDE4 /* LGSideMenuController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LGSideMenuController.m; path = LGSideMenuController/LGSideMenuController.m; sourceTree = "<group>"; };
+		133E3695579D63245A28DE9BF6F2FC7B /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+SDAutoTableViewCellHeight.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
+		13FBE4708ED03A43B19579BAFBC8B6C2 /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNImageEffects.m"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
+		156D1120BB40A9161B7C139526A50F33 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+SDAutoTableViewCellHeight.m"; path = "SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
+		169FF5F759C437848D12AEDC3E65A3D0 /* KVNProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KVNProgress-dummy.m"; sourceTree = "<group>"; };
+		1835960C1158B29888307A91AF99BAB7 /* KVNProgressConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgressConfiguration.m; path = KVNProgress/Classes/KVNProgressConfiguration.m; sourceTree = "<group>"; };
+		199FC3E535F583A8C4A44873361C80C2 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNEmpty.h"; path = "KVNProgress/Categories/UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
+		1FD636E144145EF1BD8A4564C55A0201 /* KVNProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KVNProgress-prefix.pch"; sourceTree = "<group>"; };
+		22B0A4E47C68946A7FB8040574AA1FB3 /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgressConfiguration.h; path = KVNProgress/Classes/KVNProgressConfiguration.h; sourceTree = "<group>"; };
+		281A296288A4D19D533FA855C5E597B9 /* SDAutoLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDAutoLayout-prefix.pch"; sourceTree = "<group>"; };
+		2E6ADDCC41D53A3FEABC4F07670C7AE6 /* SCNumberKeyBoard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCNumberKeyBoard.h; path = Classes/SCNumberKeyBoard.h; sourceTree = "<group>"; };
 		2EB0D4EE46F3BCC7D57D2A2FB046324F /* Pods-CostList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CostList.debug.xcconfig"; sourceTree = "<group>"; };
-		332F24812D9483BAE55A089EBA38AEE5 /* KVNProgressView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = KVNProgressView.xib; path = KVNProgress/Resources/KVNProgressView.xib; sourceTree = "<group>"; };
+		31FEAF5075B3792C0071C9C53D2C3AEC /* LGSideMenuController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LGSideMenuController-prefix.pch"; sourceTree = "<group>"; };
+		333340781E0ADF5C761004690259A928 /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNImageEffects.h"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
 		334F70F37715E2A79A0788B47C39AA3A /* Pods-CostList-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CostList-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3F85E938DA5B12E9BFDFD875FC26B6D7 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNEmpty.h"; path = "KVNProgress/Categories/UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
-		4940C2B23E959EF19093F78983147B86 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNEmpty.m"; path = "KVNProgress/Categories/UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		385D119AFF7B5F94694A4F4B1562B084 /* libSCNumberKeyBoard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSCNumberKeyBoard.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		415E9306BCD2F0D4B0381223E2B8C894 /* SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAutoLayout.h; path = SDAutoLayoutDemo/SDAutoLayout/SDAutoLayout.h; sourceTree = "<group>"; };
+		4367FAF6939250B52C0285CAAD86C303 /* KVNRotationViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNRotationViewController.m; path = KVNProgress/Classes/KVNRotationViewController.m; sourceTree = "<group>"; };
+		44B6A431A6A0132D9289246149265BE6 /* UIColor+KVNContrast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+KVNContrast.h"; path = "KVNProgress/Categories/UIColor+KVNContrast.h"; sourceTree = "<group>"; };
+		47C1E6C4749A09A74FB4D0D6D7924608 /* KVNProgressView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = KVNProgressView.xib; path = KVNProgress/Resources/KVNProgressView.xib; sourceTree = "<group>"; };
 		4A448ED70C88FD67D564358AF8C6E05E /* Pods-CostList-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CostList-acknowledgements.plist"; sourceTree = "<group>"; };
-		57E03F086D04E760B5E10DC958EC8CC6 /* RESideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RESideMenu-prefix.pch"; sourceTree = "<group>"; };
-		594A684F69EA5C154ACFEA15B81517B0 /* UIColor+KVNContrast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+KVNContrast.h"; path = "KVNProgress/Categories/UIColor+KVNContrast.h"; sourceTree = "<group>"; };
-		594CA8E1D0424FE7894B6A8A16AFC456 /* KVNProgress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgress.m; path = KVNProgress/Classes/KVNProgress.m; sourceTree = "<group>"; };
-		5D5F7D4E793D43A1EBD3D4C505D4076B /* KVNProgressConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgressConfiguration.m; path = KVNProgress/Classes/KVNProgressConfiguration.m; sourceTree = "<group>"; };
-		627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RESideMenu.xcconfig; sourceTree = "<group>"; };
-		63E0354BCF15288BD0C51C3A078625BC /* libKVNProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKVNProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		680A5AB936C0A26AE06DCDBF09F90410 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+SDAutoLayout.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		4AB90E6D90FBAA27A92D01D2D63DB1CA /* KVNRotationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNRotationViewController.h; path = KVNProgress/Classes/KVNRotationViewController.h; sourceTree = "<group>"; };
 		6AC16880C32CD845EDDD0B2A567E787E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		6F191BCFB5D357DAB66B147BC506CA21 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
-		6F5F91FDAB932DB11109972FC0480792 /* SDAutoLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDAutoLayout-prefix.pch"; sourceTree = "<group>"; };
-		753DA9DA0C0FE4B66ED6C156E43A3189 /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgressConfiguration.h; path = KVNProgress/Classes/KVNProgressConfiguration.h; sourceTree = "<group>"; };
-		7F232AF6BA58775AF98E3CB38DBD8FBC /* libSDAutoLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDAutoLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCNumberKeyBoard.xcconfig; sourceTree = "<group>"; };
-		887F1C9C9F3317BFE547F5F4D4B569FE /* libRESideMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRESideMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		894498F79CC322A133A2580FB8B0C708 /* RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RESideMenu.m; path = RESideMenu/RESideMenu.m; sourceTree = "<group>"; };
-		8B17DE0ABFE0FE6D8CE808F182F212EB /* KVNProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgress.h; path = KVNProgress/Classes/KVNProgress.h; sourceTree = "<group>"; };
+		705DC5874D6326823BDA40D0C222FA9E /* LGSideMenuController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LGSideMenuController.xcconfig; sourceTree = "<group>"; };
+		7171243ABD9836A8889CAB2A5500606A /* SCNumberKeyBoard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCNumberKeyBoard.xcconfig; sourceTree = "<group>"; };
+		72C0DAA2EBBB7B3423DD7461D48CBF2A /* SCNumberKeyBoard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCNumberKeyBoard-prefix.pch"; sourceTree = "<group>"; };
+		74CF216DA67E59C4E2E0FAC1870E3664 /* LGSideMenuController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LGSideMenuController-dummy.m"; sourceTree = "<group>"; };
+		75A9E5C215A84972B414BC669064DB3D /* SCNumberKeyBoard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCNumberKeyBoard.m; path = Classes/SCNumberKeyBoard.m; sourceTree = "<group>"; };
+		7A16323EA0E23482C0BB502C891C8EDF /* libLGSideMenuController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLGSideMenuController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		86355116559591E1728636EC459CDF4C /* KVNProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KVNProgress.h; path = KVNProgress/Classes/KVNProgress.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		977B60CE1257E04CB9EAFB18A31146FB /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+KVNImageEffects.h"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
-		99ED9B11C43CE6EB64C058B69380404E /* RESideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RESideMenu-dummy.m"; sourceTree = "<group>"; };
 		9AE8612EA0DFCAB59656F99FA65DC8DC /* Pods-CostList-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CostList-frameworks.sh"; sourceTree = "<group>"; };
 		9BEAA6A1F6F92563BFA39F20EE172277 /* Pods-CostList-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CostList-resources.sh"; sourceTree = "<group>"; };
 		9C4B22D288AF276E67BBF24740EB1789 /* Pods-CostList-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CostList-dummy.m"; sourceTree = "<group>"; };
-		9E8F1C9D35D566F7DBF4FABA5D202E71 /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+SDAutoTableViewCellHeight.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
-		A2BCAD3A475E1D08637624575A002F5E /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+RESideMenu.h"; path = "RESideMenu/UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
-		A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KVNProgress.xcconfig; sourceTree = "<group>"; };
+		9C990C80E111776DE31B954929B71C69 /* KVNProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KVNProgress.xcconfig; sourceTree = "<group>"; };
+		9E89BCD026E7EEA2C7E46C6BF685F7E4 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+SDAutoLayout.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		A23D15C05B75A39D239670F711BD97AE /* libKVNProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKVNProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2530F263EB94A07C5C60A91A32ABDC4 /* SCNumberKeyBoard.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SCNumberKeyBoard.bundle; path = Resources/SCNumberKeyBoard.bundle; sourceTree = "<group>"; };
+		A4B0D821A4E3FABF77C5E3772D612B5C /* libSDAutoLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDAutoLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2DDB7D66322306A58CA3BC75AA1404C /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CostList.release.xcconfig"; sourceTree = "<group>"; };
-		B96D46DC0FEDB7C8D60733D0735EF6BA /* KVNProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KVNProgress-dummy.m"; sourceTree = "<group>"; };
-		BE34F6F4B213CDA56925FD1B6B4615D6 /* SCNumberKeyBoard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCNumberKeyBoard-prefix.pch"; sourceTree = "<group>"; };
-		C19F0B210DFA8B957F6ACC039DB6BA10 /* SCNumberKeyBoard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCNumberKeyBoard-dummy.m"; sourceTree = "<group>"; };
-		C4C05DD4062535B083E1530992ECAFE8 /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNImageEffects.m"; path = "KVNProgress/Categories/UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
-		C86C0D2F9F0B4688D6FE750A6BB0EC2A /* RESideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RESideMenu.h; path = RESideMenu/RESideMenu.h; sourceTree = "<group>"; };
-		CA26405D2B412C3D5B36E9A3B81B10B4 /* SCNumberKeyBoard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCNumberKeyBoard.h; path = Classes/SCNumberKeyBoard.h; sourceTree = "<group>"; };
-		D10AAB22A311F1C34EDA86F49BF5AA8D /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+RESideMenu.m"; path = "RESideMenu/UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		B8A05B60AB29775836604D83C40BDDB7 /* UIColor+KVNContrast.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KVNContrast.m"; path = "KVNProgress/Categories/UIColor+KVNContrast.m"; sourceTree = "<group>"; };
+		C3E5E9CC7542AB81B140569C2E095129 /* SDAutoLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDAutoLayout-dummy.m"; sourceTree = "<group>"; };
+		C67505295E107F446786F2E1FF1F4924 /* KVNProgress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KVNProgress.m; path = KVNProgress/Classes/KVNProgress.m; sourceTree = "<group>"; };
 		D8ECFE76238F870C81C6582194FCE223 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E44DD4E8009D5BFB86FB4C7FE9C234D2 /* SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAutoLayout.h; path = SDAutoLayoutDemo/SDAutoLayout/SDAutoLayout.h; sourceTree = "<group>"; };
-		EBD7F708EA5E8110302AF4C6209D16DB /* SCNumberKeyBoard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCNumberKeyBoard.m; path = Classes/SCNumberKeyBoard.m; sourceTree = "<group>"; };
-		EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDAutoLayout.xcconfig; sourceTree = "<group>"; };
-		F5131C16923D07EA58885BC46260D7B0 /* RECommonFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = RESideMenu/RECommonFunctions.m; sourceTree = "<group>"; };
-		F6DC6C21E7410CAC265F07A8636E9396 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+SDAutoLayout.m"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		D95FF4FD7AAE1E5312DE8670309F78BE /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+SDAutoLayout.m"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		D976F08835B719FA115DC359EAC1CEB6 /* SCNumberKeyBoard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCNumberKeyBoard-dummy.m"; sourceTree = "<group>"; };
+		EFA08F47D6E467A15EE38668EB0B0747 /* LGSideMenuController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LGSideMenuController.h; path = LGSideMenuController/LGSideMenuController.h; sourceTree = "<group>"; };
+		EFFAEA561696F5D3992D234E68D35E66 /* SDAutoLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDAutoLayout.xcconfig; sourceTree = "<group>"; };
+		F03A2DC8164C6F3464E99BAF6447FA69 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+KVNEmpty.m"; path = "KVNProgress/Categories/UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		09D5F50D03C264A0C5EF47E19E0185C7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F06E051D7DBAF81FAE8F02BE8576B2A8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1A9A53962724ADB73DA53F8A6C41F76B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,47 +138,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		283EBB320CF711554E5496A98CA832D1 /* Frameworks */ = {
+		369E429B694FB7E3B8366EB2646FCECE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ECBEEB2DA17B8B062E6DBA1589DAA05 /* Foundation.framework in Frameworks */,
-				37B81CFFC72DF8A895E28BB7488F025C /* QuartzCore.framework in Frameworks */,
+				1C1BB7BA67CE075A5364A8D9FDC56B4B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B2E769CC9B43F3F35ADB64D58F26764 /* Frameworks */ = {
+		5BB4A861BAE26663282FE3F2395B1607 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72EE76AAE715568D12A3FA25BA9C5828 /* Foundation.framework in Frameworks */,
+				A94789A255BA8F0FC3EA3D72E7A875F7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CAED407D4922E824DC0538E53EC66116 /* Frameworks */ = {
+		A4DE6E9AC9B1D108C53CD304DC9FBE56 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15306CEA1B9CF8A9AC903AE67BD9BD61 /* Foundation.framework in Frameworks */,
+				C4C073D678FC14749A6A1FC4BA12C4FA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B68724DD5E1F8E463134F92BF70C84F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D73C88D15D29F1C0AB6A138A6469F8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02A717D616BE052DFA53028ECA508B25 /* SDAutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-				E44DD4E8009D5BFB86FB4C7FE9C234D2 /* SDAutoLayout.h */,
-				9E8F1C9D35D566F7DBF4FABA5D202E71 /* UITableView+SDAutoTableViewCellHeight.h */,
-				25F0CE0C5D9AB62BF5D8EA04FC6B7E22 /* UITableView+SDAutoTableViewCellHeight.m */,
-				680A5AB936C0A26AE06DCDBF09F90410 /* UIView+SDAutoLayout.h */,
-				F6DC6C21E7410CAC265F07A8636E9396 /* UIView+SDAutoLayout.m */,
-				D01C7AB3E26573E5EB738814E4F4466F /* Support Files */,
-			);
-			path = SDAutoLayout;
-			sourceTree = "<group>";
-		};
 		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,15 +181,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		275C694354811AE63F10BD69C5712442 /* Pods */ = {
+		1F13D74E4D4BF89FB9710C26B0179A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A664CDF18148AD5C557A5450EAB15F32 /* KVNProgress */,
-				E9F94727CB3EBC70EDD59E6BFD2E29BE /* RESideMenu */,
-				F1F34F18E469E62E5BD597588E6052D4 /* SCNumberKeyBoard */,
-				02A717D616BE052DFA53028ECA508B25 /* SDAutoLayout */,
+				47C1E6C4749A09A74FB4D0D6D7924608 /* KVNProgressView.xib */,
 			);
-			name = Pods;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		25BBE579F84CD59F667841484896A926 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A23D15C05B75A39D239670F711BD97AE /* libKVNProgress.a */,
+				7A16323EA0E23482C0BB502C891C8EDF /* libLGSideMenuController.a */,
+				B2DDB7D66322306A58CA3BC75AA1404C /* libPods-CostList.a */,
+				385D119AFF7B5F94694A4F4B1562B084 /* libSCNumberKeyBoard.a */,
+				A4B0D821A4E3FABF77C5E3772D612B5C /* libSDAutoLayout.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2910FC1FDCA8CC9AF69864A791F96758 /* KVNProgress */ = {
+			isa = PBXGroup;
+			children = (
+				86355116559591E1728636EC459CDF4C /* KVNProgress.h */,
+				C67505295E107F446786F2E1FF1F4924 /* KVNProgress.m */,
+				22B0A4E47C68946A7FB8040574AA1FB3 /* KVNProgressConfiguration.h */,
+				1835960C1158B29888307A91AF99BAB7 /* KVNProgressConfiguration.m */,
+				4AB90E6D90FBAA27A92D01D2D63DB1CA /* KVNRotationViewController.h */,
+				4367FAF6939250B52C0285CAAD86C303 /* KVNRotationViewController.m */,
+				44B6A431A6A0132D9289246149265BE6 /* UIColor+KVNContrast.h */,
+				B8A05B60AB29775836604D83C40BDDB7 /* UIColor+KVNContrast.m */,
+				199FC3E535F583A8C4A44873361C80C2 /* UIImage+KVNEmpty.h */,
+				F03A2DC8164C6F3464E99BAF6447FA69 /* UIImage+KVNEmpty.m */,
+				333340781E0ADF5C761004690259A928 /* UIImage+KVNImageEffects.h */,
+				13FBE4708ED03A43B19579BAFBC8B6C2 /* UIImage+KVNImageEffects.m */,
+				1F13D74E4D4BF89FB9710C26B0179A4B /* Resources */,
+				60B615E624300215BEF4A072309FDF84 /* Support Files */,
+			);
+			path = KVNProgress;
+			sourceTree = "<group>";
+		};
+		2FE2A77F603F0C7EE894A1C44E4536A9 /* SCNumberKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				2E6ADDCC41D53A3FEABC4F07670C7AE6 /* SCNumberKeyBoard.h */,
+				75A9E5C215A84972B414BC669064DB3D /* SCNumberKeyBoard.m */,
+				7F49D16BEA807C7CB77FB30B97F914A2 /* Resources */,
+				4D7CE50CD34EBA9B6AFEE069B1383D2A /* Support Files */,
+			);
+			path = SCNumberKeyBoard;
 			sourceTree = "<group>";
 		};
 		356CAE8572C7C75FCB05E984CEB70677 /* iOS */ = {
@@ -225,35 +243,60 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		594FF9A1D6FECEEB2179A822CA6EEEDF /* Support Files */ = {
+		403E751DF22361266CE9C7F238E947DA /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */,
-				C19F0B210DFA8B957F6ACC039DB6BA10 /* SCNumberKeyBoard-dummy.m */,
-				BE34F6F4B213CDA56925FD1B6B4615D6 /* SCNumberKeyBoard-prefix.pch */,
+				705DC5874D6326823BDA40D0C222FA9E /* LGSideMenuController.xcconfig */,
+				74CF216DA67E59C4E2E0FAC1870E3664 /* LGSideMenuController-dummy.m */,
+				31FEAF5075B3792C0071C9C53D2C3AEC /* LGSideMenuController-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/LGSideMenuController";
+			sourceTree = "<group>";
+		};
+		48E756FC9D212EA7264E78576350D9EA /* LGSideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				EFA08F47D6E467A15EE38668EB0B0747 /* LGSideMenuController.h */,
+				0237846CE1FC618F3648F8B71563BDE4 /* LGSideMenuController.m */,
+				403E751DF22361266CE9C7F238E947DA /* Support Files */,
+			);
+			path = LGSideMenuController;
+			sourceTree = "<group>";
+		};
+		4D7CE50CD34EBA9B6AFEE069B1383D2A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7171243ABD9836A8889CAB2A5500606A /* SCNumberKeyBoard.xcconfig */,
+				D976F08835B719FA115DC359EAC1CEB6 /* SCNumberKeyBoard-dummy.m */,
+				72C0DAA2EBBB7B3423DD7461D48CBF2A /* SCNumberKeyBoard-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SCNumberKeyBoard";
 			sourceTree = "<group>";
 		};
-		6302B7B6554105D9E1CF56DCAF7254E7 /* Products */ = {
+		60B615E624300215BEF4A072309FDF84 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				63E0354BCF15288BD0C51C3A078625BC /* libKVNProgress.a */,
-				111AC25D39650A8AB1720F126C3AC195 /* libPods-CostList.a */,
-				887F1C9C9F3317BFE547F5F4D4B569FE /* libRESideMenu.a */,
-				2C7618536447581C2D32052B7BF461E0 /* libSCNumberKeyBoard.a */,
-				7F232AF6BA58775AF98E3CB38DBD8FBC /* libSDAutoLayout.a */,
+				9C990C80E111776DE31B954929B71C69 /* KVNProgress.xcconfig */,
+				169FF5F759C437848D12AEDC3E65A3D0 /* KVNProgress-dummy.m */,
+				1FD636E144145EF1BD8A4564C55A0201 /* KVNProgress-prefix.pch */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/KVNProgress";
 			sourceTree = "<group>";
 		};
-		6FD01CBC2633465298A3A8251F01FAEA /* Resources */ = {
+		7923EF19DB6FB65260D0D4F833A30F11 /* SDAutoLayout */ = {
 			isa = PBXGroup;
 			children = (
-				332F24812D9483BAE55A089EBA38AEE5 /* KVNProgressView.xib */,
+				415E9306BCD2F0D4B0381223E2B8C894 /* SDAutoLayout.h */,
+				133E3695579D63245A28DE9BF6F2FC7B /* UITableView+SDAutoTableViewCellHeight.h */,
+				156D1120BB40A9161B7C139526A50F33 /* UITableView+SDAutoTableViewCellHeight.m */,
+				9E89BCD026E7EEA2C7E46C6BF685F7E4 /* UIView+SDAutoLayout.h */,
+				D95FF4FD7AAE1E5312DE8670309F78BE /* UIView+SDAutoLayout.m */,
+				EE16A5D3FB2FDE97D338927435B9B136 /* Support Files */,
 			);
-			name = Resources;
+			path = SDAutoLayout;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -261,21 +304,18 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				275C694354811AE63F10BD69C5712442 /* Pods */,
-				6302B7B6554105D9E1CF56DCAF7254E7 /* Products */,
+				D134BE1000F3F75A01BD28B6C3F1A83F /* Pods */,
+				25BBE579F84CD59F667841484896A926 /* Products */,
 				8EC47BE667DEE76ED6800F64EACEEECA /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7EEDC3A833531D9D7CBC435476FB7EAD /* Support Files */ = {
+		7F49D16BEA807C7CB77FB30B97F914A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */,
-				99ED9B11C43CE6EB64C058B69380404E /* RESideMenu-dummy.m */,
-				57E03F086D04E760B5E10DC958EC8CC6 /* RESideMenu-prefix.pch */,
+				A2530F263EB94A07C5C60A91A32ABDC4 /* SCNumberKeyBoard.bundle */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/RESideMenu";
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		810E148023CD55C1E741324E8E5E3360 /* Pods-CostList */ = {
@@ -301,102 +341,54 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		A664CDF18148AD5C557A5450EAB15F32 /* KVNProgress */ = {
+		D134BE1000F3F75A01BD28B6C3F1A83F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8B17DE0ABFE0FE6D8CE808F182F212EB /* KVNProgress.h */,
-				594CA8E1D0424FE7894B6A8A16AFC456 /* KVNProgress.m */,
-				753DA9DA0C0FE4B66ED6C156E43A3189 /* KVNProgressConfiguration.h */,
-				5D5F7D4E793D43A1EBD3D4C505D4076B /* KVNProgressConfiguration.m */,
-				1FD8E421F7BF1E2B7FA13A2D0240D423 /* KVNRotationViewController.h */,
-				1C0AC613D061D6D080772E191D1AC71E /* KVNRotationViewController.m */,
-				594A684F69EA5C154ACFEA15B81517B0 /* UIColor+KVNContrast.h */,
-				03ECA3BE19E7796AD390FF0BBDE2ECF7 /* UIColor+KVNContrast.m */,
-				3F85E938DA5B12E9BFDFD875FC26B6D7 /* UIImage+KVNEmpty.h */,
-				4940C2B23E959EF19093F78983147B86 /* UIImage+KVNEmpty.m */,
-				977B60CE1257E04CB9EAFB18A31146FB /* UIImage+KVNImageEffects.h */,
-				C4C05DD4062535B083E1530992ECAFE8 /* UIImage+KVNImageEffects.m */,
-				6FD01CBC2633465298A3A8251F01FAEA /* Resources */,
-				E0D8C7A397660642E824A1590E0251E1 /* Support Files */,
+				2910FC1FDCA8CC9AF69864A791F96758 /* KVNProgress */,
+				48E756FC9D212EA7264E78576350D9EA /* LGSideMenuController */,
+				2FE2A77F603F0C7EE894A1C44E4536A9 /* SCNumberKeyBoard */,
+				7923EF19DB6FB65260D0D4F833A30F11 /* SDAutoLayout */,
 			);
-			path = KVNProgress;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		D01C7AB3E26573E5EB738814E4F4466F /* Support Files */ = {
+		EE16A5D3FB2FDE97D338927435B9B136 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */,
-				291892E973E5304307524C39809F0FB9 /* SDAutoLayout-dummy.m */,
-				6F5F91FDAB932DB11109972FC0480792 /* SDAutoLayout-prefix.pch */,
+				EFFAEA561696F5D3992D234E68D35E66 /* SDAutoLayout.xcconfig */,
+				C3E5E9CC7542AB81B140569C2E095129 /* SDAutoLayout-dummy.m */,
+				281A296288A4D19D533FA855C5E597B9 /* SDAutoLayout-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SDAutoLayout";
 			sourceTree = "<group>";
 		};
-		D89A506ED13E469B57F7AC79603099A1 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				03B24D199D77F200755E446DECCEAB45 /* SCNumberKeyBoard.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		E0D8C7A397660642E824A1590E0251E1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */,
-				B96D46DC0FEDB7C8D60733D0735EF6BA /* KVNProgress-dummy.m */,
-				01BA32A293C53DAD32FC5C07AFD78F2C /* KVNProgress-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/KVNProgress";
-			sourceTree = "<group>";
-		};
-		E9F94727CB3EBC70EDD59E6BFD2E29BE /* RESideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				1CF9698D0A5416C7AF0AD279AE735869 /* RECommonFunctions.h */,
-				F5131C16923D07EA58885BC46260D7B0 /* RECommonFunctions.m */,
-				C86C0D2F9F0B4688D6FE750A6BB0EC2A /* RESideMenu.h */,
-				894498F79CC322A133A2580FB8B0C708 /* RESideMenu.m */,
-				A2BCAD3A475E1D08637624575A002F5E /* UIViewController+RESideMenu.h */,
-				D10AAB22A311F1C34EDA86F49BF5AA8D /* UIViewController+RESideMenu.m */,
-				7EEDC3A833531D9D7CBC435476FB7EAD /* Support Files */,
-			);
-			path = RESideMenu;
-			sourceTree = "<group>";
-		};
-		F1F34F18E469E62E5BD597588E6052D4 /* SCNumberKeyBoard */ = {
-			isa = PBXGroup;
-			children = (
-				CA26405D2B412C3D5B36E9A3B81B10B4 /* SCNumberKeyBoard.h */,
-				EBD7F708EA5E8110302AF4C6209D16DB /* SCNumberKeyBoard.m */,
-				D89A506ED13E469B57F7AC79603099A1 /* Resources */,
-				594FF9A1D6FECEEB2179A822CA6EEEDF /* Support Files */,
-			);
-			path = SCNumberKeyBoard;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		12E7F2065FFCD90B12CBBCAB04127B7A /* Headers */ = {
+		0E733F59DA44A870815FA53EF29FCEA4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FBF2487DD046A9C7260E2DC7D14688B /* SDAutoLayout.h in Headers */,
-				BAF9D309D410A53530EDAB42AE68DAC9 /* UITableView+SDAutoTableViewCellHeight.h in Headers */,
-				08EBB4EB3B9C6F1A87E058BE79DA02ED /* UIView+SDAutoLayout.h in Headers */,
+				560463BFF25A288B22E2ACE7863FF3A5 /* LGSideMenuController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		353FB5AF38860F49E465257C8402197A /* Headers */ = {
+		4B18C133742AAA10FDD8F2242C4B16DD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0A7C286C86146D37E8963A87E6B544C /* RECommonFunctions.h in Headers */,
-				81553D5AC569D93B8992FFF0BA1DAA53 /* RESideMenu.h in Headers */,
-				65EFAD47B50B156D120CB54F1AEDFB49 /* UIViewController+RESideMenu.h in Headers */,
+				3FF810873452BCAB56AD353AE75BCA47 /* SDAutoLayout.h in Headers */,
+				98A0D9ECE40CA1A0963126B6F904DE87 /* UITableView+SDAutoTableViewCellHeight.h in Headers */,
+				E082A239B2B88C89AF5791B2ECA09117 /* UIView+SDAutoLayout.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		858D24BA800C9A715C1C575A6A8188D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				585463BAA0E253723A00507D053131D9 /* SCNumberKeyBoard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,71 +405,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB4F4B61CBA89A44552AE5A7FC90A2CD /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DDD208C2F7CAD3551D5AD78BAA09499 /* SCNumberKeyBoard.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		104DF525D6B14F1EAB1434B4E9D44AA4 /* RESideMenu */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 181F7F4BB3CA690867924DEF4AA78423 /* Build configuration list for PBXNativeTarget "RESideMenu" */;
-			buildPhases = (
-				350D76F4A5D431E76B1A4707C85000D3 /* Sources */,
-				283EBB320CF711554E5496A98CA832D1 /* Frameworks */,
-				353FB5AF38860F49E465257C8402197A /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RESideMenu;
-			productName = RESideMenu;
-			productReference = 887F1C9C9F3317BFE547F5F4D4B569FE /* libRESideMenu.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		1657588966FF9EEB7FD3BE4D1929CF61 /* Pods-CostList */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9BEB1108B1E647CAE214D8FFB8AF40E9 /* Build configuration list for PBXNativeTarget "Pods-CostList" */;
-			buildPhases = (
-				8757FDD46051FA9F21759537C5678F21 /* Sources */,
-				5B2E769CC9B43F3F35ADB64D58F26764 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BA8C7AD5504AAA1E80BF0B116A643A4B /* PBXTargetDependency */,
-				55B2B95FFD7A3DC01F0AD77B884DC3A7 /* PBXTargetDependency */,
-				08571C6BEC2A1E318B3A9B969FFD5046 /* PBXTargetDependency */,
-				EEAD646F34F4DA23532240DEF74443C4 /* PBXTargetDependency */,
-			);
-			name = "Pods-CostList";
-			productName = "Pods-CostList";
-			productReference = 111AC25D39650A8AB1720F126C3AC195 /* libPods-CostList.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		1DFC20A7C2E1B9514D9644A61A1F12E0 /* SCNumberKeyBoard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C3A8C71953935B7D73A25BD2592E5C37 /* Build configuration list for PBXNativeTarget "SCNumberKeyBoard" */;
-			buildPhases = (
-				450C396F3570FC0F10CF67D2E0034D52 /* Sources */,
-				CAED407D4922E824DC0538E53EC66116 /* Frameworks */,
-				AB4F4B61CBA89A44552AE5A7FC90A2CD /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SCNumberKeyBoard;
-			productName = SCNumberKeyBoard;
-			productReference = 2C7618536447581C2D32052B7BF461E0 /* libSCNumberKeyBoard.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		4789BDA0DA41FF5A32F1C496408A2C0E /* KVNProgress */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2C0BFAFFD5C3FE3ACD3CB6C245EE73D /* Build configuration list for PBXNativeTarget "KVNProgress" */;
@@ -492,16 +422,53 @@
 			);
 			name = KVNProgress;
 			productName = KVNProgress;
-			productReference = 63E0354BCF15288BD0C51C3A078625BC /* libKVNProgress.a */;
+			productReference = A23D15C05B75A39D239670F711BD97AE /* libKVNProgress.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		69D86FB01D0465CE9558B290844B8212 /* SDAutoLayout */ = {
+		6D9E82405EF32743FEFF24EFAA0B7CF7 /* Pods-CostList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F7E9348619B7502AFBA254361AB7B99 /* Build configuration list for PBXNativeTarget "SDAutoLayout" */;
+			buildConfigurationList = 80026CB40518029D84D5A9BB9D1D71E9 /* Build configuration list for PBXNativeTarget "Pods-CostList" */;
 			buildPhases = (
-				F7D0C38C4669DDECD5DEC0FB3AA21C97 /* Sources */,
-				09D5F50D03C264A0C5EF47E19E0185C7 /* Frameworks */,
-				12E7F2065FFCD90B12CBBCAB04127B7A /* Headers */,
+				E0023C8A2363EFE07073A4F368E31F8A /* Sources */,
+				A4DE6E9AC9B1D108C53CD304DC9FBE56 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99E74894DFF7D4121A5F9AE3993A4617 /* PBXTargetDependency */,
+				28712CCAC32191333688D82DAE4CA509 /* PBXTargetDependency */,
+				8452F163288FE831F7B34CFCA7A1435E /* PBXTargetDependency */,
+				85988A6CC230EF27FA0BF0932AC96754 /* PBXTargetDependency */,
+			);
+			name = "Pods-CostList";
+			productName = "Pods-CostList";
+			productReference = B2DDB7D66322306A58CA3BC75AA1404C /* libPods-CostList.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		71B76793A3B7514D38CE8C93A9B8C8F4 /* LGSideMenuController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75F88A7E7C612B3BDCDDF577C78FB504 /* Build configuration list for PBXNativeTarget "LGSideMenuController" */;
+			buildPhases = (
+				5047DA5068A8F9A08B358F8751A331CD /* Sources */,
+				B68724DD5E1F8E463134F92BF70C84F9 /* Frameworks */,
+				0E733F59DA44A870815FA53EF29FCEA4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LGSideMenuController;
+			productName = LGSideMenuController;
+			productReference = 7A16323EA0E23482C0BB502C891C8EDF /* libLGSideMenuController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9390931719AA5ED621052A05E47FC1E8 /* SDAutoLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D280AB317F59736DF46BF011F2438D67 /* Build configuration list for PBXNativeTarget "SDAutoLayout" */;
+			buildPhases = (
+				6F5976A6F548FB2B0948329C684EC0AC /* Sources */,
+				5BB4A861BAE26663282FE3F2395B1607 /* Frameworks */,
+				4B18C133742AAA10FDD8F2242C4B16DD /* Headers */,
 			);
 			buildRules = (
 			);
@@ -509,7 +476,24 @@
 			);
 			name = SDAutoLayout;
 			productName = SDAutoLayout;
-			productReference = 7F232AF6BA58775AF98E3CB38DBD8FBC /* libSDAutoLayout.a */;
+			productReference = A4B0D821A4E3FABF77C5E3772D612B5C /* libSDAutoLayout.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9BE655D7C60FECB8A8CC51509DEC45ED /* SCNumberKeyBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68B253238D35DB61EB8E92A7302A14A9 /* Build configuration list for PBXNativeTarget "SCNumberKeyBoard" */;
+			buildPhases = (
+				2C686A9B9C2E01FD83315A55479AD36B /* Sources */,
+				369E429B694FB7E3B8366EB2646FCECE /* Frameworks */,
+				858D24BA800C9A715C1C575A6A8188D7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SCNumberKeyBoard;
+			productName = SCNumberKeyBoard;
+			productReference = 385D119AFF7B5F94694A4F4B1562B084 /* libSCNumberKeyBoard.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -529,45 +513,45 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 6302B7B6554105D9E1CF56DCAF7254E7 /* Products */;
+			productRefGroup = 25BBE579F84CD59F667841484896A926 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				4789BDA0DA41FF5A32F1C496408A2C0E /* KVNProgress */,
-				1657588966FF9EEB7FD3BE4D1929CF61 /* Pods-CostList */,
-				104DF525D6B14F1EAB1434B4E9D44AA4 /* RESideMenu */,
-				1DFC20A7C2E1B9514D9644A61A1F12E0 /* SCNumberKeyBoard */,
-				69D86FB01D0465CE9558B290844B8212 /* SDAutoLayout */,
+				71B76793A3B7514D38CE8C93A9B8C8F4 /* LGSideMenuController */,
+				6D9E82405EF32743FEFF24EFAA0B7CF7 /* Pods-CostList */,
+				9BE655D7C60FECB8A8CC51509DEC45ED /* SCNumberKeyBoard */,
+				9390931719AA5ED621052A05E47FC1E8 /* SDAutoLayout */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		350D76F4A5D431E76B1A4707C85000D3 /* Sources */ = {
+		2C686A9B9C2E01FD83315A55479AD36B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3D1DA11D4B2C77C77AB215083004DB3 /* RECommonFunctions.m in Sources */,
-				D538AAE5E886102588468B837E9BB6B6 /* RESideMenu-dummy.m in Sources */,
-				9B87EFD29850A42F6AAC162E3F274D89 /* RESideMenu.m in Sources */,
-				4C48862222B2C5FDA36BE77D9C0ABBF3 /* UIViewController+RESideMenu.m in Sources */,
+				8C3C8EBCF6ED9FC0D64FC96FB6E47A66 /* SCNumberKeyBoard-dummy.m in Sources */,
+				F99B3AE54189DBA462F55262880D2D1C /* SCNumberKeyBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		450C396F3570FC0F10CF67D2E0034D52 /* Sources */ = {
+		5047DA5068A8F9A08B358F8751A331CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA218ACF9D5E572A425741740832378F /* SCNumberKeyBoard-dummy.m in Sources */,
-				9A7DD634659AA8A7B5DFD4D06B788444 /* SCNumberKeyBoard.m in Sources */,
+				F98641680EB850D23A47554D9704DD4F /* LGSideMenuController-dummy.m in Sources */,
+				BC997F172EEC0D059AB137CD2BA88FB4 /* LGSideMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8757FDD46051FA9F21759537C5678F21 /* Sources */ = {
+		6F5976A6F548FB2B0948329C684EC0AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F82C7CC845F8682B462D3514A8E61221 /* Pods-CostList-dummy.m in Sources */,
+				1B2DAECC482A5EBE54DEBEFA5A692A4F /* SDAutoLayout-dummy.m in Sources */,
+				78E1380DD0770635B433213BDBDAFC08 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
+				5912CD52D9431D9496A950633388761C /* UIView+SDAutoLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,42 +569,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7D0C38C4669DDECD5DEC0FB3AA21C97 /* Sources */ = {
+		E0023C8A2363EFE07073A4F368E31F8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8E09B4A16C9284CFA29824FD3676883 /* SDAutoLayout-dummy.m in Sources */,
-				3F7FE82D7D1A93AF6A536D4B9D138D13 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
-				A47F9A38705E4104074FF814643D8B5D /* UIView+SDAutoLayout.m in Sources */,
+				7F2CC1303EAFEF909FD4B79A81D4238F /* Pods-CostList-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		08571C6BEC2A1E318B3A9B969FFD5046 /* PBXTargetDependency */ = {
+		28712CCAC32191333688D82DAE4CA509 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LGSideMenuController;
+			target = 71B76793A3B7514D38CE8C93A9B8C8F4 /* LGSideMenuController */;
+			targetProxy = 16AAC94B271894A7D2E32B6A30F89172 /* PBXContainerItemProxy */;
+		};
+		8452F163288FE831F7B34CFCA7A1435E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SCNumberKeyBoard;
-			target = 1DFC20A7C2E1B9514D9644A61A1F12E0 /* SCNumberKeyBoard */;
-			targetProxy = 5BB0F23E6F0A9C7A619BDE80166A3505 /* PBXContainerItemProxy */;
+			target = 9BE655D7C60FECB8A8CC51509DEC45ED /* SCNumberKeyBoard */;
+			targetProxy = 91AC7953229DF58F92D86328EB87DC2C /* PBXContainerItemProxy */;
 		};
-		55B2B95FFD7A3DC01F0AD77B884DC3A7 /* PBXTargetDependency */ = {
+		85988A6CC230EF27FA0BF0932AC96754 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = RESideMenu;
-			target = 104DF525D6B14F1EAB1434B4E9D44AA4 /* RESideMenu */;
-			targetProxy = 7131D7B2AC48D6E49B3CA395013EE6A8 /* PBXContainerItemProxy */;
+			name = SDAutoLayout;
+			target = 9390931719AA5ED621052A05E47FC1E8 /* SDAutoLayout */;
+			targetProxy = 8620702C842B4421F9897D2794B5D7B0 /* PBXContainerItemProxy */;
 		};
-		BA8C7AD5504AAA1E80BF0B116A643A4B /* PBXTargetDependency */ = {
+		99E74894DFF7D4121A5F9AE3993A4617 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = KVNProgress;
 			target = 4789BDA0DA41FF5A32F1C496408A2C0E /* KVNProgress */;
-			targetProxy = F3EABF7D732DF6CC50BD9AD6895E3247 /* PBXContainerItemProxy */;
-		};
-		EEAD646F34F4DA23532240DEF74443C4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SDAutoLayout;
-			target = 69D86FB01D0465CE9558B290844B8212 /* SDAutoLayout */;
-			targetProxy = EBC91D00FBB3359036E34B8267B685FC /* PBXContainerItemProxy */;
+			targetProxy = 7EE9D13E4D73F722C95C83752AC0E1E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -671,7 +653,7 @@
 		};
 		1B586B76C39F00D4EA1EA999073C4DC2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */;
+			baseConfigurationReference = 9C990C80E111776DE31B954929B71C69 /* KVNProgress.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -690,30 +672,9 @@
 			};
 			name = Release;
 		};
-		3898E91CFD9C12CA8F2C3CA0A830716B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RESideMenu/RESideMenu-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		3F3F919C4A0F4F2A124C68018375FA5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2DDE4D2CD1BE811B3C81AD9E4F19C2B /* KVNProgress.xcconfig */;
+			baseConfigurationReference = 9C990C80E111776DE31B954929B71C69 /* KVNProgress.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -772,15 +733,15 @@
 			};
 			name = Release;
 		};
-		4CC6E60B1B700081CE859042714503EB /* Debug */ = {
+		5064425C2684C9928B071BB0EFEA3FBD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */;
+			baseConfigurationReference = 7171243ABD9836A8889CAB2A5500606A /* SCNumberKeyBoard.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/SCNumberKeyBoard/SCNumberKeyBoard-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -793,15 +754,78 @@
 			};
 			name = Debug;
 		};
-		4F0F00BB6ACBBCC27DC9417785369A9F /* Debug */ = {
+		64DE00202C9A43AA58B09FB357B6766B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 627273798E8E3F8AC58835CDB6408EF8 /* RESideMenu.xcconfig */;
+			baseConfigurationReference = 705DC5874D6326823BDA40D0C222FA9E /* LGSideMenuController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/LGSideMenuController/LGSideMenuController-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6CC7E40ACD484613C38D9AF82F1FD1C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFFAEA561696F5D3992D234E68D35E66 /* SDAutoLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		86CA6C0F0ACF7533C5FD5CCA3A31CC5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7171243ABD9836A8889CAB2A5500606A /* SCNumberKeyBoard.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SCNumberKeyBoard/SCNumberKeyBoard-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9262820593C2CB3D9B9218A7D943C66B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 705DC5874D6326823BDA40D0C222FA9E /* LGSideMenuController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RESideMenu/RESideMenu-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/LGSideMenuController/LGSideMenuController-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -814,70 +838,7 @@
 			};
 			name = Debug;
 		};
-		4F73D0BA9752C8BF862B86CAC6B1E3E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SCNumberKeyBoard/SCNumberKeyBoard-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		50003384B750F35498F41A9638FE5D1E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8369B017D4B711FA0992891BBFC38DCB /* SCNumberKeyBoard.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SCNumberKeyBoard/SCNumberKeyBoard-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		673BBCED32AC5EC3848A9A22AEE5A28C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEB861999AA3ADB7787A0BB40C5F3AB1 /* SDAutoLayout.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		901D9F56EFD07B1C5C54B5CBCC4ECE61 /* Release */ = {
+		AEE3578B44FD498B5B69F455E6ED841A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B33DC41D1F455B6E6B2D37FCB8D33E24 /* Pods-CostList.release.xcconfig */;
 			buildSettings = {
@@ -898,7 +859,7 @@
 			};
 			name = Release;
 		};
-		E00D190EBDDA63E5687FEF7D5D4C55BA /* Debug */ = {
+		CA1F89740B8F825CA5C4A0294F30DC9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EB0D4EE46F3BCC7D57D2A2FB046324F /* Pods-CostList.debug.xcconfig */;
 			buildSettings = {
@@ -919,18 +880,30 @@
 			};
 			name = Debug;
 		};
+		DC238DCE9682A6444FD8F8F4E207ADBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFFAEA561696F5D3992D234E68D35E66 /* SDAutoLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SDAutoLayout/SDAutoLayout-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		181F7F4BB3CA690867924DEF4AA78423 /* Build configuration list for PBXNativeTarget "RESideMenu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4F0F00BB6ACBBCC27DC9417785369A9F /* Debug */,
-				3898E91CFD9C12CA8F2C3CA0A830716B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -940,20 +913,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F7E9348619B7502AFBA254361AB7B99 /* Build configuration list for PBXNativeTarget "SDAutoLayout" */ = {
+		68B253238D35DB61EB8E92A7302A14A9 /* Build configuration list for PBXNativeTarget "SCNumberKeyBoard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4CC6E60B1B700081CE859042714503EB /* Debug */,
-				673BBCED32AC5EC3848A9A22AEE5A28C /* Release */,
+				5064425C2684C9928B071BB0EFEA3FBD /* Debug */,
+				86CA6C0F0ACF7533C5FD5CCA3A31CC5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9BEB1108B1E647CAE214D8FFB8AF40E9 /* Build configuration list for PBXNativeTarget "Pods-CostList" */ = {
+		75F88A7E7C612B3BDCDDF577C78FB504 /* Build configuration list for PBXNativeTarget "LGSideMenuController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E00D190EBDDA63E5687FEF7D5D4C55BA /* Debug */,
-				901D9F56EFD07B1C5C54B5CBCC4ECE61 /* Release */,
+				9262820593C2CB3D9B9218A7D943C66B /* Debug */,
+				64DE00202C9A43AA58B09FB357B6766B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80026CB40518029D84D5A9BB9D1D71E9 /* Build configuration list for PBXNativeTarget "Pods-CostList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA1F89740B8F825CA5C4A0294F30DC9A /* Debug */,
+				AEE3578B44FD498B5B69F455E6ED841A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -967,11 +949,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3A8C71953935B7D73A25BD2592E5C37 /* Build configuration list for PBXNativeTarget "SCNumberKeyBoard" */ = {
+		D280AB317F59736DF46BF011F2438D67 /* Build configuration list for PBXNativeTarget "SDAutoLayout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50003384B750F35498F41A9638FE5D1E /* Debug */,
-				4F73D0BA9752C8BF862B86CAC6B1E3E9 /* Release */,
+				DC238DCE9682A6444FD8F8F4E207ADBF /* Debug */,
+				6CC7E40ACD484613C38D9AF82F1FD1C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
