@@ -13,6 +13,7 @@
 #import "MyTabBarController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIViewController+Category.h"
+#import "RESideMenu.h"
 
 
 @interface AppDelegate ()
@@ -27,16 +28,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //获取TabBarController和TabBar
-    //MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
+    MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
     
     //创建侧栏菜单视图控制器，从Main.StoryBoard中的单独控制器创建
-    //SlideMenuViewController *mySlideMenuViewController = [SlideMenuViewController instanceFromStoryboardV2];
+    SlideMenuViewController *mySlideMenuViewController = [SlideMenuViewController instanceFromStoryboardV2];
     
     //创建侧栏效果控制器
-
-    
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController rightMenuViewController:nil];
+    sideMenuViewController.panGestureEnabled = YES;
     //设置为根控制器
-    
+    self.window.rootViewController = sideMenuViewController;
     //请求用户获取位置的权限
     self.locationManager = [[CLLocationManager alloc] init];
     if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
