@@ -5,7 +5,7 @@ PODS:
   - ViewDeck (2.4.2)
 
 DEPENDENCIES:
-  - KVNProgress
+  - KVNProgress (~> 2.3.1)
   - SCNumberKeyBoard (~> 0.5.3)
   - SDAutoLayout (~> 2.1.7)
   - ViewDeck (~> 2.4.2)
@@ -16,6 +16,6 @@ SPEC CHECKSUMS:
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
   ViewDeck: 0b7b83bc2782a20dfb76207d0a2e8c5e6a6d182d
 
-PODFILE CHECKSUM: 08077c56916f75014880bc7d1d29909525d31ff7
+PODFILE CHECKSUM: 86fca85e0c564b256afc2f229c7161a525b02318
 
 COCOAPODS: 1.1.0.beta.1
