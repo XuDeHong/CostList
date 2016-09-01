@@ -31,9 +31,11 @@
     //设置HeaderView
     self.headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 240)];
     self.headerView.contentMode = UIViewContentModeScaleAspectFill;
-    self.headerView.image = [UIImage imageNamed:@"sidebar_bg"];
+    self.headerView.image = [UIImage imageWithColor:self.tableView.backgroundColor andSize:self.headerView.frame.size];
     self.headerView.clipsToBounds = YES;
     self.tableView.tableHeaderView = self.headerView;
+    
+    self.tableView.separatorStyle = NO;
     
     [self enableTableViewScroll];
 }
