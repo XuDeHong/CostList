@@ -24,7 +24,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view alpha="0.80000000000000004" contentMode="scaleToFill" id="iGu-54-iL8">
-                            <rect key="frame" x="1" y="123" width="206" height="1"/>
+                            <rect key="frame" x="0.0" y="123" width="206" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
                         <view alpha="0.80000000000000004" contentMode="scaleToFill" id="py4-mb-CDR">
@@ -48,20 +48,20 @@
                                 <outlet property="delegate" destination="-1" id="7x5-LY-FZo"/>
                             </connections>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xb8-YK-xqL">
-                            <rect key="frame" x="102" y="123" width="103" height="43"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="确定"/>
-                            <connections>
-                                <action selector="sureBtnClick:" destination="-1" eventType="touchUpInside" id="wYr-t3-G76"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9PN-IC-31m">
                             <rect key="frame" x="0.0" y="123" width="103" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="取消"/>
                             <connections>
                                 <action selector="cancelBtnClick:" destination="-1" eventType="touchUpInside" id="qHb-mO-j1t"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xb8-YK-xqL">
+                            <rect key="frame" x="103" y="123" width="103" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="确定"/>
+                            <connections>
+                                <action selector="sureBtnClick:" destination="-1" eventType="touchUpInside" id="wYr-t3-G76"/>
                             </connections>
                         </button>
                     </subviews>

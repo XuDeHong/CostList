@@ -27,7 +27,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    //设置Status Bar颜色为白色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     //获取TabBarController和TabBar
@@ -38,8 +38,10 @@
     
     //创建侧栏效果控制器
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:tabBarController leftViewController:[IISideController autoConstrainedSideControllerWithViewController:mySlideMenuViewController] rightViewController:nil];
+    //设置侧栏打开时中间主视图的宽度
     deckController.leftSize = 100.0f;
     deckController.maxSize = 100.0f;
+    //设置侧栏打开时中间主视图不可交互
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     //设置为根控制器
     self.window.rootViewController = deckController;
