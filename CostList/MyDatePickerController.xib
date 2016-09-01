@@ -19,14 +19,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwP-ks-MtW">
                     <rect key="frame" x="0.0" y="434" width="375" height="233"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKQ-d3-hfV">
-                            <rect key="frame" x="315" y="4" width="34" height="33"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="确定"/>
-                            <connections>
-                                <action selector="sureBtnClick:" destination="-1" eventType="touchUpInside" id="5tk-rz-ucq"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCm-4j-ZZi">
                             <rect key="frame" x="0.0" y="43" width="375" height="190"/>
                             <subviews>
@@ -49,13 +41,21 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahE-O3-UYH">
-                            <rect key="frame" x="25" y="4" width="34" height="33"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="23" y="3" width="38" height="35"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                             <state key="normal" title="取消">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="cancelBtnClick:" destination="-1" eventType="touchUpInside" id="oxH-mP-90I"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKQ-d3-hfV">
+                            <rect key="frame" x="313" y="3" width="38" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <state key="normal" title="确定"/>
+                            <connections>
+                                <action selector="sureBtnClick:" destination="-1" eventType="touchUpInside" id="5tk-rz-ucq"/>
                             </connections>
                         </button>
                     </subviews>
@@ -65,12 +65,12 @@
                         <constraint firstAttribute="bottom" secondItem="oCm-4j-ZZi" secondAttribute="bottom" id="Beu-Wv-0lZ"/>
                         <constraint firstItem="oCm-4j-ZZi" firstAttribute="width" secondItem="jwP-ks-MtW" secondAttribute="width" id="DnP-ww-Icd"/>
                         <constraint firstItem="oCm-4j-ZZi" firstAttribute="leading" secondItem="jwP-ks-MtW" secondAttribute="leading" id="Dqa-J4-uLG"/>
-                        <constraint firstItem="ahE-O3-UYH" firstAttribute="leading" secondItem="jwP-ks-MtW" secondAttribute="leading" constant="25" id="Du4-6z-Trg"/>
+                        <constraint firstItem="ahE-O3-UYH" firstAttribute="leading" secondItem="jwP-ks-MtW" secondAttribute="leading" constant="23" id="Du4-6z-Trg"/>
                         <constraint firstAttribute="height" constant="233" id="HBn-Fe-0Vb"/>
-                        <constraint firstAttribute="trailing" secondItem="mKQ-d3-hfV" secondAttribute="trailing" constant="26" id="O5c-X1-7Tl"/>
+                        <constraint firstAttribute="trailing" secondItem="mKQ-d3-hfV" secondAttribute="trailing" constant="24" id="O5c-X1-7Tl"/>
                         <constraint firstAttribute="trailing" secondItem="oCm-4j-ZZi" secondAttribute="trailing" id="ltN-Pq-i6A"/>
-                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="mKQ-d3-hfV" secondAttribute="bottom" constant="6" id="neZ-0N-7Xv"/>
-                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="ahE-O3-UYH" secondAttribute="bottom" constant="6" id="yzR-FP-7l4"/>
+                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="mKQ-d3-hfV" secondAttribute="bottom" constant="5" id="neZ-0N-7Xv"/>
+                        <constraint firstItem="sab-Ps-hT0" firstAttribute="top" secondItem="ahE-O3-UYH" secondAttribute="bottom" constant="5" id="yzR-FP-7l4"/>
                     </constraints>
                 </view>
             </subviews>
