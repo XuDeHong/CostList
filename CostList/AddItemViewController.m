@@ -175,6 +175,7 @@
 
 -(void)enableTableViewScroll
 {
+    //检测TableView内容是否超过屏幕，若超过，则可以滚动,否则禁止滚动
     if((self.tableView.contentSize.height + NavigationBarHeight) > SCREENHEIGHT || (self.tableView.contentSize.height + NavigationBarHeight) == SCREENHEIGHT)
     {
         self.tableView.scrollEnabled = YES;
