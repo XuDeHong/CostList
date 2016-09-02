@@ -8,8 +8,8 @@
 
 #import "MonthPickerViewController.h"
 
-#define yearComponent 0
-#define monthComponent 1
+#define YearComponent 0
+#define MonthComponent 1
 
 @interface MonthPickerViewController () <UIPickerViewDelegate,UIPickerViewDataSource>
 
@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view from its nib.
     
     //创建半透明黑色背景
-    _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     
     [self customizeAppearence]; //设置UI元素
 }
@@ -50,8 +50,8 @@
     int thisYear = [year intValue] - ([[[self.yearArray lastObject] substringWithRange:NSMakeRange(0, 4)]  intValue] - 4);
     
     //设置月份选择器为月份选择器按钮的年月（初始化）
-    [self.monthPickerView selectRow:[month intValue] - 1 inComponent:monthComponent animated:NO];
-    [self.monthPickerView selectRow:thisYear inComponent:yearComponent animated:NO];
+    [self.monthPickerView selectRow:[month intValue] - 1 inComponent:MonthComponent animated:NO];
+    [self.monthPickerView selectRow:thisYear inComponent:YearComponent animated:NO];
     
 }
 
@@ -91,10 +91,10 @@
 -(void)customizeAppearence
 {
     //设置月份选择器全局tint color颜色
-    self.view.tintColor = GLOBALTINTCOLOR;
+    self.view.tintColor = GLOBAL_TINT_COLOR;
     
     //设置两条分割线的颜色
-    self.separator1View.backgroundColor = self.separator2View.backgroundColor=GLOBALTINTCOLOR;
+    self.separator1View.backgroundColor = self.separator2View.backgroundColor = GLOBAL_TINT_COLOR;
     
     //设置圆角
     self.pickerPopView.layer.cornerRadius = 10.0f;
@@ -104,7 +104,7 @@
     _backgroundView.alpha = 0.0;//初始先是全透明
     
     //设置整个月份选择器水平居中
-    self.pickerPopView.centerX = (SCREENWIDTH / 2.0f);
+    self.pickerPopView.centerX = (SCREEN_WIDTH / 2.0f);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,7 +117,7 @@
     if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
         //设置初始化时MonthPickerView在屏幕上方（看不见）
-        self.view.y = 0 - SCREENHEIGHT;
+        self.view.y = 0 - SCREEN_HEIGHT;
     }
     
     return self;
@@ -147,7 +147,7 @@
     
     //月份选择器从屏幕向上滑离屏幕
     [UIView animateWithDuration:0.3 animations:^{
-        self.view.y = 0 - SCREENHEIGHT;
+        self.view.y = 0 - SCREEN_HEIGHT;
     } completion:^(BOOL finished){
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
@@ -167,8 +167,8 @@
 - (IBAction)sureBtnClick:(id)sender {
     
     //获取选择的年份和月份
-    NSInteger yearRow = [self.monthPickerView selectedRowInComponent:yearComponent];
-    NSInteger monthRow = [self.monthPickerView selectedRowInComponent:monthComponent];
+    NSInteger yearRow = [self.monthPickerView selectedRowInComponent:YearComponent];
+    NSInteger monthRow = [self.monthPickerView selectedRowInComponent:MonthComponent];
     NSString *selectedYear = self.yearArray[yearRow];
     NSString *selectedMonth = self.monthArray[monthRow];
     
@@ -184,7 +184,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component {
-    if (component == yearComponent) {
+    if (component == YearComponent) {
         return [self.yearArray count];
     } else {
         return [self.monthArray count];
@@ -195,7 +195,7 @@ numberOfRowsInComponent:(NSInteger)component {
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-    if (component == yearComponent) {
+    if (component == YearComponent) {
         return self.yearArray[row];
     } else {
         return self.monthArray[row];

@@ -49,7 +49,7 @@
 {
     [super viewDidLayoutSubviews];
     //设置TabBar的tintColor
-    self.tabBar.tintColor = GLOBALTINTCOLOR;
+    self.tabBar.tintColor = GLOBAL_TINT_COLOR;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,8 +76,8 @@
     
     //创建添加记录页面视图控制器，从AddItemViewController StoryBoard中的单独控制器创建
     UINavigationController *addItemViewController = (UINavigationController *)[AddItemViewController instanceFromStoryboardV2];
-    CGSize backgroundSize = CGSizeMake(addItemViewController.navigationBar.width, addItemViewController.navigationBar.height + StatusBarHeight);
-    UIImage *background = [UIImage imageWithColor:GLOBALTINTCOLOR andSize:backgroundSize];
+    CGSize backgroundSize = CGSizeMake(addItemViewController.navigationBar.width, addItemViewController.navigationBar.height + STATUS_BAR_HEIGHT);
+    UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
     //设置导航栏背景图片
     [addItemViewController.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
     //设置导航栏不透明

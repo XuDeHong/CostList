@@ -9,7 +9,10 @@
 #import "SlideMenuViewController.h"
 #import "ViewDeck/ViewDeck.h"
 
-#define HeaderViewAndScreenHeightRatio 240.0/667.0  //当屏幕为6或6s的尺寸（高度667）时，headerView高度为240
+#define HeaderViewHeightIn4S 120.0f         //4s的headerview高度
+#define HeaderViewHeightIn5S 190.0f         //5s的headerview高度
+#define HeaderViewHeightIn6S 240.0f         //6s的headerview高度
+#define HeaderViewHeightIn6SPLUS 264.0f     //6splus的headerview高度
 
 @interface SlideMenuViewController () <IIViewDeckControllerDelegate>
 
@@ -27,10 +30,20 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     //设置代理
     self.viewDeckController.delegate = self;
-    //根据屏幕高度和比例计算headerView高度
-    CGFloat headerViewHeight = HeaderViewAndScreenHeightRatio * SCREENHEIGHT;
+    
+    //根据屏幕高度计算headerView高度
+    CGFloat headerViewHeight = 0;
+    if(DEVICE_IS_IPHONE6SPLUS)
+        headerViewHeight = HeaderViewHeightIn6SPLUS;
+    else if(DEVICE_IS_IPHONE6S)
+        headerViewHeight = HeaderViewHeightIn6S;
+    else if(DEVICE_IS_IPHONE5S)
+        headerViewHeight = HeaderViewHeightIn5S;
+    else
+        headerViewHeight = HeaderViewHeightIn4S;
     
     //设置HeaderView
     self.headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width,headerViewHeight)];
