@@ -9,6 +9,8 @@
 #import "SlideMenuViewController.h"
 #import "ViewDeck/ViewDeck.h"
 
+#define HeaderViewAndScreenHeightRatio 240.0/667.0  //当屏幕为6或6s的尺寸（高度667）时，headerView高度为240
+
 @interface SlideMenuViewController () <IIViewDeckControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *headerView;
@@ -27,17 +29,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //设置代理
     self.viewDeckController.delegate = self;
+    //根据屏幕高度和比例计算headerView高度
+    CGFloat headerViewHeight = HeaderViewAndScreenHeightRatio * SCREENHEIGHT;
     
     //设置HeaderView
-    self.headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 240)];
+    self.headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width,headerViewHeight)];
     self.headerView.contentMode = UIViewContentModeScaleAspectFill;
-    self.headerView.image = [UIImage imageWithColor:self.tableView.backgroundColor andSize:self.headerView.frame.size];
+    self.headerView.image = [UIImage imageWithColor:[UIColor clearColor] andSize:self.headerView.frame.size];
     self.headerView.clipsToBounds = YES;
     self.tableView.tableHeaderView = self.headerView;
     
-    self.tableView.separatorStyle = NO;
+    self.tableView.separatorStyle = NO; //去掉分割线
     
-    [self enableTableViewScroll];
 }
 
 -(void)dealloc
@@ -50,32 +53,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    //侧栏打开时，状态栏为黑色
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    //侧栏关闭时，状态栏为白色
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
-
--(void)enableTableViewScroll
-{
-    //检测TableView内容是否超过屏幕，若超过，则可以滚动,否则禁止滚动
-    if(self.tableView.contentSize.height > SCREENHEIGHT || self.tableView.contentSize.height == SCREENHEIGHT)
-    {
-        self.tableView.scrollEnabled = YES;
-    }
-    else
-    {
-        self.tableView.scrollEnabled = NO;
-    }
-}
 
 #pragma mark - IIViewDeckControllerDelegate
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController applyShadow:(CALayer*)shadowLayer withBounds:(CGRect)rect
