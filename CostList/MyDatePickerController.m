@@ -22,10 +22,10 @@
     [super viewDidLoad];
     
     //创建半透明黑色背景
-    self.background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    self.background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
 
     //设置日期选择器全局tint color颜色
-    self.view.tintColor = GLOBALTINTCOLOR;
+    self.view.tintColor = GLOBAL_TINT_COLOR;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];

@@ -164,8 +164,8 @@
     [self.view endEditing:YES]; //键盘消失
     KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
     configuration.circleSize = 60.0f;   //设置success图标大小
-    configuration.successColor = GLOBALTINTCOLOR;   //设置success图标颜色
-    configuration.minimumSuccessDisplayTime = 0.7f; //设置动画时间
+    configuration.successColor = GLOBAL_TINT_COLOR;   //设置success图标颜色
+    configuration.minimumSuccessDisplayTime = 0.9f; //设置动画时间
     configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
     [KVNProgress setConfiguration:configuration];
     [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
@@ -176,7 +176,7 @@
 -(void)enableTableViewScroll
 {
     //检测TableView内容是否超过屏幕，若超过，则可以滚动,否则禁止滚动
-    if((self.tableView.contentSize.height + NavigationBarHeight) > SCREENHEIGHT || (self.tableView.contentSize.height + NavigationBarHeight) == SCREENHEIGHT)
+    if((self.tableView.contentSize.height + NavigationBarHeight) > SCREEN_HEIGHT || (self.tableView.contentSize.height + NavigationBarHeight) == SCREEN_HEIGHT)
     {
         self.tableView.scrollEnabled = YES;
     }
@@ -257,8 +257,8 @@
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;
     
-    CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + StatusBarHeight);
-    UIImage *background = [UIImage imageWithColor:GLOBALTINTCOLOR andSize:backgroundSize];
+    CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + STATUS_BAR_HEIGHT);
+    UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
     //设置导航栏背景图片
     [_imagePicker.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
     //设置导航栏按钮字体颜色
@@ -276,8 +276,8 @@
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;
     
-    CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + StatusBarHeight);
-    UIImage *background = [UIImage imageWithColor:GLOBALTINTCOLOR andSize:backgroundSize];
+    CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + STATUS_BAR_HEIGHT);
+    UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
     //设置导航栏背景图片
     [_imagePicker.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
     //设置导航栏按钮字体颜色

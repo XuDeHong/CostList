@@ -15,7 +15,7 @@
 #import "UIViewController+Category.h"
 #import "ViewDeck/ViewDeck.h"
 
-#define SlideMenuWidth 220.0f
+#define SlideMenuWidth 220.0f   //侧栏宽度
 
 @interface AppDelegate ()
 
@@ -40,8 +40,8 @@
     //创建侧栏效果控制器
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:tabBarController leftViewController:[IISideController autoConstrainedSideControllerWithViewController:mySlideMenuViewController] rightViewController:nil];
     //设置侧栏打开时中间主视图的宽度
-    deckController.leftSize = SCREENWIDTH - SlideMenuWidth;
-    deckController.maxSize = SCREENWIDTH - SlideMenuWidth;
+    deckController.leftSize = SCREEN_WIDTH - SlideMenuWidth;
+    deckController.maxSize = SCREEN_WIDTH - SlideMenuWidth;
     //设置侧栏打开时中间主视图不可交互
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     //设置为根控制器

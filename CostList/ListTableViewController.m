@@ -36,7 +36,7 @@ static NSString *ListCellIdentifier = @"ListCell";
 -(void)customizeAppearence
 {
     //设置界面上部的View的背景色
-    self.upBackgroundView.backgroundColor = GLOBALTINTCOLOR;
+    self.upBackgroundView.backgroundColor = GLOBAL_TINT_COLOR;
     
     //设置NavigationBar完全透明，通过UIBarMetricsCompact设置横屏可见，竖屏不可见来间接达到效果，而该应用APP只能竖屏
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationBarBackground"] forBarMetrics:UIBarMetricsCompact];

@@ -40,16 +40,16 @@
 -(void)customizeAppearence
 {
     //设置位置编辑器全局tint color颜色
-    self.view.tintColor = GLOBALTINTCOLOR;
+    self.view.tintColor = GLOBAL_TINT_COLOR;
     
     //设置两条分割线的颜色
-    self.separator1View.backgroundColor=self.separator2View.backgroundColor=GLOBALTINTCOLOR;
+    self.separator1View.backgroundColor=self.separator2View.backgroundColor=GLOBAL_TINT_COLOR;
     
     //设置圆角
     self.pickerPopView.layer.cornerRadius = 10.0f;
     
     //设置整个位置编辑器水平居中
-    self.pickerPopView.centerX = (SCREENWIDTH / 2.0f);
+    self.pickerPopView.centerX = (SCREEN_WIDTH / 2.0f);
 }
 
 - (void)didReceiveMemoryWarning {
