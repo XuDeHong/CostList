@@ -36,14 +36,14 @@ static CGFloat const KVNCheckmarkAnimationDuration = 0.5f;
 static CGFloat const KVNInfiniteLoopAnimationDuration = 1.0f;
 static CGFloat const KVNProgressAnimationDuration = 0.25f;
 static CGFloat const KVNProgressIndeterminate = CGFLOAT_MAX;
-static CGFloat const KVNCircleProgressViewToStatusLabelVerticalSpaceConstraintConstant = 20.0f;
+static CGFloat const KVNCircleProgressViewToStatusLabelVerticalSpaceConstraintConstant = 10.0f; //改过
 static CGFloat const KVNContentViewFullScreenModeLeadingAndTrailingSpaceConstraintConstant = 0.0f;
 static CGFloat const KVNContentViewNotFullScreenModeLeadingAndTrailingSpaceConstraintConstant = 25.0f;
 static CGFloat const KVNContentViewWithStatusInset = 10.0f;
 static CGFloat const KVNContentViewWithoutStatusInset = 20.0f;
 static CGFloat const KVNContentViewCornerRadius = 8.0f;
 static CGFloat const KVNContentViewWithoutStatusCornerRadius = 15.0f;
-static CGFloat const KVNAlertViewWidth = 270.0f;
+static CGFloat const KVNAlertViewWidth = 150.0f;    //改过
 static CGFloat const KVNMotionEffectRelativeValue = 10.0f;
 
 static KVNProgressConfiguration *configuration;

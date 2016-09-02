@@ -165,7 +165,7 @@
     KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
     configuration.circleSize = 60.0f;   //设置success图标大小
     configuration.successColor = GLOBALTINTCOLOR;   //设置success图标颜色
-    configuration.minimumSuccessDisplayTime = 0.9f; //设置动画时间
+    configuration.minimumSuccessDisplayTime = 0.7f; //设置动画时间
     configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
     [KVNProgress setConfiguration:configuration];
     [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
