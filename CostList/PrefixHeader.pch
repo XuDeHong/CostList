@@ -23,6 +23,8 @@
 #define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 //状态栏高度
 #define StatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+//5s系统
+#define DEVICE_IS_IPHONE5S ([[UIScreen mainScreen] bounds].size.height == 568)
 //月份选择器NIB名称
 #define MonthPickerViewControllerNibName @"MonthPickerViewController"
 
