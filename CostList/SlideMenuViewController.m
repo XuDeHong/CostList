@@ -7,14 +7,13 @@
 //
 
 #import "SlideMenuViewController.h"
-#import "ViewDeck/ViewDeck.h"
 
 #define HeaderViewHeightIn4S 120.0f         //4s的headerview高度
 #define HeaderViewHeightIn5S 180.0f         //5s的headerview高度
 #define HeaderViewHeightIn6S 160.0f         //6s的headerview高度
 #define HeaderViewHeightIn6SPLUS 264.0f     //6splus的headerview高度
 
-@interface SlideMenuViewController () <IIViewDeckControllerDelegate>
+@interface SlideMenuViewController ()
 
 @property (nonatomic, strong) UIImageView *headerView;
 
@@ -30,9 +29,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //设置代理
-    self.viewDeckController.delegate = self;
     
     //根据屏幕高度计算headerView高度
     CGFloat headerViewHeight = 0;
@@ -53,65 +49,11 @@
     self.tableView.tableHeaderView = self.headerView;
     
     self.tableView.separatorStyle = NO; //去掉分割线
-    
-    self.tableView.backgroundView = [self getSlideMenuBG];  //设置TableView背景图片
-}
-
--(UIImageView *)getSlideMenuBG
-{
-    UIImageView *imageview = [[UIImageView alloc] init];
-    imageview.frame = CGRectMake(0,0,self.view.width,self.view.height);
-    imageview.image = [UIImage imageNamed:@"SlideMenuBG"];
-    imageview.contentMode = UIViewContentModeScaleToFill;
-    imageview.userInteractionEnabled = NO;
-    
-    //增加模糊效果
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
-    effectview.frame = CGRectMake(0, 0,self.view.width,self.view.height);
-    
-    [imageview addSubview:effectview];
-    
-    return imageview;
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    //设置Status Bar颜色为黑色
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    //设置Status Bar颜色为白色
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-}
-
--(void)dealloc
-{
-    self.viewDeckController.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - IIViewDeckControllerDelegate
-- (void)viewDeckController:(IIViewDeckController*)viewDeckController applyShadow:(CALayer*)shadowLayer withBounds:(CGRect)rect
-{
-    //默认的阴影效果，不过取消了阴影的动画
-    shadowLayer.masksToBounds = NO;
-    shadowLayer.shadowRadius = 10;
-    shadowLayer.shadowOpacity = 0.5;
-    shadowLayer.shadowColor = [[UIColor blackColor] CGColor];
-    shadowLayer.shadowOffset = CGSizeZero;
-    shadowLayer.shadowPath = [[UIBezierPath bezierPathWithRect:shadowLayer.bounds] CGPath];
 }
 
 @end

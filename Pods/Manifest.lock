@@ -1,21 +1,21 @@
 PODS:
+  - ITRAirSideMenu (1.0.3)
   - KVNProgress (2.3.1)
   - SCNumberKeyBoard (0.5.3)
   - SDAutoLayout (2.1.7)
-  - ViewDeck (2.4.2)
 
 DEPENDENCIES:
+  - ITRAirSideMenu (~> 1.0.3)
   - KVNProgress (~> 2.3.1)
   - SCNumberKeyBoard (~> 0.5.3)
   - SDAutoLayout (~> 2.1.7)
-  - ViewDeck (~> 2.4.2)
 
 SPEC CHECKSUMS:
+  ITRAirSideMenu: e888f259559379bc73c7509f122119ab0f8b02a6
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   SCNumberKeyBoard: 0d246ca7cc55b603d67f76ed9d7f0c4b5de26eaf
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
-  ViewDeck: 0b7b83bc2782a20dfb76207d0a2e8c5e6a6d182d
 
-PODFILE CHECKSUM: 86fca85e0c564b256afc2f229c7161a525b02318
+PODFILE CHECKSUM: db577f6ef63109f4188a0fee4779bf6b89643b81
 
 COCOAPODS: 1.1.0.beta.1
