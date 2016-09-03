@@ -54,7 +54,7 @@
     
     self.tableView.separatorStyle = NO; //去掉分割线
     
-    self.tableView.backgroundView = [self getSlideMenuBG];
+    self.tableView.backgroundView = [self getSlideMenuBG];  //设置TableView背景图片
 }
 
 -(UIImageView *)getSlideMenuBG
@@ -64,15 +64,31 @@
     imageview.image = [UIImage imageNamed:@"SlideMenuBG"];
     imageview.contentMode = UIViewContentModeScaleToFill;
     imageview.userInteractionEnabled = NO;
-    [self.view addSubview:imageview];
     
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    //增加模糊效果
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
     effectview.frame = CGRectMake(0, 0,self.view.width,self.view.height);
     
     [imageview addSubview:effectview];
     
     return imageview;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //设置Status Bar颜色为黑色
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    //设置Status Bar颜色为白色
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 -(void)dealloc
