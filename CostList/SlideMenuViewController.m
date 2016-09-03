@@ -7,13 +7,14 @@
 //
 
 #import "SlideMenuViewController.h"
+#import "ITRAirSideMenu.h"
 
 #define HeaderViewHeightIn4S 120.0f         //4s的headerview高度
 #define HeaderViewHeightIn5S 180.0f         //5s的headerview高度
 #define HeaderViewHeightIn6S 160.0f         //6s的headerview高度
 #define HeaderViewHeightIn6SPLUS 264.0f     //6splus的headerview高度
 
-@interface SlideMenuViewController ()
+@interface SlideMenuViewController () <ITRAirSideMenuDelegate>
 
 @property (nonatomic, strong) UIImageView *headerView;
 
@@ -49,11 +50,29 @@
     self.tableView.tableHeaderView = self.headerView;
     
     self.tableView.separatorStyle = NO; //去掉分割线
+    //设置代理 
+    self.itrAirSideMenu.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc
+{
+    self.itrAirSideMenu.delegate = nil;
+}
+
+#pragma mark - ITRAirSideMenuDelegate
+- (void)sideMenu:(ITRAirSideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
+{
+
+}
+
+-(void)sideMenu:(ITRAirSideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
+{
+    
 }
 
 @end
