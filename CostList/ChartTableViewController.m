@@ -114,8 +114,8 @@
     //设置代理和当前年月
     self.monthPickerViewController.delegate = self;
     self.monthPickerViewController.currentYearAndMonth = self.monthPickerButton.titleLabel.text;
-    //显示月份选择器，将MonthPickerViewController嵌入到MyTabBarController
-    [self.monthPickerViewController presentInParentViewController:self.parentViewController];
+    //显示月份选择器，将MonthPickerViewController嵌入到根视图控制器（侧栏效果器）
+    [self.monthPickerViewController presentInParentViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
 
 #pragma mark - MonthPickerViewController Delegate

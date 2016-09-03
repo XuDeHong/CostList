@@ -50,14 +50,16 @@
     
     //content view animation properties
     itrAirSideMenu.contentViewScaleValue = 0.7f;
-    itrAirSideMenu.contentViewRotatingAngle = 30.0f;
-    itrAirSideMenu.contentViewTranslateX = 130.0f;
+    itrAirSideMenu.contentViewRotatingAngle = 10.0f;
+    itrAirSideMenu.contentViewTranslateX = 100.0f;
     
     //menu view properties
     itrAirSideMenu.menuViewRotatingAngle = 30.0f;
     itrAirSideMenu.menuViewTranslateX = 130.0f;
     
+    mySlideMenuViewController.itrAirSideMenu = itrAirSideMenu;
     tabBarController.itrAirSideMenu = itrAirSideMenu;
+    
     //设置为根控制器
     self.window.rootViewController = itrAirSideMenu;
     //请求用户获取位置的权限
