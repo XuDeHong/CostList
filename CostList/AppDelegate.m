@@ -13,13 +13,14 @@
 #import "MyTabBarController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIViewController+Category.h"
-#import "ViewDeck/ViewDeck.h"
+#import "ITRAirSideMenu.h"
+
 
 #define SlideMenuWidth 220.0f   //侧栏宽度
 
 @interface AppDelegate ()
 
-@property (strong,nonatomic) CLLocationManager * locationManager;
+@property (strong,nonatomic) CLLocationManager * locationManager;   //位置管理器
 
 @end
 
@@ -28,8 +29,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //设置Status Bar颜色为白色
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     //获取TabBarController和TabBar
     MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
@@ -38,14 +37,29 @@
     SlideMenuViewController *mySlideMenuViewController = [SlideMenuViewController instanceFromStoryboardV2];
     
     //创建侧栏效果控制器
-    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:tabBarController leftViewController:[IISideController autoConstrainedSideControllerWithViewController:mySlideMenuViewController] rightViewController:nil];
-    //设置侧栏打开时中间主视图的宽度
-    deckController.leftSize = SCREEN_WIDTH - SlideMenuWidth;
-    deckController.maxSize = SCREEN_WIDTH - SlideMenuWidth;
-    //设置侧栏打开时中间主视图不可交互
-    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
+    ITRAirSideMenu *itrAirSideMenu = [[ITRAirSideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController];
+    //设置侧栏背景
+    itrAirSideMenu.backgroundImage = [UIImage imageNamed:@"SlideMenuBG"];
+    
+    //content view shadow properties
+    itrAirSideMenu.contentViewShadowColor = [UIColor blackColor];
+    itrAirSideMenu.contentViewShadowOffset = CGSizeMake(0, 0);
+    itrAirSideMenu.contentViewShadowOpacity = 0.6;
+    itrAirSideMenu.contentViewShadowRadius = 12;
+    itrAirSideMenu.contentViewShadowEnabled = YES;
+    
+    //content view animation properties
+    itrAirSideMenu.contentViewScaleValue = 0.7f;
+    itrAirSideMenu.contentViewRotatingAngle = 30.0f;
+    itrAirSideMenu.contentViewTranslateX = 130.0f;
+    
+    //menu view properties
+    itrAirSideMenu.menuViewRotatingAngle = 30.0f;
+    itrAirSideMenu.menuViewTranslateX = 130.0f;
+    
+    tabBarController.itrAirSideMenu = itrAirSideMenu;
     //设置为根控制器
-    self.window.rootViewController = deckController;
+    self.window.rootViewController = itrAirSideMenu;
     //请求用户获取位置的权限
     self.locationManager = [[CLLocationManager alloc] init];
     if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)

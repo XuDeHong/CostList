@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ITRAirSideMenu.h"
 
 @interface MyTabBarController : UITabBarController
 
+@property (weak,nonatomic) ITRAirSideMenu *itrAirSideMenu;  //指向侧栏
 
 -(void)showSlideMenuController;
 
