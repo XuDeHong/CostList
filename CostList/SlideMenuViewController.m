@@ -10,8 +10,8 @@
 #import "ViewDeck/ViewDeck.h"
 
 #define HeaderViewHeightIn4S 120.0f         //4s的headerview高度
-#define HeaderViewHeightIn5S 190.0f         //5s的headerview高度
-#define HeaderViewHeightIn6S 240.0f         //6s的headerview高度
+#define HeaderViewHeightIn5S 180.0f         //5s的headerview高度
+#define HeaderViewHeightIn6S 160.0f         //6s的headerview高度
 #define HeaderViewHeightIn6SPLUS 264.0f     //6splus的headerview高度
 
 @interface SlideMenuViewController () <IIViewDeckControllerDelegate>
@@ -54,6 +54,25 @@
     
     self.tableView.separatorStyle = NO; //去掉分割线
     
+    self.tableView.backgroundView = [self getSlideMenuBG];
+}
+
+-(UIImageView *)getSlideMenuBG
+{
+    UIImageView *imageview = [[UIImageView alloc] init];
+    imageview.frame = CGRectMake(0,0,self.view.width,self.view.height);
+    imageview.image = [UIImage imageNamed:@"SlideMenuBG"];
+    imageview.contentMode = UIViewContentModeScaleToFill;
+    imageview.userInteractionEnabled = NO;
+    [self.view addSubview:imageview];
+    
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    effectview.frame = CGRectMake(0, 0,self.view.width,self.view.height);
+    
+    [imageview addSubview:effectview];
+    
+    return imageview;
 }
 
 -(void)dealloc
