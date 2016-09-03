@@ -51,7 +51,7 @@
     //content view animation properties
     itrAirSideMenu.contentViewScaleValue = 0.7f;
     itrAirSideMenu.contentViewRotatingAngle = 10.0f;
-    itrAirSideMenu.contentViewTranslateX = 100.0f;
+    itrAirSideMenu.contentViewTranslateX = 150.0f;
     
     //menu view properties
     itrAirSideMenu.menuViewRotatingAngle = 30.0f;
