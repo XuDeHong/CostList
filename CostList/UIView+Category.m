@@ -10,6 +10,7 @@
 
 @implementation UIView (Category)
 
+//在分类添加属性需要自行实现setter和getter方法
 - (void)setCenterX:(CGFloat)centerX
 {
     CGPoint center = self.center;
