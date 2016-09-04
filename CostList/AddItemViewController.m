@@ -14,6 +14,7 @@
 #import <SDAutoLayout/SDAutoLayout.h>
 #import "ChooseIconViewController.h"
 #import "SCNumberKeyBoard.h"
+#import "MyImagePickerController.h"
 
 #define NavigationBarHeight self.navigationController.navigationBar.height  //导航栏高度
 
@@ -63,7 +64,7 @@
     CLGeocoder *_geocoder;  //编码器
     CLPlacemark *_placemark;    //地标
     
-    UIImagePickerController *_imagePicker;  //图片选择器
+    MyImagePickerController *_imagePicker;  //图片选择器
     UIImage *_image;    //图片
 }
 
@@ -90,16 +91,7 @@
     } close:^(UITextField *textField,NSString *number){
     
     }];
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;    //将状态栏设为白色
-}
-
--(BOOL)prefersStatusBarHidden
-{
-    return NO;  //不隐藏状态栏
+    
 }
 
 -(void)setupAutoLayout
@@ -262,7 +254,7 @@
 
 - (void)takePhoto
 {
-    _imagePicker = [[UIImagePickerController alloc] init];
+    _imagePicker = [[MyImagePickerController alloc] init];
     _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;  //设置为相机
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;
@@ -281,7 +273,7 @@
 
 - (void)choosePhotoFromLibrary
 {
-    _imagePicker = [[UIImagePickerController alloc] init];
+    _imagePicker = [[MyImagePickerController alloc] init];
     _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;    //设置为从相册中获取
     _imagePicker.delegate = self;
     _imagePicker.allowsEditing = YES;

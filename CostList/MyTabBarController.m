@@ -10,6 +10,7 @@
 #import "MyTabBar.h"
 #import "AddItemViewController.h"
 #import "UIViewController+Category.h"
+#import "MyNavigationController.h"
 
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
 
@@ -73,7 +74,7 @@
 //    [self presentViewController:controller animated:YES completion:nil];
     
     //创建添加记录页面视图控制器，从AddItemViewController StoryBoard中的单独控制器创建
-    UINavigationController *addItemViewController = (UINavigationController *)[AddItemViewController instanceFromStoryboardV2];
+    MyNavigationController *addItemViewController = (MyNavigationController *)[AddItemViewController instanceFromStoryboardV2];
     CGSize backgroundSize = CGSizeMake(addItemViewController.navigationBar.width, addItemViewController.navigationBar.height + STATUS_BAR_HEIGHT);
     UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
     //设置导航栏背景图片
