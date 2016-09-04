@@ -1,5 +1,5 @@
 //
-//  UINavigationController+Category.h
+//  MyNavigationController.h
 //  CostList
 //
 //  Created by 许德鸿 on 16/9/4.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UINavigationController (Category)
+@interface MyNavigationController : UINavigationController
 
 @end
