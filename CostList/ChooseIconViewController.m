@@ -63,6 +63,16 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
 
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
+
 - (IBAction)segmentedControlChange:(id)sender {
     //设置是否可滚动
     self.tableView.scrollEnabled = (self.segmentedControl.selectedSegmentIndex == 0) ? YES : NO;

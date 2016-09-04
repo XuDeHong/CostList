@@ -67,12 +67,12 @@
 #pragma mark - ITRAirSideMenuDelegate
 - (void)sideMenu:(ITRAirSideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
 {
-
+    [sideMenu setNeedsStatusBarAppearanceUpdate];   //更新状态栏的颜色
 }
 
 -(void)sideMenu:(ITRAirSideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
 {
-    
+    [sideMenu setNeedsStatusBarAppearanceUpdate];   //更新状态栏的颜色
 }
 
 @end

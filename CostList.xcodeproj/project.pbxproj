@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8403AC8B1D7C082E000F5977 /* ITRAirSideMenu+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403AC8A1D7C082E000F5977 /* ITRAirSideMenu+Category.m */; };
+		8403AC911D7C0E91000F5977 /* UINavigationController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403AC901D7C0E91000F5977 /* UINavigationController+Category.m */; };
 		84068DCC1D580F39003B6F5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068DCB1D580F39003B6F5E /* main.m */; };
 		84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068DCE1D580F39003B6F5E /* AppDelegate.m */; };
 		84068DD81D580F39003B6F5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84068DD61D580F39003B6F5E /* Main.storyboard */; };
@@ -57,6 +59,10 @@
 /* Begin PBXFileReference section */
 		48BDF009FEBDE9A22FE33EC9 /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C856ADB38BE846DD21F8F72 /* Pods-CostList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostList.release.xcconfig"; path = "Pods/Target Support Files/Pods-CostList/Pods-CostList.release.xcconfig"; sourceTree = "<group>"; };
+		8403AC891D7C082E000F5977 /* ITRAirSideMenu+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITRAirSideMenu+Category.h"; sourceTree = "<group>"; };
+		8403AC8A1D7C082E000F5977 /* ITRAirSideMenu+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITRAirSideMenu+Category.m"; sourceTree = "<group>"; };
+		8403AC8F1D7C0E91000F5977 /* UINavigationController+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Category.h"; sourceTree = "<group>"; };
+		8403AC901D7C0E91000F5977 /* UINavigationController+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Category.m"; sourceTree = "<group>"; };
 		84068DC71D580F39003B6F5E /* CostList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CostList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84068DCB1D580F39003B6F5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84068DCD1D580F39003B6F5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -271,6 +277,10 @@
 				84CD5D381D66C296004898C7 /* UIViewController+Category.m */,
 				84B718001D69A247004ACD8F /* UITextView+Category.h */,
 				84B718011D69A247004ACD8F /* UITextView+Category.m */,
+				8403AC891D7C082E000F5977 /* ITRAirSideMenu+Category.h */,
+				8403AC8A1D7C082E000F5977 /* ITRAirSideMenu+Category.m */,
+				8403AC8F1D7C0E91000F5977 /* UINavigationController+Category.h */,
+				8403AC901D7C0E91000F5977 /* UINavigationController+Category.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -477,6 +487,7 @@
 				84CD5D311D6695F0004898C7 /* EditLocationViewController.m in Sources */,
 				84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,
+				8403AC8B1D7C082E000F5977 /* ITRAirSideMenu+Category.m in Sources */,
 				848785941D58D25100A2EBFB /* UIView+Category.m in Sources */,
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
 				843084E01D5DA3F70091F0BC /* MonthPickerViewController.m in Sources */,
@@ -489,6 +500,7 @@
 				84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */,
 				84DD44251D640E460045A375 /* ChooseIconViewController.m in Sources */,
 				845E62881D6313DD00224162 /* UIImage+Category.m in Sources */,
+				8403AC911D7C0E91000F5977 /* UINavigationController+Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
