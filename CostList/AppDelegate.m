@@ -16,8 +16,6 @@
 #import "ITRAirSideMenu.h"
 
 
-#define SlideMenuWidth 220.0f   //侧栏宽度
-
 @interface AppDelegate ()
 
 @property (strong,nonatomic) CLLocationManager * locationManager;   //位置管理器

@@ -9,10 +9,10 @@
 #import "SlideMenuViewController.h"
 #import "ITRAirSideMenu.h"
 
-#define HeaderViewHeightIn4S 120.0f         //4s的headerview高度
-#define HeaderViewHeightIn5S 180.0f         //5s的headerview高度
-#define HeaderViewHeightIn6S 160.0f         //6s的headerview高度
-#define HeaderViewHeightIn6SPLUS 264.0f     //6splus的headerview高度
+#define HeaderViewHeightIn4S 65.0f         //4s的headerview高度
+#define HeaderViewHeightIn5S 100.0f         //5s的headerview高度
+#define HeaderViewHeightIn6S 120.0f         //6s的headerview高度
+#define HeaderViewHeightIn6SPLUS 150.0f     //6splus的headerview高度
 
 @interface SlideMenuViewController () <ITRAirSideMenuDelegate>
 

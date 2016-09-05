@@ -79,19 +79,40 @@
     self.addButton.size = CGSizeMake(self.addButton.currentBackgroundImage.size.width, self.addButton.currentBackgroundImage.size.height);
     
     //创建并设置“+”按钮下方的文本为“添加”
-    UILabel *addLbl = [[UILabel alloc] init];
-    addLbl.text = NSLocalizedString(@"添加", @"添加");
-    addLbl.font = [UIFont systemFontOfSize:10];
-    addLbl.textColor = [UIColor grayColor];
-    [addLbl sizeToFit];
-
-    //设置“添加”label的位置
-    addLbl.centerX = self.addButton.centerX;
-    addLbl.centerY = CGRectGetMaxY(self.addButton.frame) + 0.5 * AddButtonMargin + 0.5;
-    
-    [self addSubview:addLbl];
-    
-    self.addLabel = addLbl;
+    if(self.addLabel == nil)
+    {
+        UILabel *addLbl = [[UILabel alloc] init];
+        addLbl.text = NSLocalizedString(@"添加", @"添加");
+        addLbl.font = [UIFont systemFontOfSize:10];
+        addLbl.textColor = [UIColor grayColor];
+        [addLbl sizeToFit];
+        
+        //设置“添加”label的位置
+        addLbl.centerX = self.addButton.centerX;
+        addLbl.centerY = CGRectGetMaxY(self.addButton.frame) + 0.5 * AddButtonMargin + 0.5;
+        
+        [self addSubview:addLbl];
+        
+        self.addLabel = addLbl;
+    }
+    else
+    {
+        //layoutSubviews方法会调用两次，第一次添加的Label位置不对，第二次才正确，但要先把第一个添加的Label删除，修复打开侧栏时出现两个添加的Label
+        [self.addLabel removeFromSuperview];
+        UILabel *addLbl = [[UILabel alloc] init];
+        addLbl.text = NSLocalizedString(@"添加", @"添加");
+        addLbl.font = [UIFont systemFontOfSize:10];
+        addLbl.textColor = [UIColor grayColor];
+        [addLbl sizeToFit];
+        
+        //设置“添加”label的位置
+        addLbl.centerX = self.addButton.centerX;
+        addLbl.centerY = CGRectGetMaxY(self.addButton.frame) + 0.5 * AddButtonMargin + 0.5;
+        
+        [self addSubview:addLbl];
+        
+        self.addLabel = addLbl;
+    }
     
     int btnIndex = 0;
     //系统自带的按钮类型是UITabBarButton，找出这些类型的按钮，然后重新排布位置，空出中间的位置
