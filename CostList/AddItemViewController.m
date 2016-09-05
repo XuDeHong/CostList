@@ -169,8 +169,8 @@
     configuration.successColor = GLOBAL_TINT_COLOR;   //设置success图标颜色
     configuration.minimumSuccessDisplayTime = 0.8f; //设置动画时间
     configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
-    configuration.backgroundFillColor = [UIColor whiteColor];
-    configuration.backgroundType = KVNProgressBackgroundTypeSolid;
+    configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
+    configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
     [KVNProgress setConfiguration:configuration];
     [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
