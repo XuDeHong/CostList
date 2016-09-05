@@ -109,6 +109,14 @@
     icon.sd_layout.widthIs(IconWidth).heightIs(IconHeight).topSpaceToView(contentView,IconUpPadding).leftSpaceToView(contentView,IconLeftPadding);  //图标布局
     self.moneyTextField.sd_layout.topSpaceToView(contentView,TextFieldUpPadding).leftSpaceToView(icon,TextFieldLeftPadding).rightSpaceToView(contentView,TextFieldRightPadding).bottomSpaceToView(contentView,TextFieldDownPadding); //输入框布局
     
+    //备注cell布局
+    indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    contentView = cell.contentView;
+    icon = (UIImageView *)[contentView viewWithTag:502];
+    icon.sd_layout.widthIs(IconWidth).heightIs(IconHeight).topSpaceToView(contentView,IconUpPadding).leftSpaceToView(contentView,IconLeftPadding);  //图标布局
+    self.commentTextField.sd_layout.topSpaceToView(contentView,TextFieldUpPadding).leftSpaceToView(icon,TextFieldLeftPadding).rightSpaceToView(contentView,TextFieldRightPadding).bottomSpaceToView(contentView,TextFieldDownPadding); //输入框布局
+    
     //时间cell布局
     indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     cell = [self.tableView cellForRowAtIndexPath:indexPath];
