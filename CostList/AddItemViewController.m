@@ -326,7 +326,7 @@
 {
     self.imageView.image = image;
     self.imageView.hidden = NO;
-    self.imageView.frame = CGRectMake(self.photoLabel.x,self.imageView.y,ImageViewWidth,ImageCellHeight);
+    self.imageView.frame = CGRectMake(self.photoLabel.x,self.imageView.y,ImageViewWidth,ImageViewHeight);
     self.photoLabel.hidden = YES;
 
 }

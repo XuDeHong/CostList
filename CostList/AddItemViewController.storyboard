@@ -71,7 +71,7 @@
                                                     <rect key="frame" x="8" y="9" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金额" textAlignment="natural" minimumFontSize="17" id="EJ2-RC-XsV">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金额（元）" textAlignment="natural" minimumFontSize="17" id="EJ2-RC-XsV">
                                                     <rect key="frame" x="46" y="9" width="321" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -281,7 +281,7 @@
     <resources>
         <image name="Image" width="18" height="18"/>
         <image name="Location" width="14" height="20"/>
-        <image name="Money" width="20" height="16"/>
+        <image name="Money" width="20" height="17"/>
         <image name="Text" width="18" height="20"/>
         <image name="Time" width="18" height="20"/>
         <image name="nothing" width="30" height="30"/>
