@@ -18,9 +18,9 @@
 
 #define NavigationBarHeight self.navigationController.navigationBar.height  //导航栏高度
 
-#define ImageViewWidth 260  //图片宽度
-#define ImageViewHeight 260 //图片高度
-#define ImageCellHeight 278  //图片cell高度
+#define ImageViewWidth 180  //图片宽度
+#define ImageViewHeight 180 //图片高度
+#define ImageCellHeight 200  //图片cell高度
 
 #define IconWidth 30    //图标宽度
 #define IconHeight 30   //图标高度
@@ -66,6 +66,7 @@
     
     MyImagePickerController *_imagePicker;  //图片选择器
     UIImage *_image;    //图片
+    UIImage *_scaleImage;   //缩放后的图片
 }
 
 -(void)viewDidLoad
@@ -267,7 +268,6 @@
     _imagePicker = [[MyImagePickerController alloc] init];
     _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;  //设置为相机
     _imagePicker.delegate = self;
-    _imagePicker.allowsEditing = YES;
     
     CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + STATUS_BAR_HEIGHT);
     UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
@@ -286,7 +286,6 @@
     _imagePicker = [[MyImagePickerController alloc] init];
     _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;    //设置为从相册中获取
     _imagePicker.delegate = self;
-    _imagePicker.allowsEditing = YES;
     
     CGSize backgroundSize = CGSizeMake(_imagePicker.navigationBar.width,_imagePicker.navigationBar.height + STATUS_BAR_HEIGHT);
     UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
@@ -335,8 +334,9 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    _image = info[UIImagePickerControllerEditedImage];  //获得图片
-    [self showImage:_image];    //显示图片
+    _image = info[UIImagePickerControllerOriginalImage];  //获得图片
+    _scaleImage = [_image imageCompressForSize:CGSizeMake(ImageViewWidth, ImageViewHeight)];  //缩放图片
+    [self showImage:_scaleImage];    //显示图片
     [self.tableView reloadData];    //更新tableview
     
     [self enableTableViewScroll]; //检测是否可滚动
