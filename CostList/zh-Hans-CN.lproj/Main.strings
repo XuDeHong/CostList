@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "5000.00"; ObjectID = "4ZQ-2y-8OT"; */
+"4ZQ-2y-8OT.text" = "5000.00";
+
+/* Class = "UITabBarItem"; title = "报表"; ObjectID = "7sG-q1-urx"; */
+"7sG-q1-urx.title" = "报表";
+
+/* Class = "UILabel"; text = "2000.00"; ObjectID = "830-nN-VPN"; */
+"830-nN-VPN.text" = "2000.00";
+
+/* Class = "UIButton"; normalTitle = "Year and Month"; ObjectID = "BIk-a7-Pq5"; */
+"BIk-a7-Pq5.normalTitle" = "Year and Month";
+
+/* Class = "UILabel"; text = "总支出"; ObjectID = "EYh-0B-fas"; */
+"EYh-0B-fas.text" = "总支出";
+
+/* Class = "UISegmentedControl"; fP6-ju-QHW.segmentTitles[0] = "比例"; ObjectID = "fP6-ju-QHW"; */
+"fP6-ju-QHW.segmentTitles[0]" = "比例";
+
+/* Class = "UISegmentedControl"; fP6-ju-QHW.segmentTitles[1] = "趋势"; ObjectID = "fP6-ju-QHW"; */
+"fP6-ju-QHW.segmentTitles[1]" = "趋势";
+
+/* Class = "UITabBarItem"; title = "明细"; ObjectID = "lhD-b3-291"; */
+"lhD-b3-291.title" = "明细";
+
+/* Class = "UILabel"; text = "总收入"; ObjectID = "qby-vh-PET"; */
+"qby-vh-PET.text" = "总收入";
+
+/* Class = "UIButton"; normalTitle = "Year and Month"; ObjectID = "sUG-UC-oNM"; */
+"sUG-UC-oNM.normalTitle" = "Year and Month";

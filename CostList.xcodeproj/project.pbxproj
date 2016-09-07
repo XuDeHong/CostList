@@ -28,6 +28,7 @@
 		84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718041D69B6FE004ACD8F /* MyDatePickerController.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
 		84B878F11D64882400AA1896 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B878F01D64882400AA1896 /* CoreLocation.framework */; };
+		84BF75181D80093800D4C97D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84BF751A1D80093800D4C97D /* Localizable.strings */; };
 		84CD5D311D6695F0004898C7 /* EditLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD5D2F1D6695F0004898C7 /* EditLocationViewController.m */; };
 		84CD5D321D6695F0004898C7 /* EditLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CD5D301D6695F0004898C7 /* EditLocationViewController.xib */; };
 		84CD5D361D66B317004898C7 /* AddItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CD5D351D66B317004898C7 /* AddItemViewController.storyboard */; };
@@ -102,6 +103,10 @@
 		84B7CB1A1D58C56E0062A48D /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
 		84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		84B878F01D64882400AA1896 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		84BF75141D80079600D4C97D /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/Main.strings"; sourceTree = "<group>"; };
+		84BF75151D80079600D4C97D /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		84BF75191D80093800D4C97D /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		84BF751B1D80099600D4C97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84CD5D2E1D6695F0004898C7 /* EditLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLocationViewController.h; sourceTree = "<group>"; };
 		84CD5D2F1D6695F0004898C7 /* EditLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EditLocationViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		84CD5D301D6695F0004898C7 /* EditLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLocationViewController.xib; sourceTree = "<group>"; };
@@ -212,6 +217,7 @@
 				84068DDB1D580F39003B6F5E /* LaunchScreen.storyboard */,
 				84068DCB1D580F39003B6F5E /* main.m */,
 				84068DDE1D580F39003B6F5E /* Info.plist */,
+				84BF751A1D80093800D4C97D /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				84068DDD1D580F39003B6F5E /* LaunchScreen.storyboard in Resources */,
 				84F65B5D1D76D03E00A626B7 /* SlideMenuViewController.storyboard in Resources */,
 				84CD5D361D66B317004898C7 /* AddItemViewController.storyboard in Resources */,
+				84BF75181D80093800D4C97D /* Localizable.strings in Resources */,
 				84DD5ED31D6A906700CBCA99 /* MyDatePickerController.xib in Resources */,
 				84068DDA1D580F39003B6F5E /* Assets.xcassets in Resources */,
 				84068DD81D580F39003B6F5E /* Main.storyboard in Resources */,
@@ -554,6 +561,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				84068DD71D580F39003B6F5E /* Base */,
+				84BF75141D80079600D4C97D /* zh-Hans-CN */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -562,8 +570,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				84068DDC1D580F39003B6F5E /* Base */,
+				84BF75151D80079600D4C97D /* zh-Hans-CN */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		84BF751A1D80093800D4C97D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84BF75191D80093800D4C97D /* zh-Hans-CN */,
+				84BF751B1D80099600D4C97D /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
