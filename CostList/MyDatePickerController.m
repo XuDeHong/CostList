@@ -28,18 +28,26 @@
     self.view.tintColor = GLOBAL_TINT_COLOR;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy"];
+    NSDate *now = [NSDate date];
     
     //获取当前年份
-    NSDate *now = [NSDate date];
+    [formatter setDateFormat:@"yyyy"];
     NSString *currentYear = [formatter stringFromDate:now];
     int year = [currentYear intValue];
+    //获取当前月份
+    [formatter setDateFormat:@"MM"];
+    NSString *currentMon = [formatter stringFromDate:now];
+    int month = [currentMon intValue];
+    //获取当前日期
+    [formatter setDateFormat:@"dd"];
+    NSString *currentDay = [formatter stringFromDate:now];
+    int day = [currentDay intValue];
     
-    //设置最小年份为前五年，最大年份为未来两年
+    //设置最小年份为前五年，最大年份为当前时间
     int minYear = year-5;
-    int maxYear = year+2;
+    int maxYear = year;
     NSString *minStr = [NSString stringWithFormat:@"%d-01-01",minYear];
-    NSString *maxStr = [NSString stringWithFormat:@"%d-12-31",maxYear];
+    NSString *maxStr = [NSString stringWithFormat:@"%d-%d-%d",maxYear,month,day];
     
     //初始化日期选择器
     [formatter setDateFormat:@"yyyy-MM-dd"];
