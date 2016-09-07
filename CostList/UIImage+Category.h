@@ -12,4 +12,6 @@
 
 +(UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size;   //根据颜色和大小生成一张纯色图片
 
+-(UIImage *) imageCompressForSize:(CGSize)size; //给定size，按比例缩放图片
+
 @end
