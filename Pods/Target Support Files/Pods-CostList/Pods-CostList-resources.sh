@@ -81,10 +81,12 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "KVNProgress/KVNProgress/Resources/KVNProgressView.xib"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/NYTPhotoViewer/NYTPhotoViewer.bundle"
   install_resource "SCNumberKeyBoard/Resources/SCNumberKeyBoard.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "KVNProgress/KVNProgress/Resources/KVNProgressView.xib"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/NYTPhotoViewer/NYTPhotoViewer.bundle"
   install_resource "SCNumberKeyBoard/Resources/SCNumberKeyBoard.bundle"
 fi
 
