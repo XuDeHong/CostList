@@ -1,21 +1,32 @@
 PODS:
+  - FLAnimatedImage (1.0.12)
   - ITRAirSideMenu (1.0.3)
   - KVNProgress (2.3.1)
+  - NYTPhotoViewer (1.2.0):
+    - NYTPhotoViewer/AnimatedGifSupport (= 1.2.0)
+    - NYTPhotoViewer/Core (= 1.2.0)
+  - NYTPhotoViewer/AnimatedGifSupport (1.2.0):
+    - FLAnimatedImage (~> 1.0.12)
+    - NYTPhotoViewer/Core
+  - NYTPhotoViewer/Core (1.2.0)
   - SCNumberKeyBoard (0.5.3)
   - SDAutoLayout (2.1.7)
 
 DEPENDENCIES:
   - ITRAirSideMenu (~> 1.0.3)
   - KVNProgress (~> 2.3.1)
+  - NYTPhotoViewer (~> 1.2.0)
   - SCNumberKeyBoard (~> 0.5.3)
   - SDAutoLayout (~> 2.1.7)
 
 SPEC CHECKSUMS:
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   ITRAirSideMenu: e888f259559379bc73c7509f122119ab0f8b02a6
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+  NYTPhotoViewer: 323217e4590a1586eb3c9674b3fefb0fb8b57896
   SCNumberKeyBoard: 0d246ca7cc55b603d67f76ed9d7f0c4b5de26eaf
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
 
-PODFILE CHECKSUM: db577f6ef63109f4188a0fee4779bf6b89643b81
+PODFILE CHECKSUM: c14019c26908083f7ab769ad8f747d707466c297
 
 COCOAPODS: 1.1.0.beta.1

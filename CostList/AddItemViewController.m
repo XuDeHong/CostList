@@ -15,6 +15,8 @@
 #import "ChooseIconViewController.h"
 #import "SCNumberKeyBoard.h"
 #import "MyImagePickerController.h"
+#import "NYTPhotoViewer/NYTPhotosViewController.h"
+#import "MyPhoto.h"
 
 #define NavigationBarHeight self.navigationController.navigationBar.height  //导航栏高度
 
@@ -40,7 +42,7 @@
 
 #define LocationLabelUpAndDownWhileSpace 28 //位置cell的标签上边和下边空隙之和
 
-@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate,ChooseIconViewControllerDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate,ChooseIconViewControllerDelegate,NYTPhotosViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;   //金额
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField; //备注
@@ -300,6 +302,13 @@
 
 - (void)showPhotoMenu
 {
+    UIAlertAction *showOriginImage=nil; //查看大图按钮
+    if(self.imageView.hidden == NO)
+    {
+       showOriginImage = [UIAlertAction actionWithTitle:@"查看大图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+           [self showPhotoViewController];
+        }];
+    }
     //测试摄像头是否可用
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -311,14 +320,53 @@
         }];
         UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         
+        if(self.imageView.hidden == NO) [controller addAction:showOriginImage];
         [controller addAction:takePhotoBtn];
         [controller addAction:choosePhotoBtn];
         [controller addAction:cancelBtn];
         
         [self presentViewController:controller animated:YES completion:nil];
     } else {
-        [self choosePhotoFromLibrary];  //从相册中选择
+        if(self.imageView.hidden == YES)
+            [self choosePhotoFromLibrary];  //从相册中选择
+        else
+        {
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction *choosePhotoBtn = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                [self choosePhotoFromLibrary];  //从相册中选择
+            }];
+            UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [controller addAction:showOriginImage];
+            [controller addAction:choosePhotoBtn];
+            [controller addAction:cancelBtn];
+            
+            [self presentViewController:controller animated:YES completion:nil];
+        }
     }
+}
+
+-(void)showPhotoViewController
+{
+    //创建图片模型
+    MyPhoto *photo = [[MyPhoto alloc] init];
+    photo.image = _image;
+    
+     NYTPhotosViewController *photoViewController = [[NYTPhotosViewController alloc] initWithPhotos:@[photo] initialPhoto:nil delegate:self];
+    
+    UIBarButtonItem *deleteBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deletePhoto)];
+    photoViewController.rightBarButtonItem = deleteBtn;    //设置查看大图时右侧按钮
+
+    [self presentViewController:photoViewController animated:YES completion:nil];
+}
+
+-(void)deletePhoto
+{
+    _image = nil;
+    self.imageView.hidden = YES;
+    self.photoLabel.hidden = NO;
+    [self.tableView reloadData];    //更新tableview
+    [self enableTableViewScroll]; //检测是否可滚动
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)showImage:(UIImage *)image
