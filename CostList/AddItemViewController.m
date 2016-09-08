@@ -302,13 +302,6 @@
 
 - (void)showPhotoMenu
 {
-    UIAlertAction *showOriginImage=nil; //查看大图按钮
-    if(self.imageView.hidden == NO)
-    {
-       showOriginImage = [UIAlertAction actionWithTitle:@"查看大图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-           [self showPhotoViewController];
-        }];
-    }
     //测试摄像头是否可用
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -320,7 +313,14 @@
         }];
         UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         
-        if(self.imageView.hidden == NO) [controller addAction:showOriginImage];
+        if(self.imageView.hidden == NO)
+        {
+            //查看大图按钮
+            UIAlertAction *showOriginImage = [UIAlertAction actionWithTitle:@"查看大图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                [self showPhotoViewController];
+            }];
+            [controller addAction:showOriginImage];
+        }
         [controller addAction:takePhotoBtn];
         [controller addAction:choosePhotoBtn];
         [controller addAction:cancelBtn];
@@ -336,7 +336,15 @@
                 [self choosePhotoFromLibrary];  //从相册中选择
             }];
             UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            [controller addAction:showOriginImage];
+            
+            if(self.imageView.hidden == NO)
+            {
+                //查看大图按钮
+                UIAlertAction *showOriginImage = [UIAlertAction actionWithTitle:@"查看大图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    [self showPhotoViewController];
+                }];
+                [controller addAction:showOriginImage];
+            }
             [controller addAction:choosePhotoBtn];
             [controller addAction:cancelBtn];
             
