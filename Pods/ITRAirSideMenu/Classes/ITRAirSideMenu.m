@@ -558,10 +558,12 @@
                     [self hideMenuViewController];
                 } else {
                     if (self.leftMenuViewController) {
-                        [self showLeftMenuViewController];
+                        if(!self.isLeftMenuVisible)
+                            [self showLeftMenuViewController];
+                        else
+                            [self hideMenuViewController];
                     }
                 }
-            
         }
     }
     
