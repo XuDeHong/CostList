@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class AddItemViewController;
+
+@protocol AddItemViewControllerDelegate <NSObject>
+
+-(void)addItemViewController:(AddItemViewController *)controller saveBtnDidClickAndSaveData:(NSString *)dataModel;
+
+@end
+
 @interface AddItemViewController : UITableViewController
+
+@property (nonatomic,weak) id <AddItemViewControllerDelegate> delegate;//指向代理
 
 @end
