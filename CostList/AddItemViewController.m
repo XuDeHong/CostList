@@ -184,8 +184,8 @@
     configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
     configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
     [KVNProgress setConfiguration:configuration];
+    [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:[self getDataToSave]];
     [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
-        [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:[self getDataToSave]];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
 }
@@ -194,11 +194,30 @@
 {
     CostItem *dataModel = [NSEntityDescription insertNewObjectForEntityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
     //分类
-    dataModel.category = [self.imageView.image accessibilityIdentifier];
+    if(![self.chooseCategory.text isEqualToString:@"选择类别"])
+    {
+        dataModel.category = [self.chooseIcon accessibilityIdentifier];
+    }
+    else
+        dataModel.category = @"nothing";
     //金额
-    dataModel.money = @([self.moneyTextField.text doubleValue]);
-    // 备注
-    dataModel.comment = self.commentTextField.text;
+    if([self.chooseCategory.textColor isEqual:[UIColor redColor]])
+        dataModel.money = @(-[self.moneyTextField.text doubleValue]);
+    else
+        dataModel.money = @([self.moneyTextField.text doubleValue]);
+    //备注
+    if([self.commentTextField.text isEqualToString:@""])
+    {
+        //获取分类的名称
+        if([dataModel.category isEqualToString:@"nothing"])
+            dataModel.comment = @"两者都没选";   //需要完善
+        else
+            dataModel.comment = @"分类名称";    //需要完善
+    }
+    else
+    {
+        dataModel.comment = self.commentTextField.text;
+    }
     //图片
     dataModel.photoId = @-1;
     if(_image != nil)
@@ -219,8 +238,15 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     dataModel.date = [formatter dateFromString:self.timeLabel.text];
     //位置
-    dataModel.location = self.locationLabel.text;
+    if(![self.locationLabel.textColor isEqual:[UIColor lightGrayColor]])
+        dataModel.location = self.locationLabel.text;
     
+    NSError *error;
+    if(![self.managedObjectContext save:&error])
+    {
+        FATAL_CORE_DATA_ERROR(error);   //处理错误情况
+        return nil;
+    }
     return dataModel;
 }
 
