@@ -15,6 +15,9 @@
 #import "UIViewController+Category.h"
 #import "ITRAirSideMenu.h"
 
+//CoreData错误通知
+NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectContextSaveDidFailNotification";
+
 
 @interface AppDelegate ()
 
@@ -30,6 +33,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //设置当接收到CoreData错误通知时调用方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fatalCoreDataError:) name:ManagedObjectContextSaveDidFailNotification object:nil];
     
     //获取TabBarController
     MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
@@ -97,6 +103,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+-(void)fatalCoreDataError:(NSNotification *)notification
+{
+    //处理错误情况
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"内部错误" message:@"There was a fatal error in the app and it cannot continue.\n\nPress OK to terminate the app. Sorry for the inconvenience." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        abort();
+    }];
+    [controller addAction:action];
+    [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
+
+}
+
 
 #pragma mark - Core Data
 -(NSManagedObjectModel *)managedObjectModel

@@ -160,11 +160,28 @@ static NSString *ListCellIdentifier = @"ListCell";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CostItem *dataModel = self.dataModelArray[indexPath.row];   //获取数据模型
+    
     ListCell *cell = (ListCell *)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
-    cell.imageView.image = [UIImage imageNamed:@"daily"];
-    cell.number.text = @"-1";
-    cell.title.text = self.dataModelArray[indexPath.row];
-    cell.imageIndicate.hidden = YES;
+    cell.imageView.image = [UIImage imageNamed:dataModel.category];
+    NSNumber *money = dataModel.money;
+    cell.number.text = [NSString stringWithFormat:@"%.2lf",[money doubleValue]];
+    if([money doubleValue] < 0)
+    {
+        cell.number.textColor = [UIColor redColor];
+    }
+    else if([money doubleValue] > 0)
+    {
+        cell.number.textColor = [UIColor greenColor];
+    }
+    else
+    {
+        cell.number.textColor = [UIColor lightGrayColor];
+    }
+
+    cell.title.text = dataModel.comment;
+    if(![dataModel hasPhoto]) cell.imageIndicate.hidden = YES;
+    else    cell.imageIndicate.hidden = NO;
     
     return cell;
 }

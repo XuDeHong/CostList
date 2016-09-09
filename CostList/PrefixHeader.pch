@@ -38,4 +38,8 @@
 //月份选择器NIB名称
 #define MonthPickerViewControllerNibName @"MonthPickerViewController"
 
+//处理CoreData错误
+extern NSString * const ManagedObjectContextSaveDidFailNotification;
+#define FATAL_CORE_DATA_ERROR(__error__) NSLog(@"*** Fatal error in %s:%d\n%@\n%@",__FILE__, __LINE__, error, [error userInfo]);[[NSNotificationCenter defaultCenter] postNotificationName:ManagedObjectContextSaveDidFailNotification object:error];
+
 #endif /* PrefixHeader_pch */
