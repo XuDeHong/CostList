@@ -9,6 +9,7 @@
 #import "ListTableViewController.h"
 #import "MonthPickerViewController.h"
 #import "MyTabBarController.h"
+#import "ListCell.h"
 
 
 static NSString *ListCellIdentifier = @"ListCell";
@@ -19,6 +20,8 @@ static NSString *ListCellIdentifier = @"ListCell";
 @property (weak,nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong,nonatomic) MonthPickerViewController *monthPickerViewController;
 @property (weak,nonatomic) MyTabBarController *myTabBarController;
+@property (weak, nonatomic) IBOutlet UITableView *listTableView;
+
 @end
 
 @implementation ListTableViewController
@@ -129,26 +132,43 @@ static NSString *ListCellIdentifier = @"ListCell";
     [self.monthPickerButton setTitle:[NSString stringWithFormat:@"%@",yearAndMonth] forState:UIControlStateNormal];
 }
 
+-(void)addDataModelToTableView:(NSString *)dataModel
+{
+    [self.dataModelArray addObject:dataModel];
+    [self.listTableView reloadData];
+}
+
+-(NSMutableArray *)dataModelArray
+{
+    if(!_dataModelArray)
+    {
+        _dataModelArray = [[NSMutableArray alloc] initWithCapacity:20];
+    }
+    
+    return _dataModelArray;
+}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.dataModelArray count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+    ListCell *cell = (ListCell *)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
+    cell.imageView.image = [UIImage imageNamed:@"daily"];
+    cell.number.text = @"-1";
+    cell.title.text = self.dataModelArray[indexPath.row];
+    cell.imageIndicate.hidden = YES;
     
     return cell;
 }
-*/
+
 
 
 @end

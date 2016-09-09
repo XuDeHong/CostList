@@ -10,8 +10,9 @@
 
 @interface ListCell : UITableViewCell
 
-@property (nonatomic,strong)IBOutlet UIImageView *icon; //图标
-@property (nonatomic,strong)IBOutlet UILabel *title;    //标题
 @property (nonatomic,strong)IBOutlet UILabel *number;   //支出金额
+@property (nonatomic,strong)IBOutlet UILabel *title;    //标题
+
+@property (nonatomic,strong)IBOutlet UIImageView *imageIndicate; //图片标识
 
 @end

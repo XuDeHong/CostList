@@ -184,6 +184,7 @@
     configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
     [KVNProgress setConfiguration:configuration];
     [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
+        [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:@"text"];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
 }
