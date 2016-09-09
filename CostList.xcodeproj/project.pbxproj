@@ -25,7 +25,6 @@
 		8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487858B1D58C96800A2EBFB /* MyTabBar.m */; };
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		8498A6751D81732F00F9607A /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A6741D81732F00F9607A /* ListCell.m */; };
-		8498A67E1D8175CC00F9607A /* ListImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A67D1D8175CC00F9607A /* ListImageCell.m */; };
 		84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718011D69A247004ACD8F /* UITextView+Category.m */; };
 		84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718041D69B6FE004ACD8F /* MyDatePickerController.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
@@ -101,8 +100,6 @@
 		848785931D58D25100A2EBFB /* UIView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
 		8498A6731D81732F00F9607A /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		8498A6741D81732F00F9607A /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
-		8498A67C1D8175CC00F9607A /* ListImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListImageCell.h; sourceTree = "<group>"; };
-		8498A67D1D8175CC00F9607A /* ListImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListImageCell.m; sourceTree = "<group>"; };
 		84B718001D69A247004ACD8F /* UITextView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Category.h"; sourceTree = "<group>"; };
 		84B718011D69A247004ACD8F /* UITextView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Category.m"; sourceTree = "<group>"; };
 		84B718031D69B6FE004ACD8F /* MyDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDatePickerController.h; sourceTree = "<group>"; };
@@ -296,8 +293,6 @@
 				8487858B1D58C96800A2EBFB /* MyTabBar.m */,
 				8498A6731D81732F00F9607A /* ListCell.h */,
 				8498A6741D81732F00F9607A /* ListCell.m */,
-				8498A67C1D8175CC00F9607A /* ListImageCell.h */,
-				8498A67D1D8175CC00F9607A /* ListImageCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -533,7 +528,6 @@
 				84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */,
 				84EA90D81D769B9800282904 /* SlideMenuViewController.m in Sources */,
 				84068E051D58135D003B6F5E /* ChartTableViewController.m in Sources */,
-				8498A67E1D8175CC00F9607A /* ListImageCell.m in Sources */,
 				84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */,
 				84068E021D58130E003B6F5E /* ListTableViewController.m in Sources */,
 				84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */,

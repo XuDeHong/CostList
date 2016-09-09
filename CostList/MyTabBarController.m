@@ -11,8 +11,10 @@
 #import "AddItemViewController.h"
 #import "UIViewController+Category.h"
 #import "MyNavigationController.h"
+#import "ListTableViewController.h"
+#import "ChartTableViewController.h"
 
-@interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
+@interface MyTabBarController () <MyTabBarDelegate,AddItemViewControllerDelegate> //实现自定义TabBar协议
 
 @end
 
@@ -74,19 +76,37 @@
 //    [self presentViewController:controller animated:YES completion:nil];
     
     //创建添加记录页面视图控制器，从AddItemViewController StoryBoard中的单独控制器创建
-    MyNavigationController *addItemViewController = (MyNavigationController *)[AddItemViewController instanceFromStoryboardV2];
-    CGSize backgroundSize = CGSizeMake(addItemViewController.navigationBar.width, addItemViewController.navigationBar.height + STATUS_BAR_HEIGHT);
+    MyNavigationController *addItemNavigationController = (MyNavigationController *)[AddItemViewController instanceFromStoryboardV2];
+    CGSize backgroundSize = CGSizeMake(addItemNavigationController.navigationBar.width, addItemNavigationController.navigationBar.height + STATUS_BAR_HEIGHT);
     UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
     //设置导航栏背景图片
-    [addItemViewController.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
+    [addItemNavigationController.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
     //设置导航栏不透明
-    [addItemViewController.navigationBar setTranslucent:NO];
+    [addItemNavigationController.navigationBar setTranslucent:NO];
     //设置导航栏按钮字体颜色
-    addItemViewController.navigationBar.tintColor = [UIColor whiteColor];
+    addItemNavigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置导航栏标题字体颜色
-    [addItemViewController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [addItemNavigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    //设置代理
+    AddItemViewController *controller = (AddItemViewController *)addItemNavigationController.topViewController;
+    controller.delegate = self;
     //显示控制器
-    [self presentViewController:addItemViewController animated:YES completion:nil];
+    [self presentViewController:addItemNavigationController animated:YES completion:nil];
+}
+
+#pragma mark - AddItemViewController Delegate
+-(void)addItemViewController:(AddItemViewController *)controller saveBtnDidClickAndSaveData:(NSString *)dataModel
+{
+    NSLog(@"%@",dataModel);
+    if(self.selectedIndex == 1) //如果当前处于图表界面，则转换到明细界面
+    {
+        self.selectedIndex = 0;
+        NSLog(@"%d",123);
+    }
+    
+    //获取明细页面控制器
+    ListTableViewController *listController = (ListTableViewController *)self.selectedViewController;
+    [listController addDataModelToTableView:dataModel];
 }
 
 @end
