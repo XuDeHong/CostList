@@ -14,6 +14,7 @@
 
 #import "UIImage+Category.h"
 #import "UIView+Category.h"
+#import <CoreData/CoreData.h>
 
 //定义APP全局主题tint color
 #define GLOBAL_TINT_COLOR [UIColor colorWithRed:89/255.0 green:217/255.0 blue:247/255.0 alpha:1.0]

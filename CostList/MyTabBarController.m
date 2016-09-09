@@ -16,6 +16,8 @@
 
 @interface MyTabBarController () <MyTabBarDelegate,AddItemViewControllerDelegate> //实现自定义TabBar协议
 
+@property (nonatomic,strong) ListTableViewController *listController;
+
 @end
 
 @implementation MyTabBarController
@@ -44,6 +46,9 @@
     //利用KVC替换默认的TabBar
     [self setValue:myTabBar forKey:@"tabBar"];
     
+    self.listController = self.viewControllers[0];  //获取明细页面控制器
+    
+    self.listController.managedObjectContext = self.managedObjectContext;   //传递指针
 }
 
 -(void)viewDidLayoutSubviews
@@ -97,16 +102,13 @@
 #pragma mark - AddItemViewController Delegate
 -(void)addItemViewController:(AddItemViewController *)controller saveBtnDidClickAndSaveData:(NSString *)dataModel
 {
-    NSLog(@"%@",dataModel);
     if(self.selectedIndex == 1) //如果当前处于图表界面，则转换到明细界面
     {
         self.selectedIndex = 0;
-        NSLog(@"%d",123);
     }
     
-    //获取明细页面控制器
-    ListTableViewController *listController = (ListTableViewController *)self.selectedViewController;
-    [listController addDataModelToTableView:dataModel];
+    //调用明细页面方法
+    [self.listController addDataModelToTableView:dataModel];
 }
 
 @end
