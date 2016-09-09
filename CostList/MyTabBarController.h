@@ -12,6 +12,7 @@
 @interface MyTabBarController : UITabBarController
 
 @property (weak,nonatomic) ITRAirSideMenu *itrAirSideMenu;  //指向侧栏
+@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 
 -(void)showSlideMenuController;
 
