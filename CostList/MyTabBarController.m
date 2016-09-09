@@ -95,12 +95,13 @@
     //设置代理
     AddItemViewController *controller = (AddItemViewController *)addItemNavigationController.topViewController;
     controller.delegate = self;
+    controller.managedObjectContext = self.managedObjectContext;    //传递指针
     //显示控制器
     [self presentViewController:addItemNavigationController animated:YES completion:nil];
 }
 
 #pragma mark - AddItemViewController Delegate
--(void)addItemViewController:(AddItemViewController *)controller saveBtnDidClickAndSaveData:(NSString *)dataModel
+-(void)addItemViewController:(AddItemViewController *)controller saveBtnDidClickAndSaveData:(CostItem *)dataModel
 {
     if(self.selectedIndex == 1) //如果当前处于图表界面，则转换到明细界面
     {

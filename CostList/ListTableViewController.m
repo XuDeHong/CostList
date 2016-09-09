@@ -132,7 +132,7 @@ static NSString *ListCellIdentifier = @"ListCell";
     [self.monthPickerButton setTitle:[NSString stringWithFormat:@"%@",yearAndMonth] forState:UIControlStateNormal];
 }
 
--(void)addDataModelToTableView:(NSString *)dataModel
+-(void)addDataModelToTableView:(CostItem *)dataModel
 {
     [self.dataModelArray addObject:dataModel];
     [self.listTableView reloadData];

@@ -18,6 +18,7 @@
 #import "NYTPhotoViewer/NYTPhotosViewController.h"
 #import "MyPhoto.h"
 
+
 #define NavigationBarHeight self.navigationController.navigationBar.height  //导航栏高度
 
 #define ImageViewWidth 180  //图片宽度
@@ -184,9 +185,43 @@
     configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
     [KVNProgress setConfiguration:configuration];
     [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
-        [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:@"text"];
+        [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:[self getDataToSave]];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+-(CostItem *)getDataToSave
+{
+    CostItem *dataModel = [NSEntityDescription insertNewObjectForEntityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+    //分类
+    dataModel.category = [self.imageView.image accessibilityIdentifier];
+    //金额
+    dataModel.money = @([self.moneyTextField.text doubleValue]);
+    // 备注
+    dataModel.comment = self.commentTextField.text;
+    //图片
+    dataModel.photoId = @-1;
+    if(_image != nil)
+    {
+        if(![dataModel hasPhoto])
+        {
+            dataModel.photoId = @([CostItem nextPhotoId]);
+        }
+        NSData *imageData = UIImageJPEGRepresentation(_image, 0.5);
+        NSError *error;
+        if(![imageData writeToFile:[dataModel photoPath] options:NSDataWritingAtomic error:&error])
+        {
+            NSLog(@"Error writing file:%@",error);
+        }
+    }
+    //时间
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    dataModel.date = [formatter dateFromString:self.timeLabel.text];
+    //位置
+    dataModel.location = self.locationLabel.text;
+    
+    return dataModel;
 }
 
 -(void)enableTableViewScroll
@@ -215,6 +250,7 @@
 -(void)chooseIconViewController:(ChooseIconViewController *)controller didChooseIcon:(NSString *)iconName andDisplayName:(NSAttributedString *)displayName
 {
     self.chooseIcon.image = [UIImage imageNamed:iconName];  //更新图标
+    [self.chooseIcon setAccessibilityIdentifier:iconName];  //记录图标在Assets.xcassets的名字
     self.chooseCategory.text = [displayName string];    //更新文本
     NSDictionary *dict = [displayName attributesAtIndex:0 effectiveRange:NULL];
     self.chooseCategory.textColor = dict[@"NSColor"];   //设置颜色
