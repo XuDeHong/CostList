@@ -111,14 +111,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="PFq-hz-hNH" firstAttribute="top" secondItem="KWt-fO-Sqi" secondAttribute="topMargin" constant="28" id="0O5-bw-HFz"/>
                                                 <constraint firstItem="V22-ch-PQ8" firstAttribute="leading" secondItem="lA2-kc-Xyz" secondAttribute="trailing" constant="6" id="6JU-zs-Dzh"/>
                                                 <constraint firstItem="lA2-kc-Xyz" firstAttribute="top" secondItem="KWt-fO-Sqi" secondAttribute="topMargin" constant="4" id="FzO-pj-q8Y"/>
-                                                <constraint firstItem="6Dc-yn-jgH" firstAttribute="centerY" secondItem="KWt-fO-Sqi" secondAttribute="centerY" id="SGw-f1-nyz"/>
+                                                <constraint firstItem="6Dc-yn-jgH" firstAttribute="centerY" secondItem="KWt-fO-Sqi" secondAttribute="centerY" id="PVI-ug-CD2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6Dc-yn-jgH" secondAttribute="trailing" constant="10" id="QYH-LL-Pkn"/>
+                                                <constraint firstItem="6Dc-yn-jgH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PFq-hz-hNH" secondAttribute="trailing" constant="2" id="XgD-Wz-NZX"/>
+                                                <constraint firstItem="PFq-hz-hNH" firstAttribute="top" secondItem="KWt-fO-Sqi" secondAttribute="topMargin" constant="28" id="XgT-5A-b1t"/>
                                                 <constraint firstItem="lA2-kc-Xyz" firstAttribute="leading" secondItem="KWt-fO-Sqi" secondAttribute="leadingMargin" constant="46" id="g5Y-T8-yNd"/>
+                                                <constraint firstItem="PFq-hz-hNH" firstAttribute="leading" secondItem="KWt-fO-Sqi" secondAttribute="leadingMargin" constant="46" id="hoz-JA-N41"/>
                                                 <constraint firstItem="V22-ch-PQ8" firstAttribute="top" secondItem="KWt-fO-Sqi" secondAttribute="topMargin" constant="8" id="l7S-b5-TQU"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="6Dc-yn-jgH" secondAttribute="trailing" constant="10" id="qpH-Mn-bBe"/>
-                                                <constraint firstItem="PFq-hz-hNH" firstAttribute="leading" secondItem="KWt-fO-Sqi" secondAttribute="leadingMargin" constant="46" id="ykn-7E-eyR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
