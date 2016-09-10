@@ -81,6 +81,53 @@
                                             <outlet property="title" destination="T7o-3t-K60" id="LDV-an-vlT"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListCommentCell" id="Vap-KF-Rfp" customClass="ListCommentCell">
+                                        <rect key="frame" x="0.0" y="93" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vap-KF-Rfp" id="KWt-fO-Sqi">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dc-yn-jgH">
+                                                    <rect key="frame" x="292" y="21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFq-hz-hNH">
+                                                    <rect key="frame" x="54" y="36" width="31" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageIndicate" translatesAutoresizingMaskIntoConstraints="NO" id="V22-ch-PQ8">
+                                                    <rect key="frame" x="102" y="16" width="12" height="11"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lA2-kc-Xyz">
+                                                    <rect key="frame" x="54" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="V22-ch-PQ8" firstAttribute="leading" secondItem="lA2-kc-Xyz" secondAttribute="trailing" constant="6" id="6JU-zs-Dzh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6Dc-yn-jgH" secondAttribute="trailing" id="7GF-V8-e7L"/>
+                                                <constraint firstItem="lA2-kc-Xyz" firstAttribute="top" secondItem="KWt-fO-Sqi" secondAttribute="topMargin" constant="4" id="FzO-pj-q8Y"/>
+                                                <constraint firstItem="lA2-kc-Xyz" firstAttribute="leading" secondItem="KWt-fO-Sqi" secondAttribute="leadingMargin" constant="46" id="g5Y-T8-yNd"/>
+                                                <constraint firstItem="6Dc-yn-jgH" firstAttribute="centerY" secondItem="KWt-fO-Sqi" secondAttribute="centerY" id="gHp-bm-2pj"/>
+                                                <constraint firstItem="PFq-hz-hNH" firstAttribute="top" secondItem="KWt-fO-Sqi" secondAttribute="topMargin" constant="28" id="kQi-2L-CQV"/>
+                                                <constraint firstItem="V22-ch-PQ8" firstAttribute="top" secondItem="KWt-fO-Sqi" secondAttribute="topMargin" constant="8" id="l7S-b5-TQU"/>
+                                                <constraint firstItem="PFq-hz-hNH" firstAttribute="leading" secondItem="KWt-fO-Sqi" secondAttribute="leadingMargin" constant="46" id="lba-Hl-eF5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="comment" destination="PFq-hz-hNH" id="oQA-ZN-xzc"/>
+                                            <outlet property="imageIndicate" destination="V22-ch-PQ8" id="tdE-YH-iWl"/>
+                                            <outlet property="number" destination="6Dc-yn-jgH" id="h9j-n0-Jfd"/>
+                                            <outlet property="title" destination="lA2-kc-Xyz" id="K3B-JG-1M3"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Xop-uj-W6F" id="H7T-Su-ecy"/>
