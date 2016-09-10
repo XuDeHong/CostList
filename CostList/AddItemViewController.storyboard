@@ -48,7 +48,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="510" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择类别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sPo-G4-kZc">
-                                                    <rect key="frame" x="46" y="14" width="64" height="20"/>
+                                                    <rect key="frame" x="46" y="14" width="72" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,11 +74,11 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="金额（元）" textAlignment="natural" minimumFontSize="17" id="EJ2-RC-XsV">
                                                     <rect key="frame" x="46" y="9" width="321" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="dismissKeyBoard:" destination="ggu-TA-TOI" eventType="editingDidEndOnExit" id="tgJ-mk-H6v"/>
-                                                        <outlet property="delegate" destination="ggu-TA-TOI" id="mWR-s4-TzV"/>
+                                                        <outlet property="delegate" destination="ggu-TA-TOI" id="ANo-iF-Gmf"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -98,7 +98,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="备注" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="sPs-zV-hBQ">
                                                     <rect key="frame" x="46" y="9" width="321" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="dismissKeyBoard:" destination="ggu-TA-TOI" eventType="editingDidEndOnExit" id="Rgf-ua-Ewb"/>
@@ -197,7 +197,7 @@
                                 <action selector="cancelButtonClick:" destination="ggu-TA-TOI" id="eIM-XE-fbg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="保存" id="nm3-C4-Lyg">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="nm3-C4-Lyg">
                             <connections>
                                 <action selector="saveButtonClick:" destination="ggu-TA-TOI" id="Rgx-o3-F1M"/>
                             </connections>

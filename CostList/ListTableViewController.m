@@ -163,23 +163,22 @@ static NSString *ListCellIdentifier = @"ListCell";
     CostItem *dataModel = self.dataModelArray[indexPath.row];   //获取数据模型
     
     ListCell *cell = (ListCell *)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
+    //图标
     cell.imageView.image = [UIImage imageNamed:dataModel.category];
+    //支出金额
     NSNumber *money = dataModel.money;
     cell.number.text = [NSString stringWithFormat:@"%.2lf",[money doubleValue]];
     if([money doubleValue] < 0)
     {
         cell.number.textColor = [UIColor redColor];
     }
-    else if([money doubleValue] > 0)
+    else
     {
         cell.number.textColor = [UIColor greenColor];
     }
-    else
-    {
-        cell.number.textColor = [UIColor lightGrayColor];
-    }
-
-    cell.title.text = dataModel.comment;
+    //标题
+    cell.title.text = dataModel.categoryName;
+    //图片标识
     if(![dataModel hasPhoto]) cell.imageIndicate.hidden = YES;
     else    cell.imageIndicate.hidden = NO;
     

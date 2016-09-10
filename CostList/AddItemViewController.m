@@ -43,7 +43,7 @@
 
 #define LocationLabelUpAndDownWhileSpace 28 //位置cell的标签上边和下边空隙之和
 
-@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,UITextFieldDelegate,ChooseIconViewControllerDelegate,NYTPhotosViewControllerDelegate>
+@interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,ChooseIconViewControllerDelegate,NYTPhotosViewControllerDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;   //金额
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField; //备注
@@ -176,48 +176,67 @@
 
 - (IBAction)saveButtonClick:(id)sender {
     [self.view endEditing:YES]; //键盘消失
+    if([self textCategoryAndMoney]) //测试类别是否选择，金额是否正确输入
+    {
+        KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+        configuration.circleSize = 60.0f;   //设置success图标大小
+        configuration.successColor = GLOBAL_TINT_COLOR;   //设置success图标颜色
+        configuration.minimumSuccessDisplayTime = 0.8f; //设置动画时间
+        configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
+        configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
+        configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
+        [KVNProgress setConfiguration:configuration];
+        [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:[self getDataToSave]];
+        [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
+}
+
+-(BOOL)textCategoryAndMoney
+{
     KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
     configuration.circleSize = 60.0f;   //设置success图标大小
-    configuration.successColor = GLOBAL_TINT_COLOR;   //设置success图标颜色
-    configuration.minimumSuccessDisplayTime = 0.8f; //设置动画时间
+    configuration.errorColor = [UIColor redColor];   //设置success图标颜色
+    configuration.minimumErrorDisplayTime = 0.8f; //设置动画时间
     configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
     configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
     configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
     [KVNProgress setConfiguration:configuration];
-    [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:[self getDataToSave]];
-    [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }];
+
+    if([self.chooseCategory.text isEqualToString:@"选择类别"])
+    {
+        [KVNProgress showErrorWithStatus:@"请选择类别" completion:nil];
+        return NO;
+    }
+    else if([self.moneyTextField.text isEqualToString:@""])
+    {
+        [KVNProgress showErrorWithStatus:@"请输入金额" completion:nil];
+        return NO;
+    }
+    else if([self.moneyTextField.text isEqualToString:@"0"]  || [self.moneyTextField.text isEqualToString:@"."])
+    {
+        [KVNProgress showErrorWithStatus:@"请输入正确金额" completion:nil];
+        return NO;
+    }
+    else
+        return YES;
 }
 
 -(CostItem *)getDataToSave
 {
     CostItem *dataModel = [NSEntityDescription insertNewObjectForEntityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
     //分类
-    if(![self.chooseCategory.text isEqualToString:@"选择类别"])
-    {
-        dataModel.category = [self.chooseIcon accessibilityIdentifier];
-    }
-    else
-        dataModel.category = @"nothing";
+    dataModel.category = [self.chooseIcon accessibilityIdentifier];
+    //分类名称
+    dataModel.categoryName = self.chooseCategory.text;
     //金额
     if([self.chooseCategory.textColor isEqual:[UIColor redColor]])
         dataModel.money = @(-[self.moneyTextField.text doubleValue]);
     else
         dataModel.money = @([self.moneyTextField.text doubleValue]);
     //备注
-    if([self.commentTextField.text isEqualToString:@""])
-    {
-        //获取分类的名称
-        if([dataModel.category isEqualToString:@"nothing"])
-            dataModel.comment = @"两者都没选";   //需要完善
-        else
-            dataModel.comment = @"分类名称";    //需要完善
-    }
-    else
-    {
-        dataModel.comment = self.commentTextField.text;
-    }
+    dataModel.comment = self.commentTextField.text;
     //图片
     dataModel.photoId = @-1;
     if(_image != nil)
@@ -310,20 +329,17 @@
 
 - (BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    //只有金额输入框设置了delegate，所以只有填写金额时才触发这个方法，只有金额输入框有内容时才使“保存”按钮可见可交互
+    //金额最大支持9位整数和两位小数
     NSString *newText = [theTextField.text stringByReplacingCharactersInRange:range withString:string];
-    self.saveButton.enabled = ([newText length] > 0);
+    if(![newText containsString:@"."])
+    {
+        if([newText length] > 9)
+        {
+            return NO;
+        }
+    }
     
     return YES;
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if([textField.text isEqualToString:@""])
-    {
-        //当编辑完成时，金额输入框为空则“保存”按钮不可见不可交互
-        self.saveButton.enabled = NO;
-    }
 }
 
 #pragma mark - About add photo methods
