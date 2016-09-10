@@ -23,6 +23,7 @@
 		843084E01D5DA3F70091F0BC /* MonthPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843084DE1D5DA3F70091F0BC /* MonthPickerViewController.m */; };
 		84434EDA1D83F21100F989BE /* CostItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 84434ED71D83F21100F989BE /* CostItem+CoreDataProperties.m */; };
 		84434EDB1D83F21100F989BE /* CostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84434ED91D83F21100F989BE /* CostItem.m */; };
+		84434EDE1D8407AC00F989BE /* ListCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84434EDD1D8407AC00F989BE /* ListCommentCell.m */; };
 		845E62881D6313DD00224162 /* UIImage+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E62871D6313DD00224162 /* UIImage+Category.m */; };
 		847616871D82A705001B456F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847616851D82A705001B456F /* DataModel.xcdatamodeld */; };
 		847616901D82A9AC001B456F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8476168F1D82A9AC001B456F /* CoreData.framework */; };
@@ -98,6 +99,8 @@
 		84434ED71D83F21100F989BE /* CostItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CostItem+CoreDataProperties.m"; sourceTree = "<group>"; };
 		84434ED81D83F21100F989BE /* CostItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostItem.h; sourceTree = "<group>"; };
 		84434ED91D83F21100F989BE /* CostItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostItem.m; sourceTree = "<group>"; };
+		84434EDC1D8407AC00F989BE /* ListCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCommentCell.h; sourceTree = "<group>"; };
+		84434EDD1D8407AC00F989BE /* ListCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCommentCell.m; sourceTree = "<group>"; };
 		844CC22A1D61F11A00B2050B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		845E62861D6313DD00224162 /* UIImage+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Category.h"; sourceTree = "<group>"; };
 		845E62871D6313DD00224162 /* UIImage+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Category.m"; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 				8487858B1D58C96800A2EBFB /* MyTabBar.m */,
 				8498A6731D81732F00F9607A /* ListCell.h */,
 				8498A6741D81732F00F9607A /* ListCell.m */,
+				84434EDC1D8407AC00F989BE /* ListCommentCell.h */,
+				84434EDD1D8407AC00F989BE /* ListCommentCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 			files = (
 				84E4AFEE1D814BB00014507A /* MyPhoto.m in Sources */,
 				8498A6751D81732F00F9607A /* ListCell.m in Sources */,
+				84434EDE1D8407AC00F989BE /* ListCommentCell.m in Sources */,
 				84CD5D391D66C296004898C7 /* UIViewController+Category.m in Sources */,
 				84CD5D311D6695F0004898C7 /* EditLocationViewController.m in Sources */,
 				84434EDA1D83F21100F989BE /* CostItem+CoreDataProperties.m in Sources */,
