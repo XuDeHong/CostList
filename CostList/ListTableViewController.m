@@ -93,6 +93,11 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+}
+
+-(void)textWhetherHasData
+{
     //没有数据时的占位图
     UIImageView *noDataPlaceholder = [[UIImageView alloc] initWithFrame:CGRectMake(self.listTableView.x, self.listTableView.y, self.listTableView.width, self.listTableView.height)];
     UIImage *noDataImage = [UIImage imageNamed:@"NoDataImage"];
@@ -127,13 +132,13 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //设置数据实体
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
-        //NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
+        NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
         //NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        [fetchRequest setSortDescriptors:@[]];
+        [fetchRequest setSortDescriptors:@[sortDescriptor1]];
         //设置一次获取的数据量
         [fetchRequest setFetchBatchSize:20];
         
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"CostItems"];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"date" cacheName:@"CostItems"];
         //设置代理
         _fetchedResultsController.delegate = self;
     }
@@ -201,8 +206,15 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [[self.fetchedResultsController sections] count];; //利用NSFetchedResultsController来获取行数
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [[sectionInfo name] uppercaseString];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //利用NSFetchedResultsController来获取行数
@@ -336,6 +348,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     NSLog(@"*** controllerDidChangeContent");
     [self.listTableView endUpdates];
+    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
 }
 
 @end
