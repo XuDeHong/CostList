@@ -13,7 +13,7 @@
 
 -(void)addDataModelToTableView:(CostItem *)dataModel;   //添加数据到TableView
 
-@property (strong,nonatomic) NSMutableArray *dataModelArray;
+//@property (strong,nonatomic) NSMutableArray *dataModelArray;
 @property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 
 @end

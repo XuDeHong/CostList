@@ -33,7 +33,6 @@
 {
     NSAssert(self.photoId != nil, @"No photo ID set");
     NSAssert([self.photoId integerValue] != -1, @"Photo ID is -1");
-    NSLog(@"%@",[self photoPath]);
     return [UIImage imageWithContentsOfFile:[self photoPath]];
 }
 
