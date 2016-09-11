@@ -34,6 +34,9 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     
     [self customizeAppearence]; //设置UI元素
     
+    //去除多余的空行和分割线
+    self.listTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     [self initMonthPickerButton]; //初始化月份选择器按钮
 }
 
@@ -75,6 +78,23 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    UIImageView *noDataPlaceholder = [[UIImageView alloc] initWithFrame:CGRectMake(self.listTableView.x, self.listTableView.y, self.listTableView.width, self.listTableView.height)];
+    UIImage *noDataImage = [UIImage imageNamed:@"NoDataImage"];
+    noDataPlaceholder.image = noDataImage;
+    
+    if([self.dataModelArray count] == 0)
+    {
+        self.listTableView.backgroundView = noDataPlaceholder;
+    }
+    else
+    {
+        self.listTableView.backgroundView = nil;
+    }
 }
 
 -(IBAction)menuButtonDidClick:(id)sender
