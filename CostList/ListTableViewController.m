@@ -198,22 +198,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     [self.monthPickerButton setTitle:[NSString stringWithFormat:@"%@",yearAndMonth] forState:UIControlStateNormal];
 }
 
--(void)addDataModelToTableView:(CostItem *)dataModel
-{
-    //[self.dataModelArray addObject:dataModel];
-    //[self.listTableView reloadData];
-}
-
-//-(NSMutableArray *)dataModelArray
-//{
-//    if(!_dataModelArray)
-//    {
-//        _dataModelArray = [[NSMutableArray alloc] initWithCapacity:20];
-//    }
-//    
-//    return _dataModelArray;
-//}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

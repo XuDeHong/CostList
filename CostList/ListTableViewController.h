@@ -11,9 +11,6 @@
 @interface ListTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *monthPickerButton;  //月份选择器按钮
 
--(void)addDataModelToTableView:(CostItem *)dataModel;   //添加数据到TableView
-
-//@property (strong,nonatomic) NSMutableArray *dataModelArray;
 @property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 
 @end

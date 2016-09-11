@@ -186,7 +186,8 @@
         configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
         configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
         [KVNProgress setConfiguration:configuration];
-        [self.delegate addItemViewController:self saveBtnDidClickAndSaveData:[self getDataToSave]];
+        [self getDataToSave];   //保存数据
+        [self.delegate addItemViewControllerDidSaveData];   //通知代理已经保存数据了
         [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }];
@@ -223,7 +224,7 @@
         return YES;
 }
 
--(CostItem *)getDataToSave
+-(void)getDataToSave
 {
     CostItem *dataModel = [NSEntityDescription insertNewObjectForEntityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
     //分类
@@ -264,9 +265,8 @@
     if(![self.managedObjectContext save:&error])
     {
         FATAL_CORE_DATA_ERROR(error);   //处理错误情况
-        return nil;
+        return;
     }
-    return dataModel;
 }
 
 -(void)enableTableViewScroll
