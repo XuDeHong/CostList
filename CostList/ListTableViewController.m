@@ -16,7 +16,7 @@
 static NSString *ListCellIdentifier = @"ListCell";
 static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
-@interface ListTableViewController () <MonthPickerViewControllerDelegate>
+@interface ListTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView;  //指向界面上部的视图，用于设置背景色
 @property (weak,nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -27,6 +27,9 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 @end
 
 @implementation ListTableViewController
+{
+    NSFetchedResultsController *_fetchedResultsController;
+}
 
 
 - (void)viewDidLoad {
@@ -38,6 +41,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     self.listTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self initMonthPickerButton]; //初始化月份选择器按钮
+    
+    [self performFetch]; //从CoreData中获取数据
 }
 
 
@@ -80,16 +85,22 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc
+{
+    _fetchedResultsController.delegate = nil;
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //没有数据时的占位图
     UIImageView *noDataPlaceholder = [[UIImageView alloc] initWithFrame:CGRectMake(self.listTableView.x, self.listTableView.y, self.listTableView.width, self.listTableView.height)];
     UIImage *noDataImage = [UIImage imageNamed:@"NoDataImage"];
     noDataPlaceholder.image = noDataImage;
     
-    if([self.dataModelArray count] == 0)
+    if([[self.fetchedResultsController sections] count] == 0)
     {
-        self.listTableView.backgroundView = noDataPlaceholder;
+        self.listTableView.backgroundView = noDataPlaceholder;  //没有数据时显示占位图
     }
     else
     {
@@ -104,6 +115,39 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         self.myTabBarController = (MyTabBarController *)self.tabBarController;
     }
     [self.myTabBarController showSlideMenuController];
+}
+
+#pragma mark - About NSFetchedResults(Controller) Methods
+
+-(NSFetchedResultsController *)fetchedResultsController
+{
+    if(_fetchedResultsController == nil)
+    {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        //设置数据实体
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        //NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
+        //NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+        [fetchRequest setSortDescriptors:@[]];
+        //设置一次获取的数据量
+        [fetchRequest setFetchBatchSize:20];
+        
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"CostItems"];
+        //设置代理
+        _fetchedResultsController.delegate = self;
+    }
+    return _fetchedResultsController;
+}
+
+-(void)performFetch
+{
+    NSError *error;
+    if(![self.fetchedResultsController performFetch:&error])    //从CoreData中获取数据
+    {
+        FATAL_CORE_DATA_ERROR(error);
+        return;
+    }
 }
 
 #pragma mark - MonthPicker
@@ -156,19 +200,19 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 -(void)addDataModelToTableView:(CostItem *)dataModel
 {
-    [self.dataModelArray addObject:dataModel];
-    [self.listTableView reloadData];
+    //[self.dataModelArray addObject:dataModel];
+    //[self.listTableView reloadData];
 }
 
--(NSMutableArray *)dataModelArray
-{
-    if(!_dataModelArray)
-    {
-        _dataModelArray = [[NSMutableArray alloc] initWithCapacity:20];
-    }
-    
-    return _dataModelArray;
-}
+//-(NSMutableArray *)dataModelArray
+//{
+//    if(!_dataModelArray)
+//    {
+//        _dataModelArray = [[NSMutableArray alloc] initWithCapacity:20];
+//    }
+//    
+//    return _dataModelArray;
+//}
 
 #pragma mark - Table view data source
 
@@ -177,12 +221,14 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataModelArray count];
+    //利用NSFetchedResultsController来获取行数
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CostItem *dataModel = self.dataModelArray[indexPath.row];   //获取数据模型
+    CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
     
     if((dataModel.comment == nil) || ([dataModel.comment isEqualToString:@""]))
     {
@@ -233,9 +279,80 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         cell.comment.text = dataModel.comment;
         return cell;
     }
-    
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    //滑动删除cell，并同步到CoreData数据库
+    if(editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
+        [dataModel removePhotoFile];    //删除图片
+        [self.managedObjectContext deleteObject:dataModel];
+        
+        NSError *error;
+        if(![self.managedObjectContext save:&error])
+        {
+            FATAL_CORE_DATA_ERROR(error);
+            return;
+        }
+    }
+}
 
+#pragma mark - NSFetchedResultsControllerDelegate
+
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    NSLog(@"*** controllerWillChangeContent");
+    [self.listTableView beginUpdates];
+}
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(nonnull id)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath
+{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            NSLog(@"*** NSFetchedResultsChangeInsert (object)");
+            [self.listTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            NSLog(@"*** NSFetchedResultsChangeDelete (object)");
+            [self.listTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            NSLog(@"*** NSFetchedResultsChangeUpdate (object)");
+            //修改cell
+            //[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+        case NSFetchedResultsChangeMove:
+            NSLog(@"*** NSFetchedResultsChangeMove (object)");
+            [self.listTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.listTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeSection:(nonnull id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            NSLog(@"*** NSFetchedResultsChangeInsert (section)");
+            [self.listTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            NSLog(@"*** NSFetchedResultsChangeDelete (section)");
+            [self.listTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeMove:    break;
+        case NSFetchedResultsChangeUpdate:  break;
+            
+    }
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    NSLog(@"*** controllerDidChangeContent");
+    [self.listTableView endUpdates];
+}
 
 @end
+
