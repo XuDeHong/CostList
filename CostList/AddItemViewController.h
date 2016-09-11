@@ -12,7 +12,7 @@
 
 @protocol AddItemViewControllerDelegate <NSObject>
 
--(void)addItemViewController:(AddItemViewController *)controller saveBtnDidClickAndSaveData:(CostItem *)dataModel;
+-(void)addItemViewControllerDidSaveData;
 
 @end
 

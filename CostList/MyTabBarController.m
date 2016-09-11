@@ -101,15 +101,12 @@
 }
 
 #pragma mark - AddItemViewController Delegate
--(void)addItemViewController:(AddItemViewController *)controller saveBtnDidClickAndSaveData:(CostItem *)dataModel
+-(void)addItemViewControllerDidSaveData
 {
     if(self.selectedIndex == 1) //如果当前处于图表界面，则转换到明细界面
     {
         self.selectedIndex = 0;
     }
-    
-    //调用明细页面方法
-    [self.listController addDataModelToTableView:dataModel];
 }
 
 @end
