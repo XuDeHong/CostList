@@ -12,11 +12,13 @@
 #import "ListCell.h"
 #import "ListCommentCell.h"
 
+#define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
+#define TableViewSectionHeight 28
 
 static NSString *ListCellIdentifier = @"ListCell";
 static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
-@interface ListTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate>
+@interface ListTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate,UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView;  //指向界面上部的视图，用于设置背景色
 @property (weak,nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -212,7 +214,47 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [[sectionInfo name] uppercaseString];
+    NSString *dateString = [sectionInfo name];
+    //从日期字符串中获取日期对象
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZ"];
+    NSDate *date = [formatter dateFromString:dateString];
+    //获取月份
+    [formatter setDateFormat:@"MM月"];
+    NSString *month = [formatter stringFromDate:date];
+    
+    //获取日期
+    [formatter setDateFormat:@"dd日"];
+    NSString *day = [formatter stringFromDate:date];
+    
+    return [NSString stringWithFormat:@"%@%@",month,day];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.bounds.size.width,TableViewSectionHeight)];
+    view.backgroundColor = TableViewSectionTitleViewBackgroundColor;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15.0f,0.0f, 300.0f, 14.0f)];
+    label.centerY = view.centerY;
+    label.font = [UIFont boldSystemFontOfSize:11.0f];
+    label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    label.textColor = [UIColor colorWithWhite:0 alpha:0.3];
+    label.backgroundColor = [UIColor clearColor];
+    
+    [view addSubview:label];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return TableViewSectionHeight;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return CGFLOAT_MIN; //没有footer
 }
 
 
@@ -294,6 +336,21 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         }
     }
 }
+
+#pragma mark - UIScrollViewDelegate
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if (scrollView == self.listTableView)
+//    {
+//        CGFloat sectionHeaderHeight = self.listTableView.sectionHeaderHeight;
+//        if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0)
+//        {
+//            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y,0, 0, 0);
+//        } else if (scrollView.contentOffset.y>=sectionHeaderHeight)
+//        {
+//            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+//        }
+//    }
+//}
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
