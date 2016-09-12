@@ -14,11 +14,12 @@
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
+#define TableRowSeparatorColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.7]
 
 static NSString *ListCellIdentifier = @"ListCell";
 static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
-@interface ListTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate,UIScrollViewDelegate>
+@interface ListTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView;  //指向界面上部的视图，用于设置背景色
 @property (weak,nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -96,6 +97,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     [super viewWillAppear:animated];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+    [self.listTableView reloadData];
 }
 
 -(void)textWhetherHasData
@@ -208,7 +210,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count];; //利用NSFetchedResultsController来获取行数
+    return [[self.fetchedResultsController sections] count]; //利用NSFetchedResultsController来获取行数
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -290,6 +292,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         if(![dataModel hasPhoto]) cell.imageIndicate.hidden = YES;
         else    cell.imageIndicate.hidden = NO;
         
+        [self configureSeparatorForCell:cell atIndexPath:indexPath];    //设置分割线
+        
         return cell;
     }
     else
@@ -315,7 +319,32 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         else    cell.imageIndicate.hidden = NO;
         //备注
         cell.comment.text = dataModel.comment;
+        
+        [self configureSeparatorForCell:cell atIndexPath:indexPath];    //设置分割线
+        
         return cell;
+    }
+}
+
+-(void)configureSeparatorForCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][indexPath.section];
+    //获取该组内最大行数
+    int maxRowInSec = (int)[sectionInfo numberOfObjects] - 1;
+    //获取最大组数
+    int maxSection = (int)[[self.fetchedResultsController sections] count] - 1;
+    
+    //先看看是否有分割线，如果有的话先去掉
+    UIView *separator = [cell viewWithTag:500];
+    if(separator != nil)    [separator removeFromSuperview];
+    
+    //当cell不是最后一组并且是该组最后一行是不需要添加分割线，其他情况就需要添加
+    if(!((indexPath.section != maxSection) && (indexPath.row == maxRowInSec)))
+    {
+        UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(15,self.listTableView.rowHeight - 1,SCREEN_WIDTH - 15, 1)];
+        separator.backgroundColor = TableRowSeparatorColor;
+        separator.tag = 500;    //做一个标记，方便后面删除分割线
+        [cell.contentView addSubview:separator];
     }
 }
 
@@ -336,21 +365,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         }
     }
 }
-
-#pragma mark - UIScrollViewDelegate
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    if (scrollView == self.listTableView)
-//    {
-//        CGFloat sectionHeaderHeight = self.listTableView.sectionHeaderHeight;
-//        if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0)
-//        {
-//            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y,0, 0, 0);
-//        } else if (scrollView.contentOffset.y>=sectionHeaderHeight)
-//        {
-//            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-//        }
-//    }
-//}
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
@@ -406,6 +420,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     NSLog(@"*** controllerDidChangeContent");
     [self.listTableView endUpdates];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+    [self.listTableView reloadData];
 }
 
 @end
