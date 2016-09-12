@@ -14,7 +14,7 @@
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
-#define TableRowSeparatorColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.7]
+
 
 static NSString *ListCellIdentifier = @"ListCell";
 static NSString *ListCommentCellIdentifier = @"ListCommentCell";
@@ -97,7 +97,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     [super viewWillAppear:animated];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-    [self.listTableView reloadData];
+    //[self.listTableView reloadData];
 }
 
 -(void)textWhetherHasData
@@ -336,15 +336,13 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     
     //先看看是否有分割线，如果有的话先去掉
     UIView *separator = [cell viewWithTag:500];
-    if(separator != nil)    [separator removeFromSuperview];
+    if(separator != nil)
+        separator.hidden = YES;
     
     //当cell不是最后一组并且是该组最后一行是不需要添加分割线，其他情况就需要添加
     if(!((indexPath.section != maxSection) && (indexPath.row == maxRowInSec)))
     {
-        UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(15,self.listTableView.rowHeight - 1,SCREEN_WIDTH - 15, 1)];
-        separator.backgroundColor = TableRowSeparatorColor;
-        separator.tag = 500;    //做一个标记，方便后面删除分割线
-        [cell.contentView addSubview:separator];
+        separator.hidden = NO;
     }
 }
 
@@ -353,16 +351,25 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     //滑动删除cell，并同步到CoreData数据库
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
-        [dataModel removePhotoFile];    //删除图片
-        [self.managedObjectContext deleteObject:dataModel];
-        
-        NSError *error;
-        if(![self.managedObjectContext save:&error])
-        {
-            FATAL_CORE_DATA_ERROR(error);
-            return;
-        }
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要删除该记录吗？（删除后的数据不可恢复）" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+                CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
+                [dataModel removePhotoFile];    //删除图片
+                [self.managedObjectContext deleteObject:dataModel];
+            
+                NSError *error;
+                if(![self.managedObjectContext save:&error])
+                {
+                    FATAL_CORE_DATA_ERROR(error);
+                    return;
+                }
+        }];
+        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }];
+        [controller addAction:cancelBtn];
+        [controller addAction:sureBtn];
+        [self presentViewController:controller animated:YES completion:nil];
     }
 }
 
@@ -420,7 +427,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     NSLog(@"*** controllerDidChangeContent");
     [self.listTableView endUpdates];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-    [self.listTableView reloadData];
+    //[self.listTableView reloadData];
 }
 
 @end
