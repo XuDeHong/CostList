@@ -233,40 +233,11 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     return [NSString stringWithFormat:@"%@%@",month,day];
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.bounds.size.width,TableViewSectionHeight)];
-    view.backgroundColor = TableViewSectionTitleViewBackgroundColor;
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15.0f,0.0f, 300.0f, 14.0f)];
-    label.centerY = view.centerY;
-    label.font = [UIFont boldSystemFontOfSize:11.0f];
-    label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
-    label.textColor = [UIColor colorWithWhite:0 alpha:0.3];
-    label.backgroundColor = [UIColor clearColor];
-    
-    [view addSubview:label];
-    
-    return view;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return TableViewSectionHeight;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return CGFLOAT_MIN; //没有footer
-}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //利用NSFetchedResultsController来获取行数
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
@@ -369,16 +340,16 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要删除该记录吗？（删除后的数据不可恢复）" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
-                CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
-                [dataModel removePhotoFile];    //删除图片
-                [self.managedObjectContext deleteObject:dataModel];
+            CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
+            [dataModel removePhotoFile];    //删除图片
+            [self.managedObjectContext deleteObject:dataModel];
             
-                NSError *error;
-                if(![self.managedObjectContext save:&error])
-                {
-                    FATAL_CORE_DATA_ERROR(error);
-                    return;
-                }
+            NSError *error;
+            if(![self.managedObjectContext save:&error])
+            {
+                FATAL_CORE_DATA_ERROR(error);
+                return;
+            }
         }];
         UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -389,11 +360,46 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     }
 }
 
+#pragma mark Table View Delegate
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.bounds.size.width,TableViewSectionHeight)];
+    view.backgroundColor = TableViewSectionTitleViewBackgroundColor;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15.0f,0.0f, 300.0f, 14.0f)];
+    label.centerY = view.centerY;
+    label.font = [UIFont boldSystemFontOfSize:11.0f];
+    label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    label.textColor = [UIColor colorWithWhite:0 alpha:0.3];
+    label.backgroundColor = [UIColor clearColor];
+    
+    [view addSubview:label];
+    
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return TableViewSectionHeight;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return CGFLOAT_MIN; //没有footer
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - NSFetchedResultsControllerDelegate
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    NSLog(@"*** controllerWillChangeContent");
+    //NSLog(@"*** controllerWillChangeContent");
     [self.listTableView beginUpdates];
 }
 
@@ -401,20 +407,20 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            NSLog(@"*** NSFetchedResultsChangeInsert (object)");
+            //NSLog(@"*** NSFetchedResultsChangeInsert (object)");
             [self.listTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            NSLog(@"*** NSFetchedResultsChangeDelete (object)");
+            //NSLog(@"*** NSFetchedResultsChangeDelete (object)");
             [self.listTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
-            NSLog(@"*** NSFetchedResultsChangeUpdate (object)");
+            //NSLog(@"*** NSFetchedResultsChangeUpdate (object)");
             //修改cell
             //[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
         case NSFetchedResultsChangeMove:
-            NSLog(@"*** NSFetchedResultsChangeMove (object)");
+            //NSLog(@"*** NSFetchedResultsChangeMove (object)");
             [self.listTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [self.listTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -425,11 +431,11 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            NSLog(@"*** NSFetchedResultsChangeInsert (section)");
+            //NSLog(@"*** NSFetchedResultsChangeInsert (section)");
             [self.listTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            NSLog(@"*** NSFetchedResultsChangeDelete (section)");
+            //NSLog(@"*** NSFetchedResultsChangeDelete (section)");
             [self.listTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeMove:    break;
@@ -440,7 +446,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    NSLog(@"*** controllerDidChangeContent");
+    //NSLog(@"*** controllerDidChangeContent");
     [self.listTableView endUpdates];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
     [self.listTableView reloadData];
