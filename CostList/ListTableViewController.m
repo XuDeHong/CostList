@@ -14,6 +14,7 @@
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
+#define TableRowSeparatorColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.7]
 
 
 static NSString *ListCellIdentifier = @"ListCell";
@@ -97,7 +98,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     [super viewWillAppear:animated];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-    //[self.listTableView reloadData];
+    [self.listTableView reloadData];
 }
 
 -(void)textWhetherHasData
@@ -272,7 +273,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     
     if((dataModel.comment == nil) || ([dataModel.comment isEqualToString:@""]))
     {
-        ListCell *cell = (ListCell *)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
+        ListCell *cell = (ListCell *)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier forIndexPath:indexPath];
         //图标
         cell.imageView.image = [UIImage imageNamed:dataModel.category];
         //支出金额
@@ -298,7 +299,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     }
     else
     {
-        ListCommentCell *cell = (ListCommentCell *)[tableView dequeueReusableCellWithIdentifier:ListCommentCellIdentifier];
+        ListCommentCell *cell = (ListCommentCell *)[tableView dequeueReusableCellWithIdentifier:ListCommentCellIdentifier forIndexPath:indexPath];
         //图标
         cell.imageView.image = [UIImage imageNamed:dataModel.category];
         //支出金额
@@ -337,12 +338,27 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     //先看看是否有分割线，如果有的话先去掉
     UIView *separator = [cell viewWithTag:500];
     if(separator != nil)
+    {
+        //如果有分割线则先隐藏
         separator.hidden = YES;
+    }
+    else
+    {
+        //添加分割线
+        UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(15,self.listTableView.rowHeight - 1,SCREEN_WIDTH - 15, 1)];
+        separator.backgroundColor = TableRowSeparatorColor;
+        separator.tag = 500;    //做一个标记，方便获取
+        [cell.contentView addSubview:separator];
+    }
     
     //当cell不是最后一组并且是该组最后一行是不需要添加分割线，其他情况就需要添加
     if(!((indexPath.section != maxSection) && (indexPath.row == maxRowInSec)))
     {
         separator.hidden = NO;
+    }
+    else
+    {
+        separator.hidden = YES;
     }
 }
 
@@ -427,7 +443,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     NSLog(@"*** controllerDidChangeContent");
     [self.listTableView endUpdates];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-    //[self.listTableView reloadData];
+    [self.listTableView reloadData];
 }
 
 @end
