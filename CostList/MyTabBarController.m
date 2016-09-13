@@ -69,17 +69,9 @@
     [self.itrAirSideMenu presentLeftMenuViewController];
 }
 
-
-
 #pragma mark - MyTabBar Delegate
 -(void)addButtonClick:(MyTabBar *)tabBar
 {
-//    //测试中间“+”按钮是否可以点击并处理事件
-//    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"test" message:@"Test" preferredStyle:UIAlertControllerStyleAlert];
-//    UIAlertAction *action = [UIAlertAction actionWithTitle:@"test" style:UIAlertActionStyleDefault handler:nil];
-//    [controller addAction:action];
-//    [self presentViewController:controller animated:YES completion:nil];
-    
     //创建添加记录页面视图控制器，从AddItemViewController StoryBoard中的单独控制器创建
     MyNavigationController *addItemNavigationController = (MyNavigationController *)[AddItemViewController instanceFromStoryboardV2];
     CGSize backgroundSize = CGSizeMake(addItemNavigationController.navigationBar.width, addItemNavigationController.navigationBar.height + STATUS_BAR_HEIGHT);
