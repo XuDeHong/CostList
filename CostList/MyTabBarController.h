@@ -16,4 +16,6 @@
 
 -(void)showSlideMenuController;
 
+-(void)showAddOrEditItemControllerWithDataModel:(CostItem *)costItem;
+
 @end

@@ -12,7 +12,7 @@
 
 @protocol AddItemViewControllerDelegate <NSObject>
 
--(void)addItemViewControllerDidSaveData;
+-(void)addItemViewControllerDidSaveData:(AddItemViewController *)controller;
 
 @end
 
