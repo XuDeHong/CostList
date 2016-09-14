@@ -118,12 +118,17 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     }
 }
 
+-(MyTabBarController *)myTabBarController
+{
+    if(!_myTabBarController)
+    {
+        _myTabBarController = (MyTabBarController *)self.tabBarController;
+    }
+    return _myTabBarController;
+}
+
 -(IBAction)menuButtonDidClick:(id)sender
 {
-    if(!self.myTabBarController)
-    {
-        self.myTabBarController = (MyTabBarController *)self.tabBarController;
-    }
     [self.myTabBarController showSlideMenuController];
 }
 
@@ -261,8 +266,10 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //标题
         cell.title.text = dataModel.categoryName;
         //图片标识
-        if(![dataModel hasPhoto]) cell.imageIndicate.hidden = YES;
-        else    cell.imageIndicate.hidden = NO;
+        if(![dataModel hasPhoto])
+            cell.imageIndicate.hidden = YES;
+        else
+            cell.imageIndicate.hidden = NO;
         
         [self configureSeparatorForCell:cell atIndexPath:indexPath];    //设置分割线
         
@@ -287,8 +294,10 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //标题
         cell.title.text = dataModel.categoryName;
         //图片标识
-        if(![dataModel hasPhoto]) cell.imageIndicate.hidden = YES;
-        else    cell.imageIndicate.hidden = NO;
+        if(![dataModel hasPhoto])
+            cell.imageIndicate.hidden = YES;
+        else
+            cell.imageIndicate.hidden = NO;
         //备注
         cell.comment.text = dataModel.comment;
         
@@ -391,7 +400,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self.myTabBarController showAddOrEditItemControllerWithDataModel:[self.fetchedResultsController objectAtIndexPath:indexPath]];     //传递数据模型，并显示编辑界面
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

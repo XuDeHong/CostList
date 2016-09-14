@@ -86,16 +86,76 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     [self addGestureToDismissKeyboard]; //添加手势，点击界面其他地方时使键盘消失
-    [self getLocation];  //获取位置
-    [self getCurrentDate];  //获取当前时间
+
+    //是否为编辑账目
+    if(self.itemToEdit != nil)
+    {
+        [self printDataToEdit]; //显示已有数据
+    }
+    else
+    {
+        [self getLocation];  //获取位置
+        [self getCurrentDate];  //获取当前时间
+    }
+    
     [self setupAutoLayout]; //设置自动布局
     
+    //自定义数字键盘
     [SCNumberKeyBoard showWithTextField:self.moneyTextField enter:^(UITextField *textField,NSString *number){
         
     } close:^(UITextField *textField,NSString *number){
     
     }];
     
+
+}
+
+-(void)printDataToEdit
+{
+    //图标
+    self.chooseIcon.image = [UIImage imageNamed:self.itemToEdit.category];
+    [self.chooseIcon setAccessibilityIdentifier:self.itemToEdit.category];
+    //分类名称
+    self.chooseCategory.text = self.itemToEdit.categoryName;
+    
+    double num = [self.itemToEdit.money doubleValue];
+    
+    if(num < 0)
+    {
+        num = fabs(num);    //若为负数则去绝对值
+        self.chooseCategory.textColor = [UIColor redColor];
+    }
+    else
+    {
+        self.chooseCategory.textColor = [UIColor greenColor];
+    }
+    //金额
+    self.moneyTextField.text = [NSString stringWithFormat:@"%.2lf",num];
+
+
+    //备注
+    self.commentTextField.text = self.itemToEdit.comment;
+    //图片
+    if ([self.itemToEdit hasPhoto])
+    {
+        _image = [self.itemToEdit photoImage];
+        if(_image != nil)
+        {
+            _scaleImage = [_image imageCompressForSize:CGSizeMake(ImageViewWidth, ImageViewHeight)];
+            [self showImage:_scaleImage];
+        }
+    }
+    //日期
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.timeLabel.text = [formatter stringFromDate:self.itemToEdit.date];
+    //位置
+    if((self.itemToEdit.location != nil) && (![self.itemToEdit.location isEqualToString:@""]))
+        [self updateLocationLabel:self.itemToEdit.location withColor:[UIColor blackColor]];
+    else
+    {
+        [self updateLocationLabel:@"没有位置信息" withColor:[UIColor lightGrayColor]];
+    }
 }
 
 -(void)setupAutoLayout
@@ -187,7 +247,7 @@
         configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
         [KVNProgress setConfiguration:configuration];
         [self getDataToSave];   //保存数据
-        [self.delegate addItemViewControllerDidSaveData];   //通知代理已经保存数据了
+        [self.delegate addItemViewControllerDidSaveData:self];   //通知代理已经保存数据了
         [KVNProgress showSuccessWithStatus:@"已保存" completion:^{
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }];
@@ -226,7 +286,17 @@
 
 -(void)getDataToSave
 {
-    CostItem *dataModel = [NSEntityDescription insertNewObjectForEntityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+    CostItem *dataModel = nil;
+    if(self.itemToEdit != nil)
+    {
+        dataModel = self.itemToEdit;
+    }
+    else
+    {
+        dataModel = [NSEntityDescription insertNewObjectForEntityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+        dataModel.photoId = @-1;
+    }
+    
     //分类
     dataModel.category = [self.chooseIcon accessibilityIdentifier];
     //分类名称
@@ -239,7 +309,6 @@
     //备注
     dataModel.comment = self.commentTextField.text;
     //图片
-    dataModel.photoId = @-1;
     if(_image != nil)
     {
         if(![dataModel hasPhoto])
@@ -253,6 +322,14 @@
             NSLog(@"Error writing file:%@",error);
         }
     }
+    else
+    {
+        if([dataModel hasPhoto])
+        {
+            if(self.itemToEdit != nil)
+                [self.itemToEdit removePhotoFile];  //如果已存在图片则删除
+        }
+    }
     //时间
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -260,6 +337,8 @@
     //位置
     if(![self.locationLabel.textColor isEqual:[UIColor lightGrayColor]])
         dataModel.location = self.locationLabel.text;
+    else
+        dataModel.location = @"";
     
     NSError *error;
     if(![self.managedObjectContext save:&error])
@@ -449,6 +528,7 @@
 -(void)deletePhoto
 {
     _image = nil;
+    _scaleImage = nil;
     self.imageView.hidden = YES;
     self.photoLabel.hidden = NO;
     [self.tableView reloadData];    //更新tableview
@@ -638,6 +718,7 @@
 
 -(void)editLocationViewController:(EditLocationViewController *)controller editedLocation:(NSString *)location
 {
+    if((location != nil) && (![location isEqualToString:@""]) )
     [self updateLocationLabel:location withColor:[UIColor blackColor]];
 }
 

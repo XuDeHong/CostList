@@ -69,8 +69,7 @@
     [self.itrAirSideMenu presentLeftMenuViewController];
 }
 
-#pragma mark - MyTabBar Delegate
--(void)addButtonClick:(MyTabBar *)tabBar
+-(void)showAddOrEditItemControllerWithDataModel:(CostItem *)costItem;
 {
     //创建添加记录页面视图控制器，从AddItemViewController StoryBoard中的单独控制器创建
     MyNavigationController *addItemNavigationController = (MyNavigationController *)[AddItemViewController instanceFromStoryboardV2];
@@ -88,12 +87,19 @@
     AddItemViewController *controller = (AddItemViewController *)addItemNavigationController.topViewController;
     controller.delegate = self;
     controller.managedObjectContext = self.managedObjectContext;    //传递指针
+    if(costItem != nil) controller.itemToEdit = costItem;   //如果是点击账目进入编辑，则传递数据模型
     //显示控制器
     [self presentViewController:addItemNavigationController animated:YES completion:nil];
 }
 
+#pragma mark - MyTabBar Delegate
+-(void)addButtonClick:(MyTabBar *)tabBar
+{
+    [self showAddOrEditItemControllerWithDataModel:nil];
+}
+
 #pragma mark - AddItemViewController Delegate
--(void)addItemViewControllerDidSaveData
+-(void)addItemViewControllerDidSaveData:(AddItemViewController *)controller
 {
     if(self.selectedIndex == 1) //如果当前处于图表界面，则转换到明细界面
     {

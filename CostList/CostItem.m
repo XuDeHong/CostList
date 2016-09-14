@@ -57,6 +57,7 @@
             NSLog(@"Error removing file:%@",error);
         }
     }
+    self.photoId = @-1; //删除图片后将ID设置为-1
 }
 
 
