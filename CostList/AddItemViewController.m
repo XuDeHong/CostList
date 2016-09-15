@@ -334,6 +334,20 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     dataModel.date = [formatter dateFromString:self.timeLabel.text];
+    //保存创建记录的时间，用于排序
+    if(self.itemToEdit == nil)
+    {
+        //获取当前小时，分钟，秒
+        NSDate *date = [NSDate date];
+        [formatter setDateFormat:@"hh-mm-ss"];
+        NSString *current = [formatter stringFromDate:date];
+        //设置完整时间格式，年月日是记录中的年月日（可能是过去），时分秒则是创建记录的当前时间
+        [formatter setDateFormat:@"yyyy-MM-dd-hh-mm-ss"];
+        //获取完整的时间
+        NSString *fullString = [NSString stringWithFormat:@"%@-%@",self.timeLabel.text,current];
+        
+        dataModel.createTime = [formatter dateFromString:fullString];
+    }
     //位置
     if(![self.locationLabel.textColor isEqual:[UIColor lightGrayColor]])
         dataModel.location = self.locationLabel.text;

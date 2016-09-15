@@ -2,7 +2,7 @@
 //  CostItem.h
 //  CostList
 //
-//  Created by 许德鸿 on 16/9/10.
+//  Created by 许德鸿 on 16/9/15.
 //  Copyright © 2016年 XuDeHong. All rights reserved.
 //
 
@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CostItem : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
+
 +(NSInteger)nextPhotoId;
 
 -(BOOL)hasPhoto;
