@@ -98,7 +98,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     [super viewWillAppear:animated];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-    [self.listTableView reloadData];
+    [self.listTableView reloadData];  //保证数据最新，并更新分割线显示问题
 }
 
 -(void)textWhetherHasData
@@ -143,7 +143,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
         NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        //NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+        //NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor1]];
         //设置一次获取的数据量
         [fetchRequest setFetchBatchSize:20];
@@ -408,7 +408,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    //NSLog(@"*** controllerWillChangeContent");
     [self.listTableView beginUpdates];
 }
 
@@ -416,20 +415,16 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            //NSLog(@"*** NSFetchedResultsChangeInsert (object)");
             [self.listTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            //NSLog(@"*** NSFetchedResultsChangeDelete (object)");
             [self.listTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
-            //NSLog(@"*** NSFetchedResultsChangeUpdate (object)");
-            //修改cell
-            //[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            //修改对应的cell，应该调用tableview的cellForRowAtIndexPath方法，但已经自动调用了，因为在viewWillAppear中刷新了tableview
+            //[self configureSeparatorForCell:[self.listTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
         case NSFetchedResultsChangeMove:
-            //NSLog(@"*** NSFetchedResultsChangeMove (object)");
             [self.listTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [self.listTableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -440,11 +435,9 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            //NSLog(@"*** NSFetchedResultsChangeInsert (section)");
             [self.listTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            //NSLog(@"*** NSFetchedResultsChangeDelete (section)");
             [self.listTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeMove:    break;
@@ -455,10 +448,9 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    //NSLog(@"*** controllerDidChangeContent");
     [self.listTableView endUpdates];
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-    [self.listTableView reloadData];
+    [self.listTableView reloadData];//保证数据最新，并更新分割线显示问题
 }
 
 @end
