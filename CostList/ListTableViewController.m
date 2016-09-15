@@ -45,8 +45,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     self.listTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self initMonthPickerButton]; //初始化月份选择器按钮
-    
-    [self performFetch]; //从CoreData中获取数据
 }
 
 
@@ -97,8 +95,12 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+    
+    [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
+    
+    [self performFetch]; //从CoreData中获取数据
     [self.listTableView reloadData];  //保证数据最新，并更新分割线显示问题
+    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
 }
 
 -(void)textWhetherHasData
@@ -143,7 +145,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
         NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        //NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+        //NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor1]];
         //设置一次获取的数据量
         [fetchRequest setFetchBatchSize:20];
@@ -249,7 +251,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     
     if((dataModel.comment == nil) || ([dataModel.comment isEqualToString:@""]))
     {
-        ListCell *cell = (ListCell *)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier forIndexPath:indexPath];
+        ListCell *cell = (ListCell *)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
         //图标
         cell.imageView.image = [UIImage imageNamed:dataModel.category];
         //支出金额
@@ -277,7 +279,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     }
     else
     {
-        ListCommentCell *cell = (ListCommentCell *)[tableView dequeueReusableCellWithIdentifier:ListCommentCellIdentifier forIndexPath:indexPath];
+        ListCommentCell *cell = (ListCommentCell *)[tableView dequeueReusableCellWithIdentifier:ListCommentCellIdentifier];
         //图标
         cell.imageView.image = [UIImage imageNamed:dataModel.category];
         //支出金额
@@ -449,8 +451,10 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.listTableView endUpdates];
-    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+    [self performFetch];    //从CoreData中获取数据
     [self.listTableView reloadData];//保证数据最新，并更新分割线显示问题
+    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+
 }
 
 @end
