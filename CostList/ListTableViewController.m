@@ -145,8 +145,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
         NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        //NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        [fetchRequest setSortDescriptors:@[sortDescriptor1]];
+        NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor1,sortDescriptor2]];
         //设置一次获取的数据量
         [fetchRequest setFetchBatchSize:20];
         
