@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ITRAirSideMenu.h"
 
+@class MyNavigationController;
+
 @interface MyTabBarController : UITabBarController
 
 @property (weak,nonatomic) ITRAirSideMenu *itrAirSideMenu;  //指向侧栏
@@ -17,5 +19,7 @@
 -(void)showSlideMenuController;
 
 -(void)showAddOrEditItemControllerWithDataModel:(CostItem *)costItem;
+
+-(MyNavigationController *)getAddItemViewControllerToPreViewForDataModel:(CostItem *)costItem;
 
 @end
