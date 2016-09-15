@@ -92,6 +92,26 @@
     [self presentViewController:addItemNavigationController animated:YES completion:nil];
 }
 
+-(MyNavigationController *)getAddItemViewControllerToPreViewForDataModel:(CostItem *)costItem
+{
+    //创建添加记录页面视图控制器，从AddItemViewController StoryBoard中的单独控制器创建
+    MyNavigationController *addItemNavigationController = (MyNavigationController *)[AddItemViewController instanceFromStoryboardV2];
+    CGSize backgroundSize = CGSizeMake(addItemNavigationController.navigationBar.width, addItemNavigationController.navigationBar.height + STATUS_BAR_HEIGHT);
+    UIImage *background = [UIImage imageWithColor:GLOBAL_TINT_COLOR andSize:backgroundSize];
+    //设置导航栏背景图片
+    [addItemNavigationController.navigationBar setBackgroundImage:background forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
+    //设置导航栏不透明
+    [addItemNavigationController.navigationBar setTranslucent:NO];
+    //设置导航栏按钮字体颜色
+    addItemNavigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置导航栏标题字体颜色
+    [addItemNavigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    AddItemViewController *controller = (AddItemViewController *)addItemNavigationController.topViewController;
+    if(costItem != nil) controller.itemToEdit = costItem;   //传递数据模型
+
+    return addItemNavigationController;
+}
+
 #pragma mark - MyTabBar Delegate
 -(void)addButtonClick:(MyTabBar *)tabBar
 {

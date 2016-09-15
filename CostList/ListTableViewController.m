@@ -20,7 +20,7 @@
 static NSString *ListCellIdentifier = @"ListCell";
 static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
-@interface ListTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate>
+@interface ListTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate,UIViewControllerPreviewingDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView;  //指向界面上部的视图，用于设置背景色
 @property (weak,nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -274,6 +274,11 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
             cell.imageIndicate.hidden = NO;
         
         [self configureSeparatorForCell:cell atIndexPath:indexPath];    //设置分割线
+        //如果3D Touch可用，则注册cell为可按压
+        if(self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
+        {
+            [self registerForPreviewingWithDelegate:self sourceView:cell];
+        }
         
         return cell;
     }
@@ -304,6 +309,11 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         cell.comment.text = dataModel.comment;
         
         [self configureSeparatorForCell:cell atIndexPath:indexPath];    //设置分割线
+        //如果3D Touch可用，则注册cell为可按压
+        if(self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
+        {
+            [self registerForPreviewingWithDelegate:self sourceView:cell];
+        }
         
         return cell;
     }
@@ -457,5 +467,49 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 }
 
+#pragma mark - UIViewControllerPreviewing Delegate
+-(nullable UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
+{
+    //轻轻按压peek预览信息
+    //获取按压的cell
+    UITableViewCell *cell = (UITableViewCell *)[previewingContext sourceView];
+    if ([cell isKindOfClass:[ListCell class]])
+    {
+        cell = (ListCell *)cell;
+    }
+    else
+    {
+        cell = (ListCommentCell *)cell;
+    }
+    //获取cell的位置
+    NSIndexPath *indexPath = [self.listTableView indexPathForCell:cell];
+    //获取AddItemViewController
+    MyNavigationController *preViewController = [self.myTabBarController getAddItemViewControllerToPreViewForDataModel:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    //调整不被虚化的范围，按压的那个cell不被虚化（轻轻按压时周边会被虚化，再少用力展示预览，再加力跳页至设定界面）
+    CGRect rect = CGRectMake(0, 0, self.view.frame.size.width,self.listTableView.rowHeight);
+    previewingContext.sourceRect = rect;
+    
+    [self.listTableView deselectRowAtIndexPath:indexPath animated:YES]; //取消cell的选中
+    
+    return (UIViewController *)preViewController;
+}
+
+-(void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
+{
+    //在预览界面时加力重压，则POP出记录编辑页面
+    //获取按压的cell
+    UITableViewCell *cell = (UITableViewCell *)[previewingContext sourceView];
+    if ([cell isKindOfClass:[ListCell class]])
+    {
+        cell = (ListCell *)cell;
+    }
+    else
+    {
+        cell = (ListCommentCell *)cell;
+    }
+    //获取cell的位置
+    NSIndexPath *indexPath = [self.listTableView indexPathForCell:cell];
+    [self.myTabBarController showAddOrEditItemControllerWithDataModel:[self.fetchedResultsController objectAtIndexPath:indexPath]];     //传递数据模型，并显示编辑界面
+}
 @end
 
