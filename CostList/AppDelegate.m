@@ -108,7 +108,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 {
     //处理错误情况
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"内部错误" message:@"There was a fatal error in the app and it cannot continue.\n\nPress OK to terminate the app. Sorry for the inconvenience." preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
         abort();
     }];
     [controller addAction:action];

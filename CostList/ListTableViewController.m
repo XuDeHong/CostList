@@ -359,8 +359,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     //滑动删除cell，并同步到CoreData数据库
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"警告" message:@"确定要删除该记录吗？（删除后的数据不可恢复）" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"警告", @"警告") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
             CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
             [dataModel removePhotoFile];    //删除图片
             [self.managedObjectContext deleteObject:dataModel];
@@ -372,7 +372,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
                 return;
             }
         }];
-        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }];
         [controller addAction:cancelBtn];

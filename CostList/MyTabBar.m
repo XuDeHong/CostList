@@ -82,7 +82,7 @@
     if(self.addLabel == nil)
     {
         UILabel *addLbl = [[UILabel alloc] init];
-        addLbl.text = @"添加";
+        addLbl.text = NSLocalizedString(@"添加", @"添加");
         addLbl.font = [UIFont systemFontOfSize:10];
         addLbl.textColor = [UIColor grayColor];
         [addLbl sizeToFit];
@@ -100,7 +100,7 @@
         //layoutSubviews方法会调用两次，第一次添加的Label位置不对，第二次才正确，但要先把第一个添加的Label删除，修复打开侧栏时出现两个添加的Label
         [self.addLabel removeFromSuperview];
         UILabel *addLbl = [[UILabel alloc] init];
-        addLbl.text = @"添加";
+        addLbl.text = NSLocalizedString(@"添加", @"添加");
         addLbl.font = [UIFont systemFontOfSize:10];
         addLbl.textColor = [UIColor grayColor];
         [addLbl sizeToFit];

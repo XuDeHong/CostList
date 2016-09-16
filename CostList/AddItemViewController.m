@@ -477,18 +477,18 @@
     //测试摄像头是否可用
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *takePhotoBtn = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        UIAlertAction *takePhotoBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"拍照", @"拍照") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self takePhoto];   //调用拍照方法
         }];
-        UIAlertAction *choosePhotoBtn = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        UIAlertAction *choosePhotoBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"从相册选择", @"从相册选择") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self choosePhotoFromLibrary];  //从相册中选择
         }];
-        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleCancel handler:nil];
         
         if(self.imageView.hidden == NO)
         {
             //查看大图按钮
-            UIAlertAction *showOriginImage = [UIAlertAction actionWithTitle:@"查看大图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            UIAlertAction *showOriginImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"查看大图", @"查看大图") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                 [self showPhotoViewController];
             }];
             [controller addAction:showOriginImage];
@@ -504,15 +504,15 @@
         else
         {
             UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-            UIAlertAction *choosePhotoBtn = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            UIAlertAction *choosePhotoBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"从相册选择", @"从相册选择") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                 [self choosePhotoFromLibrary];  //从相册中选择
             }];
-            UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleCancel handler:nil];
             
             if(self.imageView.hidden == NO)
             {
                 //查看大图按钮
-                UIAlertAction *showOriginImage = [UIAlertAction actionWithTitle:@"查看大图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                UIAlertAction *showOriginImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"查看大图", @"查看大图") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                     [self showPhotoViewController];
                 }];
                 [controller addAction:showOriginImage];
@@ -584,7 +584,7 @@
 
 -(void)updateLocationLabel:(NSString *)text withColor:(UIColor *)color      //根据文本和颜色更新标签
 {
-    self.locationLabel.text = text;
+    self.locationLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@", @"LocationLabel Text"),text];
     self.locationLabel.textColor = color;
 
     [self.tableView reloadData];//更新tableview
@@ -690,13 +690,13 @@
 -(void)showLocationMenu
 {
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *editLocationAction = [UIAlertAction actionWithTitle:@"编辑位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertAction *editLocationAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"编辑位置", @"编辑位置") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self showEditLocationView];   //显示编辑位置弹框
     }];
-    UIAlertAction *autoGetAction = [UIAlertAction actionWithTitle:@"自动获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertAction *autoGetAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"自动获取", @"自动获取") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self getLocation];   //获取位置
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleCancel handler:nil];
     
     [controller addAction:editLocationAction];
     [controller addAction:autoGetAction];
