@@ -35,30 +35,20 @@
     //设置界面上部的View的背景色
     self.upBackgroundView.backgroundColor = GLOBAL_TINT_COLOR;
     
-    //设置NavigationBar完全透明，通过UIBarMetricsCompact设置横屏可见，竖屏不可见来间接达到效果，而该应用APP只能竖屏
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationBarBackground"] forBarMetrics:UIBarMetricsCompact];
-    
     //设置NavigationBarItem的颜色
     self.navigationBar.tintColor = [UIColor whiteColor];
     
-    //去除NavigationBar下部的横线
+    //设置导航栏的backgroundView为透明（去除NavigationBar下部的横线和导航栏背景透明）
     if ([self.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
     {
         NSArray *list=self.navigationBar.subviews;
         for (id obj in list)
         {
-            if ([obj isKindOfClass:[UIImageView class]])
+            if ([obj isKindOfClass:[UIView class]] && (![obj isKindOfClass:[UIControl class]]))
             {
-                UIImageView *imageView=(UIImageView *)obj;
-                NSArray *list2=imageView.subviews;
-                for (id obj2 in list2)
-                {
-                    if ([obj2 isKindOfClass:[UIImageView class]])
-                    {
-                        UIImageView *imageView2=(UIImageView *)obj2;
-                        imageView2.hidden=YES;
-                    }
-                }
+                UIView *background = (UIView *)obj;
+                background.hidden = YES;
+                break;
             }
         }
     }
