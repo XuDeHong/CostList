@@ -45,6 +45,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     self.listTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self initMonthPickerButton]; //初始化月份选择器按钮
+    
 }
 
 
