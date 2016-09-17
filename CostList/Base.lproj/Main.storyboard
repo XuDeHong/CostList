@@ -120,7 +120,7 @@
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUG-UC-oNM">
                                             <rect key="frame" x="113" y="7" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Year and Month"/>
+                                            <state key="normal" title="xxxx年xx月xx日"/>
                                             <connections>
                                                 <action selector="monthPickerButtonDidClick:" destination="Xop-uj-W6F" eventType="touchUpInside" id="WWg-8m-Dpx"/>
                                             </connections>
