@@ -65,18 +65,16 @@
     //去掉TabBar上部的横线
     for (UIView *view in self.subviews)
     {
-        if ([view isKindOfClass:[UIImageView class]] && view.bounds.size.height <= 1)   //横线的高度为0.5
-        {
-            UIImageView *line = (UIImageView *)view;
-            line.hidden = YES;
-        }
+        NSLog(@"%@",view);
     }
     
+    //设置“+”按钮的大小为图片的大小
+    self.addButton.size = CGSizeMake(self.addButton.currentBackgroundImage.size.width, self.addButton.currentBackgroundImage.size.height);
     //设置“+”按钮的位置
     self.addButton.centerX = self.centerX;
     self.addButton.centerY = self.height * 0.5 - 1.5 * AddButtonMargin;
-    //设置“+”按钮的大小为图片的大小
-    self.addButton.size = CGSizeMake(self.addButton.currentBackgroundImage.size.width, self.addButton.currentBackgroundImage.size.height);
+    NSLog(@"%f %f %f",self.centerX,self.addButton.centerX,self.addButton.centerY);
+
     
     //创建并设置“+”按钮下方的文本为“添加”
     if(self.addLabel == nil)
