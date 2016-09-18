@@ -118,7 +118,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUG-UC-oNM">
-                                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="xxxx年xx月xx日"/>
                                             <connections>
@@ -240,6 +240,7 @@
                     <connections>
                         <outlet property="listTableView" destination="CSR-7i-LnE" id="63y-ql-goJ"/>
                         <outlet property="monthPickerButton" destination="sUG-UC-oNM" id="3ii-4W-T71"/>
+                        <outlet property="myNavigationItem" destination="XnM-ry-22t" id="u6F-gR-75K"/>
                         <outlet property="navigationBar" destination="RQF-pi-34M" id="34X-9V-Xjx"/>
                         <outlet property="upBackgroundView" destination="hJ6-CR-UyG" id="1cq-Rd-Cn4"/>
                     </connections>
@@ -284,7 +285,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fP6-ju-QHW">
-                                            <rect key="frame" x="113" y="8" width="150" height="29"/>
+                                            <rect key="frame" x="112.5" y="7.5" width="150" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="比例"/>

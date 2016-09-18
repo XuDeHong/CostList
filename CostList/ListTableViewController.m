@@ -27,12 +27,16 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 @property (strong,nonatomic) MonthPickerViewController *monthPickerViewController;
 @property (weak,nonatomic) MyTabBarController *myTabBarController;
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
+@property (weak, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
 
 @end
 
 @implementation ListTableViewController
 {
     NSFetchedResultsController *_fetchedResultsController;
+    BOOL _isFirstTime;
+    UIBarButtonItem *_leftBarButton;
+    UIBarButtonItem *_rightBarButton;
 }
 
 
@@ -46,6 +50,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     
     [self initMonthPickerButton]; //初始化月份选择器按钮
     
+    _isFirstTime = YES;
+
 }
 
 
@@ -86,6 +92,31 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    if(_isFirstTime)
+    {
+        _isFirstTime = NO;
+        //第一次打开，创建两个BarButtonItem用于调整
+        UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        leftSpace.width = 16;
+        UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        rightSpace.width = 16;
+        //保存原来的BarButtonItem
+        _leftBarButton = self.myNavigationItem.leftBarButtonItem;
+        _rightBarButton = self.myNavigationItem.rightBarButtonItem;
+        //设置调整位置
+        self.myNavigationItem.leftBarButtonItems = @[leftSpace,self.myNavigationItem.leftBarButtonItem];
+        self.myNavigationItem.rightBarButtonItems = @[rightSpace,self.myNavigationItem.rightBarButtonItem];
+    }
+    else
+    {
+        UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        leftSpace.width = 0;
+        UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        rightSpace.width = 0;
+        self.myNavigationItem.leftBarButtonItems = @[leftSpace,_leftBarButton];
+        self.myNavigationItem.rightBarButtonItems = @[rightSpace,_rightBarButton];
+    }
     
     [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
     
