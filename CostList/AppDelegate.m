@@ -34,6 +34,13 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [self initApp]; //初始化应用
+    
+    return YES;
+}
+
+-(void)initApp
+{
     //设置当接收到CoreData错误通知时调用方法
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fatalCoreDataError:) name:ManagedObjectContextSaveDidFailNotification object:nil];
     
@@ -77,10 +84,17 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     {
         [self.locationManager requestWhenInUseAuthorization];
     }
-    
-    return YES;
 }
 
+-(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
+{
+    ITRAirSideMenu *itrAirSideMenu = (ITRAirSideMenu *)self.window.rootViewController;
+    MyTabBarController *tabbarController = (MyTabBarController *)itrAirSideMenu.contentViewController;
+    if([shortcutItem.type isEqualToString:@"com.XuDeHong.CostList.Add"])    //快速进入添加账目界面
+    {
+        [tabbarController showAddOrEditItemControllerWithDataModel:nil];
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
