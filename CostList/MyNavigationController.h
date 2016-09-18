@@ -10,4 +10,6 @@
 
 @interface MyNavigationController : UINavigationController
 
+@property (nonatomic,strong) NSIndexPath *indexPathForData; //记录数据模型在TableView的位置
+
 @end

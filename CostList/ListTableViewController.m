@@ -11,6 +11,8 @@
 #import "MyTabBarController.h"
 #import "ListCell.h"
 #import "ListCommentCell.h"
+#import "MyNavigationController.h"
+#import "AddItemViewController.h"
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
@@ -93,6 +95,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     [super viewWillAppear:animated];
 
+    //调整明细界面的UIBarButtonItem位置，修复更新iOS10后错位BUG
     if(_isFirstTime)
     {
         _isFirstTime = NO;
@@ -381,26 +384,31 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     //滑动删除cell，并同步到CoreData数据库
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"警告", @"警告") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
-            CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
-            [dataModel removePhotoFile];    //删除图片
-            [self.managedObjectContext deleteObject:dataModel];
-            
-            NSError *error;
-            if(![self.managedObjectContext save:&error])
-            {
-                FATAL_CORE_DATA_ERROR(error);
-                return;
-            }
-        }];
-        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        }];
-        [controller addAction:cancelBtn];
-        [controller addAction:sureBtn];
-        [self presentViewController:controller animated:YES completion:nil];
+        [self confirmDeleteDataAtIndexPath:indexPath];
     }
+}
+
+-(void)confirmDeleteDataAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"警告", @"警告") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+        CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
+        [dataModel removePhotoFile];    //删除图片
+        [self.managedObjectContext deleteObject:dataModel];
+        
+        NSError *error;
+        if(![self.managedObjectContext save:&error])
+        {
+            FATAL_CORE_DATA_ERROR(error);
+            return;
+        }
+    }];
+    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }];
+    [controller addAction:cancelBtn];
+    [controller addAction:sureBtn];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark Table View Delegate
@@ -507,6 +515,19 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     NSIndexPath *indexPath = [self.listTableView indexPathForCell:cell];
     //获取AddItemViewController
     MyNavigationController *preViewController = [self.myTabBarController getAddItemViewControllerToPreViewForDataModel:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    AddItemViewController *controller = (AddItemViewController *)preViewController.topViewController;
+    //预览时删除导航栏两边的按钮
+    UIBarButtonItem *leftBtn = controller.navigationItem.leftBarButtonItem;
+    NSMutableArray *leftArray = [controller.navigationItem.leftBarButtonItems mutableCopy];
+    [leftArray removeObject:leftBtn];
+    controller.navigationItem.leftBarButtonItems = leftArray;
+    
+    UIBarButtonItem *rightBtn = controller.navigationItem.rightBarButtonItem;
+    NSMutableArray *rightArray = [controller.navigationItem.rightBarButtonItems mutableCopy];
+    [rightArray removeObject:rightBtn];
+    controller.navigationItem.rightBarButtonItems = rightArray;
+    
+    preViewController.indexPathForData = indexPath;  //传递数据模型在TableView位置
     //调整不被虚化的范围，按压的那个cell不被虚化（轻轻按压时周边会被虚化，再少用力展示预览，再加力跳页至设定界面）
     CGRect rect = CGRectMake(0, 0, self.view.frame.size.width,self.listTableView.rowHeight);
     previewingContext.sourceRect = rect;

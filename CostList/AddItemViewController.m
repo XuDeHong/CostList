@@ -43,6 +43,7 @@
 
 #define LocationLabelUpAndDownWhileSpace 28 //位置cell的标签上边和下边空隙之和
 
+
 @interface AddItemViewController() <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EditLocationViewControllerDelegate,MyDatePickerControllerDelegate,ChooseIconViewControllerDelegate,NYTPhotosViewControllerDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;   //金额
@@ -90,6 +91,7 @@
     //是否为编辑账目
     if(self.itemToEdit != nil)
     {
+        self.navigationItem.title = @"账目详情";
         [self printDataToEdit]; //显示已有数据
     }
     else
@@ -106,7 +108,6 @@
     } close:^(UITextField *textField,NSString *number){
     
     }];
-    
 
 }
 
@@ -864,4 +865,5 @@
     [self.moneyTextField resignFirstResponder];
     [self.commentTextField resignFirstResponder];
 }
+
 @end
