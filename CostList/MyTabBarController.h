@@ -22,4 +22,6 @@
 
 -(MyNavigationController *)getAddItemViewControllerToPreViewForDataModel:(CostItem *)costItem;
 
+-(void)didClickDeleteBtnInPreviewWithIndexPath:(NSIndexPath *)indexPath;
+
 @end

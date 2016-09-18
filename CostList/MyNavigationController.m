@@ -7,6 +7,8 @@
 //
 
 #import "MyNavigationController.h"
+#import "MyTabBarController.h"
+#import "ITRAirSideMenu.h"
 
 @implementation MyNavigationController
 
@@ -18,6 +20,25 @@
 -(BOOL)prefersStatusBarHidden
 {
     return NO;  //不隐藏状态栏
+}
+
+#pragma mark - 3D Touch
+
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    // setup a list of preview actions
+    //peek预览界面删除按钮的响应
+    UIPreviewAction *delete = [UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        //获取myTabBarController
+        ITRAirSideMenu *rootViewController = (ITRAirSideMenu *)[UIApplication sharedApplication].delegate.window.rootViewController;
+        MyTabBarController *tabBarController = (MyTabBarController *)rootViewController.contentViewController;
+        //调用方法
+        [tabBarController didClickDeleteBtnInPreviewWithIndexPath:self.indexPathForData];
+    }];
+    
+    NSArray *actions = @[delete];
+    
+    // and return them (return the array of actions instead to see all items ungrouped)
+    return actions;
 }
 
 @end

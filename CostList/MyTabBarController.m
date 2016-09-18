@@ -112,6 +112,11 @@
     return addItemNavigationController;
 }
 
+-(void)didClickDeleteBtnInPreviewWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self.listController confirmDeleteDataAtIndexPath:indexPath];   //peek预览时点击删除按钮
+}
+
 #pragma mark - MyTabBar Delegate
 -(void)addButtonClick:(MyTabBar *)tabBar
 {
