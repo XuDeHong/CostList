@@ -91,7 +91,7 @@
     //是否为编辑账目
     if(self.itemToEdit != nil)
     {
-        self.navigationItem.title = @"账目详情";
+        self.navigationItem.title = NSLocalizedString(@"账目详情", @"账目详情");
         [self printDataToEdit]; //显示已有数据
     }
     else
