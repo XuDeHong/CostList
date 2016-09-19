@@ -84,6 +84,10 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     {
         [self.locationManager requestWhenInUseAuthorization];
     }
+    
+    UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeAdd];
+    UIApplicationShortcutItem *addItem = [[UIApplicationShortcutItem alloc] initWithType:@"com.XuDeHong.CostList.Add" localizedTitle:NSLocalizedString(@"添加账目", @"添加账目") localizedSubtitle:nil icon:icon userInfo:nil];
+    [UIApplication sharedApplication].shortcutItems = @[addItem];
 }
 
 -(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
@@ -93,6 +97,11 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     if([shortcutItem.type isEqualToString:@"com.XuDeHong.CostList.Add"])    //快速进入添加账目界面
     {
         [tabbarController showAddOrEditItemControllerWithDataModel:nil];
+    }
+    
+    if(completionHandler)
+    {
+        completionHandler(YES);
     }
 }
 
