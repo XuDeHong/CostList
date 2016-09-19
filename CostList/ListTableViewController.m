@@ -95,6 +95,12 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     [super viewWillAppear:animated];
 
+    [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
+    
+    [self performFetch]; //从CoreData中获取数据
+    [self.listTableView reloadData];  //保证数据最新，并更新分割线显示问题
+    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+    
     //调整明细界面的UIBarButtonItem位置，修复更新iOS10后错位BUG
     if(_isFirstTime)
     {
@@ -110,6 +116,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //设置调整位置
         self.myNavigationItem.leftBarButtonItems = @[leftSpace,self.myNavigationItem.leftBarButtonItem];
         self.myNavigationItem.rightBarButtonItems = @[rightSpace,self.myNavigationItem.rightBarButtonItem];
+        
+        [self hideSeparatorAtFirstTime];
     }
     else
     {
@@ -120,12 +128,26 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         self.myNavigationItem.leftBarButtonItems = @[leftSpace,_leftBarButton];
         self.myNavigationItem.rightBarButtonItems = @[rightSpace,_rightBarButton];
     }
-    
-    [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
-    
-    [self performFetch]; //从CoreData中获取数据
-    [self.listTableView reloadData];  //保证数据最新，并更新分割线显示问题
-    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+
+}
+
+-(void)hideSeparatorAtFirstTime
+{
+    int maxSection = (int)[self.fetchedResultsController sections].count;
+    for(int i = 0;i< (maxSection - 1); i++)
+    {
+        id <NSFetchedResultsSectionInfo>sectionInfo = [self.fetchedResultsController sections][i];
+        int maxRow = (int)[sectionInfo numberOfObjects] - 1;
+        UITableViewCell *cell = [self.listTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:maxRow inSection:i]];
+        if(cell != nil)
+        {
+            UIView *separator = [cell viewWithTag:500];
+            if(separator != nil)
+            {
+                separator.hidden = YES;
+            }
+        }
+    }
 }
 
 -(void)textWhetherHasData
@@ -169,8 +191,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //设置数据实体
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
-        NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:YES];
+        NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+        NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO];
         [fetchRequest setSortDescriptors:@[sortDescriptor1,sortDescriptor2]];
         //设置一次获取的数据量
         [fetchRequest setFetchBatchSize:20];
