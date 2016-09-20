@@ -118,7 +118,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUG-UC-oNM">
-                                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="xxxx年xx月xx日"/>
                                             <connections>
