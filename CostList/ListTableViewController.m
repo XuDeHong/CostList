@@ -138,7 +138,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
             self.myNavigationItem.rightBarButtonItems = @[rightSpace,_rightBarButton];
         }
     }
-
 }
 
 -(void)hideSeparatorAtFirstTime

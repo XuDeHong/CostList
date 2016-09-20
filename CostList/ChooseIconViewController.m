@@ -31,30 +31,34 @@ static NSString *CostCategoryCellIdentifier = @"CostCategoryCell";
 {
     [super viewDidLoad];
     //初始化数组
-    _spendArray = @[@{@"IconName":@"travel",    @"DisplayName":@"旅行"},
-                   @{@"IconName":@"traffic",    @"DisplayName":@"交通"},
-                   @{@"IconName":@"eat",        @"DisplayName":@"吃饭"},
-                   @{@"IconName":@"shop",       @"DisplayName":@"购物"},
-                   @{@"IconName":@"play",       @"DisplayName":@"娱乐"},
-                   @{@"IconName":@"medical",    @"DisplayName":@"药品"},
-                   @{@"IconName":@"rent",       @"DisplayName":@"房租"},
-                   @{@"IconName":@"school",     @"DisplayName":@"教育"},
-                   @{@"IconName":@"snack",      @"DisplayName":@"零食"},
-                   @{@"IconName":@"taobao",     @"DisplayName":@"网购"},
-                   @{@"IconName":@"clothes",    @"DisplayName":@"衣服"},
-                   @{@"IconName":@"fruit",      @"DisplayName":@"水果"},
-                   @{@"IconName":@"utilities",  @"DisplayName":@"水电费"},
-                   @{@"IconName":@"daily",      @"DisplayName":@"日用品"},
-                   @{@"IconName":@"cosmetic",   @"DisplayName":@"化妆品"},
-                   @{@"IconName":@"other",      @"DisplayName":@"其他"}];
-    
-    _incomeArray = @[@{@"IconName":@"salary",      @"DisplayName":@"工资"},
-                     @{@"IconName":@"bonus",      @"DisplayName":@"奖金"},
-                     @{@"IconName":@"pocket money",      @"DisplayName":@"零花钱"},
-                     @{@"IconName":@"investment",      @"DisplayName":@"投资"},
-                     @{@"IconName":@"red packet",      @"DisplayName":@"红包"},
-                     @{@"IconName":@"other",      @"DisplayName":@"其他"}];
-    
+//    _spendArray = @[@{@"IconName":@"travel",    @"DisplayName":@"旅行"},
+//                   @{@"IconName":@"traffic",    @"DisplayName":@"交通"},
+//                   @{@"IconName":@"eat",        @"DisplayName":@"吃饭"},
+//                   @{@"IconName":@"shop",       @"DisplayName":@"购物"},
+//                   @{@"IconName":@"play",       @"DisplayName":@"娱乐"},
+//                   @{@"IconName":@"medical",    @"DisplayName":@"药品"},
+//                   @{@"IconName":@"rent",       @"DisplayName":@"房租"},
+//                   @{@"IconName":@"school",     @"DisplayName":@"教育"},
+//                   @{@"IconName":@"snack",      @"DisplayName":@"零食"},
+//                   @{@"IconName":@"taobao",     @"DisplayName":@"网购"},
+//                   @{@"IconName":@"clothes",    @"DisplayName":@"衣服"},
+//                   @{@"IconName":@"fruit",      @"DisplayName":@"水果"},
+//                   @{@"IconName":@"utilities",  @"DisplayName":@"水电费"},
+//                   @{@"IconName":@"daily",      @"DisplayName":@"日用品"},
+//                   @{@"IconName":@"cosmetic",   @"DisplayName":@"化妆品"},
+//                   @{@"IconName":@"other",      @"DisplayName":@"其他"}];
+//    
+//    _incomeArray = @[@{@"IconName":@"salary",      @"DisplayName":@"工资"},
+//                     @{@"IconName":@"bonus",      @"DisplayName":@"奖金"},
+//                     @{@"IconName":@"pocket money",      @"DisplayName":@"零花钱"},
+//                     @{@"IconName":@"investment",      @"DisplayName":@"投资"},
+//                     @{@"IconName":@"red packet",      @"DisplayName":@"红包"},
+//                     @{@"IconName":@"other",      @"DisplayName":@"其他"}];
+    //从plist文件读取类别Icon信息
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"CategoryIconInfo" ofType:@"plist"];
+    NSDictionary *categoryIconInfo = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    _spendArray = categoryIconInfo[@"spendArray"];
+    _incomeArray = categoryIconInfo[@"incomeArray"];
     //去除多余的空行和分割线
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
