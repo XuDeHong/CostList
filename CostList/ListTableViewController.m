@@ -105,28 +105,34 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     if(_isFirstTime)
     {
         _isFirstTime = NO;
-        //第一次打开，创建两个BarButtonItem用于调整
-        UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        leftSpace.width = 16;
-        UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        rightSpace.width = 16;
-        //保存原来的BarButtonItem
-        _leftBarButton = self.myNavigationItem.leftBarButtonItem;
-        _rightBarButton = self.myNavigationItem.rightBarButtonItem;
-        //设置调整位置
-        self.myNavigationItem.leftBarButtonItems = @[leftSpace,self.myNavigationItem.leftBarButtonItem];
-        self.myNavigationItem.rightBarButtonItems = @[rightSpace,self.myNavigationItem.rightBarButtonItem];
+        if ([[[UIDevice currentDevice] systemVersion] isEqualToString:@"10.0"]) //适配iOS10
+        {
+            //第一次打开，创建两个BarButtonItem用于调整
+            UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+            leftSpace.width = 16;
+            UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+            rightSpace.width = 16;
+            //保存原来的BarButtonItem
+            _leftBarButton = self.myNavigationItem.leftBarButtonItem;
+            _rightBarButton = self.myNavigationItem.rightBarButtonItem;
+            //设置调整位置
+            self.myNavigationItem.leftBarButtonItems = @[leftSpace,self.myNavigationItem.leftBarButtonItem];
+            self.myNavigationItem.rightBarButtonItems = @[rightSpace,self.myNavigationItem.rightBarButtonItem];
+        }
         
         [self hideSeparatorAtFirstTime];
     }
     else
     {
-        UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        leftSpace.width = 0;
-        UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        rightSpace.width = 0;
-        self.myNavigationItem.leftBarButtonItems = @[leftSpace,_leftBarButton];
-        self.myNavigationItem.rightBarButtonItems = @[rightSpace,_rightBarButton];
+        if ([[[UIDevice currentDevice] systemVersion] isEqualToString:@"10.0"]) //适配iOS10
+        {
+            UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+            leftSpace.width = 0;
+            UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+            rightSpace.width = 0;
+            self.myNavigationItem.leftBarButtonItems = @[leftSpace,_leftBarButton];
+            self.myNavigationItem.rightBarButtonItems = @[rightSpace,_rightBarButton];
+        }
     }
 
 }
