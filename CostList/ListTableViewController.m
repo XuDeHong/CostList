@@ -47,10 +47,10 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     
     [self customizeAppearence]; //设置UI元素
     
+    [self initMonthPickerButton]; //初始化月份选择器按钮
+    
     //去除多余的空行和分割线
     self.listTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    [self initMonthPickerButton]; //初始化月份选择器按钮
     
     _isFirstTime = YES;
 
@@ -91,15 +91,19 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     _fetchedResultsController.delegate = nil;
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)fetchDataAndUpdateTableView
 {
-    [super viewWillAppear:animated];
-
-    [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
-    
     [self performFetch]; //从CoreData中获取数据
     [self.listTableView reloadData];  //保证数据最新，并更新分割线显示问题
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
+    [self fetchDataAndUpdateTableView]; //抓取数据和更新TableView
     
     //调整明细界面的UIBarButtonItem位置，修复更新iOS10后错位BUG
     if(_isFirstTime)
@@ -197,6 +201,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //设置数据实体
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
+        //设置排序
         NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
         NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO];
         [fetchRequest setSortDescriptors:@[sortDescriptor1,sortDescriptor2]];
@@ -207,6 +212,21 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //设置代理
         _fetchedResultsController.delegate = self;
     }
+    
+    NSString *year = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(0, 4)];
+    NSString *month = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(5, 2)];
+    NSString *nextMonth = [NSString stringWithFormat:@"%d",[month intValue] + 1];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
+    NSDate *endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,nextMonth]];
+    
+    //设置过滤器，设置显示当前月份选择器显示的年月的记录
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)",startDate,endDate];
+    
+    [_fetchedResultsController.fetchRequest setPredicate:predicate];
+    
     return _fetchedResultsController;
 }
 
@@ -266,6 +286,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     //设置选中的年月为月份选择标题
     [self.monthPickerButton setTitle:[NSString stringWithFormat:@"%@",yearAndMonth] forState:UIControlStateNormal];
+    [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
+    [self fetchDataAndUpdateTableView]; //抓取数据和更新TableView
 }
 
 #pragma mark - Table view data source
@@ -519,10 +541,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.listTableView endUpdates];
-    [self performFetch];    //从CoreData中获取数据
-    [self.listTableView reloadData];//保证数据最新，并更新分割线显示问题
-    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-
+    [self fetchDataAndUpdateTableView]; //抓取数据和更新TableView
 }
 
 #pragma mark - UIViewControllerPreviewing Delegate
