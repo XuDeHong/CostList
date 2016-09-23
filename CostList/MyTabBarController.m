@@ -17,6 +17,7 @@
 @interface MyTabBarController () <MyTabBarDelegate,AddItemViewControllerDelegate> //实现自定义TabBar协议
 
 @property (nonatomic,strong) ListTableViewController *listController;
+@property (nonatomic,strong) ChartTableViewController *chartController;
 
 @end
 
@@ -49,6 +50,10 @@
     self.listController = self.viewControllers[0];  //获取明细页面控制器
     
     self.listController.managedObjectContext = self.managedObjectContext;   //传递指针
+    
+    self.chartController = self.viewControllers[1]; //获取报表页面控制器
+    
+    self.chartController.managedObjectContext = self.managedObjectContext;  //传递指针
 }
 
 -(void)viewDidLayoutSubviews
