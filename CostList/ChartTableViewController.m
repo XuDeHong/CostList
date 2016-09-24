@@ -12,22 +12,36 @@
 #import "CostList-Swift.h"
 #import "Charts/Charts.h"
 
-@interface ChartTableViewController () <MonthPickerViewControllerDelegate,NSFetchedResultsControllerDelegate>
+@interface ChartTableViewController () <MonthPickerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView; //指向界面上部的视图，用于设置背景色
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong,nonatomic) MonthPickerViewController *monthPickerViewController;
 @property (weak,nonatomic) MyTabBarController *myTabBarController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (nonatomic,strong) IBOutlet PieChartView *pieChartView;
 @end
 
 @implementation ChartTableViewController
 {
-    NSFetchedResultsController *_fetchedResultsController;
+    NSArray *_costItems;    //所有账目数据
+    NSArray *_spendItems;   //所有支出的数据
+    NSArray *_incomeItems;  //所有收入的数据
+    NSArray *_spendTypes;   //所有支出的类型（不重复）
+    NSArray *_incomeTypes;  //所有收入的类型（不重复）
+    NSMutableArray *_totalSpendMoneyForEveryType;  //每一种支出类型的总支出（没排序）
+    NSMutableArray *_totalIncomeMoneyForEveryType; //每一种收入类型的总收入（没排序）
+    NSArray *_sortedtotalSpendMoneyForEveryType;  //每一种支出类型的总支出（排序）
+    NSArray *_sortedtotalIncomeMoneyForEveryType; //每一种收入类型的总收入（排序）
+    NSNumber *_totalSpendMoney; //总支出
+    NSNumber *_totalIncomeMoney;  //总收入
+    NSMutableArray *_spendMoneyPercentToTotalForEveryType;  //每一种支出类型的支出占总支出的百分比（没排序）
+    NSMutableArray *_incomeMoneyPercentToTotalForEveryType;  //每一种收入类型的收入占总收入的百分比（没排序）
+    NSArray *_sortedSpendPercentForEveryType;   //每一种支出类型的支出占总支出的百分比（排序）
+    NSArray *_sortedIncomePercentForEveryType;  //每一种收入类型的收入占总收入的百分比（排序）
+    NSDictionary *_spendTypeAndMoneys;  //每种类型的支出类型与金额
+    NSDictionary *_incomeTypeAndMoneys; //每种类型的收入类型与金额
 }
-
 
 
 - (void)viewDidLoad {
@@ -95,7 +109,7 @@
         [noDataPlaceholder removeFromSuperview];    //若已有占位图则去除
     }
     
-    if([[self.fetchedResultsController sections] count] == 0)
+    if([_costItems count] == 0)
     {
         //没有数据时的占位图
         noDataPlaceholder = [[UIImageView alloc] initWithFrame:CGRectMake(self.pieChartView.x, self.pieChartView.y,self.pieChartView.width,self.pieChartView.height)];
@@ -114,27 +128,11 @@
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
 }
 
-#pragma mark - About NSFetchedResults(Controller) Methods
-
--(NSFetchedResultsController *)fetchedResultsController
+-(void)performFetch
 {
-    if(_fetchedResultsController == nil)
-    {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        //设置数据实体
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
-        [fetchRequest setEntity:entity];
-        //设置排序
-        NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-        NSSortDescriptor *sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO];
-        [fetchRequest setSortDescriptors:@[sortDescriptor1,sortDescriptor2]];
-        //设置一次获取的数据量
-        [fetchRequest setFetchBatchSize:20];
-        
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"date" cacheName:@"CostItems"];
-        //设置代理
-        _fetchedResultsController.delegate = self;
-    }
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
     
     NSString *year = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(0, 4)];
     NSString *month = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(5, 2)];
@@ -148,18 +146,90 @@
     //设置过滤器，设置显示当前月份选择器显示的年月的记录
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)",startDate,endDate];
     
-    [_fetchedResultsController.fetchRequest setPredicate:predicate];
+    [fetchRequest setPredicate:predicate];
     
-    return _fetchedResultsController;
-}
-
--(void)performFetch
-{
     NSError *error;
-    if(![self.fetchedResultsController performFetch:&error])    //从CoreData中获取数据
+    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if(foundObjects == nil)    //从CoreData中获取数据
     {
+        [self setNilToSomeArrays];  //将实例变量的数组置空
         FATAL_CORE_DATA_ERROR(error);
         return;
+    }
+    _costItems = foundObjects;
+    
+    [self handleData];  //处理获取的所有数据
+}
+
+-(void)setNilToSomeArrays
+{
+    _costItems = nil;
+    _spendItems = nil;
+    _incomeItems = nil;
+    _spendTypes = nil;
+    _incomeTypes = nil;
+    _totalSpendMoneyForEveryType = nil;
+    _totalIncomeMoneyForEveryType = nil;
+    _sortedtotalSpendMoneyForEveryType = nil;
+    _sortedtotalIncomeMoneyForEveryType = nil;
+    _totalSpendMoney = nil;
+    _totalIncomeMoney = nil;
+    _spendMoneyPercentToTotalForEveryType = nil;
+    _incomeMoneyPercentToTotalForEveryType = nil;
+    _sortedSpendPercentForEveryType = nil;
+    _sortedIncomePercentForEveryType = nil;
+    _spendTypeAndMoneys = nil;
+    _incomeTypeAndMoneys = nil;
+}
+
+-(void)handleData
+{
+    if(_costItems != nil)
+    {
+        NSPredicate *incomePredicate = [NSPredicate predicateWithFormat:@"money > %@",@0];
+        _incomeItems = [_costItems filteredArrayUsingPredicate:incomePredicate];    //过滤出所有收入的数据
+        _totalIncomeMoney = [_incomeItems valueForKeyPath:@"@sum.money"];   //计算总收入
+        NSLog(@"totalIncomeMoney %@",_totalIncomeMoney);
+        _incomeTypes = [_incomeItems valueForKeyPath:@"@distinctUnionOfObjects.categoryName"];  //获得所有收入类型
+        _totalIncomeMoneyForEveryType = [NSMutableArray array]; //初始化数组
+        NSMutableArray *tmpTypes = [NSMutableArray array];  //新建一个临时数组来存放所有收入类型
+        for(NSString *type in _incomeTypes)
+        {
+            NSArray *array = [_incomeItems filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"categoryName == %@",type]];   //将收入中同一类别的数据筛选出来
+            double totalMoneyInOneType = 0;
+            
+            for(CostItem *item in array)    //将收入中同一类型的数据的金额相加，即计算该类型的总收入
+            {
+                totalMoneyInOneType += [item.money doubleValue];
+            }
+            //将该类型的总收入加入到数组
+            [_totalIncomeMoneyForEveryType addObject:[NSNumber numberWithDouble:totalMoneyInOneType]];
+            //将类型加入到数组
+            [tmpTypes addObject:type];
+            //计算该类型的收入占总收入的百分比
+            NSNumber *percent = @([[NSString stringWithFormat:@"%.2f",totalMoneyInOneType/[_totalIncomeMoney doubleValue]*100 ]doubleValue]);
+            //将百分比加入到数组
+            [_incomeMoneyPercentToTotalForEveryType addObject:percent];
+        }
+        //使用NSDictionary是为了让收入类型与该类型的总收入联系起来，键为收入类型，值为该类型总收入
+        _incomeTypeAndMoneys = [NSDictionary dictionaryWithObjects:[_totalIncomeMoneyForEveryType copy] forKeys:[tmpTypes copy]];
+        //降序排列每种类型的总收入
+        _sortedtotalIncomeMoneyForEveryType = [_totalIncomeMoneyForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
+        //降序排列每种类型的总收入百分比
+        _sortedIncomePercentForEveryType = [_totalIncomeMoneyForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
+        
+        for(NSString *type in _incomeTypeAndMoneys.allKeys)
+        {
+            NSLog(@"type :%@",type);
+            NSNumber *money = _incomeTypeAndMoneys[type];
+            NSLog(@"money :%@",money);
+        }
+        NSLog(@"%@",_sortedIncomePercentForEveryType);
+        
+//        NSPredicate *spendPredicate = [NSPredicate predicateWithFormat:@"money < %@",@0];
+//        _spendItems = [_costItems filteredArrayUsingPredicate:spendPredicate];  //过滤出所有支出的数据
+//        _spendTypes = [_spendItems valueForKeyPath:@"@distinctUnionOfObjects.categoryName"];  //获得所有支出类型
+        
     }
 }
 
@@ -209,6 +279,7 @@
 {
     //设置选中的年月为月份选择标题
     [self.monthPickerButton setTitle:[NSString stringWithFormat:@"%@",yearAndMonth] forState:UIControlStateNormal];
+    [self fetchDataAndUpdateView];  //抓取数据和更新视图
 }
 
 
