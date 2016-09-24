@@ -60,5 +60,10 @@
     self.photoId = @-1; //删除图片后将ID设置为-1
 }
 
+-(NSString *)description
+{
+    NSString *detail = [NSString stringWithFormat:@"categoryName:%@ comment:%@ date:%@ location:%@ money:%@",self.categoryName,self.comment,self.date,self.location,self.money];
+    return detail;
+}
 
 @end
