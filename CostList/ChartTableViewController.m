@@ -13,6 +13,8 @@
 #import "Charts/Charts.h"
 #import "NSNumber+Category.h"
 
+static NSString *ChartCellIdentifier = @"ChartCell";
+
 @interface ChartTableViewController () <MonthPickerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView; //指向界面上部的视图，用于设置背景色
@@ -283,6 +285,7 @@
     NSPredicate *spendPredicate = [NSPredicate predicateWithFormat:@"money < %@",@0];
     _spendItems = [_costItems filteredArrayUsingPredicate:spendPredicate];    //过滤出所有支出的数据
     _totalSpendMoney = [_spendItems valueForKeyPath:@"@sum.money"];   //计算总支出
+    _totalSpendMoney = @(-[_totalSpendMoney doubleValue]);
     _spendTypes = [_spendItems valueForKeyPath:@"@distinctUnionOfObjects.categoryName"];  //获得所有支出类型
     _totalSpendMoneyForEveryType = [NSMutableArray array]; //初始化数组
     _spendMoneyPercentToTotalForEveryType = [NSMutableArray array];    //初始化数组
@@ -297,6 +300,7 @@
         {
             totalMoneyInOneType += [item.money doubleValue];
         }
+        totalMoneyInOneType = -totalMoneyInOneType;
         //将该类型的总支出加入到数组
         [_totalSpendMoneyForEveryType addObject:[NSNumber numberWithDouble:totalMoneyInOneType]];
         //将类型加入到数组
@@ -394,22 +398,31 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return _sortedIncomeTypes.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartCellIdentifier];
+    UIImage *icon = [UIImage imageNamed:_sortedIncomeIconArray[indexPath.row]];
+    cell.imageView.image = icon;
+    UILabel *iconNameLabel = [cell viewWithTag:1001];
+    iconNameLabel.text = _sortedIncomeTypes[indexPath.row];
+    [iconNameLabel sizeToFit];
+    UILabel *percentLabel = [cell viewWithTag:1002];
+    percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedIncomePercentForEveryType[indexPath.row] doubleValue]];
+    [percentLabel sizeToFit];
+    UILabel *moneyLabel = [cell viewWithTag:1003];
+    moneyLabel.text = [NSString stringWithFormat:@"%@",_sortedtotalIncomeMoneyForEveryType[indexPath.row]];
+    [moneyLabel sizeToFit];
     
     return cell;
 }
-*/
+
 
 
 @end
