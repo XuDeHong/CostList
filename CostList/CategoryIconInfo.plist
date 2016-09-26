@@ -10,7 +10,7 @@
 			<key>DisplayName</key>
 			<string>旅行</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:231/255.0f green:23/255.0f blue:23/255.0f alpha:1]</string>
+			<string>E71717</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -18,7 +18,7 @@
 			<key>DisplayName</key>
 			<string>交通</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:23/255.0f green:123/255.0f blue:231/255.0f alpha:1]</string>
+			<string>177BE7</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -26,7 +26,7 @@
 			<key>DisplayName</key>
 			<string>吃饭</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:222/255.0f green:231/255.0f blue:23/255.0f alpha:1]</string>
+			<string>DEE717</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -34,7 +34,7 @@
 			<key>DisplayName</key>
 			<string>购物</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:231/255.0f green:81/255.0f blue:23/255.0f alpha:1]</string>
+			<string>E75117</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -42,7 +42,7 @@
 			<key>DisplayName</key>
 			<string>娱乐</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:78/255.0f green:13/255.0f blue:165/255.0f alpha:1]</string>
+			<string>4E0DA5</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -50,7 +50,7 @@
 			<key>DisplayName</key>
 			<string>药品</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:150/255.0f green:23/255.0f blue:231/255.0f alpha:1]</string>
+			<string>9617E7</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -58,7 +58,7 @@
 			<key>DisplayName</key>
 			<string>房租</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:219/255.0f green:23/255.0f blue:231/255.0f alpha:1]</string>
+			<string>DB17E7</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -66,7 +66,7 @@
 			<key>DisplayName</key>
 			<string>教育</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:94/255.0f green:231/255.0f blue:23/255.0f alpha:1]</string>
+			<string>5EE717</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -74,7 +74,7 @@
 			<key>DisplayName</key>
 			<string>零食</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:236/255.0f green:134/255.0f blue:85/255.0f alpha:1]</string>
+			<string>EC8655</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -82,7 +82,7 @@
 			<key>DisplayName</key>
 			<string>网购</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:156/255.0f green:32/255.0f blue:93/255.0f alpha:1]</string>
+			<string>9C205D</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -90,7 +90,7 @@
 			<key>DisplayName</key>
 			<string>衣服</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:113/255.0f green:23/255.0f blue:231/255.0f alpha:1]</string>
+			<string>7117E7</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -98,7 +98,7 @@
 			<key>DisplayName</key>
 			<string>水果</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:60/255.0f green:150/255.0f blue:236/255.0f alpha:1]</string>
+			<string>3C96EC</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -106,7 +106,7 @@
 			<key>DisplayName</key>
 			<string>水电费</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:231/255.0f green:108/255.0f blue:23/255.0f alpha:1]</string>
+			<string>E76C17</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -114,7 +114,7 @@
 			<key>DisplayName</key>
 			<string>日用品</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:23/255.0f green:148/255.0f blue:231/255.0f alpha:1]</string>
+			<string>1794E7</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -122,7 +122,7 @@
 			<key>DisplayName</key>
 			<string>化妆品</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:74/255.0f green:23/255.0f blue:231/255.0f alpha:1]</string>
+			<string>4A17E7</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -130,7 +130,7 @@
 			<key>DisplayName</key>
 			<string>其他</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:231/255.0f green:23/255.0f blue:182/255.0f alpha:1]</string>
+			<string>E717B6</string>
 		</dict>
 	</array>
 	<key>incomeArray</key>
@@ -141,7 +141,7 @@
 			<key>DisplayName</key>
 			<string>工资</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:13/255.0f green:165/255.0f blue:82/255.0f alpha:1]</string>
+			<string>0DA552</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -149,7 +149,7 @@
 			<key>DisplayName</key>
 			<string>奖金</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:204/255.0f green:48/255.0f blue:27/255.0f alpha:1]</string>
+			<string>CC301B</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -157,7 +157,7 @@
 			<key>DisplayName</key>
 			<string>零花钱</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:27/255.0f green:181/255.0f blue:204/255.0f alpha:1]</string>
+			<string>1BB5CC</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -165,7 +165,7 @@
 			<key>DisplayName</key>
 			<string>投资</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:201/255.0f green:198/255.0f blue:40/255.0f alpha:1]</string>
+			<string>C9C628</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -173,7 +173,7 @@
 			<key>DisplayName</key>
 			<string>红包</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:23/255.0f green:120/255.0f blue:231/255.0f alpha:1]</string>
+			<string>1778E7</string>
 		</dict>
 		<dict>
 			<key>IconName</key>
@@ -181,7 +181,7 @@
 			<key>DisplayName</key>
 			<string>其他</string>
 			<key>BGColor</key>
-			<string>[UIColor colorWithRed:231/255.0f green:23/255.0f blue:182/255.0f alpha:1]</string>
+			<string>E717B6</string>
 		</dict>
 	</array>
 </dict>

@@ -12,6 +12,7 @@
 #import "CostList-Swift.h"
 #import "Charts/Charts.h"
 #import "NSNumber+Category.h"
+#import "UIColor+Category.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
 
@@ -74,8 +75,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     _incomeInfoArray = categoryIconInfo[@"incomeArray"];
     
     [self setupPieChartView:self.pieChartView];
-    
-    self.pieChartView.delegate = self;
 }
 
 
@@ -108,6 +107,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [super viewWillAppear:animated];
     
     [self fetchDataAndUpdateView];  //抓取数据和更新视图
+    
+    [self setDataForPieChart];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,7 +127,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 
 - (void)setupPieChartView:(PieChartView *)chartView
 {
-    chartView.usePercentValuesEnabled = YES;
     chartView.drawSlicesUnderHoleEnabled = NO;
     chartView.holeRadiusPercent = 0.58;
     chartView.transparentCircleRadiusPercent = 0.61;
@@ -156,8 +156,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     
     chartView.drawHoleEnabled = YES;
     chartView.rotationAngle = 0.0;
-    chartView.rotationEnabled = YES;
-    chartView.highlightPerTapEnabled = YES;
+    chartView.rotationEnabled = NO;
+    chartView.highlightPerTapEnabled = NO;
+    chartView.delegate = self;
     
     ChartLegend *l = chartView.legend;
     l.horizontalAlignment = ChartLegendHorizontalAlignmentRight;
@@ -167,6 +168,32 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     l.xEntrySpace = 7.0;
     l.yEntrySpace = 0.0;
     l.yOffset = 0.0;
+}
+
+-(void)setDataForPieChart
+{
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    for(int i = 0;i < _sortedtotalIncomeMoneyForEveryType.count;i++)
+    {
+        [values addObject:[[PieChartDataEntry alloc] initWithValue:[_sortedtotalIncomeMoneyForEveryType[i] doubleValue]]];
+    }
+    
+    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:nil];
+
+    NSMutableArray *colors = [NSMutableArray array];
+    for(NSString *str in _sortedIncomeIconColors)
+    {
+        [colors addObject:[UIColor colorWithHexString:str]];
+    }
+    dataSet.colors = colors;
+    
+    dataSet.drawValuesEnabled = NO;
+    
+    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
+    
+    self.pieChartView.data = data;
+    
+    [self.pieChartView animateWithXAxisDuration:0.5 easingOption:ChartEasingOptionLinear];
 }
 
 #pragma mark - About Fetch and Handle Data
@@ -277,6 +304,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     _totalIncomeMoneyForEveryType = [NSMutableArray array]; //初始化数组
     _incomeMoneyPercentToTotalForEveryType = [NSMutableArray array];    //初始化数组
     _sortedIncomeIconArray = [NSMutableArray array];    //初始化数组
+    _sortedIncomeIconColors = [NSMutableArray array];   //初始化数组
     NSMutableArray *tmpTypes = [NSMutableArray array];  //新建一个临时数组来存放所有收入类型
     for(NSString *type in _incomeTypes)
     {
@@ -341,6 +369,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     _totalSpendMoneyForEveryType = [NSMutableArray array]; //初始化数组
     _spendMoneyPercentToTotalForEveryType = [NSMutableArray array];    //初始化数组
     _sortedSpendIconArray = [NSMutableArray array];    //初始化数组
+    _sortedSpendIconColors = [NSMutableArray array];    //初始化数组
     NSMutableArray *tmpTypes = [NSMutableArray array];  //新建一个临时数组来存放所有支出类型
     for(NSString *type in _spendTypes)
     {
