@@ -25,6 +25,7 @@
 		843BE1D21D93C710004F5B77 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843BE1CA1D93C6EE004F5B77 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		843BE1DC1D93C739004F5B77 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BE1DB1D93C739004F5B77 /* File.swift */; };
 		84434EDE1D8407AC00F989BE /* ListCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84434EDD1D8407AC00F989BE /* ListCommentCell.m */; };
+		8453EA771D99175E00EDFE46 /* UIColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453EA761D99175E00EDFE46 /* UIColor+Category.m */; };
 		845E62881D6313DD00224162 /* UIImage+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E62871D6313DD00224162 /* UIImage+Category.m */; };
 		847616871D82A705001B456F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847616851D82A705001B456F /* DataModel.xcdatamodeld */; };
 		847616901D82A9AC001B456F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8476168F1D82A9AC001B456F /* CoreData.framework */; };
@@ -155,6 +156,8 @@
 		84434EDC1D8407AC00F989BE /* ListCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCommentCell.h; sourceTree = "<group>"; };
 		84434EDD1D8407AC00F989BE /* ListCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCommentCell.m; sourceTree = "<group>"; };
 		844CC22A1D61F11A00B2050B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		8453EA751D99175E00EDFE46 /* UIColor+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Category.h"; sourceTree = "<group>"; };
+		8453EA761D99175E00EDFE46 /* UIColor+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Category.m"; sourceTree = "<group>"; };
 		845E62861D6313DD00224162 /* UIImage+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Category.h"; sourceTree = "<group>"; };
 		845E62871D6313DD00224162 /* UIImage+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Category.m"; sourceTree = "<group>"; };
 		8464BC871D5DCB4C00774350 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -418,6 +421,8 @@
 				8403AC8A1D7C082E000F5977 /* ITRAirSideMenu+Category.m */,
 				84D65FC51D97B9AD00C4B015 /* NSNumber+Category.h */,
 				84D65FC61D97B9AD00C4B015 /* NSNumber+Category.m */,
+				8453EA751D99175E00EDFE46 /* UIColor+Category.h */,
+				8453EA761D99175E00EDFE46 /* UIColor+Category.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
 				843084E01D5DA3F70091F0BC /* MonthPickerViewController.m in Sources */,
 				84EF7F461D8A978400B09310 /* CostItem.m in Sources */,
+				8453EA771D99175E00EDFE46 /* UIColor+Category.m in Sources */,
 				847616871D82A705001B456F /* DataModel.xcdatamodeld in Sources */,
 				84068DCC1D580F39003B6F5E /* main.m in Sources */,
 				84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */,
