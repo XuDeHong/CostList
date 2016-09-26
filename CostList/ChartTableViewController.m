@@ -179,7 +179,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
     NSString *money = [NSString stringWithFormat:@"%.2lf",[_totalIncomeMoney doubleValue]];
-    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n总支出",money]];
+    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n总收入",money]];
     [centerText setAttributes:@{
                                 NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
                                 NSParagraphStyleAttributeName: paragraphStyle
