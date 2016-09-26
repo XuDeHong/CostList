@@ -14,6 +14,8 @@
 #import "NSNumber+Category.h"
 #import "UIColor+Category.h"
 
+#define SeparatorColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.7]
+
 static NSString *ChartCellIdentifier = @"ChartCell";
 
 @interface ChartTableViewController () <MonthPickerViewControllerDelegate,ChartViewDelegate>
@@ -74,7 +76,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     _spendInfoArray = categoryIconInfo[@"spendArray"];
     _incomeInfoArray = categoryIconInfo[@"incomeArray"];
     
-    [self setupPieChartView:self.pieChartView];
+    [self setupPieChartView:self.pieChartView];     //设置饼图
 }
 
 
@@ -107,8 +109,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [super viewWillAppear:animated];
     
     [self fetchDataAndUpdateView];  //抓取数据和更新视图
-    
-    [self setDataForPieChart];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -134,25 +134,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [chartView setExtraOffsetsWithLeft:5.f top:10.f right:5.f bottom:5.f];
     
     chartView.drawCenterTextEnabled = YES;
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:@"Charts\nby Daniel Cohen Gindi"];
-    [centerText setAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
-                                NSParagraphStyleAttributeName: paragraphStyle
-                                } range:NSMakeRange(0, centerText.length)];
-    [centerText addAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f],
-                                NSForegroundColorAttributeName: UIColor.grayColor
-                                } range:NSMakeRange(10, centerText.length - 10)];
-    [centerText addAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:11.f],
-                                NSForegroundColorAttributeName: [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]
-                                } range:NSMakeRange(centerText.length - 19, 19)];
-    chartView.centerAttributedText = centerText;
     
     chartView.drawHoleEnabled = YES;
     chartView.rotationAngle = 0.0;
@@ -193,6 +174,23 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     
     self.pieChartView.data = data;
     
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByClipping;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    NSString *money = [NSString stringWithFormat:@"%.2lf",[_totalIncomeMoney doubleValue]];
+    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n总支出",money]];
+    [centerText setAttributes:@{
+                                NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
+                                NSParagraphStyleAttributeName: paragraphStyle
+                                } range:NSMakeRange(0,centerText.length)];
+    [centerText addAttributes:@{
+                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
+                                NSForegroundColorAttributeName:UIColor.grayColor
+                                } range:NSMakeRange(money.length, centerText.length - money.length)];
+    
+    self.pieChartView.centerAttributedText = centerText;
+    
     [self.pieChartView animateWithXAxisDuration:0.5 easingOption:ChartEasingOptionLinear];
 }
 
@@ -208,13 +206,28 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     
     if([_costItems count] == 0)
     {
-        //没有数据时的占位图
+        //没有数据时显示占位图
         noDataPlaceholder = [[UIImageView alloc] initWithFrame:CGRectMake(self.pieChartView.x, self.pieChartView.y,self.pieChartView.width,self.pieChartView.height)];
         noDataPlaceholder.tag = 505;
         UIImage *noDataImage = [UIImage imageNamed:@"NoDataImage2"];
         noDataPlaceholder.image = noDataImage;
         [self.view addSubview:noDataPlaceholder];
         self.pieChartView.centerText = @"";
+        
+        //去除分割线
+        if([self.view viewWithTag:5001] != nil)
+            [[self.view viewWithTag:5001] removeFromSuperview];
+    }
+    else
+    {
+        //添加分割线
+        if([self.view viewWithTag:5001] == nil)
+        {
+            UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.x,self.tableView.y,SCREEN_WIDTH, 1)];
+            separator.tag = 5001;
+            separator.backgroundColor = SeparatorColor;
+            [self.view addSubview:separator];
+        }
     }
 }
 
@@ -223,6 +236,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [self performFetch]; //从CoreData中获取数据
     [self.tableView reloadData];  //保证数据最新
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+    
+    if((_costItems != nil) && (_costItems.count != 0))   [self setDataForPieChart];  //提供数据给饼图
+    else    self.pieChartView.data = nil;
 }
 
 -(void)performFetch
@@ -251,6 +267,11 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     {
         [self setNilToSomeArrays];  //将实例变量的数组置空
         FATAL_CORE_DATA_ERROR(error);
+        return;
+    }
+    if(foundObjects.count == 0)
+    {
+        [self setNilToSomeArrays];  //将实例变量的数组置空
         return;
     }
     _costItems = foundObjects;
@@ -288,10 +309,10 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 
 -(void)handleData
 {
-    if(_costItems != nil)
+    if((_costItems != nil) && (_costItems.count != 0))
     {
-        [self handleIncomeData];
-        [self handleSpendData];
+        [self handleIncomeData];    //处理收入的数据
+        [self handleSpendData];     //处理支出的数据
     }
 }
 
@@ -299,130 +320,136 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 {
     NSPredicate *incomePredicate = [NSPredicate predicateWithFormat:@"money > %@",@0];
     _incomeItems = [_costItems filteredArrayUsingPredicate:incomePredicate];    //过滤出所有收入的数据
-    _totalIncomeMoney = [_incomeItems valueForKeyPath:@"@sum.money"];   //计算总收入
-    _incomeTypes = [_incomeItems valueForKeyPath:@"@distinctUnionOfObjects.categoryName"];  //获得所有收入类型
-    _totalIncomeMoneyForEveryType = [NSMutableArray array]; //初始化数组
-    _incomeMoneyPercentToTotalForEveryType = [NSMutableArray array];    //初始化数组
-    _sortedIncomeIconArray = [NSMutableArray array];    //初始化数组
-    _sortedIncomeIconColors = [NSMutableArray array];   //初始化数组
-    NSMutableArray *tmpTypes = [NSMutableArray array];  //新建一个临时数组来存放所有收入类型
-    for(NSString *type in _incomeTypes)
+    if((_incomeItems != nil) && (_incomeItems.count != 0))
     {
-        NSArray *array = [_incomeItems filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"categoryName == %@",type]];   //将收入中同一类别的数据筛选出来
-        double totalMoneyInOneType = 0;
-        
-        for(CostItem *item in array)    //将收入中同一类型的数据的金额相加，即计算该类型的总收入
+        _totalIncomeMoney = [_incomeItems valueForKeyPath:@"@sum.money"];   //计算总收入
+        _incomeTypes = [_incomeItems valueForKeyPath:@"@distinctUnionOfObjects.categoryName"];  //获得所有收入类型
+        _totalIncomeMoneyForEveryType = [NSMutableArray array]; //初始化数组
+        _incomeMoneyPercentToTotalForEveryType = [NSMutableArray array];    //初始化数组
+        _sortedIncomeIconArray = [NSMutableArray array];    //初始化数组
+        _sortedIncomeIconColors = [NSMutableArray array];   //初始化数组
+        NSMutableArray *tmpTypes = [NSMutableArray array];  //新建一个临时数组来存放所有收入类型
+        for(NSString *type in _incomeTypes)
         {
-            totalMoneyInOneType += [item.money doubleValue];
-        }
-        //将该类型的总收入加入到数组
-        [_totalIncomeMoneyForEveryType addObject:[NSNumber numberWithDouble:totalMoneyInOneType]];
-        //将类型加入到数组
-        [tmpTypes addObject:type];
-        //计算该类型的收入占总收入的百分比
-        NSNumber *percent = @([[NSString stringWithFormat:@"%.2f",totalMoneyInOneType/[_totalIncomeMoney doubleValue]*100 ]doubleValue]);
-        //将百分比加入到数组
-        [_incomeMoneyPercentToTotalForEveryType addObject:percent];
-    }
-    //使用NSDictionary是为了让收入类型与该类型的总收入联系起来，键为收入类型，值为该类型总收入，方便排序类型
-    _incomeTypeAndMoneys = [NSDictionary dictionaryWithObjects:[_totalIncomeMoneyForEveryType copy] forKeys:[tmpTypes copy]];
-    //按照收入高低对收入类型进行降序排列
-    _sortedIncomeTypes = [_incomeTypeAndMoneys keysSortedByValueUsingSelector:@selector(doubleCompare:)];
-    //降序排列每种类型的总收入
-    _sortedtotalIncomeMoneyForEveryType = [_totalIncomeMoneyForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
-    //降序排列每种类型的总收入百分比
-    _sortedIncomePercentForEveryType = [_incomeMoneyPercentToTotalForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
-    
-    //显示总收入
-    //NSLog(@"totalIncomeMoney %@",_totalIncomeMoney);
-    for(NSString *type in _sortedIncomeTypes)
-    {
-        //NSLog(@"type :%@",type);    //降序显示类型
-        //降序显示金额，或者换成_sortedtotalIncomeMoneyForEveryType
-        //NSNumber *money = _incomeTypeAndMoneys[type];
-        //NSLog(@"money :%@",money);
-        
-        for (NSDictionary *dict in _incomeInfoArray)
-        {
-            if([[dict objectForKey:@"DisplayName"] isEqualToString:type])
+            NSArray *array = [_incomeItems filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"categoryName == %@",type]];   //将收入中同一类别的数据筛选出来
+            double totalMoneyInOneType = 0;
+            
+            for(CostItem *item in array)    //将收入中同一类型的数据的金额相加，即计算该类型的总收入
             {
-                //获取类别对应的图标标识
-                [_sortedIncomeIconArray addObject:[dict objectForKey:@"IconName"]];
-                //NSLog(@"%@",[dict objectForKey:@"IconName"]);
-                //获取类别对应的图标颜色
-                [_sortedIncomeIconColors addObject:[dict objectForKey:@"BGColor"]];
-                //NSLog(@"%@",[dict objectForKey:@"BGColor"]);
-                break;
+                totalMoneyInOneType += [item.money doubleValue];
+            }
+            //将该类型的总收入加入到数组
+            [_totalIncomeMoneyForEveryType addObject:[NSNumber numberWithDouble:totalMoneyInOneType]];
+            //将类型加入到数组
+            [tmpTypes addObject:type];
+            //计算该类型的收入占总收入的百分比
+            NSNumber *percent = @([[NSString stringWithFormat:@"%.2f",totalMoneyInOneType/[_totalIncomeMoney doubleValue]*100 ]doubleValue]);
+            //将百分比加入到数组
+            [_incomeMoneyPercentToTotalForEveryType addObject:percent];
+        }
+        //使用NSDictionary是为了让收入类型与该类型的总收入联系起来，键为收入类型，值为该类型总收入，方便排序类型
+        _incomeTypeAndMoneys = [NSDictionary dictionaryWithObjects:[_totalIncomeMoneyForEveryType copy] forKeys:[tmpTypes copy]];
+        //按照收入高低对收入类型进行降序排列
+        _sortedIncomeTypes = [_incomeTypeAndMoneys keysSortedByValueUsingSelector:@selector(doubleCompare:)];
+        //降序排列每种类型的总收入
+        _sortedtotalIncomeMoneyForEveryType = [_totalIncomeMoneyForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
+        //降序排列每种类型的总收入百分比
+        _sortedIncomePercentForEveryType = [_incomeMoneyPercentToTotalForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
+        
+        //显示总收入
+        //NSLog(@"totalIncomeMoney %@",_totalIncomeMoney);
+        for(NSString *type in _sortedIncomeTypes)
+        {
+            //NSLog(@"type :%@",type);    //降序显示类型
+            //降序显示金额，或者换成_sortedtotalIncomeMoneyForEveryType
+            //NSNumber *money = _incomeTypeAndMoneys[type];
+            //NSLog(@"money :%@",money);
+            
+            for (NSDictionary *dict in _incomeInfoArray)
+            {
+                if([[dict objectForKey:@"DisplayName"] isEqualToString:type])
+                {
+                    //获取类别对应的图标标识
+                    [_sortedIncomeIconArray addObject:[dict objectForKey:@"IconName"]];
+                    //NSLog(@"%@",[dict objectForKey:@"IconName"]);
+                    //获取类别对应的图标颜色
+                    [_sortedIncomeIconColors addObject:[dict objectForKey:@"BGColor"]];
+                    //NSLog(@"%@",[dict objectForKey:@"BGColor"]);
+                    break;
+                }
             }
         }
+        //NSLog(@"%@",_sortedIncomePercentForEveryType);  //降序显示百分比
     }
-    //NSLog(@"%@",_sortedIncomePercentForEveryType);  //降序显示百分比
 }
 
 -(void)handleSpendData
 {
     NSPredicate *spendPredicate = [NSPredicate predicateWithFormat:@"money < %@",@0];
     _spendItems = [_costItems filteredArrayUsingPredicate:spendPredicate];    //过滤出所有支出的数据
-    _totalSpendMoney = [_spendItems valueForKeyPath:@"@sum.money"];   //计算总支出
-    _totalSpendMoney = @(-[_totalSpendMoney doubleValue]);
-    _spendTypes = [_spendItems valueForKeyPath:@"@distinctUnionOfObjects.categoryName"];  //获得所有支出类型
-    _totalSpendMoneyForEveryType = [NSMutableArray array]; //初始化数组
-    _spendMoneyPercentToTotalForEveryType = [NSMutableArray array];    //初始化数组
-    _sortedSpendIconArray = [NSMutableArray array];    //初始化数组
-    _sortedSpendIconColors = [NSMutableArray array];    //初始化数组
-    NSMutableArray *tmpTypes = [NSMutableArray array];  //新建一个临时数组来存放所有支出类型
-    for(NSString *type in _spendTypes)
+    if((_spendItems != nil) && (_spendItems.count != 0))
     {
-        NSArray *array = [_spendItems filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"categoryName == %@",type]];   //将支出中同一类别的数据筛选出来
-        double totalMoneyInOneType = 0;
-        
-        for(CostItem *item in array)    //将支出中同一类型的数据的金额相加，即计算该类型的总支出
+        _totalSpendMoney = [_spendItems valueForKeyPath:@"@sum.money"];   //计算总支出
+        _totalSpendMoney = @(-[_totalSpendMoney doubleValue]);
+        _spendTypes = [_spendItems valueForKeyPath:@"@distinctUnionOfObjects.categoryName"];  //获得所有支出类型
+        _totalSpendMoneyForEveryType = [NSMutableArray array]; //初始化数组
+        _spendMoneyPercentToTotalForEveryType = [NSMutableArray array];    //初始化数组
+        _sortedSpendIconArray = [NSMutableArray array];    //初始化数组
+        _sortedSpendIconColors = [NSMutableArray array];    //初始化数组
+        NSMutableArray *tmpTypes = [NSMutableArray array];  //新建一个临时数组来存放所有支出类型
+        for(NSString *type in _spendTypes)
         {
-            totalMoneyInOneType += [item.money doubleValue];
-        }
-        totalMoneyInOneType = -totalMoneyInOneType;
-        //将该类型的总支出加入到数组
-        [_totalSpendMoneyForEveryType addObject:[NSNumber numberWithDouble:totalMoneyInOneType]];
-        //将类型加入到数组
-        [tmpTypes addObject:type];
-        //计算该类型的支出占总支出的百分比
-        NSNumber *percent = @([[NSString stringWithFormat:@"%.2f",totalMoneyInOneType/[_totalSpendMoney doubleValue]*100 ]doubleValue]);
-        //将百分比加入到数组
-        [_spendMoneyPercentToTotalForEveryType addObject:percent];
-    }
-    //使用NSDictionary是为了让支出类型与该类型的总支出联系起来，键为支出类型，值为该类型总支出，方便排序类型
-    _spendTypeAndMoneys = [NSDictionary dictionaryWithObjects:[_totalSpendMoneyForEveryType copy] forKeys:[tmpTypes copy]];
-    //按照支出高低对支出类型进行降序排列
-    _sortedSpendTypes = [_spendTypeAndMoneys keysSortedByValueUsingSelector:@selector(doubleCompare:)];
-    //降序排列每种类型的总支出
-    _sortedtotalSpendMoneyForEveryType = [_totalSpendMoneyForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
-    //降序排列每种类型的总支出百分比
-    _sortedSpendPercentForEveryType = [_spendMoneyPercentToTotalForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
-    
-    //显示总支出
-    //NSLog(@"totalSpendMoney %@",_totalSpendMoney);
-    for(NSString *type in _sortedSpendTypes)
-    {
-        //NSLog(@"type :%@",type);    //降序显示类型
-        //降序显示金额，或者换成_sortedtotalSpendMoneyForEveryType
-        //NSNumber *money = _spendTypeAndMoneys[type];
-        //NSLog(@"money :%@",money);
-        
-        for (NSDictionary *dict in _spendInfoArray)
-        {
-            if([[dict objectForKey:@"DisplayName"] isEqualToString:type])
+            NSArray *array = [_spendItems filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"categoryName == %@",type]];   //将支出中同一类别的数据筛选出来
+            double totalMoneyInOneType = 0;
+            
+            for(CostItem *item in array)    //将支出中同一类型的数据的金额相加，即计算该类型的总支出
             {
-                //获取类别对应的图标标识
-                [_sortedSpendIconArray addObject:[dict objectForKey:@"IconName"]];
-                //NSLog(@"%@",[dict objectForKey:@"IconName"]);
-                //获取类别对应的图标颜色
-                [_sortedSpendIconColors addObject:[dict objectForKey:@"BGColor"]];
-                //NSLog(@"%@",[dict objectForKey:@"BGColor"]);
-                break;
+                totalMoneyInOneType += [item.money doubleValue];
+            }
+            totalMoneyInOneType = -totalMoneyInOneType;
+            //将该类型的总支出加入到数组
+            [_totalSpendMoneyForEveryType addObject:[NSNumber numberWithDouble:totalMoneyInOneType]];
+            //将类型加入到数组
+            [tmpTypes addObject:type];
+            //计算该类型的支出占总支出的百分比
+            NSNumber *percent = @([[NSString stringWithFormat:@"%.2f",totalMoneyInOneType/[_totalSpendMoney doubleValue]*100 ]doubleValue]);
+            //将百分比加入到数组
+            [_spendMoneyPercentToTotalForEveryType addObject:percent];
+        }
+        //使用NSDictionary是为了让支出类型与该类型的总支出联系起来，键为支出类型，值为该类型总支出，方便排序类型
+        _spendTypeAndMoneys = [NSDictionary dictionaryWithObjects:[_totalSpendMoneyForEveryType copy] forKeys:[tmpTypes copy]];
+        //按照支出高低对支出类型进行降序排列
+        _sortedSpendTypes = [_spendTypeAndMoneys keysSortedByValueUsingSelector:@selector(doubleCompare:)];
+        //降序排列每种类型的总支出
+        _sortedtotalSpendMoneyForEveryType = [_totalSpendMoneyForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
+        //降序排列每种类型的总支出百分比
+        _sortedSpendPercentForEveryType = [_spendMoneyPercentToTotalForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
+        
+        //显示总支出
+        //NSLog(@"totalSpendMoney %@",_totalSpendMoney);
+        for(NSString *type in _sortedSpendTypes)
+        {
+            //NSLog(@"type :%@",type);    //降序显示类型
+            //降序显示金额，或者换成_sortedtotalSpendMoneyForEveryType
+            //NSNumber *money = _spendTypeAndMoneys[type];
+            //NSLog(@"money :%@",money);
+            
+            for (NSDictionary *dict in _spendInfoArray)
+            {
+                if([[dict objectForKey:@"DisplayName"] isEqualToString:type])
+                {
+                    //获取类别对应的图标标识
+                    [_sortedSpendIconArray addObject:[dict objectForKey:@"IconName"]];
+                    //NSLog(@"%@",[dict objectForKey:@"IconName"]);
+                    //获取类别对应的图标颜色
+                    [_sortedSpendIconColors addObject:[dict objectForKey:@"BGColor"]];
+                    //NSLog(@"%@",[dict objectForKey:@"BGColor"]);
+                    break;
+                }
             }
         }
+        //NSLog(@"%@",_sortedSpendPercentForEveryType);  //降序显示百分比
     }
-    //NSLog(@"%@",_sortedSpendPercentForEveryType);  //降序显示百分比
 }
 
 #pragma mark - MonthPicker
