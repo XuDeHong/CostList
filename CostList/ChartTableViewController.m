@@ -15,7 +15,7 @@
 
 static NSString *ChartCellIdentifier = @"ChartCell";
 
-@interface ChartTableViewController () <MonthPickerViewControllerDelegate>
+@interface ChartTableViewController () <MonthPickerViewControllerDelegate,ChartViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView; //指向界面上部的视图，用于设置背景色
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -72,6 +72,10 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     NSDictionary *categoryIconInfo = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     _spendInfoArray = categoryIconInfo[@"spendArray"];
     _incomeInfoArray = categoryIconInfo[@"incomeArray"];
+    
+    [self setupPieChartView:self.pieChartView];
+    
+    self.pieChartView.delegate = self;
 }
 
 
@@ -119,6 +123,53 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     }
     [self.myTabBarController showSlideMenuController];
 }
+
+- (void)setupPieChartView:(PieChartView *)chartView
+{
+    chartView.usePercentValuesEnabled = YES;
+    chartView.drawSlicesUnderHoleEnabled = NO;
+    chartView.holeRadiusPercent = 0.58;
+    chartView.transparentCircleRadiusPercent = 0.61;
+    chartView.chartDescription.enabled = NO;
+    [chartView setExtraOffsetsWithLeft:5.f top:10.f right:5.f bottom:5.f];
+    
+    chartView.drawCenterTextEnabled = YES;
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:@"Charts\nby Daniel Cohen Gindi"];
+    [centerText setAttributes:@{
+                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
+                                NSParagraphStyleAttributeName: paragraphStyle
+                                } range:NSMakeRange(0, centerText.length)];
+    [centerText addAttributes:@{
+                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f],
+                                NSForegroundColorAttributeName: UIColor.grayColor
+                                } range:NSMakeRange(10, centerText.length - 10)];
+    [centerText addAttributes:@{
+                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:11.f],
+                                NSForegroundColorAttributeName: [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]
+                                } range:NSMakeRange(centerText.length - 19, 19)];
+    chartView.centerAttributedText = centerText;
+    
+    chartView.drawHoleEnabled = YES;
+    chartView.rotationAngle = 0.0;
+    chartView.rotationEnabled = YES;
+    chartView.highlightPerTapEnabled = YES;
+    
+    ChartLegend *l = chartView.legend;
+    l.horizontalAlignment = ChartLegendHorizontalAlignmentRight;
+    l.verticalAlignment = ChartLegendVerticalAlignmentTop;
+    l.orientation = ChartLegendOrientationVertical;
+    l.drawInside = NO;
+    l.xEntrySpace = 7.0;
+    l.yEntrySpace = 0.0;
+    l.yOffset = 0.0;
+}
+
+#pragma mark - About Fetch and Handle Data
 
 -(void)textWhetherHasData
 {
@@ -255,13 +306,13 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     _sortedIncomePercentForEveryType = [_incomeMoneyPercentToTotalForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
     
     //显示总收入
-    NSLog(@"totalIncomeMoney %@",_totalIncomeMoney);
+    //NSLog(@"totalIncomeMoney %@",_totalIncomeMoney);
     for(NSString *type in _sortedIncomeTypes)
     {
-        NSLog(@"type :%@",type);    //降序显示类型
+        //NSLog(@"type :%@",type);    //降序显示类型
         //降序显示金额，或者换成_sortedtotalIncomeMoneyForEveryType
-        NSNumber *money = _incomeTypeAndMoneys[type];
-        NSLog(@"money :%@",money);
+        //NSNumber *money = _incomeTypeAndMoneys[type];
+        //NSLog(@"money :%@",money);
         
         for (NSDictionary *dict in _incomeInfoArray)
         {
@@ -269,15 +320,15 @@ static NSString *ChartCellIdentifier = @"ChartCell";
             {
                 //获取类别对应的图标标识
                 [_sortedIncomeIconArray addObject:[dict objectForKey:@"IconName"]];
-                NSLog(@"%@",[dict objectForKey:@"IconName"]);
+                //NSLog(@"%@",[dict objectForKey:@"IconName"]);
                 //获取类别对应的图标颜色
                 [_sortedIncomeIconColors addObject:[dict objectForKey:@"BGColor"]];
-                NSLog(@"%@",[dict objectForKey:@"BGColor"]);
+                //NSLog(@"%@",[dict objectForKey:@"BGColor"]);
                 break;
             }
         }
     }
-    NSLog(@"%@",_sortedIncomePercentForEveryType);  //降序显示百分比
+    //NSLog(@"%@",_sortedIncomePercentForEveryType);  //降序显示百分比
 }
 
 -(void)handleSpendData
@@ -320,13 +371,13 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     _sortedSpendPercentForEveryType = [_spendMoneyPercentToTotalForEveryType sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
     
     //显示总支出
-    NSLog(@"totalSpendMoney %@",_totalSpendMoney);
+    //NSLog(@"totalSpendMoney %@",_totalSpendMoney);
     for(NSString *type in _sortedSpendTypes)
     {
-        NSLog(@"type :%@",type);    //降序显示类型
+        //NSLog(@"type :%@",type);    //降序显示类型
         //降序显示金额，或者换成_sortedtotalSpendMoneyForEveryType
-        NSNumber *money = _spendTypeAndMoneys[type];
-        NSLog(@"money :%@",money);
+        //NSNumber *money = _spendTypeAndMoneys[type];
+        //NSLog(@"money :%@",money);
         
         for (NSDictionary *dict in _spendInfoArray)
         {
@@ -334,15 +385,15 @@ static NSString *ChartCellIdentifier = @"ChartCell";
             {
                 //获取类别对应的图标标识
                 [_sortedSpendIconArray addObject:[dict objectForKey:@"IconName"]];
-                NSLog(@"%@",[dict objectForKey:@"IconName"]);
+                //NSLog(@"%@",[dict objectForKey:@"IconName"]);
                 //获取类别对应的图标颜色
                 [_sortedSpendIconColors addObject:[dict objectForKey:@"BGColor"]];
-                NSLog(@"%@",[dict objectForKey:@"BGColor"]);
+                //NSLog(@"%@",[dict objectForKey:@"BGColor"]);
                 break;
             }
         }
     }
-    NSLog(@"%@",_sortedSpendPercentForEveryType);  //降序显示百分比
+    //NSLog(@"%@",_sortedSpendPercentForEveryType);  //降序显示百分比
 }
 
 #pragma mark - MonthPicker
@@ -395,7 +446,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 }
 
 
-#pragma mark - Table view data source
+#pragma mark - Table View data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -404,7 +455,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _sortedIncomeTypes.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartCellIdentifier];
@@ -417,12 +467,16 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedIncomePercentForEveryType[indexPath.row] doubleValue]];
     [percentLabel sizeToFit];
     UILabel *moneyLabel = [cell viewWithTag:1003];
-    moneyLabel.text = [NSString stringWithFormat:@"%@",_sortedtotalIncomeMoneyForEveryType[indexPath.row]];
+    moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalIncomeMoneyForEveryType[indexPath.row]doubleValue]];
     [moneyLabel sizeToFit];
     
     return cell;
 }
 
-
+#pragma mark Table View Delegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 @end
