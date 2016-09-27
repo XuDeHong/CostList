@@ -57,6 +57,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     
     NSArray *_spendInfoArray;   //支出图标信息数组
     NSArray *_incomeInfoArray;  //收入图标信息数组
+    
+    BOOL _isSpendDataPrint;     //记录支出数据是否显示
 }
 
 
@@ -75,6 +77,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     NSDictionary *categoryIconInfo = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     _spendInfoArray = categoryIconInfo[@"spendArray"];
     _incomeInfoArray = categoryIconInfo[@"incomeArray"];
+    
+    _isSpendDataPrint = YES;
     
     [self setupPieChartView:self.pieChartView];     //设置饼图
 }
@@ -128,70 +132,136 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 - (void)setupPieChartView:(PieChartView *)chartView
 {
     chartView.drawSlicesUnderHoleEnabled = NO;
-    chartView.holeRadiusPercent = 0.58;
-    chartView.transparentCircleRadiusPercent = 0.61;
-    chartView.chartDescription.enabled = NO;
-    [chartView setExtraOffsetsWithLeft:5.f top:10.f right:5.f bottom:5.f];
+    chartView.holeRadiusPercent = 0.58;     //饼图内圆半径占大圆半径的百分比
+    chartView.transparentCircleRadiusPercent = 0.61;    //猜测是透明度
+    chartView.chartDescription.enabled = NO;    //图表描述
+    [chartView setExtraOffsetsWithLeft:5.f top:10.f right:5.f bottom:5.f];  //间隔
     
-    chartView.drawCenterTextEnabled = YES;
-    
-    chartView.drawHoleEnabled = YES;
-    chartView.rotationAngle = 0.0;
-    chartView.rotationEnabled = NO;
-    chartView.highlightPerTapEnabled = NO;
-    chartView.delegate = self;
-    
-    ChartLegend *l = chartView.legend;
-    l.horizontalAlignment = ChartLegendHorizontalAlignmentRight;
-    l.verticalAlignment = ChartLegendVerticalAlignmentTop;
-    l.orientation = ChartLegendOrientationVertical;
-    l.drawInside = NO;
-    l.xEntrySpace = 7.0;
-    l.yEntrySpace = 0.0;
-    l.yOffset = 0.0;
+    chartView.drawCenterTextEnabled = YES;  //显示中心文本
+    chartView.drawHoleEnabled = YES;    //饼图中间空心
+    chartView.rotationAngle = 0.0;  //旋转一个角度
+    chartView.rotationEnabled = NO; //不能手动旋转
+    chartView.highlightPerTapEnabled = NO;  //图表不能点击
+    chartView.delegate = self;  //代理
+    chartView.legend.enabled = NO;  //不显示图例
 }
+
+-(void)switchPrintedData
+{
+    if(_isSpendDataPrint)   _isSpendDataPrint = NO;
+    else    _isSpendDataPrint = YES;
+    
+    [self.tableView reloadData];  //保证数据最新
+    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图，有数据则更新统计图
+}
+
 
 -(void)setDataForPieChart
 {
-    NSMutableArray *values = [[NSMutableArray alloc] init];
-    for(int i = 0;i < _sortedtotalIncomeMoneyForEveryType.count;i++)
+    if(_isSpendDataPrint)
     {
-        [values addObject:[[PieChartDataEntry alloc] initWithValue:[_sortedtotalIncomeMoneyForEveryType[i] doubleValue]]];
+        if((_spendItems != nil) && (_spendItems.count != 0))
+        {
+            [self updatePieChar:_sortedtotalSpendMoneyForEveryType iconColors:_sortedSpendIconColors totalMoney:_totalSpendMoney];      //显示支出数据
+        }
+        else
+        {
+            [self updatePieChar:@[@1] iconColors:@[@"9B9B9B"] totalMoney:0];    //没有支出数据
+            //去除分割线
+            if([self.view viewWithTag:5001] != nil)
+                [[self.view viewWithTag:5001] removeFromSuperview];
+        }
+    }
+    else
+    {
+        if((_incomeItems != nil) && (_incomeItems.count != 0))
+        {
+            [self updatePieChar:_sortedtotalIncomeMoneyForEveryType iconColors:_sortedIncomeIconColors totalMoney:_totalIncomeMoney];   //显示收入数据
+        }
+        else
+        {
+            [self updatePieChar:@[@1] iconColors:@[@"9B9B9B"] totalMoney:0];    //没有收入数据
+            //去除分割线
+            if([self.view viewWithTag:5001] != nil)
+                [[self.view viewWithTag:5001] removeFromSuperview];
+        }
+    }
+    
+
+}
+
+-(void)updatePieChar:(NSArray *)totalMoneyArray iconColors:(NSArray *)iconColors totalMoney:(NSNumber *)totalMoney
+{
+    //获取数据
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    for(int i = 0;i < totalMoneyArray.count;i++)
+    {
+        [values addObject:[[PieChartDataEntry alloc] initWithValue:[totalMoneyArray[i] doubleValue]]];
     }
     
     PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:nil];
-
+    
+    //获取各数据对应的颜色
     NSMutableArray *colors = [NSMutableArray array];
-    for(NSString *str in _sortedIncomeIconColors)
+    for(NSString *str in iconColors)
     {
         [colors addObject:[UIColor colorWithHexString:str]];
     }
     dataSet.colors = colors;
     
-    dataSet.drawValuesEnabled = NO;
+    dataSet.drawValuesEnabled = NO; //不显示各扇区的数据
     
     PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
-    
     self.pieChartView.data = data;
     
+    //段落格式
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    paragraphStyle.lineBreakMode = NSLineBreakByClipping;
-    paragraphStyle.alignment = NSTextAlignmentCenter;
+    paragraphStyle.lineBreakMode = NSLineBreakByClipping;   //猜测是超出一行则截断
+    paragraphStyle.alignment = NSTextAlignmentCenter;   //文本居中
     
-    NSString *money = [NSString stringWithFormat:@"%.2lf",[_totalIncomeMoney doubleValue]];
-    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n总收入",money]];
+    //获取总金额
+    NSString *money = [NSString stringWithFormat:@"%.2lf",[totalMoney doubleValue]];
+    //设置饼图中间的文本
+    NSMutableAttributedString *centerText = nil;
+    if(_isSpendDataPrint)
+    {
+        centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"总支出\n%@\n⇋",money]];
+    }
+    else
+    {
+        centerText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"总收入\n%@\n⇋",money]];
+    }
+    //金额数字的格式
     [centerText setAttributes:@{
                                 NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
                                 NSParagraphStyleAttributeName: paragraphStyle
                                 } range:NSMakeRange(0,centerText.length)];
+    //“总支出”或“总收入”的文本格式
     [centerText addAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
+                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:12.f],
                                 NSForegroundColorAttributeName:UIColor.grayColor
-                                } range:NSMakeRange(money.length, centerText.length - money.length)];
-    
+                                } range:NSMakeRange(0,3)];
+    //最后一个双向箭头⇋的格式
+    [centerText addAttributes:@{
+                                NSFontAttributeName: [UIFont boldSystemFontOfSize:22.0f],
+                                NSForegroundColorAttributeName: [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]
+                                } range:NSMakeRange(money.length + 5,1)];
     self.pieChartView.centerAttributedText = centerText;
     
-    [self.pieChartView animateWithXAxisDuration:0.5 easingOption:ChartEasingOptionLinear];
+    //在饼图中间放置一个按钮用于切换收入比例图和支出比例图
+    if([self.view viewWithTag:5005] == nil)
+    {
+        CGFloat radius = self.pieChartView.radius;  //饼图半径
+        CGFloat holeRadius = radius * self.pieChartView.holeRadiusPercent;  //饼图内圆半径
+        UIButton *tapBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, holeRadius * 2, holeRadius * 2)];
+        CGPoint center = [self.pieChartView convertPoint:self.pieChartView.centerCircleBox toView:self.view];   //饼图中心位置
+        tapBtn.center = center;
+        tapBtn.tag = 5005;
+        tapBtn.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:tapBtn];
+        
+        [tapBtn addTarget:self action:@selector(switchPrintedData) forControlEvents:UIControlEventTouchUpInside];   //添加触发方法
+    }
 }
 
 #pragma mark - About Fetch and Handle Data
@@ -204,7 +274,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         [noDataPlaceholder removeFromSuperview];    //若已有占位图则去除
     }
     
-    if([_costItems count] == 0)
+    if((_costItems == nil) || (_costItems.count == 0))
     {
         //没有数据时显示占位图
         noDataPlaceholder = [[UIImageView alloc] initWithFrame:CGRectMake(self.pieChartView.x, self.pieChartView.y,self.pieChartView.width,self.pieChartView.height)];
@@ -212,11 +282,12 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         UIImage *noDataImage = [UIImage imageNamed:@"NoDataImage2"];
         noDataPlaceholder.image = noDataImage;
         [self.view addSubview:noDataPlaceholder];
-        self.pieChartView.centerText = @"";
         
         //去除分割线
         if([self.view viewWithTag:5001] != nil)
             [[self.view viewWithTag:5001] removeFromSuperview];
+        
+        self.pieChartView.data = nil;
     }
     else
     {
@@ -228,17 +299,19 @@ static NSString *ChartCellIdentifier = @"ChartCell";
             separator.backgroundColor = SeparatorColor;
             [self.view addSubview:separator];
         }
+        
+        [self setDataForPieChart];  //提供数据给饼图
+        
+        [self.pieChartView animateWithXAxisDuration:0.5 easingOption:ChartEasingOptionLinear];  //产生饼图动画
     }
 }
 
 -(void)fetchDataAndUpdateView
 {
+    [self setNilToSomeArrays];   //抓取数据前先清空所有数组
     [self performFetch]; //从CoreData中获取数据
     [self.tableView reloadData];  //保证数据最新
-    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
-    
-    if((_costItems != nil) && (_costItems.count != 0))   [self setDataForPieChart];  //提供数据给饼图
-    else    self.pieChartView.data = nil;
+    [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图，有数据则更新统计图
 }
 
 -(void)performFetch
@@ -509,22 +582,43 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _sortedIncomeTypes.count;
+    if(_isSpendDataPrint)
+        return _sortedSpendTypes.count;
+    else
+        return _sortedIncomeTypes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartCellIdentifier];
-    UIImage *icon = [UIImage imageNamed:_sortedIncomeIconArray[indexPath.row]];
-    cell.imageView.image = icon;
-    UILabel *iconNameLabel = [cell viewWithTag:1001];
-    iconNameLabel.text = _sortedIncomeTypes[indexPath.row];
-    [iconNameLabel sizeToFit];
-    UILabel *percentLabel = [cell viewWithTag:1002];
-    percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedIncomePercentForEveryType[indexPath.row] doubleValue]];
-    [percentLabel sizeToFit];
-    UILabel *moneyLabel = [cell viewWithTag:1003];
-    moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalIncomeMoneyForEveryType[indexPath.row]doubleValue]];
-    [moneyLabel sizeToFit];
+    
+    if(_isSpendDataPrint)
+    {
+        UIImage *icon = [UIImage imageNamed:_sortedSpendIconArray[indexPath.row]];
+        cell.imageView.image = icon;
+        UILabel *iconNameLabel = [cell viewWithTag:1001];
+        iconNameLabel.text = _sortedSpendTypes[indexPath.row];
+        [iconNameLabel sizeToFit];
+        UILabel *percentLabel = [cell viewWithTag:1002];
+        percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedSpendPercentForEveryType[indexPath.row] doubleValue]];
+        [percentLabel sizeToFit];
+        UILabel *moneyLabel = [cell viewWithTag:1003];
+        moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalSpendMoneyForEveryType[indexPath.row]doubleValue]];
+        [moneyLabel sizeToFit];
+    }
+    else
+    {
+        UIImage *icon = [UIImage imageNamed:_sortedIncomeIconArray[indexPath.row]];
+        cell.imageView.image = icon;
+        UILabel *iconNameLabel = [cell viewWithTag:1001];
+        iconNameLabel.text = _sortedIncomeTypes[indexPath.row];
+        [iconNameLabel sizeToFit];
+        UILabel *percentLabel = [cell viewWithTag:1002];
+        percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedIncomePercentForEveryType[indexPath.row] doubleValue]];
+        [percentLabel sizeToFit];
+        UILabel *moneyLabel = [cell viewWithTag:1003];
+        moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalIncomeMoneyForEveryType[indexPath.row]doubleValue]];
+        [moneyLabel sizeToFit];
+    }
     
     return cell;
 }
