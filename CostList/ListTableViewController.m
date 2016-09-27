@@ -109,7 +109,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     if(_isFirstTime)
     {
         _isFirstTime = NO;
-        if ([[[UIDevice currentDevice] systemVersion] isEqualToString:@"10.0"]) //适配iOS10
+        if ([[[UIDevice currentDevice] systemVersion] containsString:@"10"]) //适配iOS10
         {
             //第一次打开，创建两个BarButtonItem用于调整
             UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -128,7 +128,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     }
     else
     {
-        if ([[[UIDevice currentDevice] systemVersion] isEqualToString:@"10.0"]) //适配iOS10
+        if ([[[UIDevice currentDevice] systemVersion] containsString:@"10"]) //适配iOS10
         {
             UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
             leftSpace.width = 0;
