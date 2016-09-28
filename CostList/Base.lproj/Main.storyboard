@@ -243,6 +243,8 @@
                         <outlet property="monthPickerButton" destination="sUG-UC-oNM" id="3ii-4W-T71"/>
                         <outlet property="myNavigationItem" destination="XnM-ry-22t" id="u6F-gR-75K"/>
                         <outlet property="navigationBar" destination="RQF-pi-34M" id="34X-9V-Xjx"/>
+                        <outlet property="totalIncomeLbl" destination="830-nN-VPN" id="Ie8-4a-HgW"/>
+                        <outlet property="totalSpendLbl" destination="4ZQ-2y-8OT" id="lD7-At-wkQ"/>
                         <outlet property="upBackgroundView" destination="hJ6-CR-UyG" id="1cq-Rd-Cn4"/>
                     </connections>
                 </viewController>
@@ -270,7 +272,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DhM-mS-mn4" id="TS5-n8-Vdm">
-                                            <frame key="frameInset" width="375" height="51.5"/>
+                                            <frame key="frameInset" width="375" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCR-N2-9fs">
@@ -320,7 +322,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fP6-ju-QHW">
-                                            <rect key="frame" x="112.5" y="7.5" width="150" height="29"/>
+                                            <rect key="frame" x="113" y="8" width="150" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="比例"/>
@@ -354,6 +356,18 @@
                                     <constraint firstAttribute="width" secondItem="MJt-YD-hOu" secondAttribute="height" multiplier="75:53" id="3g8-7j-QUe"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjJ-Oh-u86" customClass="LineChartView" customModule="Charts">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hjJ-Oh-u86" secondAttribute="height" multiplier="75:53" constant="-24.264150943396203" id="phM-c6-m0K"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bnd-R5-nDj">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Wfb-vL-Hwv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -362,7 +376,9 @@
                             <constraint firstItem="MJt-YD-hOu" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="51H-FZ-BLX"/>
                             <constraint firstAttribute="trailing" secondItem="3Hz-yN-6yl" secondAttribute="trailing" id="5Qd-az-TdX"/>
                             <constraint firstItem="51C-mZ-oVU" firstAttribute="top" secondItem="Xfl-vM-PIC" secondAttribute="bottom" id="79d-Su-eJq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hjJ-Oh-u86" secondAttribute="trailing" constant="2" id="86K-PB-fdS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vuj-pl-gAX" secondAttribute="trailing" constant="-16" id="9Lo-mP-9OM"/>
+                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="top" secondItem="51C-mZ-oVU" secondAttribute="bottom" id="Euk-SR-IjC"/>
                             <constraint firstItem="vuj-pl-gAX" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="G31-bD-Pxe"/>
                             <constraint firstItem="MJt-YD-hOu" firstAttribute="top" secondItem="51C-mZ-oVU" secondAttribute="bottom" id="G9a-YI-s54"/>
                             <constraint firstItem="3Hz-yN-6yl" firstAttribute="top" secondItem="v7F-9J-xtE" secondAttribute="top" id="ILJ-hn-dpD"/>
@@ -370,16 +386,22 @@
                             <constraint firstItem="vuj-pl-gAX" firstAttribute="top" secondItem="MJt-YD-hOu" secondAttribute="bottom" id="Nz8-OI-Vqv"/>
                             <constraint firstItem="51C-mZ-oVU" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="O3s-oU-8oo"/>
                             <constraint firstItem="Xfl-vM-PIC" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="d7l-mg-e3Q"/>
+                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="3" id="fKs-ui-tEL"/>
+                            <constraint firstItem="Bnd-R5-nDj" firstAttribute="bottom" secondItem="MJt-YD-hOu" secondAttribute="bottom" id="fPM-9j-dYV"/>
                             <constraint firstItem="3Hz-yN-6yl" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="fry-p1-rY1"/>
                             <constraint firstItem="flk-ly-tbN" firstAttribute="top" secondItem="vuj-pl-gAX" secondAttribute="bottom" id="hcp-Kc-2fK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bnd-R5-nDj" secondAttribute="trailing" constant="-16" id="qRY-wh-c0t"/>
                             <constraint firstItem="Xfl-vM-PIC" firstAttribute="top" secondItem="3Hz-yN-6yl" secondAttribute="bottom" constant="-44" id="wsw-Ko-7YC"/>
+                            <constraint firstItem="Bnd-R5-nDj" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="xVi-hW-wCC"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="报表" image="ChartIcon - Inactive" id="7sG-q1-urx"/>
                     <connections>
+                        <outlet property="lineChartView" destination="hjJ-Oh-u86" id="VzR-Hv-BeB"/>
                         <outlet property="monthPickerButton" destination="BIk-a7-Pq5" id="z1c-cp-4Po"/>
                         <outlet property="navigationBar" destination="Xfl-vM-PIC" id="U4Q-iR-78i"/>
                         <outlet property="pieChartView" destination="MJt-YD-hOu" id="xBV-sp-FtX"/>
+                        <outlet property="separator" destination="Bnd-R5-nDj" id="BBH-gr-TqD"/>
                         <outlet property="tableView" destination="vuj-pl-gAX" id="aOu-NZ-ITm"/>
                         <outlet property="upBackgroundView" destination="3Hz-yN-6yl" id="lU8-d5-1Xh"/>
                     </connections>

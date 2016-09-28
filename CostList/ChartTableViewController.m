@@ -14,8 +14,6 @@
 #import "NSNumber+Category.h"
 #import "UIColor+Category.h"
 
-#define SeparatorColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.7]
-
 static NSString *ChartCellIdentifier = @"ChartCell";
 
 @interface ChartTableViewController () <MonthPickerViewControllerDelegate,ChartViewDelegate>
@@ -26,6 +24,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 @property (weak,nonatomic) MyTabBarController *myTabBarController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) IBOutlet PieChartView *pieChartView;
+@property (nonatomic,strong) IBOutlet LineChartView *lineChartView;
+@property (nonatomic,strong) IBOutlet UIView *separator;
 @end
 
 @implementation ChartTableViewController
@@ -81,6 +81,11 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     _isSpendDataPrint = YES;
     
     [self setupPieChartView:self.pieChartView];     //设置饼图
+    
+    [self setupLineChartView:self.lineChartView];   //设置折线图
+    
+    //self.pieChartView.hidden = YES;
+    //self.lineChartView.hidden = NO;
 }
 
 
@@ -129,6 +134,86 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [self.myTabBarController showSlideMenuController];
 }
 
+#pragma mark - Line Chart Methods
+
+-(void)setupLineChartView:(LineChartView *)chartView
+{
+    chartView.delegate = self;
+    chartView.chartDescription.enabled = NO;
+    chartView.dragEnabled = NO;
+    [chartView setScaleEnabled:NO];
+    chartView.legend.enabled = NO;
+    chartView.rightAxis.enabled = NO;
+    chartView.highlightPerTapEnabled = NO;
+
+    ChartXAxis *xAxis = chartView.xAxis;
+    xAxis.labelTextColor = [UIColor grayColor];
+    xAxis.drawGridLinesEnabled = NO;
+    xAxis.drawAxisLineEnabled = YES;
+    xAxis.labelPosition = XAxisLabelPositionBottom;
+    
+    ChartYAxis *leftAxis = chartView.leftAxis;
+    leftAxis.labelTextColor = [UIColor grayColor];
+    leftAxis.axisMaximum = 200.0;
+    //leftAxis.axisMinimum = 0.0;
+    leftAxis.drawGridLinesEnabled = YES;
+    leftAxis.drawZeroLineEnabled = NO;
+    leftAxis.granularityEnabled = YES;
+    leftAxis.gridLineDashLengths = @[@10,@10];
+    leftAxis.gridColor = [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:1];
+    
+    [self setDataCount:12 range:30];
+    
+    [chartView animateWithXAxisDuration:0.5];
+}
+
+- (void)setDataCount:(int)count range:(double)range
+{
+    NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
+    
+    for (int i = 1; i <= count; i++)
+    {
+        double mult = range / 2.0;
+        double val = (double) (arc4random_uniform(mult)) + (arc4random_uniform(50));
+        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+    }
+    
+    LineChartDataSet *set1 = nil;
+    
+    if (self.lineChartView.data.dataSetCount > 0)
+    {
+        set1 = (LineChartDataSet *)self.lineChartView.data.dataSets[0];
+        set1.values = yVals1;
+        [self.lineChartView.data notifyDataChanged];
+        [self.lineChartView notifyDataSetChanged];
+    }
+    else
+    {
+        set1 = [[LineChartDataSet alloc] initWithValues:yVals1 label:@"DataSet 1"];
+        set1.axisDependency = AxisDependencyLeft;
+        [set1 setColor:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
+        [set1 setCircleColor:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
+        set1.lineWidth = 2.0;
+        set1.circleRadius = 3.0;
+        set1.fillAlpha = 65/255.0;
+        set1.fillColor = [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f];
+        set1.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
+        set1.drawCircleHoleEnabled = NO;
+        set1.drawValuesEnabled = NO;
+        
+        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+        [dataSets addObject:set1];
+        
+        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+        [data setValueTextColor:UIColor.whiteColor];
+        [data setValueFont:[UIFont systemFontOfSize:9.f]];
+        
+        self.lineChartView.data = data;
+    }
+}
+
+#pragma mark - Pie Chart Methods
+
 - (void)setupPieChartView:(PieChartView *)chartView
 {
     chartView.drawSlicesUnderHoleEnabled = NO;
@@ -167,9 +252,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         else
         {
             [self updatePieChar:@[@1] iconColors:@[@"9B9B9B"] totalMoney:0];    //没有支出数据
-            //去除分割线
-            if([self.view viewWithTag:5001] != nil)
-                [[self.view viewWithTag:5001] removeFromSuperview];
+            //隐藏分割线
+            self.separator.hidden = YES;
         }
     }
     else
@@ -181,9 +265,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         else
         {
             [self updatePieChar:@[@1] iconColors:@[@"9B9B9B"] totalMoney:0];    //没有收入数据
-            //去除分割线
-            if([self.view viewWithTag:5001] != nil)
-                [[self.view viewWithTag:5001] removeFromSuperview];
+            //隐藏分割线
+            self.separator.hidden = YES;
         }
     }
     
@@ -283,22 +366,15 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         noDataPlaceholder.image = noDataImage;
         [self.view addSubview:noDataPlaceholder];
         
-        //去除分割线
-        if([self.view viewWithTag:5001] != nil)
-            [[self.view viewWithTag:5001] removeFromSuperview];
+        //隐藏分割线
+        self.separator.hidden = YES;
         
         self.pieChartView.data = nil;
     }
     else
     {
-        //添加分割线
-        if([self.view viewWithTag:5001] == nil)
-        {
-            UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.x,self.tableView.y,SCREEN_WIDTH, 1)];
-            separator.tag = 5001;
-            separator.backgroundColor = SeparatorColor;
-            [self.view addSubview:separator];
-        }
+        //显示分割线
+        self.separator.hidden = NO;
         
         [self setDataForPieChart];  //提供数据给饼图
         

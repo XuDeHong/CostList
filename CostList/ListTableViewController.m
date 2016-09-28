@@ -30,6 +30,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 @property (weak,nonatomic) MyTabBarController *myTabBarController;
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
+@property (weak, nonatomic) IBOutlet UILabel *totalSpendLbl;
+@property (weak, nonatomic) IBOutlet UILabel *totalIncomeLbl;
 
 @end
 
