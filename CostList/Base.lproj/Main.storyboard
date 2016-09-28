@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -118,7 +119,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUG-UC-oNM">
-                                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="xxxx年xx月xx日"/>
                                             <connections>
@@ -261,9 +262,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vuj-pl-gAX">
-                                <frame key="frameInset" minY="372" width="375" height="246"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vuj-pl-gAX">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -321,7 +320,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fP6-ju-QHW">
-                                            <rect key="frame" x="113" y="8" width="150" height="29"/>
+                                            <rect key="frame" x="112.5" y="7.5" width="150" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="比例"/>
@@ -349,22 +348,30 @@
                                     <constraint firstItem="BIk-a7-Pq5" firstAttribute="centerY" secondItem="51C-mZ-oVU" secondAttribute="centerY" id="l5K-5C-kgy"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJt-YD-hOu" customClass="PieChartView" customModule="Charts">
-                                <frame key="frameInset" minY="107" width="375" height="265"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJt-YD-hOu" customClass="PieChartView" customModule="Charts">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MJt-YD-hOu" secondAttribute="height" multiplier="75:53" id="3g8-7j-QUe"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xfl-vM-PIC" secondAttribute="trailing" id="1d7-Xb-YZU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MJt-YD-hOu" secondAttribute="trailing" constant="-16" id="4jE-yX-yN3"/>
+                            <constraint firstItem="MJt-YD-hOu" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="51H-FZ-BLX"/>
                             <constraint firstAttribute="trailing" secondItem="3Hz-yN-6yl" secondAttribute="trailing" id="5Qd-az-TdX"/>
                             <constraint firstItem="51C-mZ-oVU" firstAttribute="top" secondItem="Xfl-vM-PIC" secondAttribute="bottom" id="79d-Su-eJq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vuj-pl-gAX" secondAttribute="trailing" constant="-16" id="9Lo-mP-9OM"/>
+                            <constraint firstItem="vuj-pl-gAX" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="G31-bD-Pxe"/>
+                            <constraint firstItem="MJt-YD-hOu" firstAttribute="top" secondItem="51C-mZ-oVU" secondAttribute="bottom" id="G9a-YI-s54"/>
                             <constraint firstItem="3Hz-yN-6yl" firstAttribute="top" secondItem="v7F-9J-xtE" secondAttribute="top" id="ILJ-hn-dpD"/>
                             <constraint firstAttribute="trailing" secondItem="51C-mZ-oVU" secondAttribute="trailing" id="Jdo-O8-6LR"/>
+                            <constraint firstItem="vuj-pl-gAX" firstAttribute="top" secondItem="MJt-YD-hOu" secondAttribute="bottom" id="Nz8-OI-Vqv"/>
                             <constraint firstItem="51C-mZ-oVU" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="O3s-oU-8oo"/>
                             <constraint firstItem="Xfl-vM-PIC" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="d7l-mg-e3Q"/>
                             <constraint firstItem="3Hz-yN-6yl" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="fry-p1-rY1"/>
+                            <constraint firstItem="flk-ly-tbN" firstAttribute="top" secondItem="vuj-pl-gAX" secondAttribute="bottom" id="hcp-Kc-2fK"/>
                             <constraint firstItem="Xfl-vM-PIC" firstAttribute="top" secondItem="3Hz-yN-6yl" secondAttribute="bottom" constant="-44" id="wsw-Ko-7YC"/>
                         </constraints>
                     </view>
