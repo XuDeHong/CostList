@@ -213,15 +213,31 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //设置代理
         _fetchedResultsController.delegate = self;
     }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     
     NSString *year = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(0, 4)];
     NSString *month = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(5, 2)];
-    NSString *nextMonth = [NSString stringWithFormat:@"%d",[month intValue] + 1];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSDate *startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
-    NSDate *endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,nextMonth]];
+    NSString *nextMonth = nil;
+    NSDate *startDate = nil;
+    NSDate *endDate = nil;
+    if([month intValue] == 12)
+    {
+        nextMonth = @"01";
+        NSString *nextYear = [NSString stringWithFormat:@"%d",[year intValue] + 1];
+        
+        startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
+        endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",nextYear,nextMonth]];
+    }
+    else
+    {
+        nextMonth = [NSString stringWithFormat:@"%d",[month intValue] + 1];
+        
+        startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
+        endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,nextMonth]];
+    }
+
     
     //设置过滤器，设置显示当前月份选择器显示的年月的记录
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)",startDate,endDate];

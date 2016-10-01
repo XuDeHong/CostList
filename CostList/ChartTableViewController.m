@@ -13,10 +13,11 @@
 #import "Charts/Charts.h"
 #import "NSNumber+Category.h"
 #import "UIColor+Category.h"
+#import "YearPickerViewController.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
 
-@interface ChartTableViewController () <MonthPickerViewControllerDelegate,ChartViewDelegate>
+@interface ChartTableViewController () <MonthPickerViewControllerDelegate,ChartViewDelegate,YearPickerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *upBackgroundView; //指向界面上部的视图，用于设置背景色
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -26,6 +27,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 @property (nonatomic,strong) IBOutlet PieChartView *pieChartView;
 @property (nonatomic,strong) IBOutlet LineChartView *lineChartView;
 @property (nonatomic,strong) IBOutlet UIView *separator;
+@property (weak, nonatomic) IBOutlet UIButton *yearPickerButton;
+@property (strong,nonatomic) YearPickerViewController *yearPickerViewController;
+
 @end
 
 @implementation ChartTableViewController
@@ -59,6 +63,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     NSArray *_incomeInfoArray;  //收入图标信息数组
     
     BOOL _isSpendDataPrint;     //记录支出数据是否显示
+    
+    NSMutableArray *_everyMonthSpend;   //每月的总支出
+    NSMutableArray *_everyMonthIncome;  //每月的总收入
 }
 
 
@@ -68,6 +75,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [self customizeAppearence]; //设置UI元素
     
     [self initMonthPickerButton]; //初始化月份选择器按钮
+    [self initYearPickerButton];    //初始化年份选择器按钮
     
     //去除多余的空行和分割线
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -83,9 +91,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [self setupPieChartView:self.pieChartView];     //设置饼图
     
     [self setupLineChartView:self.lineChartView];   //设置折线图
-    
-    //self.pieChartView.hidden = YES;
-    //self.lineChartView.hidden = NO;
 }
 
 
@@ -117,7 +122,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 {
     [super viewWillAppear:animated];
     
-    [self fetchDataAndUpdateView];  //抓取数据和更新视图
+    if(self.pieChartView.hidden == NO)  [self fetchDataAndUpdateView];  //抓取数据和更新饼图
+    else [self updateLineChartView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,6 +139,104 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     }
     [self.myTabBarController showSlideMenuController];
 }
+- (IBAction)switchChartView:(UISegmentedControl *)sender {
+    //切换饼图和折线图
+    if(self.pieChartView.hidden == NO)
+    {
+        self.pieChartView.hidden = YES;
+        self.lineChartView.hidden = NO;
+        
+        [self updateLineChartView];
+        
+        //去掉饼图中间的按钮
+        if([self.view viewWithTag:5005] != nil)
+        {
+            [[self.view viewWithTag:5005] removeFromSuperview];
+        }
+        
+        UIImageView *noDataPlaceholder = [self.view viewWithTag:505];
+        if(noDataPlaceholder != nil)
+        {
+            [noDataPlaceholder removeFromSuperview];    //若已有占位图则去除
+        }
+        
+        self.yearPickerButton.hidden = NO;
+        self.monthPickerButton.hidden = YES;
+    }
+    else
+    {
+        self.pieChartView.hidden = NO;
+        self.lineChartView.hidden = YES;
+        
+        [self fetchDataAndUpdateView];
+        
+        //在饼图中间放置一个按钮用于切换收入比例图和支出比例图
+        if([self.view viewWithTag:5005] == nil)
+        {
+            CGFloat radius = self.pieChartView.radius;  //饼图半径
+            CGFloat holeRadius = radius * self.pieChartView.holeRadiusPercent;  //饼图内圆半径
+            UIButton *tapBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, holeRadius * 2, holeRadius * 2)];
+            CGPoint center = [self.pieChartView convertPoint:self.pieChartView.centerCircleBox toView:self.view];   //饼图中心位置
+            tapBtn.center = center;
+            tapBtn.tag = 5005;
+            tapBtn.backgroundColor = [UIColor clearColor];
+            [self.view addSubview:tapBtn];
+            
+            [tapBtn addTarget:self action:@selector(switchPrintedData) forControlEvents:UIControlEventTouchUpInside];   //添加触发方法
+        }
+        
+        self.yearPickerButton.hidden = YES;
+        self.monthPickerButton.hidden = NO;
+    }
+}
+
+#pragma mark - YearPicker
+
+-(void)initYearPickerButton
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年"];
+    NSString *year = [formatter stringFromDate:[NSDate date]];
+    
+    //初始化年份选择按钮标题为当前年份
+    [self.yearPickerButton setTitle:[NSString stringWithFormat:@"%@",year] forState:UIControlStateNormal];
+    //设置一个展开图标
+    UIImage *expandArrow = [UIImage imageNamed:@"ExpandArrow"];
+    [self.yearPickerButton setImage:expandArrow forState:UIControlStateNormal];
+    //计算按钮标题的宽度
+    CGFloat labelWidth = [self.yearPickerButton.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}].width;
+    //设置边距使UIButton的文字在左，图片在右
+    [self.yearPickerButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -expandArrow.size.width, 0, expandArrow.size.width)];
+    [self.yearPickerButton setImageEdgeInsets:UIEdgeInsetsMake(0,labelWidth, 0, -labelWidth)];
+}
+
+-(YearPickerViewController *)yearPickerViewController
+{
+    if(!_yearPickerViewController)
+    {
+        _yearPickerViewController = [[YearPickerViewController alloc] initWithNibName:@"YearPickerViewController" bundle:nil];
+    }
+    
+    return _yearPickerViewController;
+}
+
+- (IBAction)yearPickerBtnDidClick:(id)sender {
+    //设置代理和当前年份
+    self.yearPickerViewController.delegate = self;
+    self.yearPickerViewController.currentYear = self.yearPickerButton.titleLabel.text;
+    //显示月份选择器，将YearPickerViewController嵌入到根视图控制器（侧栏效果器）
+    [self.yearPickerViewController presentInParentViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
+}
+
+#pragma mark - YearPickerViewController Delegate
+
+-(void)yearPickerViewController:(YearPickerViewController *)controller chooseYear:(NSString *)year
+{
+    //设置选中的年份为年份选择标题
+    [self.yearPickerButton setTitle:[NSString stringWithFormat:@"%@",year] forState:UIControlStateNormal];
+    [self updateLineChartView];
+}
+
 
 #pragma mark - Line Chart Methods
 
@@ -154,28 +258,44 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     
     ChartYAxis *leftAxis = chartView.leftAxis;
     leftAxis.labelTextColor = [UIColor grayColor];
-    leftAxis.axisMaximum = 200.0;
+    //leftAxis.axisMaximum = 999999999.99;
     //leftAxis.axisMinimum = 0.0;
     leftAxis.drawGridLinesEnabled = YES;
     leftAxis.drawZeroLineEnabled = NO;
     leftAxis.granularityEnabled = YES;
     leftAxis.gridLineDashLengths = @[@10,@10];
     leftAxis.gridColor = [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:1];
-    
-    [self setDataCount:12 range:30];
-    
-    [chartView animateWithXAxisDuration:0.5];
+
 }
 
-- (void)setDataCount:(int)count range:(double)range
+-(void)updateLineChartView
 {
+    NSString *year = [[self.yearPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(0, 4)];
+    
+    [self getDataForLineChartWitchYear:year];
+    
+    [self setDataCount:(int)_everyMonthSpend.count];
+    
+    [self.lineChartView animateWithXAxisDuration:0.5];
+}
+
+- (void)setDataCount:(int)count
+{
+    double maxNum = [[_everyMonthSpend valueForKeyPath:@"@max.doubleValue"] doubleValue];
+    if(maxNum == 0)
+    {
+        self.lineChartView.leftAxis.axisMaximum = 900;
+    }
+    else
+    {
+        self.lineChartView.leftAxis.axisMaximum = maxNum + maxNum/2;
+    }
+    
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     
     for (int i = 1; i <= count; i++)
     {
-        double mult = range / 2.0;
-        double val = (double) (arc4random_uniform(mult)) + (arc4random_uniform(50));
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i y:[_everyMonthSpend[i-1] doubleValue]]];
     }
     
     LineChartDataSet *set1 = nil;
@@ -209,6 +329,135 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         [data setValueFont:[UIFont systemFontOfSize:9.f]];
         
         self.lineChartView.data = data;
+    }
+}
+
+-(void)getDataForLineChartWitchYear:(NSString *)year
+{
+    _everyMonthSpend = [NSMutableArray array];  //初始化数组
+    _everyMonthIncome = [NSMutableArray array];  //初始化数组
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *currentYear = [formatter stringFromDate:date];
+    
+    if([year isEqualToString:currentYear])  //如果选择显示今年，则只显示到当前月份，后面月份不显示
+    {
+        [formatter setDateFormat:@"MM"];
+        NSString *currentMonth = [formatter stringFromDate:date];
+        
+        for(int i = 1;i <= [currentMonth intValue];i++)
+        {
+            NSString *month = [NSString stringWithFormat:@"%02d",i];
+            NSArray *theMonthData = [self fetchDataForYear:year andMonth:month];    //获得该月所有支出和收入数据
+            
+            if(theMonthData == nil)
+            {
+                [self calculateTotalMoneyForMonth:nil];
+            }
+            else
+            {
+                [self calculateTotalMoneyForMonth:theMonthData];
+            }
+        }
+    }
+    else    //以前的年份则显示12个月份
+    {
+        for(int i = 1;i < 13;i++)
+        {
+            NSString *month = [NSString stringWithFormat:@"%02d",i];
+            NSArray *theMonthData = [self fetchDataForYear:year andMonth:month];    //获得该月所有支出和收入数据
+            
+            if(theMonthData == nil)
+            {
+                [self calculateTotalMoneyForMonth:nil];
+            }
+            else
+            {
+                [self calculateTotalMoneyForMonth:theMonthData];
+            }
+        }
+    }
+}
+
+-(NSArray *)fetchDataForYear:(NSString *)year andMonth:(NSString *)month
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+
+    NSString *nextMonth = nil;
+    NSDate *startDate = nil;
+    NSDate *endDate = nil;
+    if([month intValue] == 12)
+    {
+        nextMonth = @"01";
+        NSString *nextYear = [NSString stringWithFormat:@"%d",[year intValue] + 1];
+        
+        startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
+        endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",nextYear,nextMonth]];
+    }
+    else
+    {
+        nextMonth = [NSString stringWithFormat:@"%d",[month intValue] + 1];
+        
+        startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
+        endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,nextMonth]];
+    }
+
+    //设置过滤器，设置获取特定月份的数据
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)",startDate,endDate];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if((foundObjects == nil) || (foundObjects.count == 0))    //从CoreData中获取数据
+    {
+        return nil;
+    }
+    else
+    {
+        return foundObjects;
+    }
+}
+
+-(void)calculateTotalMoneyForMonth:(NSArray *)theMonthData
+{
+    if(theMonthData == nil)
+    {
+        [_everyMonthSpend addObject:@0];
+        [_everyMonthIncome addObject:@0];
+    }
+    else
+    {
+        NSPredicate *incomePredicate = [NSPredicate predicateWithFormat:@"money > %@",@0];
+        NSArray *incomeArray = [theMonthData filteredArrayUsingPredicate:incomePredicate];    //过滤出所有收入的数据
+        if((incomeArray != nil) && (incomeArray.count != 0))
+        {
+            NSNumber *totalIncomeMoney = [incomeArray valueForKeyPath:@"@sum.money"];   //计算总收入
+            [_everyMonthIncome addObject:totalIncomeMoney];
+        }
+        else
+        {
+            [_everyMonthIncome addObject:@0];
+        }
+        
+        NSPredicate *spendPredicate = [NSPredicate predicateWithFormat:@"money < %@",@0];
+        NSArray *spendArray = [theMonthData filteredArrayUsingPredicate:spendPredicate];    //过滤出所有支出的数据
+        if((spendArray != nil) && (spendArray.count != 0))
+        {
+            NSNumber *totalSpendMoney = [spendArray valueForKeyPath:@"@sum.money"];   //计算总支出
+            [_everyMonthSpend addObject:@(-[totalSpendMoney doubleValue])];
+        }
+        else
+        {
+            [_everyMonthSpend addObject:@0];
+        }
     }
 }
 
@@ -332,7 +581,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     self.pieChartView.centerAttributedText = centerText;
     
     //在饼图中间放置一个按钮用于切换收入比例图和支出比例图
-    if([self.view viewWithTag:5005] == nil)
+    if(([self.view viewWithTag:5005] == nil) && (self.pieChartView.hidden == NO))
     {
         CGFloat radius = self.pieChartView.radius;  //饼图半径
         CGFloat holeRadius = radius * self.pieChartView.holeRadiusPercent;  //饼图内圆半径
@@ -396,14 +645,30 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSString *year = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(0, 4)];
-    NSString *month = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(5, 2)];
-    NSString *nextMonth = [NSString stringWithFormat:@"%d",[month intValue] + 1];
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSDate *startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
-    NSDate *endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,nextMonth]];
+    
+    NSString *year = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(0, 4)];
+    NSString *month = [[self.monthPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(5, 2)];
+    
+    NSString *nextMonth = nil;
+    NSDate *startDate = nil;
+    NSDate *endDate = nil;
+    if([month intValue] == 12)
+    {
+        nextMonth = @"01";
+        NSString *nextYear = [NSString stringWithFormat:@"%d",[year intValue] + 1];
+        
+        startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
+        endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",nextYear,nextMonth]];
+    }
+    else
+    {
+        nextMonth = [NSString stringWithFormat:@"%d",[month intValue] + 1];
+        
+        startDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,month]];
+        endDate = [formatter dateFromString:[NSString stringWithFormat:@"%@-%@-01",year,nextMonth]];
+    }
     
     //设置过滤器，设置显示当前月份选择器显示的年月的记录
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)",startDate,endDate];

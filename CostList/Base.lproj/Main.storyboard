@@ -272,7 +272,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DhM-mS-mn4" id="TS5-n8-Vdm">
-                                            <frame key="frameInset" width="375" height="51"/>
+                                            <frame key="frameInset" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCR-N2-9fs">
@@ -328,6 +328,9 @@
                                                 <segment title="比例"/>
                                                 <segment title="趋势"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="switchChartView:" destination="jX4-ii-kcR" eventType="valueChanged" id="X9c-eQ-acV"/>
+                                            </connections>
                                         </segmentedControl>
                                     </navigationItem>
                                 </items>
@@ -342,21 +345,46 @@
                                             <action selector="monthPickerButtonDidClick:" destination="jX4-ii-kcR" eventType="touchUpInside" id="R7j-Qa-iPJ"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thc-dF-I6u">
+                                        <state key="normal" title="xxxx年">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="yearPickerBtnDidClick:" destination="jX4-ii-kcR" eventType="touchUpInside" id="2AN-Af-Ukf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.80784313725490198" alpha="0.19" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="thc-dF-I6u" firstAttribute="centerX" secondItem="51C-mZ-oVU" secondAttribute="centerX" id="Djd-lR-gA6"/>
                                     <constraint firstItem="BIk-a7-Pq5" firstAttribute="centerX" secondItem="51C-mZ-oVU" secondAttribute="centerX" id="Kup-FC-elb"/>
                                     <constraint firstAttribute="height" constant="43" id="jLB-mp-Clg"/>
                                     <constraint firstItem="BIk-a7-Pq5" firstAttribute="centerY" secondItem="51C-mZ-oVU" secondAttribute="centerY" id="l5K-5C-kgy"/>
+                                    <constraint firstItem="thc-dF-I6u" firstAttribute="centerY" secondItem="51C-mZ-oVU" secondAttribute="centerY" id="uvi-z2-K1P"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJt-YD-hOu" customClass="PieChartView" customModule="Charts">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-xt-vvg">
+                                        <frame key="frameInset" minX="201" minY="3" width="31" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="收入"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-ZS-bm3">
+                                        <frame key="frameInset" minX="144" minY="3" width="31" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="支出">
+                                            <color key="titleColor" red="0.20000000000000001" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MJt-YD-hOu" secondAttribute="height" multiplier="75:53" id="3g8-7j-QUe"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjJ-Oh-u86" customClass="LineChartView" customModule="Charts">
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjJ-Oh-u86" customClass="LineChartView" customModule="Charts">
+                                <frame key="frameInset" minX="19" minY="144" width="338" height="219"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hjJ-Oh-u86" secondAttribute="height" multiplier="75:53" constant="-24.264150943396203" id="phM-c6-m0K"/>
@@ -404,6 +432,7 @@
                         <outlet property="separator" destination="Bnd-R5-nDj" id="BBH-gr-TqD"/>
                         <outlet property="tableView" destination="vuj-pl-gAX" id="aOu-NZ-ITm"/>
                         <outlet property="upBackgroundView" destination="3Hz-yN-6yl" id="lU8-d5-1Xh"/>
+                        <outlet property="yearPickerButton" destination="thc-dF-I6u" id="PjF-tz-qhr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXo-iT-Z52" userLabel="First Responder" sceneMemberID="firstResponder"/>
