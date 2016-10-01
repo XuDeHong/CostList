@@ -29,6 +29,8 @@
 		845E62881D6313DD00224162 /* UIImage+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E62871D6313DD00224162 /* UIImage+Category.m */; };
 		847616871D82A705001B456F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847616851D82A705001B456F /* DataModel.xcdatamodeld */; };
 		847616901D82A9AC001B456F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8476168F1D82A9AC001B456F /* CoreData.framework */; };
+		847D21D41D9F8F3400B2A5BF /* YearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D21D21D9F8F3400B2A5BF /* YearPickerViewController.m */; };
+		847D21D51D9F8F3400B2A5BF /* YearPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D21D31D9F8F3400B2A5BF /* YearPickerViewController.xib */; };
 		8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487858B1D58C96800A2EBFB /* MyTabBar.m */; };
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		8498A6751D81732F00F9607A /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A6741D81732F00F9607A /* ListCell.m */; };
@@ -163,6 +165,9 @@
 		8464BC871D5DCB4C00774350 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		847616861D82A705001B456F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		8476168F1D82A9AC001B456F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		847D21D11D9F8F3400B2A5BF /* YearPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearPickerViewController.h; sourceTree = "<group>"; };
+		847D21D21D9F8F3400B2A5BF /* YearPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearPickerViewController.m; sourceTree = "<group>"; };
+		847D21D31D9F8F3400B2A5BF /* YearPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearPickerViewController.xib; sourceTree = "<group>"; };
 		8487858A1D58C96800A2EBFB /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
 		8487858B1D58C96800A2EBFB /* MyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBar.m; sourceTree = "<group>"; };
 		848785921D58D25100A2EBFB /* UIView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
@@ -389,6 +394,9 @@
 				84EA90D61D769B9800282904 /* SlideMenuViewController.h */,
 				84EA90D71D769B9800282904 /* SlideMenuViewController.m */,
 				84F65B5C1D76D03E00A626B7 /* SlideMenuViewController.storyboard */,
+				847D21D11D9F8F3400B2A5BF /* YearPickerViewController.h */,
+				847D21D21D9F8F3400B2A5BF /* YearPickerViewController.m */,
+				847D21D31D9F8F3400B2A5BF /* YearPickerViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -587,6 +595,7 @@
 			files = (
 				84CD5D321D6695F0004898C7 /* EditLocationViewController.xib in Resources */,
 				84068DDD1D580F39003B6F5E /* LaunchScreen.storyboard in Resources */,
+				847D21D51D9F8F3400B2A5BF /* YearPickerViewController.xib in Resources */,
 				84F65B5D1D76D03E00A626B7 /* SlideMenuViewController.storyboard in Resources */,
 				84CD5D361D66B317004898C7 /* AddItemViewController.storyboard in Resources */,
 				84BF75181D80093800D4C97D /* Localizable.strings in Resources */,
@@ -686,6 +695,7 @@
 				847616871D82A705001B456F /* DataModel.xcdatamodeld in Sources */,
 				84068DCC1D580F39003B6F5E /* main.m in Sources */,
 				84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */,
+				847D21D41D9F8F3400B2A5BF /* YearPickerViewController.m in Sources */,
 				84EA90D81D769B9800282904 /* SlideMenuViewController.m in Sources */,
 				84068E051D58135D003B6F5E /* ChartTableViewController.m in Sources */,
 				84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */,
