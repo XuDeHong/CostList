@@ -159,6 +159,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         {
             [noDataPlaceholder removeFromSuperview];    //若已有占位图则去除
         }
+        self.separator.hidden = YES;    //隐藏分割线
         
         self.yearPickerButton.hidden = NO;
         self.monthPickerButton.hidden = YES;
@@ -169,21 +170,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         self.lineChartView.hidden = YES;
         
         [self fetchDataAndUpdateView];
-        
-        //在饼图中间放置一个按钮用于切换收入比例图和支出比例图
-        if([self.view viewWithTag:5005] == nil)
-        {
-            CGFloat radius = self.pieChartView.radius;  //饼图半径
-            CGFloat holeRadius = radius * self.pieChartView.holeRadiusPercent;  //饼图内圆半径
-            UIButton *tapBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, holeRadius * 2, holeRadius * 2)];
-            CGPoint center = [self.pieChartView convertPoint:self.pieChartView.centerCircleBox toView:self.view];   //饼图中心位置
-            tapBtn.center = center;
-            tapBtn.tag = 5005;
-            tapBtn.backgroundColor = [UIColor clearColor];
-            [self.view addSubview:tapBtn];
-            
-            [tapBtn addTarget:self action:@selector(switchPrintedData) forControlEvents:UIControlEventTouchUpInside];   //添加触发方法
-        }
         
         self.yearPickerButton.hidden = YES;
         self.monthPickerButton.hidden = NO;
