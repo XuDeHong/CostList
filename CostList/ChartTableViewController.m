@@ -29,6 +29,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 @property (nonatomic,strong) IBOutlet UIView *separator;
 @property (weak, nonatomic) IBOutlet UIButton *yearPickerButton;
 @property (strong,nonatomic) YearPickerViewController *yearPickerViewController;
+@property (weak, nonatomic) IBOutlet UIButton *incomeBtnForLine; //折线图的收入按钮
+@property (weak, nonatomic) IBOutlet UIButton *spendBtnForLine; //折线图的支出按钮
+
 
 @end
 
@@ -91,6 +94,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [self setupPieChartView:self.pieChartView];     //设置饼图
     
     [self setupLineChartView:self.lineChartView];   //设置折线图
+
 }
 
 
@@ -144,7 +148,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     if(self.pieChartView.hidden == NO)
     {
         self.pieChartView.hidden = YES;
-        self.lineChartView.hidden = NO;
+        self.lineChartView.hidden = NO; //显示折线图
+        self.incomeBtnForLine.hidden = NO;
+        self.spendBtnForLine.hidden = NO;
         
         [self updateLineChartView];
         
@@ -159,15 +165,17 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         {
             [noDataPlaceholder removeFromSuperview];    //若已有占位图则去除
         }
-        self.separator.hidden = YES;    //隐藏分割线
+        self.separator.hidden = NO;    //显示分割线
         
         self.yearPickerButton.hidden = NO;
         self.monthPickerButton.hidden = YES;
     }
     else
     {
-        self.pieChartView.hidden = NO;
+        self.pieChartView.hidden = NO;  //显示圆饼图
         self.lineChartView.hidden = YES;
+        self.incomeBtnForLine.hidden = YES;
+        self.spendBtnForLine.hidden = YES;
         
         [self fetchDataAndUpdateView];
         
@@ -267,29 +275,47 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 
 - (void)setDataCount:(int)count
 {
-    double maxNum = [[_everyMonthSpend valueForKeyPath:@"@max.doubleValue"] doubleValue];
-    if(maxNum == 0)
+    double maxSpendNum = [[_everyMonthSpend valueForKeyPath:@"@max.doubleValue"] doubleValue];
+    double maxIncomeNum = [[_everyMonthIncome valueForKeyPath:@"@max.doubleValue"] doubleValue];
+    if(maxSpendNum > maxIncomeNum)
     {
-        self.lineChartView.leftAxis.axisMaximum = 900;
+        self.lineChartView.leftAxis.axisMaximum = maxSpendNum + maxSpendNum/2;
+    }
+    else if(maxIncomeNum > maxSpendNum)
+    {
+        self.lineChartView.leftAxis.axisMaximum = maxIncomeNum + maxIncomeNum/2;
     }
     else
     {
-        self.lineChartView.leftAxis.axisMaximum = maxNum + maxNum/2;
+        if(maxSpendNum != 0)
+        {
+            self.lineChartView.leftAxis.axisMaximum = maxSpendNum + maxSpendNum/2;
+        }
+        else
+        {
+            //这里全年收入和支出都为0，应该显示空数据
+            self.lineChartView.leftAxis.axisMaximum = 900;
+        }
     }
     
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
+    NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
     for (int i = 1; i <= count; i++)
     {
         [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i y:[_everyMonthSpend[i-1] doubleValue]]];
+        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[_everyMonthIncome[i-1] doubleValue]]];
     }
     
     LineChartDataSet *set1 = nil;
+    LineChartDataSet *set2 = nil;
     
     if (self.lineChartView.data.dataSetCount > 0)
     {
         set1 = (LineChartDataSet *)self.lineChartView.data.dataSets[0];
         set1.values = yVals1;
+        set2 = (LineChartDataSet *)self.lineChartView.data.dataSets[1];
+        set2.values = yVals2;
         [self.lineChartView.data notifyDataChanged];
         [self.lineChartView notifyDataSetChanged];
     }
@@ -297,18 +323,31 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     {
         set1 = [[LineChartDataSet alloc] initWithValues:yVals1 label:@"DataSet 1"];
         set1.axisDependency = AxisDependencyLeft;
-        [set1 setColor:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
-        [set1 setCircleColor:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
+        [set1 setColor:[UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f]];
+        [set1 setCircleColor:[UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f]];
         set1.lineWidth = 2.0;
         set1.circleRadius = 3.0;
         set1.fillAlpha = 65/255.0;
-        set1.fillColor = [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f];
-        set1.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
+        set1.fillColor = [UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f];
+        //set1.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
         set1.drawCircleHoleEnabled = NO;
         set1.drawValuesEnabled = NO;
         
+        set2 = [[LineChartDataSet alloc] initWithValues:yVals2 label:@"DataSet 2"];
+        set2.axisDependency = AxisDependencyLeft;
+        [set2 setColor:[UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f]];
+        [set2 setCircleColor:[UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f]];
+        set2.lineWidth = 2.0;
+        set2.circleRadius = 3.0;
+        set2.fillAlpha = 65/255.0;
+        set2.fillColor = [UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f];
+        //set2.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
+        set2.drawCircleHoleEnabled = NO;
+        set2.drawValuesEnabled = NO;
+        
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];
+        [dataSets addObject:set2];
         
         LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
         [data setValueTextColor:UIColor.whiteColor];
