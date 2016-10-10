@@ -135,10 +135,10 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListCell" id="Sgn-aB-p4j" customClass="ListCell">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="65"/>
+                                        <rect key="frame" x="0.0" y="56" width="1000" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sgn-aB-p4j" id="HNV-Bm-hvZ">
-                                            <frame key="frameInset" width="375" height="65"/>
+                                            <frame key="frameInset" width="1000" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-3t-K60">
@@ -169,10 +169,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListCommentCell" id="Vap-KF-Rfp" customClass="ListCommentCell">
-                                        <rect key="frame" x="0.0" y="121" width="375" height="65"/>
+                                        <rect key="frame" x="0.0" y="121" width="1000" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vap-KF-Rfp" id="KWt-fO-Sqi">
-                                            <frame key="frameInset" width="375" height="65"/>
+                                            <frame key="frameInset" width="1000" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFq-hz-hNH">
@@ -272,7 +272,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DhM-mS-mn4" id="TS5-n8-Vdm">
-                                            <frame key="frameInset" width="375" height="52"/>
+                                            <frame key="frameInset" width="375" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCR-N2-9fs">
@@ -364,32 +364,29 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJt-YD-hOu" customClass="PieChartView" customModule="Charts">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-xt-vvg">
-                                        <frame key="frameInset" minX="201" minY="3" width="31" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="收入"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-ZS-bm3">
-                                        <frame key="frameInset" minX="144" minY="3" width="31" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="支出">
-                                            <color key="titleColor" red="0.20000000000000001" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MJt-YD-hOu" secondAttribute="height" multiplier="75:53" id="3g8-7j-QUe"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjJ-Oh-u86" customClass="LineChartView" customModule="Charts">
-                                <frame key="frameInset" minX="19" minY="144" width="338" height="219"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjJ-Oh-u86" customClass="LineChartView" customModule="Charts">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="hjJ-Oh-u86" secondAttribute="height" multiplier="75:53" constant="-24.264150943396203" id="phM-c6-m0K"/>
+                                    <constraint firstAttribute="width" secondItem="hjJ-Oh-u86" secondAttribute="height" multiplier="338:219" id="wg0-Bu-l8w"/>
                                 </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWn-ee-2vu">
+                                <state key="normal" image="incomeBtn" backgroundImage="incomeBtn"/>
+                                <state key="selected" image="incomeBtn-selected" backgroundImage="incomeBtn-selected"/>
+                                <state key="highlighted" image="incomeBtn" backgroundImage="incomeBtn"/>
+                                <state key="focused" image="incomeBtn-selected" backgroundImage="incomeBtn-selected"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qvi-YV-Qxt">
+                                <state key="normal" image="spendBtn" backgroundImage="spendBtn"/>
+                                <state key="selected" image="spendBtn-selected" backgroundImage="spendBtn-selected"/>
+                                <state key="highlighted" image="spendBtn" backgroundImage="spendBtn"/>
+                                <state key="focused" image="spendBtn-selected" backgroundImage="spendBtn-selected"/>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bnd-R5-nDj">
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -400,24 +397,28 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xfl-vM-PIC" secondAttribute="trailing" id="1d7-Xb-YZU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qvi-YV-Qxt" secondAttribute="trailing" constant="114" id="3Ob-a9-DBA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MJt-YD-hOu" secondAttribute="trailing" constant="-16" id="4jE-yX-yN3"/>
                             <constraint firstItem="MJt-YD-hOu" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="51H-FZ-BLX"/>
                             <constraint firstAttribute="trailing" secondItem="3Hz-yN-6yl" secondAttribute="trailing" id="5Qd-az-TdX"/>
                             <constraint firstItem="51C-mZ-oVU" firstAttribute="top" secondItem="Xfl-vM-PIC" secondAttribute="bottom" id="79d-Su-eJq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hjJ-Oh-u86" secondAttribute="trailing" constant="2" id="86K-PB-fdS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vuj-pl-gAX" secondAttribute="trailing" constant="-16" id="9Lo-mP-9OM"/>
-                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="top" secondItem="51C-mZ-oVU" secondAttribute="bottom" id="Euk-SR-IjC"/>
                             <constraint firstItem="vuj-pl-gAX" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="G31-bD-Pxe"/>
                             <constraint firstItem="MJt-YD-hOu" firstAttribute="top" secondItem="51C-mZ-oVU" secondAttribute="bottom" id="G9a-YI-s54"/>
                             <constraint firstItem="3Hz-yN-6yl" firstAttribute="top" secondItem="v7F-9J-xtE" secondAttribute="top" id="ILJ-hn-dpD"/>
                             <constraint firstAttribute="trailing" secondItem="51C-mZ-oVU" secondAttribute="trailing" id="Jdo-O8-6LR"/>
                             <constraint firstItem="vuj-pl-gAX" firstAttribute="top" secondItem="MJt-YD-hOu" secondAttribute="bottom" id="Nz8-OI-Vqv"/>
                             <constraint firstItem="51C-mZ-oVU" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="O3s-oU-8oo"/>
+                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="3" id="V7A-8c-u0T"/>
+                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="top" secondItem="Qvi-YV-Qxt" secondAttribute="bottom" constant="3" id="brB-7j-eUi"/>
                             <constraint firstItem="Xfl-vM-PIC" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="d7l-mg-e3Q"/>
-                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="3" id="fKs-ui-tEL"/>
                             <constraint firstItem="Bnd-R5-nDj" firstAttribute="bottom" secondItem="MJt-YD-hOu" secondAttribute="bottom" id="fPM-9j-dYV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hjJ-Oh-u86" secondAttribute="trailing" constant="2" id="fYB-K0-fhI"/>
                             <constraint firstItem="3Hz-yN-6yl" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leading" id="fry-p1-rY1"/>
+                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="top" secondItem="uWn-ee-2vu" secondAttribute="bottom" constant="3" id="gzk-3T-INw"/>
                             <constraint firstItem="flk-ly-tbN" firstAttribute="top" secondItem="vuj-pl-gAX" secondAttribute="bottom" id="hcp-Kc-2fK"/>
+                            <constraint firstItem="hjJ-Oh-u86" firstAttribute="top" secondItem="xIc-c4-VwC" secondAttribute="bottom" constant="123" id="jT2-D3-FCv"/>
+                            <constraint firstItem="uWn-ee-2vu" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="114" id="nO5-JU-QyE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bnd-R5-nDj" secondAttribute="trailing" constant="-16" id="qRY-wh-c0t"/>
                             <constraint firstItem="Xfl-vM-PIC" firstAttribute="top" secondItem="3Hz-yN-6yl" secondAttribute="bottom" constant="-44" id="wsw-Ko-7YC"/>
                             <constraint firstItem="Bnd-R5-nDj" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="xVi-hW-wCC"/>
@@ -425,11 +426,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="报表" image="ChartIcon - Inactive" id="7sG-q1-urx"/>
                     <connections>
+                        <outlet property="incomeBtnForLine" destination="uWn-ee-2vu" id="Sxl-YS-NTh"/>
                         <outlet property="lineChartView" destination="hjJ-Oh-u86" id="VzR-Hv-BeB"/>
                         <outlet property="monthPickerButton" destination="BIk-a7-Pq5" id="z1c-cp-4Po"/>
                         <outlet property="navigationBar" destination="Xfl-vM-PIC" id="U4Q-iR-78i"/>
                         <outlet property="pieChartView" destination="MJt-YD-hOu" id="xBV-sp-FtX"/>
                         <outlet property="separator" destination="Bnd-R5-nDj" id="BBH-gr-TqD"/>
+                        <outlet property="spendBtnForLine" destination="Qvi-YV-Qxt" id="LgK-Ss-3Vm"/>
                         <outlet property="tableView" destination="vuj-pl-gAX" id="aOu-NZ-ITm"/>
                         <outlet property="upBackgroundView" destination="3Hz-yN-6yl" id="lU8-d5-1Xh"/>
                         <outlet property="yearPickerButton" destination="thc-dF-I6u" id="PjF-tz-qhr"/>
@@ -446,5 +449,9 @@
         <image name="ImageIndicate" width="12" height="11"/>
         <image name="Line" width="1" height="51"/>
         <image name="ListIcon - Inactive" width="19" height="24"/>
+        <image name="incomeBtn" width="35" height="21"/>
+        <image name="incomeBtn-selected" width="35" height="21"/>
+        <image name="spendBtn" width="35" height="21"/>
+        <image name="spendBtn-selected" width="35" height="21"/>
     </resources>
 </document>
