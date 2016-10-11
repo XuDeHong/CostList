@@ -94,7 +94,19 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     [self setupPieChartView:self.pieChartView];     //设置饼图
     
     [self setupLineChartView:self.lineChartView];   //设置折线图
-
+    
+    //设置折线图里的收入按钮
+    [self.incomeBtnForLine setImage:[UIImage imageNamed:@"incomeBtn"] forState:UIControlStateNormal];
+    [self.incomeBtnForLine setImage:[UIImage imageNamed:@"incomeBtn"] forState:UIControlStateHighlighted];
+    [self.incomeBtnForLine setImage:[UIImage imageNamed:@"incomeBtn-selected"] forState:UIControlStateSelected];
+    [self.incomeBtnForLine setImage:[UIImage imageNamed:@"incomeBtn-selected"] forState:UIControlStateSelected | UIControlStateHighlighted];
+    self.incomeBtnForLine.selected = YES;
+    //设置折线图里的支出按钮
+    [self.spendBtnForLine setImage:[UIImage imageNamed:@"spendBtn"] forState:UIControlStateNormal];
+    [self.spendBtnForLine setImage:[UIImage imageNamed:@"spendBtn"] forState:UIControlStateHighlighted];
+    [self.spendBtnForLine setImage:[UIImage imageNamed:@"spendBtn-selected"] forState:UIControlStateSelected];
+    [self.spendBtnForLine setImage:[UIImage imageNamed:@"spendBtn-selected"] forState:UIControlStateSelected | UIControlStateHighlighted];
+    self.spendBtnForLine.selected = YES;
 }
 
 
@@ -151,7 +163,6 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         self.lineChartView.hidden = NO; //显示折线图
         self.incomeBtnForLine.hidden = NO;
         self.spendBtnForLine.hidden = NO;
-        
         [self updateLineChartView];
         
         //去掉饼图中间的按钮
@@ -233,6 +244,15 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 
 
 #pragma mark - Line Chart Methods
+
+- (IBAction)incomeBtnClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+
+- (IBAction)spendBtnClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+
 
 -(void)setupLineChartView:(LineChartView *)chartView
 {
