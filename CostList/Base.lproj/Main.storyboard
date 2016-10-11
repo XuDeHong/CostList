@@ -396,46 +396,8 @@
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E8I-3A-UPB">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LineListHeaderCell" id="x6E-YL-KEP">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x6E-YL-KEP" id="tny-hx-OLG">
-                                            <frame key="frameInset" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="月份" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kR-u4-dIw">
-                                                    <frame key="frameInset" minX="8" minY="11" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="收入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIB-Zz-QrI">
-                                                    <frame key="frameInset" minX="103" minY="11" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="支出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIi-W0-KKq">
-                                                    <frame key="frameInset" minX="201" minY="11" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2A-mn-dAj">
-                                                    <frame key="frameInset" minX="296" minY="11" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LineListCell" rowHeight="59" id="AGr-2O-uJB">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="59"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AGr-2O-uJB" id="GS9-2g-sXr">
                                             <frame key="frameInset" width="375" height="58"/>
@@ -478,10 +440,52 @@
                                     <outlet property="delegate" destination="jX4-ii-kcR" id="dJT-O7-fC7"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIN-7o-P7d">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="月份" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QF-ko-cPw">
+                                        <frame key="frameInset" minX="8" minY="10" width="35" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="收入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blY-Kf-3PU">
+                                        <frame key="frameInset" minX="103" minY="10" width="35" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="支出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PL2-Eg-Bal">
+                                        <frame key="frameInset" minX="201" minY="10" width="35" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01X-qO-x8f">
+                                        <frame key="frameInset" minX="296" minY="10" width="35" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2p-Yp-iD0">
+                                        <frame key="frameInset" minY="42" width="375" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="QtO-Lq-ame"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xfl-vM-PIC" secondAttribute="trailing" id="1d7-Xb-YZU"/>
+                            <constraint firstItem="lIN-7o-P7d" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="2iw-VE-QEZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qvi-YV-Qxt" secondAttribute="trailing" constant="103" id="3Ob-a9-DBA"/>
                             <constraint firstItem="flk-ly-tbN" firstAttribute="top" secondItem="E8I-3A-UPB" secondAttribute="bottom" id="4dM-Kl-WEG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MJt-YD-hOu" secondAttribute="trailing" constant="-16" id="4jE-yX-yN3"/>
@@ -489,7 +493,7 @@
                             <constraint firstAttribute="trailing" secondItem="3Hz-yN-6yl" secondAttribute="trailing" id="5Qd-az-TdX"/>
                             <constraint firstItem="E8I-3A-UPB" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="6gs-d9-hnV"/>
                             <constraint firstItem="51C-mZ-oVU" firstAttribute="top" secondItem="Xfl-vM-PIC" secondAttribute="bottom" id="79d-Su-eJq"/>
-                            <constraint firstItem="E8I-3A-UPB" firstAttribute="top" secondItem="MJt-YD-hOu" secondAttribute="bottom" id="7ew-rz-DBN"/>
+                            <constraint firstItem="E8I-3A-UPB" firstAttribute="top" secondItem="MJt-YD-hOu" secondAttribute="bottom" constant="42" id="7ew-rz-DBN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vuj-pl-gAX" secondAttribute="trailing" constant="-16" id="9Lo-mP-9OM"/>
                             <constraint firstItem="vuj-pl-gAX" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="-16" id="G31-bD-Pxe"/>
                             <constraint firstItem="MJt-YD-hOu" firstAttribute="top" secondItem="51C-mZ-oVU" secondAttribute="bottom" id="G9a-YI-s54"/>
@@ -507,6 +511,8 @@
                             <constraint firstItem="hjJ-Oh-u86" firstAttribute="top" secondItem="uWn-ee-2vu" secondAttribute="bottom" constant="3" id="gzk-3T-INw"/>
                             <constraint firstItem="flk-ly-tbN" firstAttribute="top" secondItem="vuj-pl-gAX" secondAttribute="bottom" id="hcp-Kc-2fK"/>
                             <constraint firstItem="hjJ-Oh-u86" firstAttribute="top" secondItem="xIc-c4-VwC" secondAttribute="bottom" constant="123" id="jT2-D3-FCv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lIN-7o-P7d" secondAttribute="trailing" constant="-16" id="mR9-pp-AFk"/>
+                            <constraint firstItem="E8I-3A-UPB" firstAttribute="top" secondItem="lIN-7o-P7d" secondAttribute="bottom" id="mn5-pB-fWf"/>
                             <constraint firstItem="uWn-ee-2vu" firstAttribute="leading" secondItem="v7F-9J-xtE" secondAttribute="leadingMargin" constant="103" id="nO5-JU-QyE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bnd-R5-nDj" secondAttribute="trailing" constant="-16" id="qRY-wh-c0t"/>
                             <constraint firstItem="Xfl-vM-PIC" firstAttribute="top" secondItem="3Hz-yN-6yl" secondAttribute="bottom" constant="-44" id="wsw-Ko-7YC"/>
@@ -517,6 +523,7 @@
                     <connections>
                         <outlet property="incomeBtnForLine" destination="uWn-ee-2vu" id="Sxl-YS-NTh"/>
                         <outlet property="lineChartView" destination="hjJ-Oh-u86" id="VzR-Hv-BeB"/>
+                        <outlet property="lineListHeader" destination="lIN-7o-P7d" id="6Ff-9G-PVN"/>
                         <outlet property="lineTableView" destination="E8I-3A-UPB" id="zVP-Wr-QaT"/>
                         <outlet property="monthPickerButton" destination="BIk-a7-Pq5" id="z1c-cp-4Po"/>
                         <outlet property="navigationBar" destination="Xfl-vM-PIC" id="U4Q-iR-78i"/>
