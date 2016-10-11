@@ -17,6 +17,8 @@
 #import "MonthValueFormatter.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
+static NSString *LineListHeaderCellIdentifier = @"LineListHeaderCell";
+static NSString *LineListCellIdentifier = @"LineListCell";
 
 @interface ChartTableViewController () <MonthPickerViewControllerDelegate,ChartViewDelegate,YearPickerViewControllerDelegate>
 
@@ -32,6 +34,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 @property (strong,nonatomic) YearPickerViewController *yearPickerViewController;
 @property (weak, nonatomic) IBOutlet UIButton *incomeBtnForLine; //折线图的收入按钮
 @property (weak, nonatomic) IBOutlet UIButton *spendBtnForLine; //折线图的支出按钮
+@property (weak, nonatomic) IBOutlet UITableView *lineTableView;
 
 
 @end
@@ -83,6 +86,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     
     //去除多余的空行和分割线
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.lineTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     //从plist文件读取类别Icon信息
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"CategoryIconInfo" ofType:@"plist"];
@@ -161,7 +165,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     if(self.pieChartView.hidden == NO)
     {
         self.pieChartView.hidden = YES;
+        self.tableView.hidden = YES;
         self.lineChartView.hidden = NO; //显示折线图
+        self.lineTableView.hidden = NO;
         self.incomeBtnForLine.hidden = NO;
         self.spendBtnForLine.hidden = NO;
         [self updateLineChartView];
@@ -185,7 +191,9 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     else
     {
         self.pieChartView.hidden = NO;  //显示圆饼图
+        self.tableView.hidden = NO;
         self.lineChartView.hidden = YES;
+        self.lineTableView.hidden = YES;
         self.incomeBtnForLine.hidden = YES;
         self.spendBtnForLine.hidden = YES;
         
@@ -333,6 +341,8 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     }
     
     [self setDataCount:(int)_everyMonthSpend.count];
+    
+    [self.lineTableView reloadData];
     
     [self.lineChartView animateWithXAxisDuration:0.5];
 }
@@ -1001,45 +1011,92 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(_isSpendDataPrint)
-        return _sortedSpendTypes.count;
+    if([tableView isEqual:self.tableView])
+    {
+        if(_isSpendDataPrint)
+            return _sortedSpendTypes.count;
+        else
+            return _sortedIncomeTypes.count;
+    }
     else
-        return _sortedIncomeTypes.count;
+    {
+        return _everyMonthSpend.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartCellIdentifier];
-    
-    if(_isSpendDataPrint)
+    if([tableView isEqual:self.tableView])
     {
-        UIImage *icon = [UIImage imageNamed:_sortedSpendIconArray[indexPath.row]];
-        cell.imageView.image = icon;
-        UILabel *iconNameLabel = [cell viewWithTag:1001];
-        iconNameLabel.text = _sortedSpendTypes[indexPath.row];
-        [iconNameLabel sizeToFit];
-        UILabel *percentLabel = [cell viewWithTag:1002];
-        percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedSpendPercentForEveryType[indexPath.row] doubleValue]];
-        [percentLabel sizeToFit];
-        UILabel *moneyLabel = [cell viewWithTag:1003];
-        moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalSpendMoneyForEveryType[indexPath.row]doubleValue]];
-        [moneyLabel sizeToFit];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartCellIdentifier];
+        if(_isSpendDataPrint)
+        {
+            UIImage *icon = [UIImage imageNamed:_sortedSpendIconArray[indexPath.row]];
+            cell.imageView.image = icon;
+            UILabel *iconNameLabel = [cell viewWithTag:1001];
+            iconNameLabel.text = _sortedSpendTypes[indexPath.row];
+            [iconNameLabel sizeToFit];
+            UILabel *percentLabel = [cell viewWithTag:1002];
+            percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedSpendPercentForEveryType[indexPath.row] doubleValue]];
+            [percentLabel sizeToFit];
+            UILabel *moneyLabel = [cell viewWithTag:1003];
+            moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalSpendMoneyForEveryType[indexPath.row]doubleValue]];
+            [moneyLabel sizeToFit];
+        }
+        else
+        {
+            UIImage *icon = [UIImage imageNamed:_sortedIncomeIconArray[indexPath.row]];
+            cell.imageView.image = icon;
+            UILabel *iconNameLabel = [cell viewWithTag:1001];
+            iconNameLabel.text = _sortedIncomeTypes[indexPath.row];
+            [iconNameLabel sizeToFit];
+            UILabel *percentLabel = [cell viewWithTag:1002];
+            percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedIncomePercentForEveryType[indexPath.row] doubleValue]];
+            [percentLabel sizeToFit];
+            UILabel *moneyLabel = [cell viewWithTag:1003];
+            moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalIncomeMoneyForEveryType[indexPath.row]doubleValue]];
+            [moneyLabel sizeToFit];
+        }
+        return cell;
     }
     else
     {
-        UIImage *icon = [UIImage imageNamed:_sortedIncomeIconArray[indexPath.row]];
-        cell.imageView.image = icon;
-        UILabel *iconNameLabel = [cell viewWithTag:1001];
-        iconNameLabel.text = _sortedIncomeTypes[indexPath.row];
-        [iconNameLabel sizeToFit];
-        UILabel *percentLabel = [cell viewWithTag:1002];
-        percentLabel.text = [NSString stringWithFormat:@"%.2lf%%",[_sortedIncomePercentForEveryType[indexPath.row] doubleValue]];
-        [percentLabel sizeToFit];
-        UILabel *moneyLabel = [cell viewWithTag:1003];
-        moneyLabel.text = [NSString stringWithFormat:@"%.2lf",[_sortedtotalIncomeMoneyForEveryType[indexPath.row]doubleValue]];
-        [moneyLabel sizeToFit];
+        if(indexPath.row == 0)
+        {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LineListHeaderCellIdentifier];
+            return cell;
+        }
+        else
+        {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LineListCellIdentifier];
+            UILabel *monthlabel = [cell viewWithTag:2001];
+            monthlabel.text = [NSString stringWithFormat:@"%02ld月",indexPath.row + 1];
+            [monthlabel sizeToFit];
+            UILabel *incomeLabel = [cell viewWithTag:2002];
+            incomeLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthIncome[indexPath.row] doubleValue]];
+            [incomeLabel sizeToFit];
+            UILabel *spendLabel = [cell viewWithTag:2003];
+            spendLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthSpend[indexPath.row] doubleValue]];
+            [spendLabel sizeToFit];
+            double surplus = [_everyMonthIncome[indexPath.row] doubleValue] - [_everyMonthSpend[indexPath.row] doubleValue];    //计算结余
+            UILabel *surplusLabel = [cell viewWithTag:2004];    //结余标签
+            surplusLabel.text = [NSString stringWithFormat:@"%.2lf",surplus];
+            [surplusLabel sizeToFit];
+            if(surplus > 0)
+            {
+
+                surplusLabel.textColor = [UIColor greenColor];
+            }
+            else if(surplus < 0)
+            {
+                surplusLabel.textColor = [UIColor redColor];
+            }
+            else
+            {
+                surplusLabel.textColor = [UIColor lightGrayColor];
+            }
+            return cell;
+        }
     }
-    
-    return cell;
 }
 
 #pragma mark Table View Delegate
