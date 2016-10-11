@@ -246,11 +246,28 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 #pragma mark - Line Chart Methods
 
 - (IBAction)incomeBtnClick:(UIButton *)sender {
+    if((sender.isSelected == YES) && (self.spendBtnForLine.isSelected == NO))
+    {
+        return; //防止收入和支出同时取消
+    }
+    
     sender.selected = !sender.selected;
+    
+    self.lineChartView.data = nil;
+    [self setDataCount:(int)_everyMonthSpend.count];    //更新折线图
+    [self.lineChartView animateWithXAxisDuration:0];
 }
 
 - (IBAction)spendBtnClick:(UIButton *)sender {
+    if((sender.isSelected == YES) && (self.incomeBtnForLine.isSelected == NO))
+    {
+        return; //防止收入和支出同时取消
+    }
+    
     sender.selected = !sender.selected;
+    self.lineChartView.data = nil;
+    [self setDataCount:(int)_everyMonthSpend.count];    //更新折线图
+    [self.lineChartView animateWithXAxisDuration:0];
 }
 
 
@@ -284,17 +301,12 @@ static NSString *ChartCellIdentifier = @"ChartCell";
 
 -(void)updateLineChartView
 {
+    self.lineChartView.data = nil;
+    
     NSString *year = [[self.yearPickerButton titleForState:UIControlStateNormal] substringWithRange:NSMakeRange(0, 4)];
     
     [self getDataForLineChartWitchYear:year];
     
-    [self setDataCount:(int)_everyMonthSpend.count];
-    
-    [self.lineChartView animateWithXAxisDuration:0.5];
-}
-
-- (void)setDataCount:(int)count
-{
     double maxSpendNum = [[_everyMonthSpend valueForKeyPath:@"@max.doubleValue"] doubleValue];
     double maxIncomeNum = [[_everyMonthIncome valueForKeyPath:@"@max.doubleValue"] doubleValue];
     if(maxSpendNum > maxIncomeNum)
@@ -318,6 +330,13 @@ static NSString *ChartCellIdentifier = @"ChartCell";
         }
     }
     
+    [self setDataCount:(int)_everyMonthSpend.count];
+    
+    [self.lineChartView animateWithXAxisDuration:0.5];
+}
+
+- (void)setDataCount:(int)count
+{
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
@@ -332,42 +351,54 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     
     if (self.lineChartView.data.dataSetCount > 0)
     {
-        set1 = (LineChartDataSet *)self.lineChartView.data.dataSets[0];
-        set1.values = yVals1;
-        set2 = (LineChartDataSet *)self.lineChartView.data.dataSets[1];
-        set2.values = yVals2;
+        if(self.spendBtnForLine.isSelected == YES)
+        {
+            set1 = (LineChartDataSet *)self.lineChartView.data.dataSets[0];
+            set1.values = yVals1;
+        }
+        if(self.incomeBtnForLine.isSelected == YES)
+        {
+            set2 = (LineChartDataSet *)self.lineChartView.data.dataSets[1];
+            set2.values = yVals2;
+        }
         [self.lineChartView.data notifyDataChanged];
         [self.lineChartView notifyDataSetChanged];
     }
     else
     {
-        set1 = [[LineChartDataSet alloc] initWithValues:yVals1 label:@"DataSet 1"];
-        set1.axisDependency = AxisDependencyLeft;
-        [set1 setColor:[UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f]];
-        [set1 setCircleColor:[UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f]];
-        set1.lineWidth = 2.0;
-        set1.circleRadius = 3.0;
-        set1.fillAlpha = 65/255.0;
-        set1.fillColor = [UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f];
-        //set1.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
-        set1.drawCircleHoleEnabled = NO;
-        set1.drawValuesEnabled = NO;
-        
-        set2 = [[LineChartDataSet alloc] initWithValues:yVals2 label:@"DataSet 2"];
-        set2.axisDependency = AxisDependencyLeft;
-        [set2 setColor:[UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f]];
-        [set2 setCircleColor:[UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f]];
-        set2.lineWidth = 2.0;
-        set2.circleRadius = 3.0;
-        set2.fillAlpha = 65/255.0;
-        set2.fillColor = [UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f];
-        //set2.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
-        set2.drawCircleHoleEnabled = NO;
-        set2.drawValuesEnabled = NO;
-        
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-        [dataSets addObject:set1];
-        [dataSets addObject:set2];
+        
+        if(self.spendBtnForLine.isSelected == YES)
+        {
+            set1 = [[LineChartDataSet alloc] initWithValues:yVals1 label:@"DataSet 1"];
+            set1.axisDependency = AxisDependencyLeft;
+            [set1 setColor:[UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f]];
+            [set1 setCircleColor:[UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f]];
+            set1.lineWidth = 2.0;
+            set1.circleRadius = 3.0;
+            set1.fillAlpha = 65/255.0;
+            set1.fillColor = [UIColor colorWithRed:237/255.f green:75/255.f blue:19/255.f alpha:1.f];
+            //set1.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
+            set1.drawCircleHoleEnabled = NO;
+            set1.drawValuesEnabled = NO;
+            [dataSets addObject:set1];
+        }
+        
+        if(self.incomeBtnForLine.isSelected == YES)
+        {
+            set2 = [[LineChartDataSet alloc] initWithValues:yVals2 label:@"DataSet 2"];
+            set2.axisDependency = AxisDependencyLeft;
+            [set2 setColor:[UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f]];
+            [set2 setCircleColor:[UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f]];
+            set2.lineWidth = 2.0;
+            set2.circleRadius = 3.0;
+            set2.fillAlpha = 65/255.0;
+            set2.fillColor = [UIColor colorWithRed:4/255.f green:223/255.f blue:140/255.f alpha:1.f];
+            //set2.highlightColor = [UIColor colorWithRed:244/255.f green:117/255.f blue:117/255.f alpha:1.f];
+            set2.drawCircleHoleEnabled = NO;
+            set2.drawValuesEnabled = NO;
+            [dataSets addObject:set2];
+        }
         
         LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
         [data setValueTextColor:UIColor.whiteColor];
