@@ -17,7 +17,6 @@
 #import "MonthValueFormatter.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
-static NSString *LineListHeaderCellIdentifier = @"LineListHeaderCell";
 static NSString *LineListCellIdentifier = @"LineListCell";
 
 @interface ChartTableViewController () <MonthPickerViewControllerDelegate,ChartViewDelegate,YearPickerViewControllerDelegate>
@@ -35,6 +34,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
 @property (weak, nonatomic) IBOutlet UIButton *incomeBtnForLine; //折线图的收入按钮
 @property (weak, nonatomic) IBOutlet UIButton *spendBtnForLine; //折线图的支出按钮
 @property (weak, nonatomic) IBOutlet UITableView *lineTableView;
+@property (weak, nonatomic) IBOutlet UIView *lineListHeader;
 
 
 @end
@@ -167,6 +167,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
         self.pieChartView.hidden = YES;
         self.tableView.hidden = YES;
         self.lineChartView.hidden = NO; //显示折线图
+        self.lineListHeader.hidden = NO;
         self.lineTableView.hidden = NO;
         self.incomeBtnForLine.hidden = NO;
         self.spendBtnForLine.hidden = NO;
@@ -193,6 +194,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
         self.pieChartView.hidden = NO;  //显示圆饼图
         self.tableView.hidden = NO;
         self.lineChartView.hidden = YES;
+        self.lineListHeader.hidden = YES;
         self.lineTableView.hidden = YES;
         self.incomeBtnForLine.hidden = YES;
         self.spendBtnForLine.hidden = YES;
@@ -1060,46 +1062,43 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     }
     else
     {
-        if(indexPath.row == 0)
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LineListCellIdentifier];
+        UILabel *monthlabel = [cell viewWithTag:2001];
+        monthlabel.text = [NSString stringWithFormat:@"%02ld月",indexPath.row + 1];
+        [monthlabel sizeToFit];
+        UILabel *incomeLabel = [cell viewWithTag:2002];
+        incomeLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthIncome[indexPath.row] doubleValue]];
+        [incomeLabel sizeToFit];
+        UILabel *spendLabel = [cell viewWithTag:2003];
+        spendLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthSpend[indexPath.row] doubleValue]];
+        [spendLabel sizeToFit];
+        double surplus = [_everyMonthIncome[indexPath.row] doubleValue] - [_everyMonthSpend[indexPath.row] doubleValue];    //计算结余
+        UILabel *surplusLabel = [cell viewWithTag:2004];    //结余标签
+        surplusLabel.text = [NSString stringWithFormat:@"%.2lf",surplus];
+        [surplusLabel sizeToFit];
+        if(surplus > 0)
         {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LineListHeaderCellIdentifier];
-            return cell;
+
+            surplusLabel.textColor = [UIColor greenColor];
+        }
+        else if(surplus < 0)
+        {
+            surplusLabel.textColor = [UIColor redColor];
         }
         else
         {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LineListCellIdentifier];
-            UILabel *monthlabel = [cell viewWithTag:2001];
-            monthlabel.text = [NSString stringWithFormat:@"%02ld月",indexPath.row + 1];
-            [monthlabel sizeToFit];
-            UILabel *incomeLabel = [cell viewWithTag:2002];
-            incomeLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthIncome[indexPath.row] doubleValue]];
-            [incomeLabel sizeToFit];
-            UILabel *spendLabel = [cell viewWithTag:2003];
-            spendLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthSpend[indexPath.row] doubleValue]];
-            [spendLabel sizeToFit];
-            double surplus = [_everyMonthIncome[indexPath.row] doubleValue] - [_everyMonthSpend[indexPath.row] doubleValue];    //计算结余
-            UILabel *surplusLabel = [cell viewWithTag:2004];    //结余标签
-            surplusLabel.text = [NSString stringWithFormat:@"%.2lf",surplus];
-            [surplusLabel sizeToFit];
-            if(surplus > 0)
-            {
-
-                surplusLabel.textColor = [UIColor greenColor];
-            }
-            else if(surplus < 0)
-            {
-                surplusLabel.textColor = [UIColor redColor];
-            }
-            else
-            {
-                surplusLabel.textColor = [UIColor lightGrayColor];
-            }
-            return cell;
+            surplusLabel.textColor = [UIColor lightGrayColor];
         }
+        return cell;
     }
 }
 
 #pragma mark Table View Delegate
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil; //圆饼图和折线图的TableView的行均不能点击
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
