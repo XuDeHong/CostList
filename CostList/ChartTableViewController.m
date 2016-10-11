@@ -14,6 +14,7 @@
 #import "NSNumber+Category.h"
 #import "UIColor+Category.h"
 #import "YearPickerViewController.h"
+#import "MonthValueFormatter.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
 
@@ -286,6 +287,7 @@ static NSString *ChartCellIdentifier = @"ChartCell";
     xAxis.drawGridLinesEnabled = NO;
     xAxis.drawAxisLineEnabled = YES;
     xAxis.labelPosition = XAxisLabelPositionBottom;
+    xAxis.valueFormatter = [[MonthValueFormatter alloc] init];
     
     ChartYAxis *leftAxis = chartView.leftAxis;
     leftAxis.labelTextColor = [UIColor grayColor];
