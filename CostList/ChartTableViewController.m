@@ -1022,7 +1022,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     }
     else
     {
-        return _everyMonthSpend.count;
+        return _everyMonthSpend.count + 1;
     }
 }
 
@@ -1064,21 +1064,40 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LineListCellIdentifier];
         UILabel *monthlabel = [cell viewWithTag:2001];
-        monthlabel.text = [NSString stringWithFormat:@"%02ld月",indexPath.row + 1];
-        [monthlabel sizeToFit];
         UILabel *incomeLabel = [cell viewWithTag:2002];
-        incomeLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthIncome[indexPath.row] doubleValue]];
-        [incomeLabel sizeToFit];
         UILabel *spendLabel = [cell viewWithTag:2003];
-        spendLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthSpend[indexPath.row] doubleValue]];
-        [spendLabel sizeToFit];
-        double surplus = [_everyMonthIncome[indexPath.row] doubleValue] - [_everyMonthSpend[indexPath.row] doubleValue];    //计算结余
         UILabel *surplusLabel = [cell viewWithTag:2004];    //结余标签
+        double surplus = 0;
+        
+        if(indexPath.row != _everyMonthSpend.count)
+        {
+            monthlabel.text = [NSString stringWithFormat:@"%02ld月",indexPath.row + 1];
+
+            incomeLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthIncome[indexPath.row] doubleValue]];
+
+            spendLabel.text = [NSString stringWithFormat:@"%.2lf",[_everyMonthSpend[indexPath.row] doubleValue]];
+
+            surplus = [_everyMonthIncome[indexPath.row] doubleValue] - [_everyMonthSpend[indexPath.row] doubleValue];    //计算结余
+        }
+        else    //添加最后一行合计
+        {
+            monthlabel.text = @"合计";
+            double totalSpend = [[_everyMonthSpend valueForKeyPath:@"@sum.doubleValue"] doubleValue];
+            double totalIncome = [[_everyMonthIncome valueForKeyPath:@"@sum.doubleValue"] doubleValue];
+            incomeLabel.text = [NSString stringWithFormat:@"%.2lf",totalIncome];
+            spendLabel.text = [NSString stringWithFormat:@"%.2lf",totalSpend];
+            surplus = totalIncome - totalSpend;
+        }
+        
+        
         surplusLabel.text = [NSString stringWithFormat:@"%.2lf",surplus];
+        [monthlabel sizeToFit];
+        [incomeLabel sizeToFit];
+        [spendLabel sizeToFit];
         [surplusLabel sizeToFit];
         if(surplus > 0)
         {
-
+            
             surplusLabel.textColor = [UIColor greenColor];
         }
         else if(surplus < 0)
@@ -1089,6 +1108,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
         {
             surplusLabel.textColor = [UIColor lightGrayColor];
         }
+        
         return cell;
     }
 }
