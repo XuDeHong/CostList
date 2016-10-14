@@ -243,8 +243,8 @@
                         <outlet property="monthPickerButton" destination="sUG-UC-oNM" id="3ii-4W-T71"/>
                         <outlet property="myNavigationItem" destination="XnM-ry-22t" id="u6F-gR-75K"/>
                         <outlet property="navigationBar" destination="RQF-pi-34M" id="34X-9V-Xjx"/>
-                        <outlet property="totalIncomeLbl" destination="830-nN-VPN" id="Ie8-4a-HgW"/>
-                        <outlet property="totalSpendLbl" destination="4ZQ-2y-8OT" id="lD7-At-wkQ"/>
+                        <outlet property="totalIncomeLbl" destination="4ZQ-2y-8OT" id="J6r-EG-6Fl"/>
+                        <outlet property="totalSpendLbl" destination="830-nN-VPN" id="kUl-JA-3hV"/>
                         <outlet property="upBackgroundView" destination="hJ6-CR-UyG" id="1cq-Rd-Cn4"/>
                     </connections>
                 </viewController>

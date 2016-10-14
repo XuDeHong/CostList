@@ -98,6 +98,40 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     [self performFetch]; //从CoreData中获取数据
     [self.listTableView reloadData];  //保证数据最新，并更新分割线显示问题
     [self textWhetherHasData];  //测试是否有数据，没有数据则显示占位图
+    
+    //以下代码更新该界面顶部的总收入和总支出
+    NSArray *results = [self.fetchedResultsController fetchedObjects];
+    if((results != nil) && (results.count != 0))
+    {
+        NSPredicate *incomePredicate = [NSPredicate predicateWithFormat:@"money > %@",@0];
+        NSArray *incomeItems = [results filteredArrayUsingPredicate:incomePredicate];    //过滤出所有收入的数据
+        if((incomeItems != nil) && (incomeItems.count != 0))
+        {
+            NSNumber *totalIncome = [incomeItems valueForKeyPath:@"@sum.money"];   //计算总收入
+            self.totalIncomeLbl.text = [NSString stringWithFormat:@"%.2lf",[totalIncome doubleValue]];
+        }
+        else
+        {
+            self.totalIncomeLbl.text = @"0.00";
+        }
+        
+        NSPredicate *spendPredicate = [NSPredicate predicateWithFormat:@"money < %@",@0];
+        NSArray *spendItems = [results filteredArrayUsingPredicate:spendPredicate];    //过滤出所有支出的数据
+        if((spendItems != nil) && (spendItems.count != 0))
+        {
+            NSNumber *totalSpend = [spendItems valueForKeyPath:@"@sum.money"];   //计算总支出
+            self.totalSpendLbl.text = [NSString stringWithFormat:@"%.2lf",[totalSpend doubleValue] * (-1)];
+        }
+        else
+        {
+            self.totalSpendLbl.text = @"0.00";
+        }
+    }
+    else
+    {
+        self.totalIncomeLbl.text = @"0.00";
+        self.totalSpendLbl.text = @"0.00";
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -310,7 +344,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count]; //利用NSFetchedResultsController来获取行数
+    return [[self.fetchedResultsController sections] count]; //利用NSFetchedResultsController来获取组数
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
