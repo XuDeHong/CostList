@@ -41,6 +41,9 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     BOOL _isFirstTime;
     UIBarButtonItem *_leftBarButton;
     UIBarButtonItem *_rightBarButton;
+    
+    NSMutableArray *_everyDayTotalSpend;
+    NSMutableArray *_everyDayTotalIncome;
 }
 
 
@@ -126,11 +129,69 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         {
             self.totalSpendLbl.text = @"0.00";
         }
+        
+        [self calculateTotalMoneyForEveryDay:results];
     }
     else
     {
         self.totalIncomeLbl.text = @"0.00";
         self.totalSpendLbl.text = @"0.00";
+        
+        _everyDayTotalSpend = nil;
+        _everyDayTotalIncome = nil;
+    }
+
+}
+
+//计算当月每一日的总收入和总支出
+-(void)calculateTotalMoneyForEveryDay:(NSArray *)results
+{
+    _everyDayTotalSpend = [NSMutableArray array];
+    _everyDayTotalIncome = [NSMutableArray array];
+    
+    for(int i = 0 ; i < [self.fetchedResultsController sections].count ; i++)
+    {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][i];
+        NSString *dateString = [sectionInfo name];
+        
+        //从日期字符串中获取日期对象
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZ"];
+        NSDate *date = [formatter dateFromString:dateString];
+        
+        NSPredicate *dayPredicate = [NSPredicate predicateWithFormat:@"date == %@",date];
+        NSArray *dayArray = [results filteredArrayUsingPredicate:dayPredicate];//获得该日所有数据
+        if((dayArray != nil) && (dayArray.count != 0))
+        {
+            NSPredicate *spendPredicate = [NSPredicate predicateWithFormat:@"money < %@",@0];
+            NSArray *spendItems = [dayArray filteredArrayUsingPredicate:spendPredicate];//过滤出该日支出数据
+            if((spendItems != nil) && (spendItems.count != 0))
+            {
+                NSNumber *totalSpend = [spendItems valueForKeyPath:@"@sum.money"];   //计算当日总支出
+                _everyDayTotalSpend[i] = @(-[totalSpend doubleValue]);
+            }
+            else
+            {
+                _everyDayTotalSpend[i] = @(0);
+            }
+            
+            NSPredicate *incomePredicate = [NSPredicate predicateWithFormat:@"money > %@",@0];
+            NSArray *incomeItems = [dayArray filteredArrayUsingPredicate:incomePredicate];  //过滤出该日收入数据
+            if((incomeItems != nil) && (incomeItems.count != 0))
+            {
+                NSNumber *totalIncome = [incomeItems valueForKeyPath:@"@sum.money"];   //计算当日总收入
+                _everyDayTotalIncome[i] = @([totalIncome doubleValue]);
+            }
+            else
+            {
+                _everyDayTotalIncome[i] = @(0);
+            }
+        }
+        else
+        {
+            _everyDayTotalIncome[i] = @(0);
+            _everyDayTotalSpend[i] = @(0);
+        }
     }
 }
 
@@ -518,15 +579,37 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.bounds.size.width,TableViewSectionHeight)];
     view.backgroundColor = TableViewSectionTitleViewBackgroundColor;
-    
+    //每一组左边的日期
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15.0f,0.0f, 300.0f, 14.0f)];
     label.centerY = view.centerY;
-    label.font = [UIFont boldSystemFontOfSize:11.0f];
+    label.font = [UIFont systemFontOfSize:11.0f];
     label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
     label.textColor = [UIColor colorWithWhite:0 alpha:0.3];
     label.backgroundColor = [UIColor clearColor];
     
     [view addSubview:label];
+    
+    //每一组右边的总支出和总收入
+    UILabel *dayTotalLbl = [[UILabel alloc] initWithFrame:CGRectMake(15.0f,0.0f, 300.0f, 14.0f)];
+    dayTotalLbl.centerY = view.centerY;
+    dayTotalLbl.font = [UIFont systemFontOfSize:11.0f];
+    double totalSpend = 0;
+    double totalIncome = 0;
+    if(_everyDayTotalSpend[section] != nil)
+    {
+        totalSpend = [_everyDayTotalSpend[section] doubleValue];
+    }
+    if(_everyDayTotalIncome[section] != nil)
+    {
+        totalIncome = [_everyDayTotalIncome[section] doubleValue];
+    }
+    dayTotalLbl.text = [NSString stringWithFormat:@"总收入：%.2lf 总支出：%.2lf",totalIncome,totalSpend];
+    dayTotalLbl.textColor = [UIColor colorWithWhite:0 alpha:0.3];
+    dayTotalLbl.backgroundColor = [UIColor clearColor];
+    [dayTotalLbl sizeToFit];
+    dayTotalLbl.x = tableView.bounds.size.width - dayTotalLbl.width - 10;   //使该标签与屏幕右边距间隔为10
+    
+    [view addSubview:dayTotalLbl];
     
     return view;
 }
