@@ -13,6 +13,8 @@
 #import "ListCommentCell.h"
 #import "MyNavigationController.h"
 #import "AddItemViewController.h"
+#import "SearchViewController.h"
+#import "UIViewController+Category.h"
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
@@ -58,7 +60,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     self.listTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     _isFirstTime = YES;
-
 }
 
 
@@ -285,6 +286,13 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(IBAction)menuButtonDidClick:(id)sender
 {
     [self.myTabBarController showSlideMenuController];
+}
+
+- (IBAction)searchBtnDidClick:(id)sender
+{
+
+    SearchViewController *searchViewController = [SearchViewController instanceFromStoryboardV2];
+    [self presentViewController:searchViewController animated:YES completion:nil];
 }
 
 #pragma mark - About NSFetchedResults(Controller) Methods
