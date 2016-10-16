@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.x = SCREEN_WIDTH;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,16 +26,25 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    
-    [self.searchBar becomeFirstResponder];
+    [super viewWillAppear:animated];
+    //从右滑出的动画
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.x = 0;
+    } completion:^(BOOL finished){
+        [self.searchBar becomeFirstResponder];
+    }];
 }
 
 - (IBAction)cancelBtnClick:(id)sender {
     [self.searchBar resignFirstResponder];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    //由左向右滑走
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.x = SCREEN_WIDTH;
+    } completion:^(BOOL finished){
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 
