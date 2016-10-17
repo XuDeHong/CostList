@@ -8,6 +8,10 @@
 
 #import "SearchViewController.h"
 #import "ListCommentCell.h"
+#import "MyTabBarController.h"
+#import "ITRAirSideMenu.h"
+#import "MyNavigationController.h"
+#import "AddItemViewController.h"
 
 #define TableRowSeparatorColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.7]
 
@@ -21,7 +25,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 @implementation SearchViewController
 {
-    NSArray *_results;
+    NSMutableArray *_results;
 }
 
 - (void)viewDidLoad {
@@ -44,8 +48,13 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     [UIView animateWithDuration:0.3 animations:^{
         self.view.x = 0;
     } completion:^(BOOL finished){
-        [self.searchBar becomeFirstResponder];
+        if(_results.count==0)[self.searchBar becomeFirstResponder];
     }];
+    
+    if(self.searchBar.text.length != 0)
+    {
+        [self searchData];
+    }
 }
 
 - (IBAction)cancelBtnClick:(id)sender {
@@ -78,17 +87,42 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     }
     else
     {
-        _results = foundObjects;
+        _results = [foundObjects mutableCopy];
     }
+}
+
+-(void)textWhetherHasData
+{
+    [self.tableView reloadData];
+    UIImageView *noDataPlaceholder = [self.view viewWithTag:505];
+    if(noDataPlaceholder != nil)
+    {
+        [noDataPlaceholder removeFromSuperview];    //若已有占位图则去除
+    }
+    if((_results.count == 0) || (_results == nil))
+    {
+        //没有数据时显示占位图
+        noDataPlaceholder = [[UIImageView alloc] initWithFrame:CGRectMake(self.tableView.x, self.tableView.y,SCREEN_WIDTH,0)];
+        noDataPlaceholder.tag = 505;
+        UIImage *noDataImage = [UIImage imageNamed:@"NoDataImage2"];
+        noDataPlaceholder.image = noDataImage;
+        [noDataPlaceholder sizeToFit];
+        [self.view addSubview:noDataPlaceholder];
+    }
+}
+
+-(void)searchData
+{
+
+    [self.searchBar resignFirstResponder];
+    [self searchDataForText:self.searchBar.text];
+    [self textWhetherHasData];
 }
 
 #pragma mark - UISearchBar Delegate
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.searchBar resignFirstResponder];
-    [self searchDataForText:searchBar.text];
-    [self.tableView reloadData];
-    //NSLog(@"%ld",_results.count);
+    [self searchData];
 }
 
 #pragma mark - Table view data source
@@ -136,8 +170,49 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    //滑动删除cell，并同步到CoreData数据库
+    if(editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        __block NSMutableArray *array = _results;
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"警告", @"警告") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+            CostItem *dataModel = _results[indexPath.row];   //获取数据模型
+            [dataModel removePhotoFile];    //删除图片
+            [self.managedObjectContext deleteObject:dataModel];
+            
+            NSError *error;
+            if(![self.managedObjectContext save:&error])
+            {
+                FATAL_CORE_DATA_ERROR(error);
+                return;
+            }
+            [array removeObject:dataModel];
+            [self textWhetherHasData];
+        }];
+        UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }];
+        [controller addAction:cancelBtn];
+        [controller addAction:sureBtn];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+}
 
-
+#pragma mark Table View Delegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ITRAirSideMenu *root = (ITRAirSideMenu *)self.presentingViewController;
+    
+    MyTabBarController *tabBarController = (MyTabBarController *)root.contentViewController;
+    MyNavigationController *editNavigationController = [tabBarController getAddItemViewControllerToPreViewForDataModel:_results[indexPath.row]];
+    AddItemViewController *controller = (AddItemViewController *)editNavigationController.topViewController;
+    controller.delegate = tabBarController;
+    controller.managedObjectContext = self.managedObjectContext;
+    [self presentViewController:editNavigationController animated:YES completion:nil];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 /*
 #pragma mark - Navigation
 

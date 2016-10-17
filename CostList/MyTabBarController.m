@@ -8,13 +8,12 @@
 
 #import "MyTabBarController.h"
 #import "MyTabBar.h"
-#import "AddItemViewController.h"
 #import "UIViewController+Category.h"
 #import "MyNavigationController.h"
 #import "ListTableViewController.h"
 #import "ChartTableViewController.h"
 
-@interface MyTabBarController () <MyTabBarDelegate,AddItemViewControllerDelegate> //实现自定义TabBar协议
+@interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
 
 @property (nonatomic,strong) ListTableViewController *listController;
 @property (nonatomic,strong) ChartTableViewController *chartController;

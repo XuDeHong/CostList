@@ -119,7 +119,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUG-UC-oNM">
-                                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="xxxx年xx月"/>
                                             <connections>
@@ -443,7 +443,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fP6-ju-QHW">
-                                            <rect key="frame" x="113" y="8" width="150" height="29"/>
+                                            <rect key="frame" x="112.5" y="7.5" width="150" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="比例"/>
