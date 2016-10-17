@@ -290,10 +290,10 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 - (IBAction)searchBtnDidClick:(id)sender
 {
-
     SearchViewController *searchViewController = [SearchViewController instanceFromStoryboardV2];
     searchViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [self.myTabBarController presentViewController:searchViewController animated:NO completion:nil];
+    searchViewController.isVisible = YES;
+    [self.myTabBarController.itrAirSideMenu presentViewController:searchViewController animated:NO completion:nil];
 }
 
 #pragma mark - About NSFetchedResults(Controller) Methods
