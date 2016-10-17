@@ -7,9 +7,15 @@
 //
 
 #import "SearchViewController.h"
+#import "ListCommentCell.h"
 
-@interface SearchViewController () <UISearchBarDelegate>
+#define TableRowSeparatorColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.7]
+
+static NSString *ListCommentCellIdentifier = @"ListCommentCell";
+
+@interface SearchViewController () <UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.x = SCREEN_WIDTH;
+    //去除多余的空行和分割线
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,9 +87,55 @@
 {
     [self.searchBar resignFirstResponder];
     [self searchDataForText:searchBar.text];
-    
-    NSLog(@"%ld",_results.count);
+    [self.tableView reloadData];
+    //NSLog(@"%ld",_results.count);
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _results.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CostItem *dataModel = _results[indexPath.row];   //获取数据模型
+    
+    ListCommentCell *cell = (ListCommentCell *)[tableView dequeueReusableCellWithIdentifier:ListCommentCellIdentifier];
+    //图标
+    cell.imageView.image = [UIImage imageNamed:dataModel.category];
+    //支出金额
+    NSNumber *money = dataModel.money;
+    cell.number.text = [NSString stringWithFormat:@"%.2lf",[money doubleValue]];
+    if([money doubleValue] < 0)
+    {
+        cell.number.textColor = [UIColor redColor];
+    }
+    else
+    {
+        cell.number.textColor = [UIColor greenColor];
+    }
+    //标题
+    cell.title.text = dataModel.categoryName;
+    //图片标识
+    if(![dataModel hasPhoto])
+        cell.imageIndicate.hidden = YES;
+    else
+        cell.imageIndicate.hidden = NO;
+    //备注
+    cell.comment.text = dataModel.comment;
+    
+    //添加分割线
+    UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(15,self.tableView.rowHeight - 1,SCREEN_WIDTH - 15, 1)];
+    separator.backgroundColor = TableRowSeparatorColor;
+    [cell.contentView addSubview:separator];
+    
+    return cell;
+}
+
 
 
 /*
