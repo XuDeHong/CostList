@@ -268,14 +268,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" placeholder="请输入关键词" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-Cm-X1Z">
-                                <frame key="frameInset" minY="20" height="44" maxX="46"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUH-Ky-CHe">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.10859910102739725" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="f6z-n8-t5w"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgV-Q9-WzT">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="5Dd-ce-2IH"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="请输入关键词" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-Cm-X1Z">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-Y6-wgy">
-                                <frame key="frameInset" minX="337" minY="27" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-Y6-wgy">
                                 <state key="normal" title="取消"/>
                                 <connections>
                                     <action selector="cancelBtnClick:" destination="21L-At-u2n" eventType="touchUpInside" id="i9g-Uf-3PL"/>
@@ -283,6 +291,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k9g-Cm-X1Z" firstAttribute="bottom" secondItem="VUH-Ky-CHe" secondAttribute="bottom" id="1AR-wh-jLP"/>
+                            <constraint firstItem="VUH-Ky-CHe" firstAttribute="top" secondItem="hXa-J5-HgO" secondAttribute="bottom" constant="-20" id="5BN-be-wJW"/>
+                            <constraint firstItem="eq3-Y6-wgy" firstAttribute="leading" secondItem="k9g-Cm-X1Z" secondAttribute="trailing" constant="8" id="AIX-En-0Nc"/>
+                            <constraint firstItem="eq3-Y6-wgy" firstAttribute="top" secondItem="VUH-Ky-CHe" secondAttribute="bottom" constant="-37" id="NMZ-2d-mxM"/>
+                            <constraint firstItem="k9g-Cm-X1Z" firstAttribute="top" secondItem="hXa-J5-HgO" secondAttribute="bottom" id="O1h-8E-rNV"/>
+                            <constraint firstItem="YgV-Q9-WzT" firstAttribute="leading" secondItem="2ON-nY-mBx" secondAttribute="leadingMargin" constant="-16" id="XCM-Rc-UaQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VUH-Ky-CHe" secondAttribute="trailing" constant="-16" id="Y8c-up-vsj"/>
+                            <constraint firstItem="k9g-Cm-X1Z" firstAttribute="width" secondItem="2ON-nY-mBx" secondAttribute="height" multiplier="329:667" id="e8B-WI-7sO"/>
+                            <constraint firstItem="k9g-Cm-X1Z" firstAttribute="leading" secondItem="VUH-Ky-CHe" secondAttribute="leading" id="g7p-qM-Afd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YgV-Q9-WzT" secondAttribute="trailing" constant="-16" id="l0h-Ak-Tr2"/>
+                            <constraint firstItem="YgV-Q9-WzT" firstAttribute="top" secondItem="VUH-Ky-CHe" secondAttribute="bottom" id="rsf-s5-T6O"/>
+                            <constraint firstItem="VUH-Ky-CHe" firstAttribute="leading" secondItem="2ON-nY-mBx" secondAttribute="leadingMargin" constant="-16" id="xOe-h0-Cow"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="k9g-Cm-X1Z" id="BAC-Sy-aAV"/>
