@@ -293,6 +293,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     SearchViewController *searchViewController = [SearchViewController instanceFromStoryboardV2];
     searchViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     searchViewController.isVisible = YES;
+    searchViewController.managedObjectContext = self.managedObjectContext;
     [self.myTabBarController.itrAirSideMenu presentViewController:searchViewController animated:NO completion:nil];
 }
 

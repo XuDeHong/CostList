@@ -17,10 +17,15 @@
         return UIStatusBarStyleDefault;     //侧栏显示时状态栏为黑色
     else
     {
-        SearchViewController *controller = (SearchViewController *)self.presentedViewController;
-        if((controller != nil) && (controller.isVisible == YES))
+        if([self.presentedViewController isKindOfClass:[SearchViewController class]])
         {
-            return UIStatusBarStyleDefault; //如果是搜索控制器，则显示黑色
+            SearchViewController *controller = (SearchViewController *)self.presentedViewController;
+            if((controller != nil) && (controller.isVisible == YES))
+            {
+                return UIStatusBarStyleDefault; //如果是搜索控制器，则显示黑色
+            }
+            else
+                return UIStatusBarStyleLightContent;
         }
         return UIStatusBarStyleLightContent;    //侧栏显示时状态栏为白色
     }

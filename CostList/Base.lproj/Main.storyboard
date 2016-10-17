@@ -282,6 +282,9 @@
                             </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="请输入关键词" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-Cm-X1Z">
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="21L-At-u2n" id="FUN-QY-Zem"/>
+                                </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-Y6-wgy">
                                 <state key="normal" title="取消"/>
