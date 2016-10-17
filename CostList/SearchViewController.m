@@ -39,6 +39,7 @@
 
 - (IBAction)cancelBtnClick:(id)sender {
     [self.searchBar resignFirstResponder];
+    self.isVisible = NO;
     //由左向右滑走
     [UIView animateWithDuration:0.3 animations:^{
         self.view.x = SCREEN_WIDTH;

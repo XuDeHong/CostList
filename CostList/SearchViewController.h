@@ -10,4 +10,6 @@
 
 @interface SearchViewController : UIViewController
 
+@property (assign, nonatomic, getter=isLeftMenuVisible) BOOL isVisible;
+
 @end

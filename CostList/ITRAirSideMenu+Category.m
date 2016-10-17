@@ -7,6 +7,7 @@
 //
 
 #import "ITRAirSideMenu+Category.h"
+#import "SearchViewController.h"
 
 @implementation ITRAirSideMenu (Category)
 
@@ -15,7 +16,14 @@
     if(self.isLeftMenuVisible)
         return UIStatusBarStyleDefault;     //侧栏显示时状态栏为黑色
     else
+    {
+        SearchViewController *controller = (SearchViewController *)self.presentedViewController;
+        if((controller != nil) && (controller.isVisible == YES))
+        {
+            return UIStatusBarStyleDefault; //如果是搜索控制器，则显示黑色
+        }
         return UIStatusBarStyleLightContent;    //侧栏显示时状态栏为白色
+    }
 }
 
 -(BOOL)prefersStatusBarHidden
