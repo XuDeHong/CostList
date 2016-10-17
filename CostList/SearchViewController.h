@@ -11,5 +11,6 @@
 @interface SearchViewController : UIViewController
 
 @property (assign, nonatomic, getter=isLeftMenuVisible) BOOL isVisible;
+@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 
 @end

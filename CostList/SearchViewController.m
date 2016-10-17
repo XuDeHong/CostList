@@ -8,12 +8,15 @@
 
 #import "SearchViewController.h"
 
-@interface SearchViewController ()
+@interface SearchViewController () <UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
 @implementation SearchViewController
+{
+    NSArray *_results;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,6 +49,38 @@
     } completion:^(BOOL finished){
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+-(void)searchDataForText:(NSString *)string
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    //设置过滤器
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"comment CONTAINS %@",string];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if((foundObjects == nil) || (foundObjects.count == 0))    //从CoreData中获取数据
+    {
+        _results = nil;
+    }
+    else
+    {
+        _results = foundObjects;
+    }
+}
+
+#pragma mark - UISearchBar Delegate
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+    [self searchDataForText:searchBar.text];
+    
+    NSLog(@"%ld",_results.count);
 }
 
 
