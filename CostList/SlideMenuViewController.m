@@ -64,6 +64,12 @@
     self.itrAirSideMenu.delegate = nil;
 }
 
+#pragma mark Table View Delegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - ITRAirSideMenuDelegate
 - (void)sideMenu:(ITRAirSideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
 {
