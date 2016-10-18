@@ -12,6 +12,7 @@
 #import "MyNavigationController.h"
 #import "ListTableViewController.h"
 #import "ChartTableViewController.h"
+#import "ViewDeck/ViewDeck.h"
 
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
 
@@ -70,7 +71,7 @@
 -(void)showSlideMenuController
 {
     //显示侧栏
-    [self.itrAirSideMenu presentLeftMenuViewController];
+    [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 -(void)showAddOrEditItemControllerWithDataModel:(CostItem *)costItem;

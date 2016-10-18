@@ -15,6 +15,7 @@
 #import "AddItemViewController.h"
 #import "SearchViewController.h"
 #import "UIViewController+Category.h"
+#import "ViewDeck/ViewDeck.h"
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
@@ -116,7 +117,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         }
         else
         {
-            self.totalIncomeLbl.text = @"0.00";
+            self.totalIncomeLbl.text = NSLocalizedString(@"0.00", @"0.00");
         }
         
         NSPredicate *spendPredicate = [NSPredicate predicateWithFormat:@"money < %@",@0];
@@ -128,15 +129,15 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         }
         else
         {
-            self.totalSpendLbl.text = @"0.00";
+            self.totalSpendLbl.text = NSLocalizedString(@"0.00", @"0.00");
         }
         
         [self calculateTotalMoneyForEveryDay:results];
     }
     else
     {
-        self.totalIncomeLbl.text = @"0.00";
-        self.totalSpendLbl.text = @"0.00";
+        self.totalIncomeLbl.text = NSLocalizedString(@"0.00", @"0.00");
+        self.totalSpendLbl.text = NSLocalizedString(@"0.00", @"0.00");
         
         _everyDayTotalSpend = nil;
         _everyDayTotalIncome = nil;
@@ -294,7 +295,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     searchViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     searchViewController.isVisible = YES;
     searchViewController.managedObjectContext = self.managedObjectContext;
-    [self.myTabBarController.itrAirSideMenu presentViewController:searchViewController animated:NO completion:nil];
+    IIViewDeckController *rootViewController = (IIViewDeckController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+    [rootViewController presentViewController:searchViewController animated:NO completion:nil];
 }
 
 #pragma mark - About NSFetchedResults(Controller) Methods

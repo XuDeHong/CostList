@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8403AC8B1D7C082E000F5977 /* ITRAirSideMenu+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403AC8A1D7C082E000F5977 /* ITRAirSideMenu+Category.m */; };
 		8403AC9B1D7C2F2F000F5977 /* MyImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403AC9A1D7C2F2F000F5977 /* MyImagePickerController.m */; };
 		8403AC9E1D7C38E3000F5977 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403AC9D1D7C38E3000F5977 /* MyNavigationController.m */; };
 		84068DCC1D580F39003B6F5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068DCB1D580F39003B6F5E /* main.m */; };
@@ -36,6 +35,7 @@
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		8498A6751D81732F00F9607A /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A6741D81732F00F9607A /* ListCell.m */; };
 		849906861DACD97600212BCC /* MonthValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 849906851DACD97600212BCC /* MonthValueFormatter.m */; };
+		84B0055D1DB6184E00E682FD /* IIViewDeckController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0055C1DB6184E00E682FD /* IIViewDeckController+Category.m */; };
 		84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718011D69A247004ACD8F /* UITextView+Category.m */; };
 		84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718041D69B6FE004ACD8F /* MyDatePickerController.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
@@ -127,8 +127,6 @@
 /* Begin PBXFileReference section */
 		48BDF009FEBDE9A22FE33EC9 /* libPods-CostList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CostList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C856ADB38BE846DD21F8F72 /* Pods-CostList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostList.release.xcconfig"; path = "Pods/Target Support Files/Pods-CostList/Pods-CostList.release.xcconfig"; sourceTree = "<group>"; };
-		8403AC891D7C082E000F5977 /* ITRAirSideMenu+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ITRAirSideMenu+Category.h"; sourceTree = "<group>"; };
-		8403AC8A1D7C082E000F5977 /* ITRAirSideMenu+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ITRAirSideMenu+Category.m"; sourceTree = "<group>"; };
 		8403AC991D7C2F2F000F5977 /* MyImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePickerController.h; sourceTree = "<group>"; };
 		8403AC9A1D7C2F2F000F5977 /* MyImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePickerController.m; sourceTree = "<group>"; };
 		8403AC9C1D7C38E3000F5977 /* MyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationController.h; sourceTree = "<group>"; };
@@ -180,6 +178,8 @@
 		8498A6741D81732F00F9607A /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		849906841DACD97600212BCC /* MonthValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthValueFormatter.h; sourceTree = "<group>"; };
 		849906851DACD97600212BCC /* MonthValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthValueFormatter.m; sourceTree = "<group>"; };
+		84B0055B1DB6184E00E682FD /* IIViewDeckController+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IIViewDeckController+Category.h"; sourceTree = "<group>"; };
+		84B0055C1DB6184E00E682FD /* IIViewDeckController+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IIViewDeckController+Category.m"; sourceTree = "<group>"; };
 		84B718001D69A247004ACD8F /* UITextView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Category.h"; sourceTree = "<group>"; };
 		84B718011D69A247004ACD8F /* UITextView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Category.m"; sourceTree = "<group>"; };
 		84B718031D69B6FE004ACD8F /* MyDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDatePickerController.h; sourceTree = "<group>"; };
@@ -435,8 +435,8 @@
 				84CD5D381D66C296004898C7 /* UIViewController+Category.m */,
 				84B718001D69A247004ACD8F /* UITextView+Category.h */,
 				84B718011D69A247004ACD8F /* UITextView+Category.m */,
-				8403AC891D7C082E000F5977 /* ITRAirSideMenu+Category.h */,
-				8403AC8A1D7C082E000F5977 /* ITRAirSideMenu+Category.m */,
+				84B0055B1DB6184E00E682FD /* IIViewDeckController+Category.h */,
+				84B0055C1DB6184E00E682FD /* IIViewDeckController+Category.m */,
 				84D65FC51D97B9AD00C4B015 /* NSNumber+Category.h */,
 				84D65FC61D97B9AD00C4B015 /* NSNumber+Category.m */,
 				8453EA751D99175E00EDFE46 /* UIColor+Category.h */,
@@ -695,8 +695,8 @@
 				84D65FC71D97B9AD00C4B015 /* NSNumber+Category.m in Sources */,
 				84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,
-				8403AC8B1D7C082E000F5977 /* ITRAirSideMenu+Category.m in Sources */,
 				8403AC9B1D7C2F2F000F5977 /* MyImagePickerController.m in Sources */,
+				84B0055D1DB6184E00E682FD /* IIViewDeckController+Category.m in Sources */,
 				8472E4C51DB35D20000E6B18 /* SearchViewController.m in Sources */,
 				848785941D58D25100A2EBFB /* UIView+Category.m in Sources */,
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
@@ -790,6 +790,7 @@
 		84068DF51D580F39003B6F5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -811,6 +812,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -837,6 +839,7 @@
 		84068DF61D580F39003B6F5E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -858,6 +861,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

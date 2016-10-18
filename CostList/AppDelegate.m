@@ -13,7 +13,9 @@
 #import "MyTabBarController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIViewController+Category.h"
-#import "ITRAirSideMenu.h"
+#import "ViewDeck/ViewDeck.h"
+
+#define SlideMenuWidth 220.0f   //侧栏宽度
 
 //CoreData错误通知
 NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectContextSaveDidFailNotification";
@@ -53,31 +55,15 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     SlideMenuViewController *mySlideMenuViewController = [SlideMenuViewController instanceFromStoryboardV2];
     
     //创建侧栏效果控制器
-    ITRAirSideMenu *itrAirSideMenu = [[ITRAirSideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:mySlideMenuViewController];
-    //设置侧栏背景
-    itrAirSideMenu.backgroundImage = [UIImage imageNamed:@"SlideMenuBG"];
-    
-    //content view shadow properties
-    itrAirSideMenu.contentViewShadowColor = [UIColor blackColor];
-    itrAirSideMenu.contentViewShadowOffset = CGSizeMake(0, 0);
-    itrAirSideMenu.contentViewShadowOpacity = 0.6;
-    itrAirSideMenu.contentViewShadowRadius = 12;
-    itrAirSideMenu.contentViewShadowEnabled = YES;
-    
-    //content view animation properties
-    itrAirSideMenu.contentViewScaleValue = 0.7f;
-    itrAirSideMenu.contentViewRotatingAngle = 10.0f;
-    itrAirSideMenu.contentViewTranslateX = 150.0f;
-    
-    //menu view properties
-    itrAirSideMenu.menuViewRotatingAngle = 30.0f;
-    itrAirSideMenu.menuViewTranslateX = 130.0f;
-    
-    mySlideMenuViewController.itrAirSideMenu = itrAirSideMenu;
-    tabBarController.itrAirSideMenu = itrAirSideMenu;
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:tabBarController leftViewController:[IISideController autoConstrainedSideControllerWithViewController:mySlideMenuViewController] rightViewController:nil];
+    //设置侧栏打开时中间主视图的宽度
+    deckController.leftSize = SCREEN_WIDTH - SlideMenuWidth;
+    deckController.maxSize = SCREEN_WIDTH - SlideMenuWidth;
+    //设置侧栏打开时中间主视图不可交互
+    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     
     //设置为根控制器
-    self.window.rootViewController = itrAirSideMenu;
+    self.window.rootViewController = deckController;
     //请求用户获取位置的权限
     self.locationManager = [[CLLocationManager alloc] init];
     if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
@@ -92,8 +78,8 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 
 -(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
-    ITRAirSideMenu *itrAirSideMenu = (ITRAirSideMenu *)self.window.rootViewController;
-    MyTabBarController *tabbarController = (MyTabBarController *)itrAirSideMenu.contentViewController;
+    IIViewDeckController *deckController = (IIViewDeckController *)self.window.rootViewController;
+    MyTabBarController *tabbarController = (MyTabBarController *)deckController.centerController;
     if([shortcutItem.type isEqualToString:@"com.XuDeHong.CostList.Add"])    //快速进入添加账目界面
     {
         [tabbarController showAddOrEditItemControllerWithDataModel:nil];

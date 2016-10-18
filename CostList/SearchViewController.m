@@ -9,7 +9,7 @@
 #import "SearchViewController.h"
 #import "ListCommentCell.h"
 #import "MyTabBarController.h"
-#import "ITRAirSideMenu.h"
+#import "ViewDeck/ViewDeck.h"
 #import "MyNavigationController.h"
 #import "AddItemViewController.h"
 
@@ -203,9 +203,9 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 #pragma mark Table View Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ITRAirSideMenu *root = (ITRAirSideMenu *)self.presentingViewController;
+    IIViewDeckController *rootViewController = (IIViewDeckController *)[UIApplication sharedApplication].delegate.window.rootViewController;
     
-    MyTabBarController *tabBarController = (MyTabBarController *)root.contentViewController;
+    MyTabBarController *tabBarController = (MyTabBarController *)rootViewController.centerController;
     MyNavigationController *editNavigationController = [tabBarController getAddItemViewControllerToPreViewForDataModel:_results[indexPath.row]];
     AddItemViewController *controller = (AddItemViewController *)editNavigationController.topViewController;
     controller.delegate = tabBarController;

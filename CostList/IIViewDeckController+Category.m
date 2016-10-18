@@ -1,19 +1,19 @@
 //
-//  ITRAirSideMenu+Category.m
+//  IIViewDeckController+Category.m
 //  CostList
 //
-//  Created by 许德鸿 on 16/9/4.
+//  Created by 许德鸿 on 2016/10/18.
 //  Copyright © 2016年 XuDeHong. All rights reserved.
 //
 
-#import "ITRAirSideMenu+Category.h"
+#import "IIViewDeckController+Category.h"
 #import "SearchViewController.h"
 
-@implementation ITRAirSideMenu (Category)
+@implementation IIViewDeckController (Category)
 
 - (UIStatusBarStyle)preferredStatusBarStyle //侧栏效果控制器作为根视图控制器，会自动调用这个方法
 {
-    if(self.isLeftMenuVisible)
+    if(self.openLeftView)
         return UIStatusBarStyleDefault;     //侧栏显示时状态栏为黑色
     else
     {
