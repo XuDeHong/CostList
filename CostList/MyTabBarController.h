@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ITRAirSideMenu.h"
 #import "AddItemViewController.h"
 
 @class MyNavigationController;
 
 @interface MyTabBarController : UITabBarController <AddItemViewControllerDelegate>
 
-@property (weak,nonatomic) ITRAirSideMenu *itrAirSideMenu;  //指向侧栏
 @property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 
 -(void)showSlideMenuController;

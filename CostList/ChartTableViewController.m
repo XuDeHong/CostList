@@ -1081,7 +1081,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
         }
         else    //添加最后一行合计
         {
-            monthlabel.text = @"合计";
+            monthlabel.text = NSLocalizedString(@"合计", @"合计");
             double totalSpend = [[_everyMonthSpend valueForKeyPath:@"@sum.doubleValue"] doubleValue];
             double totalIncome = [[_everyMonthIncome valueForKeyPath:@"@sum.doubleValue"] doubleValue];
             incomeLabel.text = [NSString stringWithFormat:@"%.2lf",totalIncome];
