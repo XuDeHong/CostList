@@ -15,6 +15,7 @@
 #import "UIColor+Category.h"
 #import "YearPickerViewController.h"
 #import "MonthValueFormatter.h"
+#import "ViewDeck/ViewDeck.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
 static NSString *LineListCellIdentifier = @"LineListCell";
@@ -114,6 +115,20 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     self.spendBtnForLine.selected = YES;
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    if([self.myTabBarController.viewDeckController isAnySideOpen])
+    {
+        return UIStatusBarStyleDefault;     //打开侧栏时，状态栏改为黑色
+    }
+    else
+        return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
 
 -(void)customizeAppearence
 {
