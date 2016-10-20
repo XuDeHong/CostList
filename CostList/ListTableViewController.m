@@ -88,6 +88,31 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     }
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+//    if(self.myTabBarController.viewDeckController)
+//        return UIStatusBarStyleDefault;
+    if([self.myTabBarController.viewDeckController.presentedViewController isKindOfClass:[SearchViewController class]])     //打开或关闭搜索界面时改变状态栏颜色
+    {
+        SearchViewController *searchController = (SearchViewController *)self.myTabBarController.viewDeckController.presentedViewController;
+        if(searchController.isVisible)
+            return UIStatusBarStyleDefault;
+        else
+            return UIStatusBarStyleLightContent;
+    }
+    else if([self.myTabBarController.viewDeckController isAnySideOpen])
+    {
+        return UIStatusBarStyleDefault;     //打开侧栏时，状态栏改为黑色
+    }
+    else
+        return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

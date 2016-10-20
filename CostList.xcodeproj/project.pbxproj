@@ -35,7 +35,6 @@
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		8498A6751D81732F00F9607A /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A6741D81732F00F9607A /* ListCell.m */; };
 		849906861DACD97600212BCC /* MonthValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 849906851DACD97600212BCC /* MonthValueFormatter.m */; };
-		84B0055D1DB6184E00E682FD /* IIViewDeckController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0055C1DB6184E00E682FD /* IIViewDeckController+Category.m */; };
 		84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718011D69A247004ACD8F /* UITextView+Category.m */; };
 		84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718041D69B6FE004ACD8F /* MyDatePickerController.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
@@ -178,8 +177,6 @@
 		8498A6741D81732F00F9607A /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		849906841DACD97600212BCC /* MonthValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthValueFormatter.h; sourceTree = "<group>"; };
 		849906851DACD97600212BCC /* MonthValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthValueFormatter.m; sourceTree = "<group>"; };
-		84B0055B1DB6184E00E682FD /* IIViewDeckController+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IIViewDeckController+Category.h"; sourceTree = "<group>"; };
-		84B0055C1DB6184E00E682FD /* IIViewDeckController+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IIViewDeckController+Category.m"; sourceTree = "<group>"; };
 		84B718001D69A247004ACD8F /* UITextView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Category.h"; sourceTree = "<group>"; };
 		84B718011D69A247004ACD8F /* UITextView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Category.m"; sourceTree = "<group>"; };
 		84B718031D69B6FE004ACD8F /* MyDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDatePickerController.h; sourceTree = "<group>"; };
@@ -435,8 +432,6 @@
 				84CD5D381D66C296004898C7 /* UIViewController+Category.m */,
 				84B718001D69A247004ACD8F /* UITextView+Category.h */,
 				84B718011D69A247004ACD8F /* UITextView+Category.m */,
-				84B0055B1DB6184E00E682FD /* IIViewDeckController+Category.h */,
-				84B0055C1DB6184E00E682FD /* IIViewDeckController+Category.m */,
 				84D65FC51D97B9AD00C4B015 /* NSNumber+Category.h */,
 				84D65FC61D97B9AD00C4B015 /* NSNumber+Category.m */,
 				8453EA751D99175E00EDFE46 /* UIColor+Category.h */,
@@ -696,7 +691,6 @@
 				84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,
 				8403AC9B1D7C2F2F000F5977 /* MyImagePickerController.m in Sources */,
-				84B0055D1DB6184E00E682FD /* IIViewDeckController+Category.m in Sources */,
 				8472E4C51DB35D20000E6B18 /* SearchViewController.m in Sources */,
 				848785941D58D25100A2EBFB /* UIView+Category.m in Sources */,
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
@@ -875,6 +869,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
