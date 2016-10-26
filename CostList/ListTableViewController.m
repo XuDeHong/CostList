@@ -12,10 +12,8 @@
 #import "ListCell.h"
 #import "ListCommentCell.h"
 #import "MyNavigationController.h"
-#import "AddItemViewController.h"
 #import "SearchViewController.h"
 #import "UIViewController+Category.h"
-#import "ViewDeck/ViewDeck.h"
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
@@ -32,7 +30,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 @property (strong,nonatomic) MonthPickerViewController *monthPickerViewController;
 @property (weak,nonatomic) MyTabBarController *myTabBarController;
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
-@property (weak, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
 @property (weak, nonatomic) IBOutlet UILabel *totalSpendLbl;
 @property (weak, nonatomic) IBOutlet UILabel *totalIncomeLbl;
 
@@ -42,8 +39,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     NSFetchedResultsController *_fetchedResultsController;
     BOOL _isFirstTime;
-    UIBarButtonItem *_leftBarButton;
-    UIBarButtonItem *_rightBarButton;
     
     NSMutableArray *_everyDayTotalSpend;
     NSMutableArray *_everyDayTotalIncome;
@@ -86,31 +81,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
             }
         }
     }
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-//    if(self.myTabBarController.viewDeckController)
-//        return UIStatusBarStyleDefault;
-    if([self.myTabBarController.viewDeckController.presentedViewController isKindOfClass:[SearchViewController class]])     //打开或关闭搜索界面时改变状态栏颜色
-    {
-        SearchViewController *searchController = (SearchViewController *)self.myTabBarController.viewDeckController.presentedViewController;
-        if(searchController.isVisible)
-            return UIStatusBarStyleDefault;
-        else
-            return UIStatusBarStyleLightContent;
-    }
-    else if([self.myTabBarController.viewDeckController isAnySideOpen])
-    {
-        return UIStatusBarStyleDefault;     //打开侧栏时，状态栏改为黑色
-    }
-    else
-        return UIStatusBarStyleLightContent;    //将状态栏设为白色
-}
-
--(BOOL)prefersStatusBarHidden
-{
-    return NO;  //不隐藏状态栏
 }
 
 - (void)didReceiveMemoryWarning {
@@ -229,38 +199,10 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     [NSFetchedResultsController deleteCacheWithName:@"CostItems"];  //删除缓存数据
     [self fetchDataAndUpdateTableView]; //抓取数据和更新TableView
     
-    //调整明细界面的UIBarButtonItem位置，修复更新iOS10后错位BUG
     if(_isFirstTime)
     {
         _isFirstTime = NO;
-        if ([[[UIDevice currentDevice] systemVersion] containsString:@"10"]) //适配iOS10
-        {
-            //第一次打开，创建两个BarButtonItem用于调整
-            UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-            leftSpace.width = 16;
-            UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-            rightSpace.width = 16;
-            //保存原来的BarButtonItem
-            _leftBarButton = self.myNavigationItem.leftBarButtonItem;
-            _rightBarButton = self.myNavigationItem.rightBarButtonItem;
-            //设置调整位置
-            self.myNavigationItem.leftBarButtonItems = @[leftSpace,self.myNavigationItem.leftBarButtonItem];
-            self.myNavigationItem.rightBarButtonItems = @[rightSpace,self.myNavigationItem.rightBarButtonItem];
-        }
-        
         [self hideSeparatorAtFirstTime];
-    }
-    else
-    {
-        if ([[[UIDevice currentDevice] systemVersion] containsString:@"10"]) //适配iOS10
-        {
-            UIBarButtonItem *leftSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-            leftSpace.width = 0;
-            UIBarButtonItem *rightSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-            rightSpace.width = 0;
-            self.myNavigationItem.leftBarButtonItems = @[leftSpace,_leftBarButton];
-            self.myNavigationItem.rightBarButtonItems = @[rightSpace,_rightBarButton];
-        }
     }
 }
 
@@ -318,10 +260,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 {
     SearchViewController *searchViewController = [SearchViewController instanceFromStoryboardV2];
     searchViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    searchViewController.isVisible = YES;
-    searchViewController.managedObjectContext = self.managedObjectContext;
-    IIViewDeckController *rootViewController = (IIViewDeckController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-    [rootViewController presentViewController:searchViewController animated:NO completion:nil];
+    searchViewController.dataModelHandler= self.dataModelHandler;
+    [self presentViewController:searchViewController animated:NO completion:nil];
 }
 
 #pragma mark - About NSFetchedResults(Controller) Methods
@@ -332,7 +272,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         //设置数据实体
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.dataModelHandler.managedObjectContext];
         [fetchRequest setEntity:entity];
         //设置排序
         NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
@@ -341,7 +281,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         //设置一次获取的数据量
         [fetchRequest setFetchBatchSize:20];
         
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"date" cacheName:@"CostItems"];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.dataModelHandler.managedObjectContext sectionNameKeyPath:@"date" cacheName:@"CostItems"];
         //设置代理
         _fetchedResultsController.delegate = self;
     }
@@ -592,15 +532,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"警告", @"警告") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
         CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
-        [dataModel removePhotoFile];    //删除图片
-        [self.managedObjectContext deleteObject:dataModel];
-        
-        NSError *error;
-        if(![self.managedObjectContext save:&error])
-        {
-            FATAL_CORE_DATA_ERROR(error);
-            return;
-        }
+        [self.dataModelHandler deleteData:dataModel];
     }];
     UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -724,7 +656,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     if ([cell isKindOfClass:[ListCell class]])
     {
         cell = (ListCell *)cell;
-    }
+    } 
     else
     {
         cell = (ListCommentCell *)cell;
@@ -733,7 +665,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     NSIndexPath *indexPath = [self.listTableView indexPathForCell:cell];
     //获取AddItemViewController
     MyNavigationController *preViewController = [self.myTabBarController getAddItemViewControllerToPreViewForDataModel:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-    AddItemViewController *controller = (AddItemViewController *)preViewController.topViewController;
+    UIViewController *controller = preViewController.topViewController;
     //预览时删除导航栏两边的按钮
     UIBarButtonItem *leftBtn = controller.navigationItem.leftBarButtonItem;
     NSMutableArray *leftArray = [controller.navigationItem.leftBarButtonItems mutableCopy];

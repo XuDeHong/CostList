@@ -10,7 +10,6 @@
 
 @interface SearchViewController : UIViewController
 
-@property (assign, nonatomic, getter=isLeftMenuVisible) BOOL isVisible;
-@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
+@property (strong,nonatomic) DataModelHandler *dataModelHandler;    //数据处理器
 
 @end

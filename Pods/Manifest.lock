@@ -10,14 +10,12 @@ PODS:
   - NYTPhotoViewer/Core (1.2.0)
   - SCNumberKeyBoard (0.5.3)
   - SDAutoLayout (2.1.7)
-  - ViewDeck (2.4.2)
 
 DEPENDENCIES:
   - KVNProgress (~> 2.3.1)
   - NYTPhotoViewer (~> 1.2.0)
   - SCNumberKeyBoard (~> 0.5.3)
   - SDAutoLayout (~> 2.1.7)
-  - ViewDeck
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
@@ -25,8 +23,7 @@ SPEC CHECKSUMS:
   NYTPhotoViewer: 323217e4590a1586eb3c9674b3fefb0fb8b57896
   SCNumberKeyBoard: 0d246ca7cc55b603d67f76ed9d7f0c4b5de26eaf
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
-  ViewDeck: 0b7b83bc2782a20dfb76207d0a2e8c5e6a6d182d
 
-PODFILE CHECKSUM: 014336929f02272b2c7f85b6578d604575c0a43f
+PODFILE CHECKSUM: 91a2b3acea1aeb7b3a82696ba342811a76c3b066
 
 COCOAPODS: 1.1.0.beta.2

@@ -13,7 +13,7 @@
 
 @interface MyTabBarController : UITabBarController <AddItemViewControllerDelegate>
 
-@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
+@property (strong,nonatomic) DataModelHandler *dataModelHandler;    //数据处理器
 
 -(void)showSlideMenuController;
 

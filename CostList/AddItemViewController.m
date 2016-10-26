@@ -294,7 +294,7 @@
     }
     else
     {
-        dataModel = [NSEntityDescription insertNewObjectForEntityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+        dataModel = [self.dataModelHandler createNewDataModel];
         dataModel.photoId = @-1;
     }
     
@@ -355,12 +355,7 @@
     else
         dataModel.location = @"";
     
-    NSError *error;
-    if(![self.managedObjectContext save:&error])
-    {
-        FATAL_CORE_DATA_ERROR(error);   //处理错误情况
-        return;
-    }
+    [self.dataModelHandler saveData];
 }
 
 -(void)enableTableViewScroll

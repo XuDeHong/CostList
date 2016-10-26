@@ -15,7 +15,6 @@
 #import "UIColor+Category.h"
 #import "YearPickerViewController.h"
 #import "MonthValueFormatter.h"
-#import "ViewDeck/ViewDeck.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
 static NSString *LineListCellIdentifier = @"LineListCell";
@@ -113,21 +112,6 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     [self.spendBtnForLine setImage:[UIImage imageNamed:@"spendBtn-selected"] forState:UIControlStateSelected];
     [self.spendBtnForLine setImage:[UIImage imageNamed:@"spendBtn-selected"] forState:UIControlStateSelected | UIControlStateHighlighted];
     self.spendBtnForLine.selected = YES;
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    if([self.myTabBarController.viewDeckController isAnySideOpen])
-    {
-        return UIStatusBarStyleDefault;     //打开侧栏时，状态栏改为黑色
-    }
-    else
-        return UIStatusBarStyleLightContent;    //将状态栏设为白色
-}
-
--(BOOL)prefersStatusBarHidden
-{
-    return NO;  //不隐藏状态栏
 }
 
 -(void)customizeAppearence
@@ -489,7 +473,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
 -(NSArray *)fetchDataForYear:(NSString *)year andMonth:(NSString *)month
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.dataModelHandler.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -520,7 +504,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     [fetchRequest setPredicate:predicate];
     
     NSError *error;
-    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    NSArray *foundObjects = [self.dataModelHandler.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if((foundObjects == nil) || (foundObjects.count == 0))    //从CoreData中获取数据
     {
         return nil;
@@ -747,7 +731,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
 -(void)performFetch
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.dataModelHandler.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -781,7 +765,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     [fetchRequest setPredicate:predicate];
     
     NSError *error;
-    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    NSArray *foundObjects = [self.dataModelHandler.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if(foundObjects == nil)    //从CoreData中获取数据
     {
         [self setNilToSomeArrays];  //将实例变量的数组置空

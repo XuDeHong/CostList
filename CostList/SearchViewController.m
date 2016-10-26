@@ -9,7 +9,6 @@
 #import "SearchViewController.h"
 #import "ListCommentCell.h"
 #import "MyTabBarController.h"
-#import "ViewDeck/ViewDeck.h"
 #import "MyNavigationController.h"
 #import "AddItemViewController.h"
 
@@ -59,36 +58,12 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 - (IBAction)cancelBtnClick:(id)sender {
     [self.searchBar resignFirstResponder];
-    self.isVisible = NO;
     //由左向右滑走
     [UIView animateWithDuration:0.3 animations:^{
         self.view.x = SCREEN_WIDTH;
     } completion:^(BOOL finished){
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
-}
-
--(void)searchDataForText:(NSString *)string
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CostItem" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    //设置过滤器
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"comment CONTAINS %@",string];
-    
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *error;
-    NSArray *foundObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if((foundObjects == nil) || (foundObjects.count == 0))    //从CoreData中获取数据
-    {
-        _results = nil;
-    }
-    else
-    {
-        _results = [foundObjects mutableCopy];
-    }
 }
 
 -(void)textWhetherHasData
@@ -113,9 +88,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 -(void)searchData
 {
-
     [self.searchBar resignFirstResponder];
-    [self searchDataForText:self.searchBar.text];
+    _results = [[self.dataModelHandler searchDataByText:self.searchBar.text] mutableCopy];
     [self textWhetherHasData];
 }
 
@@ -178,18 +152,12 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         __block NSMutableArray *array = _results;
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"警告", @"警告") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
-            CostItem *dataModel = _results[indexPath.row];   //获取数据模型
-            [dataModel removePhotoFile];    //删除图片
-            [self.managedObjectContext deleteObject:dataModel];
-            
-            NSError *error;
-            if(![self.managedObjectContext save:&error])
+            CostItem *data = _results[indexPath.row];
+            if([self.dataModelHandler deleteData:data])
             {
-                FATAL_CORE_DATA_ERROR(error);
-                return;
+                [array removeObject:data];
+                [self textWhetherHasData];
             }
-            [array removeObject:dataModel];
-            [self textWhetherHasData];
         }];
         UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -203,13 +171,11 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 #pragma mark Table View Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IIViewDeckController *rootViewController = (IIViewDeckController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-    
-    MyTabBarController *tabBarController = (MyTabBarController *)rootViewController.centerController;
+    MyTabBarController *tabBarController = (MyTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
     MyNavigationController *editNavigationController = [tabBarController getAddItemViewControllerToPreViewForDataModel:_results[indexPath.row]];
     AddItemViewController *controller = (AddItemViewController *)editNavigationController.topViewController;
     controller.delegate = tabBarController;
-    controller.managedObjectContext = self.managedObjectContext;
+    controller.dataModelHandler = self.dataModelHandler;
     [self presentViewController:editNavigationController animated:YES completion:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
