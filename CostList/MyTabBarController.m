@@ -12,7 +12,7 @@
 #import "MyNavigationController.h"
 #import "ListTableViewController.h"
 #import "ChartTableViewController.h"
-#import "SlideMenuViewController.h"
+#import "SlideNavigationViewController.h"
 
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
 
@@ -70,8 +70,9 @@
 
 -(void)showSlideMenuController
 {
-    UINavigationController *slideMenuViewController = (UINavigationController *)[SlideMenuViewController instanceFromStoryboardV2];
-    [self presentViewController:slideMenuViewController animated:YES completion:nil];
+    SlideNavigationViewController *slideMenuViewController = (SlideNavigationViewController *)[SlideNavigationViewController instanceFromStoryboardV2];
+    slideMenuViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:slideMenuViewController animated:NO completion:nil];
 }
 
 -(void)showAddOrEditItemControllerWithDataModel:(CostItem *)costItem;

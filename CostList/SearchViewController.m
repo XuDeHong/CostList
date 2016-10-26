@@ -31,6 +31,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.x = SCREEN_WIDTH;
+    self.isVisible = YES;
     //去除多余的空行和分割线
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -43,7 +44,6 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.isVisible = YES;
     //从右滑出的动画
     [UIView animateWithDuration:0.3 animations:^{
         self.view.x = 0;
