@@ -37,6 +37,16 @@
     [self.textView becomeFirstResponder];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
+
 -(void)customizeAppearence
 {
     //设置位置编辑器全局tint color颜色

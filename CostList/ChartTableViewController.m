@@ -146,17 +146,32 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     else [self updateLineChartView];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(MyTabBarController *)myTabBarController
+{
+    if(!_myTabBarController)
+    {
+        _myTabBarController = (MyTabBarController *)self.tabBarController;
+    }
+    return _myTabBarController;
+}
+
 -(IBAction)menuButtonDidClick:(id)sender
 {
-    if(!self.myTabBarController)
-    {
-        self.myTabBarController = (MyTabBarController *)self.tabBarController;
-    }
     [self.myTabBarController showSlideMenuController];
 }
 - (IBAction)switchChartView:(UISegmentedControl *)sender {
@@ -240,7 +255,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     self.yearPickerViewController.delegate = self;
     self.yearPickerViewController.currentYear = self.yearPickerButton.titleLabel.text;
     //显示月份选择器，将YearPickerViewController嵌入到根视图控制器（侧栏效果器）
-    [self.yearPickerViewController presentInParentViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
+    [self.yearPickerViewController presentInParentViewController:self.myTabBarController];
 }
 
 #pragma mark - YearPickerViewController Delegate
@@ -992,7 +1007,7 @@ static NSString *LineListCellIdentifier = @"LineListCell";
     self.monthPickerViewController.delegate = self;
     self.monthPickerViewController.currentYearAndMonth = self.monthPickerButton.titleLabel.text;
     //显示月份选择器，将MonthPickerViewController嵌入到根视图控制器（侧栏效果器）
-    [self.monthPickerViewController presentInParentViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
+    [self.monthPickerViewController presentInParentViewController:self.myTabBarController];
 }
 
 #pragma mark - MonthPickerViewController Delegate

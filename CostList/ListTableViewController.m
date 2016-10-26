@@ -140,6 +140,26 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    if([self.presentedViewController isKindOfClass:[SearchViewController class]])
+    {
+        SearchViewController *searchController = (SearchViewController *)self.presentedViewController;
+        if(searchController.isVisible)
+        {
+            return UIStatusBarStyleDefault; //将状态栏设为黑色
+        }
+        else
+            return UIStatusBarStyleLightContent;
+    }
+    return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
+
 //计算当月每一日的总收入和总支出
 -(void)calculateTotalMoneyForEveryDay:(NSArray *)results
 {
@@ -366,7 +386,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     self.monthPickerViewController.delegate = self;
     self.monthPickerViewController.currentYearAndMonth = self.monthPickerButton.titleLabel.text;
     //显示月份选择器，将MonthPickerViewController嵌入到根视图控制器（侧栏效果器）
-    [self.monthPickerViewController presentInParentViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
+    [self.monthPickerViewController presentInParentViewController:self.myTabBarController];
 }
 
 #pragma mark - MonthPickerViewController Delegate
