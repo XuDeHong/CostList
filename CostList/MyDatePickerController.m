@@ -70,6 +70,16 @@
     [self.datePicker setDate:[formatter dateFromString:self.currentDate]];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
+
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))

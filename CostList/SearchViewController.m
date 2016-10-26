@@ -43,6 +43,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.isVisible = YES;
     //从右滑出的动画
     [UIView animateWithDuration:0.3 animations:^{
         self.view.x = 0;
@@ -57,6 +58,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 }
 
 - (IBAction)cancelBtnClick:(id)sender {
+        self.isVisible = NO;
     [self.searchBar resignFirstResponder];
     //由左向右滑走
     [UIView animateWithDuration:0.3 animations:^{
@@ -171,7 +173,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 #pragma mark Table View Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyTabBarController *tabBarController = (MyTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+    MyTabBarController *tabBarController = (MyTabBarController *)ROOT_VIEW_CONTROLLER;
     MyNavigationController *editNavigationController = [tabBarController getAddItemViewControllerToPreViewForDataModel:_results[indexPath.row]];
     AddItemViewController *controller = (AddItemViewController *)editNavigationController.topViewController;
     controller.delegate = tabBarController;
