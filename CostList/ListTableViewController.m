@@ -14,6 +14,7 @@
 #import "MyNavigationController.h"
 #import "SearchViewController.h"
 #import "UIViewController+Category.h"
+#import "SlideNavigationViewController.h"
 
 #define TableViewSectionTitleViewBackgroundColor [UIColor colorWithRed:216/255.0f green:216/255.0f blue:216/255.0f alpha:0.2]
 #define TableViewSectionHeight 28
@@ -147,10 +148,21 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
         SearchViewController *searchController = (SearchViewController *)self.presentedViewController;
         if(searchController.isVisible)
         {
-            return UIStatusBarStyleDefault; //将状态栏设为黑色
+            return UIStatusBarStyleDefault; //搜索视图打开时将状态栏设为黑色
         }
         else
             return UIStatusBarStyleLightContent;
+    }
+    else if ([self.myTabBarController.presentedViewController isKindOfClass:[SlideNavigationViewController class]])
+    {
+        SlideNavigationViewController *slideController = (SlideNavigationViewController *)self.myTabBarController.presentedViewController;
+        if(slideController.isVisible)
+        {
+            return UIStatusBarStyleDefault; //搜索视图打开时将状态栏设为黑色
+        }
+        else
+            return UIStatusBarStyleLightContent;
+        
     }
     return UIStatusBarStyleLightContent;    //将状态栏设为白色
 }

@@ -15,6 +15,7 @@
 #import "UIColor+Category.h"
 #import "YearPickerViewController.h"
 #import "MonthValueFormatter.h"
+#import "SlideNavigationViewController.h"
 
 static NSString *ChartCellIdentifier = @"ChartCell";
 static NSString *LineListCellIdentifier = @"LineListCell";
@@ -148,6 +149,17 @@ static NSString *LineListCellIdentifier = @"LineListCell";
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
+    if ([self.myTabBarController.presentedViewController isKindOfClass:[SlideNavigationViewController class]])
+    {
+        SlideNavigationViewController *slideController = (SlideNavigationViewController *)self.myTabBarController.presentedViewController;
+        if(slideController.isVisible)
+        {
+            return UIStatusBarStyleDefault; //搜索视图打开时将状态栏设为黑色
+        }
+        else
+            return UIStatusBarStyleLightContent;
+        
+    }
     return UIStatusBarStyleLightContent;    //将状态栏设为白色
 }
 
