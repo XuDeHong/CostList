@@ -16,6 +16,7 @@
 #import "UIView+Category.h"
 #import <CoreData/CoreData.h>
 #import "CostItem.h"
+#import "DataModelHandler.h"
 
 //定义APP全局主题tint color
 #define GLOBAL_TINT_COLOR [UIColor colorWithRed:89/255.0 green:217/255.0 blue:247/255.0 alpha:1.0]
@@ -37,6 +38,9 @@
 
 //月份选择器NIB名称
 #define MonthPickerViewControllerNibName @"MonthPickerViewController"
+
+//获得根视图控制器
+#define ROOT_VIEW_CONTROLLER [UIApplication sharedApplication].delegate.window.rootViewController
 
 //处理CoreData错误
 extern NSString * const ManagedObjectContextSaveDidFailNotification;

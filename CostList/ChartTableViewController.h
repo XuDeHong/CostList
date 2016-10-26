@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *monthPickerButton;  //月份选择器按钮
 
-@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
+@property (strong,nonatomic) DataModelHandler *dataModelHandler;    //数据处理器
 
 @end

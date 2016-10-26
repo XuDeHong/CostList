@@ -10,5 +10,4 @@
 
 @interface SlideMenuViewController : UITableViewController
 
-
 @end

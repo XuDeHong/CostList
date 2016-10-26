@@ -19,7 +19,7 @@
 @interface AddItemViewController : UITableViewController
 
 @property (nonatomic,weak) id <AddItemViewControllerDelegate> delegate;//指向代理
-@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
+@property (strong,nonatomic) DataModelHandler *dataModelHandler;    //数据处理器
 @property (nonatomic,strong) CostItem *itemToEdit;
 
 @end

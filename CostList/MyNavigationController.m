@@ -8,19 +8,8 @@
 
 #import "MyNavigationController.h"
 #import "MyTabBarController.h"
-#import "ViewDeck/ViewDeck.h"
 
 @implementation MyNavigationController
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;    //将状态栏设为白色
-}
-
--(BOOL)prefersStatusBarHidden
-{
-    return NO;  //不隐藏状态栏
-}
 
 #pragma mark - 3D Touch
 
@@ -29,8 +18,7 @@
     //peek预览界面删除按钮的响应
     UIPreviewAction *delete = [UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
         //获取myTabBarController
-        IIViewDeckController *rootViewController = (IIViewDeckController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-        MyTabBarController *tabBarController = (MyTabBarController *)rootViewController.centerController;
+        MyTabBarController *tabBarController = (MyTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
         //调用方法
         [tabBarController didClickDeleteBtnInPreviewWithIndexPath:self.indexPathForData];
     }];

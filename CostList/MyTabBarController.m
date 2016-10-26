@@ -12,7 +12,7 @@
 #import "MyNavigationController.h"
 #import "ListTableViewController.h"
 #import "ChartTableViewController.h"
-#import "ViewDeck/ViewDeck.h"
+#import "SlideMenuViewController.h"
 
 @interface MyTabBarController () <MyTabBarDelegate> //实现自定义TabBar协议
 
@@ -49,11 +49,11 @@
     
     self.listController = self.viewControllers[0];  //获取明细页面控制器
     
-    self.listController.managedObjectContext = self.managedObjectContext;   //传递指针
+    self.listController.dataModelHandler = self.dataModelHandler;   //传递指针
     
     self.chartController = self.viewControllers[1]; //获取报表页面控制器
     
-    self.chartController.managedObjectContext = self.managedObjectContext;  //传递指针
+    self.chartController.dataModelHandler = self.dataModelHandler;  //传递指针
 }
 
 -(void)viewDidLayoutSubviews
@@ -70,8 +70,8 @@
 
 -(void)showSlideMenuController
 {
-    //显示侧栏
-    [self.viewDeckController toggleLeftViewAnimated:YES];
+    UINavigationController *slideMenuViewController = (UINavigationController *)[SlideMenuViewController instanceFromStoryboardV2];
+    [self presentViewController:slideMenuViewController animated:YES completion:nil];
 }
 
 -(void)showAddOrEditItemControllerWithDataModel:(CostItem *)costItem;
@@ -91,7 +91,7 @@
     //设置代理
     AddItemViewController *controller = (AddItemViewController *)addItemNavigationController.topViewController;
     controller.delegate = self;
-    controller.managedObjectContext = self.managedObjectContext;    //传递指针
+    controller.dataModelHandler = self.dataModelHandler;    //传递指针
     if(costItem != nil) controller.itemToEdit = costItem;   //如果是点击账目进入编辑，则传递数据模型
     //显示控制器
     [self presentViewController:addItemNavigationController animated:YES completion:nil];
