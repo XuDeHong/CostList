@@ -561,7 +561,7 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
 
 -(void)confirmDeleteDataAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"警告", @"警告") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"注意", @"注意") message:NSLocalizedString(@"确定要删除该记录吗？（删除后的数据不可恢复）",@"确定要删除该记录吗？（删除后的数据不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
         CostItem *dataModel = [self.fetchedResultsController objectAtIndexPath:indexPath];   //获取数据模型
         [self.dataModelHandler deleteData:dataModel];
@@ -569,8 +569,8 @@ static NSString *ListCommentCellIdentifier = @"ListCommentCell";
     UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     }];
-    [controller addAction:cancelBtn];
     [controller addAction:sureBtn];
+    [controller addAction:cancelBtn];
     [self presentViewController:controller animated:YES completion:nil];
 }
 
