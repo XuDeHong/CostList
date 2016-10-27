@@ -781,6 +781,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <inset key="separatorInset" minX="48" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="NXc-lt-3hP" kind="show" id="8UT-Ly-TWF"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8HE-2M-GkF">
                                         <rect key="frame" x="0.0" y="150" width="375" height="47"/>
@@ -900,6 +903,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <inset key="separatorInset" minX="48" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="aaM-NM-x4H" kind="show" id="j0N-L8-Y88"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -921,6 +927,44 @@
             </objects>
             <point key="canvasLocation" x="3111" y="322"/>
         </scene>
+        <!--关于-->
+        <scene sceneID="ilh-Bo-fsC">
+            <objects>
+                <viewController id="aaM-NM-x4H" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P2b-e5-xmU"/>
+                        <viewControllerLayoutGuide type="bottom" id="bGB-e4-68t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I9a-qe-O36">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="关于" id="6LI-bv-kXB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3e-Qr-M5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3964" y="1289"/>
+        </scene>
+        <!--安全保护-->
+        <scene sceneID="Fmo-bg-pJF">
+            <objects>
+                <viewController id="NXc-lt-3hP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="829-Js-bx9"/>
+                        <viewControllerLayoutGuide type="bottom" id="9bB-Yn-qb9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xOh-tI-wpE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="安全保护" id="X1h-eB-see"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgr-1H-2nS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3964" y="617"/>
+        </scene>
         <!--设置提醒-->
         <scene sceneID="AQW-Ay-UAe">
             <objects>
@@ -938,7 +982,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBw-Tc-b9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3978" y="322"/>
+            <point key="canvasLocation" x="3964" y="-18"/>
         </scene>
         <!--Slide Navigation View Controller-->
         <scene sceneID="yb5-U1-Adf">

@@ -51,9 +51,26 @@
     }];
 }
 
+-(void)confirmDeleteAllData
+{
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"注意", @"注意") message:NSLocalizedString(@"确定要清空所有数据吗？（数据清空后不可恢复）",@"确定要清空所有数据吗？（数据清空后不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+        
+    }];
+    UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    }];
+    [controller addAction:sureBtn];
+    [controller addAction:cancelBtn];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 #pragma mark Table View Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(indexPath.section == 0 && indexPath.row == 2)    //清空数据
+    {
+        [self confirmDeleteAllData];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
