@@ -18,6 +18,7 @@
     [super viewDidLoad];
     self.view.x = 0 - SCREEN_WIDTH;
     self.isVisible = YES;
+    self.navigationBar.tintColor = GLOBAL_TINT_COLOR;
     // Do any additional setup after loading the view.
 }
 
