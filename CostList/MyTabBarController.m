@@ -54,6 +54,9 @@
     self.chartController = self.viewControllers[1]; //获取报表页面控制器
     
     self.chartController.dataModelHandler = self.dataModelHandler;  //传递指针
+    //去掉所有导航栏返回按钮旁边的文字
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewDidLayoutSubviews
