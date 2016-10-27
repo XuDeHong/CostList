@@ -57,4 +57,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return tableView.rowHeight;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return CGFLOAT_MIN; //没有footer
+}
 @end
