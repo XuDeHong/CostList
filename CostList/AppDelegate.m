@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MyTabBarController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CLLockVC.h"
 
 @interface AppDelegate ()
 
@@ -78,6 +79,26 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    BOOL gestureLockIsOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"gestureLockIsOn"];
+    BOOL numberLockIsOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"numberLockIsOn"];
+    BOOL fingerprintLockIsOn = [[NSUserDefaults standardUserDefaults
+                                 ] boolForKey:@"fingerprintLockIsOn"];
+    if(gestureLockIsOn)
+    {
+        [CLLockVC showVerifyLockVCInVC:self.window.rootViewController forgetPwdBlock:^{
+            //忘记密码
+        } successBlock:^(CLLockVC *lockVC, NSString *pwd) {
+            [lockVC dismiss:0.5f];
+        }];
+    }
+    else if(numberLockIsOn)
+    {
+        
+    }
+    else if(fingerprintLockIsOn)
+    {
+        
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
