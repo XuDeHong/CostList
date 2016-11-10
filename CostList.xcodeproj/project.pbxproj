@@ -37,6 +37,19 @@
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
 		8498A6751D81732F00F9607A /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A6741D81732F00F9607A /* ListCell.m */; };
 		849906861DACD97600212BCC /* MonthValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 849906851DACD97600212BCC /* MonthValueFormatter.m */; };
+		84A9F5131DC32764000987BE /* CLLockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4F31DC32764000987BE /* CLLockVC.m */; };
+		84A9F5141DC32764000987BE /* CLLockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A9F4F41DC32764000987BE /* CLLockVC.xib */; };
+		84A9F5151DC32764000987BE /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4F81DC32764000987BE /* CALayer+Anim.m */; };
+		84A9F5161DC32764000987BE /* CoreLockConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4FB1DC32764000987BE /* CoreLockConst.m */; };
+		84A9F5171DC32764000987BE /* CLLockNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4FE1DC32764000987BE /* CLLockNavVC.m */; };
+		84A9F5181DC32764000987BE /* CLLockInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5011DC32764000987BE /* CLLockInfoView.m */; };
+		84A9F5191DC32764000987BE /* CLLockItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5031DC32764000987BE /* CLLockItemView.m */; };
+		84A9F51A1DC32764000987BE /* CLLockLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5051DC32764000987BE /* CLLockLabel.m */; };
+		84A9F51B1DC32764000987BE /* CLLockMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5071DC32764000987BE /* CLLockMainView.m */; };
+		84A9F51C1DC32764000987BE /* CLLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5091DC32764000987BE /* CLLockView.m */; };
+		84A9F51D1DC32764000987BE /* NSString+File.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F50E1DC32764000987BE /* NSString+File.m */; };
+		84A9F51E1DC32764000987BE /* CoreArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5101DC32764000987BE /* CoreArchive.m */; };
+		84A9F5251DC328D1000987BE /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5241DC328D1000987BE /* SecurityViewController.m */; };
 		84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718011D69A247004ACD8F /* UITextView+Category.m */; };
 		84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718041D69B6FE004ACD8F /* MyDatePickerController.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
@@ -182,6 +195,32 @@
 		8498A6741D81732F00F9607A /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		849906841DACD97600212BCC /* MonthValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthValueFormatter.h; sourceTree = "<group>"; };
 		849906851DACD97600212BCC /* MonthValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthValueFormatter.m; sourceTree = "<group>"; };
+		84A9F4F21DC32764000987BE /* CLLockVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockVC.h; sourceTree = "<group>"; };
+		84A9F4F31DC32764000987BE /* CLLockVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockVC.m; sourceTree = "<group>"; };
+		84A9F4F41DC32764000987BE /* CLLockVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLLockVC.xib; sourceTree = "<group>"; };
+		84A9F4F71DC32764000987BE /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
+		84A9F4F81DC32764000987BE /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
+		84A9F4FA1DC32764000987BE /* CoreLockConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLockConst.h; sourceTree = "<group>"; };
+		84A9F4FB1DC32764000987BE /* CoreLockConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLockConst.m; sourceTree = "<group>"; };
+		84A9F4FD1DC32764000987BE /* CLLockNavVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockNavVC.h; sourceTree = "<group>"; };
+		84A9F4FE1DC32764000987BE /* CLLockNavVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockNavVC.m; sourceTree = "<group>"; };
+		84A9F5001DC32764000987BE /* CLLockInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockInfoView.h; sourceTree = "<group>"; };
+		84A9F5011DC32764000987BE /* CLLockInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockInfoView.m; sourceTree = "<group>"; };
+		84A9F5021DC32764000987BE /* CLLockItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockItemView.h; sourceTree = "<group>"; };
+		84A9F5031DC32764000987BE /* CLLockItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockItemView.m; sourceTree = "<group>"; };
+		84A9F5041DC32764000987BE /* CLLockLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockLabel.h; sourceTree = "<group>"; };
+		84A9F5051DC32764000987BE /* CLLockLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockLabel.m; sourceTree = "<group>"; };
+		84A9F5061DC32764000987BE /* CLLockMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockMainView.h; sourceTree = "<group>"; };
+		84A9F5071DC32764000987BE /* CLLockMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockMainView.m; sourceTree = "<group>"; };
+		84A9F5081DC32764000987BE /* CLLockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockView.h; sourceTree = "<group>"; };
+		84A9F5091DC32764000987BE /* CLLockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockView.m; sourceTree = "<group>"; };
+		84A9F50D1DC32764000987BE /* NSString+File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+File.h"; sourceTree = "<group>"; };
+		84A9F50E1DC32764000987BE /* NSString+File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+File.m"; sourceTree = "<group>"; };
+		84A9F50F1DC32764000987BE /* CoreArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreArchive.h; sourceTree = "<group>"; };
+		84A9F5101DC32764000987BE /* CoreArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreArchive.m; sourceTree = "<group>"; };
+		84A9F5121DC32764000987BE /* CoreConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreConst.h; sourceTree = "<group>"; };
+		84A9F5231DC328D1000987BE /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityViewController.h; sourceTree = "<group>"; };
+		84A9F5241DC328D1000987BE /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
 		84B718001D69A247004ACD8F /* UITextView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Category.h"; sourceTree = "<group>"; };
 		84B718011D69A247004ACD8F /* UITextView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Category.m"; sourceTree = "<group>"; };
 		84B718031D69B6FE004ACD8F /* MyDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDatePickerController.h; sourceTree = "<group>"; };
@@ -404,6 +443,7 @@
 		848785891D58C7F100A2EBFB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84A9F5221DC32771000987BE /* 手势解锁 */,
 				84068DD61D580F39003B6F5E /* Main.storyboard */,
 				84B7CB1A1D58C56E0062A48D /* MyTabBarController.h */,
 				84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */,
@@ -417,6 +457,8 @@
 				8437DB021DC08BD9005F271A /* SlideNavigationViewController.m */,
 				84EA90D61D769B9800282904 /* SlideMenuViewController.h */,
 				84EA90D71D769B9800282904 /* SlideMenuViewController.m */,
+				84A9F5231DC328D1000987BE /* SecurityViewController.h */,
+				84A9F5241DC328D1000987BE /* SecurityViewController.m */,
 				8448F5051DB9B891004CA625 /* 年月日选择器 */,
 				8437DB001DC08AF0005F271A /* 添加/修改账目界面 */,
 			);
@@ -453,6 +495,117 @@
 				8453EA761D99175E00EDFE46 /* UIColor+Category.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		84A9F4F11DC32764000987BE /* CoreLock */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F4F21DC32764000987BE /* CLLockVC.h */,
+				84A9F4F31DC32764000987BE /* CLLockVC.m */,
+				84A9F4F41DC32764000987BE /* CLLockVC.xib */,
+				84A9F4F51DC32764000987BE /* Lib */,
+			);
+			path = CoreLock;
+			sourceTree = "<group>";
+		};
+		84A9F4F51DC32764000987BE /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F4F61DC32764000987BE /* Category */,
+				84A9F4F91DC32764000987BE /* Const */,
+				84A9F4FC1DC32764000987BE /* Controller */,
+				84A9F4FF1DC32764000987BE /* View */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		84A9F4F61DC32764000987BE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F4F71DC32764000987BE /* CALayer+Anim.h */,
+				84A9F4F81DC32764000987BE /* CALayer+Anim.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		84A9F4F91DC32764000987BE /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F4FA1DC32764000987BE /* CoreLockConst.h */,
+				84A9F4FB1DC32764000987BE /* CoreLockConst.m */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		84A9F4FC1DC32764000987BE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F4FD1DC32764000987BE /* CLLockNavVC.h */,
+				84A9F4FE1DC32764000987BE /* CLLockNavVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		84A9F4FF1DC32764000987BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F5001DC32764000987BE /* CLLockInfoView.h */,
+				84A9F5011DC32764000987BE /* CLLockInfoView.m */,
+				84A9F5021DC32764000987BE /* CLLockItemView.h */,
+				84A9F5031DC32764000987BE /* CLLockItemView.m */,
+				84A9F5041DC32764000987BE /* CLLockLabel.h */,
+				84A9F5051DC32764000987BE /* CLLockLabel.m */,
+				84A9F5061DC32764000987BE /* CLLockMainView.h */,
+				84A9F5071DC32764000987BE /* CLLockMainView.m */,
+				84A9F5081DC32764000987BE /* CLLockView.h */,
+				84A9F5091DC32764000987BE /* CLLockView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84A9F50A1DC32764000987BE /* FrameWork */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F50B1DC32764000987BE /* CoreArchive */,
+				84A9F5111DC32764000987BE /* CoreExtend */,
+			);
+			path = FrameWork;
+			sourceTree = "<group>";
+		};
+		84A9F50B1DC32764000987BE /* CoreArchive */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F50C1DC32764000987BE /* Category */,
+				84A9F50F1DC32764000987BE /* CoreArchive.h */,
+				84A9F5101DC32764000987BE /* CoreArchive.m */,
+			);
+			path = CoreArchive;
+			sourceTree = "<group>";
+		};
+		84A9F50C1DC32764000987BE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F50D1DC32764000987BE /* NSString+File.h */,
+				84A9F50E1DC32764000987BE /* NSString+File.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		84A9F5111DC32764000987BE /* CoreExtend */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F5121DC32764000987BE /* CoreConst.h */,
+			);
+			path = CoreExtend;
+			sourceTree = "<group>";
+		};
+		84A9F5221DC32771000987BE /* 手势解锁 */ = {
+			isa = PBXGroup;
+			children = (
+				84A9F4F11DC32764000987BE /* CoreLock */,
+				84A9F50A1DC32764000987BE /* FrameWork */,
+			);
+			name = "手势解锁";
 			sourceTree = "<group>";
 		};
 		D20D0225472BD90DFE696CB4 /* Pods */ = {
@@ -620,6 +773,7 @@
 				84BF75181D80093800D4C97D /* Localizable.strings in Resources */,
 				84C9D5F51D9135CA00CDF30F /* CategoryIconInfo.plist in Resources */,
 				84DD5ED31D6A906700CBCA99 /* MyDatePickerController.xib in Resources */,
+				84A9F5141DC32764000987BE /* CLLockVC.xib in Resources */,
 				84068DDA1D580F39003B6F5E /* Assets.xcassets in Resources */,
 				84068DD81D580F39003B6F5E /* Main.storyboard in Resources */,
 				843084D91D5D9B8E0091F0BC /* MonthPickerViewController.xib in Resources */,
@@ -697,15 +851,19 @@
 			files = (
 				84E4AFEE1D814BB00014507A /* MyPhoto.m in Sources */,
 				8498A6751D81732F00F9607A /* ListCell.m in Sources */,
+				84A9F5251DC328D1000987BE /* SecurityViewController.m in Sources */,
 				84434EDE1D8407AC00F989BE /* ListCommentCell.m in Sources */,
+				84A9F51B1DC32764000987BE /* CLLockMainView.m in Sources */,
 				84EF7F451D8A978400B09310 /* CostItem+CoreDataProperties.m in Sources */,
 				84CD5D391D66C296004898C7 /* UIViewController+Category.m in Sources */,
 				84CD5D311D6695F0004898C7 /* EditLocationViewController.m in Sources */,
+				84A9F5151DC32764000987BE /* CALayer+Anim.m in Sources */,
 				84D65FC71D97B9AD00C4B015 /* NSNumber+Category.m in Sources */,
 				84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,
 				8403AC9B1D7C2F2F000F5977 /* MyImagePickerController.m in Sources */,
 				8472E4C51DB35D20000E6B18 /* SearchViewController.m in Sources */,
+				84A9F51A1DC32764000987BE /* CLLockLabel.m in Sources */,
 				848785941D58D25100A2EBFB /* UIView+Category.m in Sources */,
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
 				843084E01D5DA3F70091F0BC /* MonthPickerViewController.m in Sources */,
@@ -716,17 +874,25 @@
 				84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */,
 				847D21D41D9F8F3400B2A5BF /* YearPickerViewController.m in Sources */,
 				84EA90D81D769B9800282904 /* SlideMenuViewController.m in Sources */,
+				84A9F5181DC32764000987BE /* CLLockInfoView.m in Sources */,
 				84068E051D58135D003B6F5E /* ChartTableViewController.m in Sources */,
 				84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */,
 				847756451DB9C28700DBA40C /* DataModelHandler.m in Sources */,
 				84068E021D58130E003B6F5E /* ListTableViewController.m in Sources */,
+				84A9F5191DC32764000987BE /* CLLockItemView.m in Sources */,
 				84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */,
+				84A9F51D1DC32764000987BE /* NSString+File.m in Sources */,
 				8437DB031DC08BD9005F271A /* SlideNavigationViewController.m in Sources */,
 				849906861DACD97600212BCC /* MonthValueFormatter.m in Sources */,
+				84A9F5131DC32764000987BE /* CLLockVC.m in Sources */,
+				84A9F5171DC32764000987BE /* CLLockNavVC.m in Sources */,
 				8403AC9E1D7C38E3000F5977 /* MyNavigationController.m in Sources */,
 				843BE1DC1D93C739004F5B77 /* File.swift in Sources */,
+				84A9F51C1DC32764000987BE /* CLLockView.m in Sources */,
 				84DD44251D640E460045A375 /* ChooseIconViewController.m in Sources */,
+				84A9F51E1DC32764000987BE /* CoreArchive.m in Sources */,
 				845E62881D6313DD00224162 /* UIImage+Category.m in Sources */,
+				84A9F5161DC32764000987BE /* CoreLockConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
