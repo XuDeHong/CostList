@@ -405,6 +405,54 @@
             </objects>
             <point key="canvasLocation" x="1551" y="64"/>
         </scene>
+        <!--Finger Print View Controller-->
+        <scene sceneID="qLE-lQ-9Ih">
+            <objects>
+                <viewController storyboardIdentifier="FingerPrintViewController" id="zCm-7S-fWF" customClass="FingerPrintViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4FP-CM-JQ1"/>
+                        <viewControllerLayoutGuide type="bottom" id="1bz-Z5-KCe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jnd-wa-cQt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nm-aE-12X">
+                                <rect key="frame" x="132" y="278" width="112" height="112"/>
+                                <state key="normal" image="FingerPrint"/>
+                                <connections>
+                                    <action selector="fingerLockBtnDidClick:" destination="zCm-7S-fWF" eventType="touchUpInside" id="tQt-A7-kzh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击验证指纹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6X-Mn-bON">
+                                <rect key="frame" x="139" y="408" width="98" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McT-lG-WZL">
+                                <rect key="frame" x="149" y="584" width="77" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="无法识别？">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Nm-aE-12X" firstAttribute="centerY" secondItem="jnd-wa-cQt" secondAttribute="centerY" id="J9y-M1-RW4"/>
+                            <constraint firstItem="McT-lG-WZL" firstAttribute="centerX" secondItem="jnd-wa-cQt" secondAttribute="centerX" id="QtH-2V-h0F"/>
+                            <constraint firstItem="8Nm-aE-12X" firstAttribute="centerX" secondItem="jnd-wa-cQt" secondAttribute="centerX" id="YpT-DP-84d"/>
+                            <constraint firstItem="n6X-Mn-bON" firstAttribute="top" secondItem="8Nm-aE-12X" secondAttribute="bottom" constant="18" id="eCB-Vx-jYU"/>
+                            <constraint firstItem="n6X-Mn-bON" firstAttribute="centerX" secondItem="jnd-wa-cQt" secondAttribute="centerX" id="vY6-X2-3Tn"/>
+                            <constraint firstItem="McT-lG-WZL" firstAttribute="top" secondItem="n6X-Mn-bON" secondAttribute="bottom" constant="156" id="zIs-bw-Bog"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvm-ha-Dch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-220" y="1041"/>
+        </scene>
         <!--报表-->
         <scene sceneID="m92-qJ-yei">
             <objects>
@@ -1096,6 +1144,7 @@
     </scenes>
     <resources>
         <image name="ChartIcon - Inactive" width="24" height="24"/>
+        <image name="FingerPrint" width="112" height="112"/>
         <image name="Hamburger Menu Button" width="22" height="13"/>
         <image name="ImageIndicate" width="12" height="11"/>
         <image name="Line" width="1" height="51"/>
