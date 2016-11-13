@@ -10,6 +10,8 @@
 #import "MyTabBarController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "CLLockVC.h"
+#import "FingerPrintViewController.h"
+#import "UIViewController+Category.h"
 
 @interface AppDelegate ()
 
@@ -19,11 +21,16 @@
 @end
 
 @implementation AppDelegate
+{
+    BOOL _isFingerPrintCheck;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     [self initApp]; //初始化应用
+    
+    _isFingerPrintCheck = NO;
     
     return YES;
 }
@@ -71,6 +78,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    _isFingerPrintCheck = NO;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -86,7 +94,7 @@
     if(gestureLockIsOn)
     {
         [CLLockVC showVerifyLockVCInVC:self.window.rootViewController forgetPwdBlock:^{
-            //忘记密码
+            //忘记密码处理
         } successBlock:^(CLLockVC *lockVC, NSString *pwd) {
             [lockVC dismiss:0.5f];
         }];
@@ -95,9 +103,11 @@
     {
         
     }
-    else if(fingerprintLockIsOn)
+    else if(fingerprintLockIsOn && (!_isFingerPrintCheck))
     {
-        
+        _isFingerPrintCheck = YES;
+        FingerPrintViewController *fingerLockView = [FingerPrintViewController instanceFromStoryboardV2];
+        [self.window.rootViewController presentViewController:fingerLockView animated:YES completion:nil];
     }
 }
 

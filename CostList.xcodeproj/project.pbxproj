@@ -50,6 +50,7 @@
 		84A9F51D1DC32764000987BE /* NSString+File.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F50E1DC32764000987BE /* NSString+File.m */; };
 		84A9F51E1DC32764000987BE /* CoreArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5101DC32764000987BE /* CoreArchive.m */; };
 		84A9F5251DC328D1000987BE /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F5241DC328D1000987BE /* SecurityViewController.m */; };
+		84AB46301DD5C3680032AB6A /* FingerPrintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB462F1DD5C3680032AB6A /* FingerPrintViewController.m */; };
 		84B718021D69A247004ACD8F /* UITextView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718011D69A247004ACD8F /* UITextView+Category.m */; };
 		84B718051D69B6FE004ACD8F /* MyDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718041D69B6FE004ACD8F /* MyDatePickerController.m */; };
 		84B7CB1C1D58C56E0062A48D /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */; };
@@ -221,6 +222,8 @@
 		84A9F5121DC32764000987BE /* CoreConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreConst.h; sourceTree = "<group>"; };
 		84A9F5231DC328D1000987BE /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityViewController.h; sourceTree = "<group>"; };
 		84A9F5241DC328D1000987BE /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
+		84AB462E1DD5C3680032AB6A /* FingerPrintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerPrintViewController.h; sourceTree = "<group>"; };
+		84AB462F1DD5C3680032AB6A /* FingerPrintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FingerPrintViewController.m; sourceTree = "<group>"; };
 		84B718001D69A247004ACD8F /* UITextView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Category.h"; sourceTree = "<group>"; };
 		84B718011D69A247004ACD8F /* UITextView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Category.m"; sourceTree = "<group>"; };
 		84B718031D69B6FE004ACD8F /* MyDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDatePickerController.h; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 				84EA90D71D769B9800282904 /* SlideMenuViewController.m */,
 				84A9F5231DC328D1000987BE /* SecurityViewController.h */,
 				84A9F5241DC328D1000987BE /* SecurityViewController.m */,
+				84AB462E1DD5C3680032AB6A /* FingerPrintViewController.h */,
+				84AB462F1DD5C3680032AB6A /* FingerPrintViewController.m */,
 				8448F5051DB9B891004CA625 /* 年月日选择器 */,
 				8437DB001DC08AF0005F271A /* 添加/修改账目界面 */,
 			);
@@ -858,6 +863,7 @@
 				84CD5D391D66C296004898C7 /* UIViewController+Category.m in Sources */,
 				84CD5D311D6695F0004898C7 /* EditLocationViewController.m in Sources */,
 				84A9F5151DC32764000987BE /* CALayer+Anim.m in Sources */,
+				84AB46301DD5C3680032AB6A /* FingerPrintViewController.m in Sources */,
 				84D65FC71D97B9AD00C4B015 /* NSNumber+Category.m in Sources */,
 				84DD441F1D63F2150045A375 /* AddItemViewController.m in Sources */,
 				84068DCF1D580F39003B6F5E /* AppDelegate.m in Sources */,

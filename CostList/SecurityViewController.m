@@ -8,6 +8,11 @@
 
 #import "SecurityViewController.h"
 #import "CLLockVC.h"
+#import <LocalAuthentication/LocalAuthentication.h>
+
+#define IS_IOS_8 (NSFoundationVersionNumber>=NSFoundationVersionNumber_iOS_8_0? YES : NO)
+#define IOS_VERSION_10 (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)?(YES):(NO)
+
 
 @interface SecurityViewController ()
 
@@ -46,10 +51,12 @@
     if(gestureLockIsOn)
     {
         self.gestureSwitch.on = YES;
+        [self showChangeGestureLockCell];
     }
     else
     {
         self.gestureSwitch.on = NO;
+        [self hideChangeGestureLockCell];
     }
     if(numberLockIsOn)
     {
@@ -77,7 +84,7 @@
 - (IBAction)gestureSwitchDidClick:(UISwitch *)sender {
     if((self.numberSwitch.on == NO) && (self.fingerprintSwitch.on == NO))
     {
-        if(sender.on == YES)
+        if(sender.on == YES)    //开启手势密码
         {
             sender.on = NO; //若不设置密码直接关闭时，则开关为OFF
             [CLLockVC showSettingLockVCInVC:self successBlock:^(CLLockVC *lockVC, NSString *pwd) {
@@ -93,34 +100,44 @@
                 {
                     self.gestureSwitch.on = NO;  //防御性代码，若没有设置密码，则开关为OFF
                     [self hideChangeGestureLockCell];
+                    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"gestureLockIsOn"];
                 }
             }];
         }
-        else
+        else    //关闭手势密码
         {
+            [self hideChangeGestureLockCell];
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"gestureLockIsOn"];
         }
     }
-    else
+    else    //若另外两个解锁方式有开启一个，则不可开启手势密码
     {
         sender.on = NO;
     }
 }
 
--(void)showChangeGestureLockCell
+-(void)showChangeGestureLockCell    //显示修改手势密码的cell
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if(cell == nil)
+    {
+        [self.tableView beginUpdates];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
 }
 
--(void)hideChangeGestureLockCell
+-(void)hideChangeGestureLockCell    //隐藏修改手势密码的cell
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if(cell != nil)
+    {
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
 }
 
 - (IBAction)numberSwitchDidClick:(UISwitch *)sender {
@@ -144,18 +161,82 @@
 - (IBAction)fingerprintSwitchDidClick:(UISwitch *)sender {
     if((self.gestureSwitch.on == NO) && (self.numberSwitch.on == NO))
     {
-        if(sender.on == YES)
+        if(sender.on == YES)    //开启指纹识别
         {
-            //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fingerprintLockIsOn"];
+            sender.on = NO;
+            if([self checkDeviceWhetherHasTouchID])
+            {
+                if((IS_IOS_8) || (IOS_VERSION_10))
+                {
+                    sender.on = YES;
+                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fingerprintLockIsOn"];
+                }
+                else
+                {
+                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"系统版本过低，请升级版本后重试" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    [controller addAction:action];
+                    [self presentViewController:controller animated:YES completion:nil];
+                    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"fingerprintLockIsOn"];
+                }
+            }
+            else    //设备不支持指纹识别
+            {
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"fingerprintLockIsOn"];
+            }
+
         }
-        else
+        else    //关闭指纹识别
         {
-            //[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"fingerprintLockIsOn"];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"fingerprintLockIsOn"];
         }
+    }
+    else    //若另外两个解锁方式有开启一个，则不可开启指纹识别
+    {
+        sender.on = NO;
+    }
+}
+
+-(BOOL)checkDeviceWhetherHasTouchID
+{
+    //创建LAContext
+    LAContext* context = [[LAContext alloc] init];
+    NSError* error = nil;
+    
+    //使用canEvaluatePolicy 判断设备是否支持TouchID
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error])
+    {
+        //支持指纹验证
+        return YES;
     }
     else
     {
-        sender.on = NO;
+        NSString *text = nil;
+        //不支持指纹识别，LOG出错误详情
+        switch (error.code)
+        {
+            case LAErrorTouchIDNotEnrolled:
+            {
+                text = @"未录入TouchID信息，请录入后重试";//NSLog(@"TouchID is not enrolled");
+                break;
+            }
+            case LAErrorPasscodeNotSet:
+            {
+                text = @"未设置TouchID信息，请设置后重试";//NSLog(@"A passcode has not been set");
+                break;
+            }
+            default:
+            {
+                text = @"TouchID不可用，设备不支持或未打开，若设备支持则打开后重试";//NSLog(@"TouchID not available");
+                break;
+            }
+        }
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:text preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [controller addAction:action];
+        [self presentViewController:controller animated:YES completion:nil];
+        NSLog(@"%@",error.localizedDescription);
+        return NO;
     }
 }
 
@@ -192,10 +273,15 @@
 
 #pragma mark - TableView Delegate
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 0 && indexPath.row == 1)    //修改手势密码cell那一行的高度
+    {
+        return tableView.rowHeight;
+    }
+    else
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
 
 // Need to override this or the app crashes
 - (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -213,7 +299,7 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 1)
+    if (indexPath.section == 0 && indexPath.row == 1)   //修改手势密码cell可点击
     {
         return indexPath;
     }
@@ -227,7 +313,7 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0 && indexPath.row == 1)
+    if (indexPath.section == 0 && indexPath.row == 1)   //修改手势密码cell点击处理
     {
         [CLLockVC showModifyLockVCInVC:self successBlock:^(CLLockVC *lockVC, NSString *pwd) {
             [lockVC dismiss:.5f];
