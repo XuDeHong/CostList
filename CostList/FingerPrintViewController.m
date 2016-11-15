@@ -35,6 +35,15 @@
     [self evaluateAuthenticate];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;    //将状态栏设为白色
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;  //不隐藏状态栏
+}
 
 - (void)evaluateAuthenticate
 {
@@ -53,6 +62,7 @@
             }
             else
             {
+                NSString *text = nil;
                 NSLog(@"%@",error.localizedDescription);
                 switch (error.code) {
                     case LAErrorSystemCancel:
@@ -72,17 +82,17 @@
                     }
                     case LAErrorPasscodeNotSet:
                     {
-                        //系统未设置密码
+                        text = @"未设置TouchID信息，请设置后重试";//系统未设置密码
                         break;
                     }
                     case LAErrorTouchIDNotAvailable:
                     {
-                        //设备Touch ID不可用，例如未打开
+                        text = @"TouchID不可用，设备不支持或未打开，若设备支持则打开后重试";//设备Touch ID不可用，例如未打开
                         break;
                     }
                     case LAErrorTouchIDNotEnrolled:
                     {
-                        //设备Touch ID不可用，用户未录入
+                        text = @"未录入TouchID信息，请录入后重试";//设备Touch ID不可用，用户未录入
                         break;
                     }
                     case LAErrorUserFallback:
@@ -101,33 +111,44 @@
                         break;
                     }
                 }
+                if(text != nil)
+                {
+                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:text preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    [controller addAction:action];
+                    [self presentViewController:controller animated:YES completion:nil];
+                }
             }
         }];
     }
     else
     {
+        NSString *text = nil;
         //不支持指纹识别，LOG出错误详情
-        NSLog(@"不支持指纹识别");
-        
-        switch (error.code) {
+        switch (error.code)
+        {
             case LAErrorTouchIDNotEnrolled:
             {
-                NSLog(@"TouchID is not enrolled");
+                text = @"未录入TouchID信息，请录入后重试";//NSLog(@"TouchID is not enrolled");
                 break;
             }
             case LAErrorPasscodeNotSet:
             {
-                NSLog(@"A passcode has not been set");
+                text = @"未设置TouchID信息，请设置后重试";//NSLog(@"A passcode has not been set");
                 break;
             }
             default:
             {
-                NSLog(@"TouchID not available");
+                text = @"TouchID不可用，设备不支持或未打开，若设备支持则打开后重试";//NSLog(@"TouchID not available");
                 break;
             }
         }
-        
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:text preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [controller addAction:action];
+        [self presentViewController:controller animated:YES completion:nil];
         NSLog(@"%@",error.localizedDescription);
+
     }
 }
 
