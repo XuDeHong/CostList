@@ -17,7 +17,6 @@
 @interface SecurityViewController ()
 
 @property (weak, nonatomic) IBOutlet UISwitch *gestureSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *numberSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *fingerprintSwitch;
 
 @end
@@ -34,7 +33,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.tableFooterView.y, SCREEN_WIDTH, 50)];
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"三种安全保护方式只能选择其中一种";
+    label.text = @"两种安全保护方式只能选择其中一种";
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor grayColor];
     [label sizeToFit];
@@ -43,9 +42,8 @@
     [footerView addSubview:label];
     self.tableView.tableFooterView = footerView;
     
-    //初始化三个开关按钮
+    //初始化两个开关按钮
     BOOL gestureLockIsOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"gestureLockIsOn"];
-    BOOL numberLockIsOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"numberLockIsOn"];
     BOOL fingerprintLockIsOn = [[NSUserDefaults standardUserDefaults
                                  ] boolForKey:@"fingerprintLockIsOn"];
     if(gestureLockIsOn)
@@ -57,14 +55,6 @@
     {
         self.gestureSwitch.on = NO;
         [self hideChangeGestureLockCell];
-    }
-    if(numberLockIsOn)
-    {
-        self.numberSwitch.on = YES;
-    }
-    else
-    {
-        self.numberSwitch.on = NO;
     }
     if(fingerprintLockIsOn)
     {
@@ -82,7 +72,7 @@
 }
 
 - (IBAction)gestureSwitchDidClick:(UISwitch *)sender {
-    if((self.numberSwitch.on == NO) && (self.fingerprintSwitch.on == NO))
+    if(self.fingerprintSwitch.on == NO)
     {
         if(sender.on == YES)    //开启手势密码
         {
@@ -110,7 +100,7 @@
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"gestureLockIsOn"];
         }
     }
-    else    //若另外两个解锁方式有开启一个，则不可开启手势密码
+    else    //若指纹解锁有开启，则不可开启手势密码
     {
         sender.on = NO;
     }
@@ -140,26 +130,8 @@
     }
 }
 
-- (IBAction)numberSwitchDidClick:(UISwitch *)sender {
-    if((self.gestureSwitch.on == NO) && (self.fingerprintSwitch.on == NO))
-    {
-        if(sender.on == YES)
-        {
-            //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"numberLockIsOn"];
-        }
-        else
-        {
-            //[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"nuumberLockIsOn"];
-        }
-    }
-    else
-    {
-        sender.on = NO;
-    }
-}
-
 - (IBAction)fingerprintSwitchDidClick:(UISwitch *)sender {
-    if((self.gestureSwitch.on == NO) && (self.numberSwitch.on == NO))
+    if(self.gestureSwitch.on == NO)
     {
         if(sender.on == YES)    //开启指纹识别
         {
@@ -191,7 +163,7 @@
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"fingerprintLockIsOn"];
         }
     }
-    else    //若另外两个解锁方式有开启一个，则不可开启指纹识别
+    else    //若手势密码有开启，则不可开启指纹解锁
     {
         sender.on = NO;
     }

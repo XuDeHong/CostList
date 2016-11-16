@@ -50,12 +50,12 @@
     //创建LAContext
     LAContext* context = [[LAContext alloc] init];
     NSError* error = nil;
-    NSString* result = @"请验证已有指纹";
+    NSString* result = @"请验证指纹或锁屏密码";
     
     //首先使用canEvaluatePolicy 判断设备支持状态
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
-        //支持指纹验证
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:result reply:^(BOOL success, NSError *error) {
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
+        //支持指纹验证或密码验证
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:result reply:^(BOOL success, NSError *error) {
             if (success) {
                 //验证成功，主线程处理UI
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -95,14 +95,14 @@
                         text = @"未录入TouchID信息，请录入后重试";//设备Touch ID不可用，用户未录入
                         break;
                     }
-                    case LAErrorUserFallback:
-                    {
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            //用户选择输入密码，切换主线程处理
-                            
-                        }];
-                        break;
-                    }
+//                    case LAErrorUserFallback:
+//                    {
+//                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                            //用户选择输入密码，切换主线程处理
+//                            
+//                        }];
+//                        break;
+//                    }
                     default:
                     {
                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
