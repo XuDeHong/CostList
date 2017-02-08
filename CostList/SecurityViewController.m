@@ -236,6 +236,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChangeGestureLockCell"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.textLabel.text = @"修改手势密码";
+            cell.textLabel.font = [UIFont systemFontOfSize:15.0];
         }
         return cell;
     } else {
