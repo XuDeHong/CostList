@@ -230,7 +230,7 @@
     
     if((CoreLockTypeModifyPwd == _type) || (CoreLockTypeSetPwd == _type))
     {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"关闭", @"关闭") style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
         
         _actionView.hidden = YES;
         
@@ -313,7 +313,7 @@
     
     CLLockVC *lockVC = [self lockVC:vc];
     
-    lockVC.title = @"设置密码";
+    lockVC.title = NSLocalizedString(@"设置密码", @"设置密码");
     
     //设置类型
     lockVC.type = CoreLockTypeSetPwd;
@@ -335,7 +335,7 @@
     
     CLLockVC *lockVC = [self lockVC:vc];
     
-    lockVC.title = @"手势解锁";
+    lockVC.title = NSLocalizedString(@"手势解锁", @"手势解锁");
     
     //设置类型
     lockVC.type = CoreLockTypeVeryfiPwd;
@@ -357,7 +357,7 @@
     
     CLLockVC *lockVC = [self lockVC:vc];
     
-    lockVC.title = @"修改密码";
+    lockVC.title = NSLocalizedString(@"修改密码", @"修改密码");
     
     //设置类型
     lockVC.type = CoreLockTypeModifyPwd;
@@ -438,7 +438,7 @@
     
     if(_resetItem == nil){
         //添加右按钮
-        _resetItem= [[UIBarButtonItem alloc] initWithTitle:@"重设" style:UIBarButtonItemStylePlain target:self action:@selector(setPwdReset)];
+        _resetItem= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"重设", @"重设") style:UIBarButtonItemStylePlain target:self action:@selector(setPwdReset)];
     }
     
     return _resetItem;
@@ -456,7 +456,7 @@
     
     CLLockVC *lockVC = [[CLLockVC alloc] init];
     
-    lockVC.title = @"修改密码";
+    lockVC.title = NSLocalizedString(@"修改密码", @"修改密码");
     
     lockVC.isDirectModify = YES;
     

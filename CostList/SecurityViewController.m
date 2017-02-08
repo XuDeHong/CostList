@@ -33,7 +33,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.tableFooterView.y, SCREEN_WIDTH, 50)];
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"两种安全保护方式只能选择其中一种";
+    label.text = NSLocalizedString(@"两种安全保护方式只能选择其中一种", @"两种安全保护方式只能选择其中一种");
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor grayColor];
     [label sizeToFit];
@@ -235,7 +235,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChangeGestureLockCell"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = @"修改手势密码";
+            cell.textLabel.text = NSLocalizedString(@"修改手势密码", @"修改手势密码");
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
         }
         return cell;
