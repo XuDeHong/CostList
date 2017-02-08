@@ -82,17 +82,17 @@
                     }
                     case LAErrorPasscodeNotSet:
                     {
-                        text = @"未设置TouchID信息，请设置后重试";//系统未设置密码
+                        text = NSLocalizedString(@"未设置TouchID信息，请设置后重试", @"未设置TouchID信息，请设置后重试");//系统未设置密码
                         break;
                     }
                     case LAErrorTouchIDNotAvailable:
                     {
-                        text = @"TouchID不可用，设备不支持或未打开，若设备支持则打开后重试";//设备Touch ID不可用，例如未打开
+                        text = NSLocalizedString(@"TouchID不可用，设备不支持或未打开，若设备支持则打开后重试", @"TouchID不可用，设备不支持或未打开，若设备支持则打开后重试");//设备Touch ID不可用，例如未打开
                         break;
                     }
                     case LAErrorTouchIDNotEnrolled:
                     {
-                        text = @"未录入TouchID信息，请录入后重试";//设备Touch ID不可用，用户未录入
+                        text =  NSLocalizedString(@"未录入TouchID信息，请录入后重试", @"未录入TouchID信息，请录入后重试") ;//设备Touch ID不可用，用户未录入
                         break;
                     }
 //                    case LAErrorUserFallback:
@@ -113,8 +113,8 @@
                 }
                 if(text != nil)
                 {
-                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:text preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"提示", @"提示") message:text preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDefault handler:nil];
                     [controller addAction:action];
                     [self presentViewController:controller animated:YES completion:nil];
                 }
