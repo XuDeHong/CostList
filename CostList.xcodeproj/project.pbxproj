@@ -446,7 +446,6 @@
 		848785891D58C7F100A2EBFB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				84A9F5221DC32771000987BE /* 手势解锁 */,
 				84068DD61D580F39003B6F5E /* Main.storyboard */,
 				84B7CB1A1D58C56E0062A48D /* MyTabBarController.h */,
 				84B7CB1B1D58C56E0062A48D /* MyTabBarController.m */,
@@ -456,14 +455,7 @@
 				8472E4C41DB35D20000E6B18 /* SearchViewController.m */,
 				84068E031D58135D003B6F5E /* ChartTableViewController.h */,
 				84068E041D58135D003B6F5E /* ChartTableViewController.m */,
-				8437DB011DC08BD9005F271A /* SlideNavigationViewController.h */,
-				8437DB021DC08BD9005F271A /* SlideNavigationViewController.m */,
-				84EA90D61D769B9800282904 /* SlideMenuViewController.h */,
-				84EA90D71D769B9800282904 /* SlideMenuViewController.m */,
-				84A9F5231DC328D1000987BE /* SecurityViewController.h */,
-				84A9F5241DC328D1000987BE /* SecurityViewController.m */,
-				84AB462E1DD5C3680032AB6A /* FingerPrintViewController.h */,
-				84AB462F1DD5C3680032AB6A /* FingerPrintViewController.m */,
+				848BE5131DDC09AA00C1E1CB /* 侧栏相关功能 */,
 				8448F5051DB9B891004CA625 /* 年月日选择器 */,
 				8437DB001DC08AF0005F271A /* 添加/修改账目界面 */,
 			);
@@ -500,6 +492,22 @@
 				8453EA761D99175E00EDFE46 /* UIColor+Category.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		848BE5131DDC09AA00C1E1CB /* 侧栏相关功能 */ = {
+			isa = PBXGroup;
+			children = (
+				8437DB011DC08BD9005F271A /* SlideNavigationViewController.h */,
+				8437DB021DC08BD9005F271A /* SlideNavigationViewController.m */,
+				84EA90D61D769B9800282904 /* SlideMenuViewController.h */,
+				84EA90D71D769B9800282904 /* SlideMenuViewController.m */,
+				84A9F5231DC328D1000987BE /* SecurityViewController.h */,
+				84A9F5241DC328D1000987BE /* SecurityViewController.m */,
+				84A9F5221DC32771000987BE /* 手势解锁 */,
+				84AB462E1DD5C3680032AB6A /* FingerPrintViewController.h */,
+				84AB462F1DD5C3680032AB6A /* FingerPrintViewController.m */,
+			);
+			name = "侧栏相关功能";
 			sourceTree = "<group>";
 		};
 		84A9F4F11DC32764000987BE /* CoreLock */ = {
