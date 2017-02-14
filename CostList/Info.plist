@@ -30,8 +30,6 @@
 	<string>添加账目需要获取地理位置，以便记录支出或收入的位置</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>是否允许此App访问你的媒体</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
