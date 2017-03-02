@@ -1,5 +1,6 @@
 PODS:
   - FLAnimatedImage (1.0.12)
+  - GoldRaccoon (1.0.2)
   - KVNProgress (2.3.1)
   - NYTPhotoViewer (1.2.0):
     - NYTPhotoViewer/AnimatedGifSupport (= 1.2.0)
@@ -12,6 +13,7 @@ PODS:
   - SDAutoLayout (2.1.7)
 
 DEPENDENCIES:
+  - GoldRaccoon (~> 1.0.2)
   - KVNProgress (~> 2.3.1)
   - NYTPhotoViewer (~> 1.2.0)
   - SCNumberKeyBoard (~> 0.5.3)
@@ -19,11 +21,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  GoldRaccoon: a9143566afe37c2aba38589512aef83566a52573
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   NYTPhotoViewer: 323217e4590a1586eb3c9674b3fefb0fb8b57896
   SCNumberKeyBoard: 0d246ca7cc55b603d67f76ed9d7f0c4b5de26eaf
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
 
-PODFILE CHECKSUM: 91a2b3acea1aeb7b3a82696ba342811a76c3b066
+PODFILE CHECKSUM: c4ed4e81e16f55a16182098ed7b5de9fc962a7e6
 
-COCOAPODS: 1.1.0.beta.2
+COCOAPODS: 1.2.0

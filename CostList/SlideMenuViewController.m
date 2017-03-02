@@ -9,6 +9,8 @@
 #import "SlideMenuViewController.h"
 #import "SlideNavigationViewController.h"
 
+#define MYSERVER [NSString stringWithFormat:@"ftp://138.68.14.162/pub"]   //服务器保存数据位置
+
 
 @interface SlideMenuViewController ()
 
@@ -31,6 +33,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - 同步数据
+
+//从服务器下载数据到本地
+- (IBAction)downloadData
+{
+    
+}
+
+//从本地上传数据到服务器
+- (IBAction)uploadData
+{
+
+}
+
+#pragma mark -
 
 -(SlideNavigationViewController *)slideNavigationController
 {
@@ -64,7 +82,7 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
-#pragma mark Table View Delegate
+#pragma mark - Table View Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0 && indexPath.row == 2)    //清空数据
