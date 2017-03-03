@@ -52,15 +52,17 @@
 //从服务器下载数据到本地
 - (IBAction)downloadData
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     //获取服务器上保存的所有文件
     [self.requestsManager addRequestForListDirectoryAtPath:RemoteDirectory];
-
+    
     [self.requestsManager startProcessingRequests];
 }
 
 //从本地上传数据到服务器
 - (IBAction)uploadData
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:DocumentsDirectory];
     NSString *fileName;
@@ -148,6 +150,13 @@
 - (void)requestsManager:(id<GRRequestsManagerProtocol>)requestsManager didFailRequest:(id<GRRequestProtocol>)request withError:(NSError *)error
 {
     NSLog(@"requestsManager:didFailRequest:withError: \n %@", error);
+}
+
+-(void)requestsManagerDidCompleteQueue:(id<GRRequestsManagerProtocol>)requestsManager
+{
+    NSLog(@"requestsManagerDidCompleteQueue:");
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 
