@@ -17,7 +17,7 @@
 #define RemoteDirectory [NSString stringWithFormat:@"/simulator"]
 #else
 //真机数据存入服务器的real文件夹
-#define RemoteDirectory [NSString stringWithFormat:@"@/real"]
+#define RemoteDirectory [NSString stringWithFormat:@"/real"]
 #endif
 
 @interface SlideMenuViewController () <GRRequestsManagerDelegate>
