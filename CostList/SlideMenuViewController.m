@@ -10,6 +10,16 @@
 #import "SlideNavigationViewController.h"
 #import "GRRequestsManager.h"
 
+#define DocumentsDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+
+#if TARGET_IPHONE_SIMULATOR
+//模拟器数据存入服务器的simulator文件夹
+#define RemoteDirectory [NSString stringWithFormat:@"/simulator"]
+#else
+//真机数据存入服务器的real文件夹
+#define RemoteDirectory [NSString stringWithFormat:@"@/real"]
+#endif
+
 @interface SlideMenuViewController () <GRRequestsManagerDelegate>
 
 @property (weak,nonatomic) SlideNavigationViewController *slideNavigationController;
@@ -42,13 +52,8 @@
 //从服务器下载数据到本地
 - (IBAction)downloadData
 {
-    //模拟器数据存入服务器的simulator文件夹
-    NSString *remoteDirectory = @"/simulator";
-    //真机数据存入服务器的real文件夹
-    //NSString *remoteDirectory = @"/real";
-    
     //获取服务器上保存的所有文件
-    [self.requestsManager addRequestForListDirectoryAtPath:remoteDirectory];
+    [self.requestsManager addRequestForListDirectoryAtPath:RemoteDirectory];
 
     [self.requestsManager startProcessingRequests];
 }
@@ -56,30 +61,23 @@
 //从本地上传数据到服务器
 - (IBAction)uploadData
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths lastObject];
-    //模拟器数据存入服务器的simulator文件夹
-    NSString *remoteDirectory = @"/simulator";
-    //真机数据存入服务器的real文件夹
-    //NSString *remoteDirectory = @"/real";
-    
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:documentsDirectory];
+    NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:DocumentsDirectory];
     NSString *fileName;
     NSString *localPath;
     NSString *remotePath;
     //枚举Documents文件夹，将所有文件上传到服务器
     while (fileName = [dirEnum nextObject])
     {
-        localPath = [documentsDirectory stringByAppendingPathComponent:fileName];
-        remotePath = [remoteDirectory stringByAppendingPathComponent:fileName];
+        localPath = [DocumentsDirectory stringByAppendingPathComponent:fileName];
+        remotePath = [RemoteDirectory stringByAppendingPathComponent:fileName];
         [self.requestsManager addRequestForUploadFileAtLocalPath:localPath toRemotePath:remotePath];
     }
     //以PhotoID为名在服务器创建一个空白文件夹
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger photoId = [defaults integerForKey:@"PhotoID"];
     NSString *idFileName = [NSString stringWithFormat:@"ID%ld",(long)photoId];
-    remotePath = [remoteDirectory stringByAppendingPathComponent:idFileName];
+    remotePath = [RemoteDirectory stringByAppendingPathComponent:idFileName];
     [self.requestsManager addRequestForCreateDirectoryAtPath:remotePath];
     
     [self.requestsManager startProcessingRequests];
@@ -96,13 +94,6 @@
 {
     NSLog(@"requestsManager:didCompleteListingRequest:listing: \n%@", listing);
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths lastObject];
-    //模拟器数据存入服务器的simulator文件夹
-    NSString *remoteDirectory = @"/simulator";
-    //真机数据存入服务器的real文件夹
-    //NSString *remoteDirectory = @"/real";
-    
     //枚举服务器的文件名列表
     for(NSString *fileName in listing)
     {
@@ -115,8 +106,8 @@
         }
         else
         {   //除空白文件夹外，其余文件都下载到Documents
-            NSString *localPath = [documentsDirectory stringByAppendingPathComponent:fileName];
-            NSString *remotePath = [remoteDirectory stringByAppendingPathComponent:fileName];
+            NSString *localPath = [DocumentsDirectory stringByAppendingPathComponent:fileName];
+            NSString *remotePath = [RemoteDirectory stringByAppendingPathComponent:fileName];
             [self.requestsManager addRequestForDownloadFileAtRemotePath:remotePath toLocalPath:localPath];
         }
     }
