@@ -46,4 +46,10 @@
 extern NSString * const ManagedObjectContextSaveDidFailNotification;
 #define FATAL_CORE_DATA_ERROR(__error__) NSLog(@"*** Fatal error in %s:%d\n%@\n%@",__FILE__, __LINE__, error, [error userInfo]);[[NSNotificationCenter defaultCenter] postNotificationName:ManagedObjectContextSaveDidFailNotification object:error];
 
+#ifdef DEBUG
+#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#else
+#define NSLog(format, ...)
+#endif
+
 #endif /* PrefixHeader_pch */
