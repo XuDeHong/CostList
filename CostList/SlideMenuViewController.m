@@ -50,7 +50,7 @@
 #pragma mark - 同步数据
 
 //从服务器下载数据到本地
-- (IBAction)downloadData
+- (void)downloadData
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     //获取服务器上保存的所有文件
@@ -60,7 +60,7 @@
 }
 
 //从本地上传数据到服务器
-- (IBAction)uploadData
+- (void)uploadData
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -194,12 +194,33 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+-(void)dataSynchronismAlertSheet
+{
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *upload = [UIAlertAction actionWithTitle:NSLocalizedString(@"上传到服务器", @"上传到服务器") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self uploadData];
+    }];
+    UIAlertAction *download = [UIAlertAction actionWithTitle:NSLocalizedString(@"从服务器下载", @"从服务器下载") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self downloadData];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    }];
+    [controller addAction:upload];
+    [controller addAction:download];
+    [controller addAction:cancel];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 #pragma mark - Table View Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0 && indexPath.row == 2)    //清空数据
     {
         [self confirmDeleteAllData];
+    }
+    if(indexPath.section == 0 && indexPath.row == 3)    //数据同步
+    {
+        [self dataSynchronismAlertSheet];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
