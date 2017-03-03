@@ -9,6 +9,7 @@
 #import "SlideMenuViewController.h"
 #import "SlideNavigationViewController.h"
 #import "GRRequestsManager.h"
+#import <KVNProgress/KVNProgress.h>
 
 #define DocumentsDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 
@@ -185,13 +186,37 @@
 {
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"注意", @"注意") message:NSLocalizedString(@"确定要清空所有数据吗？（数据清空后不可恢复）",@"确定要清空所有数据吗？（数据清空后不可恢复）") preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
-        
+        [self deleteAllData];
     }];
     UIAlertAction *cancelBtn = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", @"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
     }];
     [controller addAction:sureBtn];
     [controller addAction:cancelBtn];
     [self presentViewController:controller animated:YES completion:nil];
+}
+
+-(void)deleteAllData
+{
+    KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+    configuration.circleSize = 60.0f;   //设置success图标大小
+    configuration.successColor = GLOBAL_TINT_COLOR;   //设置success图标颜色
+    configuration.minimumSuccessDisplayTime = 0.8f; //设置动画时间
+    configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
+    configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
+    configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
+    [KVNProgress setConfiguration:configuration];
+    //清空所有数据
+    NSString *DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:DocumentsPath];
+    for (NSString *fileName in enumerator) {
+        [[NSFileManager defaultManager] removeItemAtPath:[DocumentsPath stringByAppendingPathComponent:fileName] error:nil];
+    }
+    //重置PhotoID
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:0 forKey:@"PhotoID"];
+    [defaults synchronize];
+    
+    [KVNProgress showSuccessWithStatus:@"已清空数据" completion:nil];
 }
 
 -(void)dataSynchronismAlertSheet
