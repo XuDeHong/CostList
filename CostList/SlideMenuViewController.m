@@ -41,6 +41,16 @@
     //初始化FTP管理器
     self.requestsManager = [[GRRequestsManager alloc] initWithHostname:@"138.68.14.162" user:@"chris" password:@"123456"];
     self.requestsManager.delegate = self;
+    //配置弹框
+    KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+    configuration.circleSize = 60.0f;   //设置success图标大小
+    configuration.successColor = GLOBAL_TINT_COLOR;   //设置success图标颜色
+    configuration.circleStrokeForegroundColor = GLOBAL_TINT_COLOR;  //设置旋转圆圈颜色
+    configuration.minimumSuccessDisplayTime = 0.8f; //设置动画时间
+    configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
+    configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
+    configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
+    [KVNProgress setConfiguration:configuration];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +63,7 @@
 //从服务器下载数据到本地
 - (void)downloadData
 {
+    [KVNProgress showWithStatus:@"正在下载"];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     //获取服务器上保存的所有文件
     [self.requestsManager addRequestForListDirectoryAtPath:RemoteDirectory];
@@ -63,6 +74,7 @@
 //从本地上传数据到服务器
 - (void)uploadData
 {
+    [KVNProgress showWithStatus:@"正在上传"];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:DocumentsDirectory];
@@ -157,6 +169,7 @@
 {
     NSLog(@"requestsManagerDidCompleteQueue:");
     
+    [KVNProgress showSuccessWithStatus:@"已完成" completion:nil];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
@@ -197,14 +210,6 @@
 
 -(void)deleteAllData
 {
-    KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
-    configuration.circleSize = 60.0f;   //设置success图标大小
-    configuration.successColor = GLOBAL_TINT_COLOR;   //设置success图标颜色
-    configuration.minimumSuccessDisplayTime = 0.8f; //设置动画时间
-    configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
-    configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
-    configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
-    [KVNProgress setConfiguration:configuration];
     //清空所有数据
     NSString *DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:DocumentsPath];
