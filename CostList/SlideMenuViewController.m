@@ -39,7 +39,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //初始化FTP管理器
-    self.requestsManager = [[GRRequestsManager alloc] initWithHostname:@"138.68.14.162" user:@"chris" password:@"123456"];
+    self.requestsManager = [[GRRequestsManager alloc] initWithHostname:@"119.29.121.247" user:@"chris" password:@"123456"];
     self.requestsManager.delegate = self;
     //配置弹框
     KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
