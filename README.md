@@ -4,9 +4,9 @@
 
 该项目为本人独立开发，从界面设计到代码编写，也是我学习iOS以来第一个做的较为完整的项目。
 
-![screenshot](https://github.com/XuDeHong/CostList/blob/master/screenshot.PNG "screenshot")
-
 移动记账，能记录每一天的消费或收入，并以图表的形式显示统计结果。除了基本的增删查改账目以外，还加入了指纹识别、手势密码、3D Touch以及数据同步等功能。
+
+![screenshot](https://github.com/XuDeHong/CostList/blob/master/screenshot.PNG "screenshot")
 
 ## 目标人群
 
