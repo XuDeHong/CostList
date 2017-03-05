@@ -53,12 +53,26 @@ Foudation、UIKit、CoreData、CoreLocation、3D Touch、Touch ID、Charts（第
 
 ## 技术难点
 
+APP主要是UIKit基本控件的使用，以下是部分难点：
+
 1. **自定义TabBar样式：**[实现TabBar中间凸起“+”按钮](http://www.cnblogs.com/guitarandcode/p/5759208.html)
+
 2. **视图控制器跳转的几种方法：**[纯代码控制视图控制器跳转的几种方法](http://www.mamicode.com/info-detail-469709.html)
+
 3. **UITableviewCell自适应：**[根据Text计算UILabel高度](http://www.cnblogs.com/guitarandcode/p/5802473.html)
+
 4. **Objective-C和Swift混编：**[Objective-C项目导入Swift](http://www.cnblogs.com/guitarandcode/p/5894102.html)
+
 5. **数据同步的实现：**利用了FTP协议，当需要上传数据时，将CoreData保存数据的几个数据库文件、图片以及配置上传到FTP服务器中，当需要下载数据时，则将之前上传的数据下载下来，并更新配置。此时该应用相当于FTP客户端，FTP服务端在服务器配置好。
 
+   ​
+
+
+## APP视图架构
+
+APP整体采用MVC架构，以下为APP各个视图控制器的关系
+
+![architecture](https://github.com/XuDeHong/CostList/blob/master/architecture.jpg "architecture")
 
 ## 收获
 

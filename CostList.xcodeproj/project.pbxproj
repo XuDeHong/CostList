@@ -26,6 +26,7 @@
 		843BE1DC1D93C739004F5B77 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BE1DB1D93C739004F5B77 /* File.swift */; };
 		84434EDE1D8407AC00F989BE /* ListCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84434EDD1D8407AC00F989BE /* ListCommentCell.m */; };
 		8453EA771D99175E00EDFE46 /* UIColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453EA761D99175E00EDFE46 /* UIColor+Category.m */; };
+		845A4EEC1E6C68DF00306233 /* architecture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845A4EEB1E6C68DF00306233 /* architecture.jpg */; };
 		845E62881D6313DD00224162 /* UIImage+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E62871D6313DD00224162 /* UIImage+Category.m */; };
 		8472E4C51DB35D20000E6B18 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472E4C41DB35D20000E6B18 /* SearchViewController.m */; };
 		847616871D82A705001B456F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847616851D82A705001B456F /* DataModel.xcdatamodeld */; };
@@ -178,6 +179,7 @@
 		844CC22A1D61F11A00B2050B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8453EA751D99175E00EDFE46 /* UIColor+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Category.h"; sourceTree = "<group>"; };
 		8453EA761D99175E00EDFE46 /* UIColor+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Category.m"; sourceTree = "<group>"; };
+		845A4EEB1E6C68DF00306233 /* architecture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = architecture.jpg; sourceTree = "<group>"; };
 		845E62861D6313DD00224162 /* UIImage+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Category.h"; sourceTree = "<group>"; };
 		845E62871D6313DD00224162 /* UIImage+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Category.m"; sourceTree = "<group>"; };
 		8464BC871D5DCB4C00774350 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			children = (
 				8495FDC61E6BFC8C00EBC56B /* logo.png */,
 				8495FDC11E6BFC8200EBC56B /* screenshot.PNG */,
+				845A4EEB1E6C68DF00306233 /* architecture.jpg */,
 				843BE1C21D93C6EE004F5B77 /* Charts.xcodeproj */,
 				84068DC91D580F39003B6F5E /* CostList */,
 				84068DE61D580F39003B6F5E /* CostListTests */,
@@ -785,6 +788,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845A4EEC1E6C68DF00306233 /* architecture.jpg in Resources */,
 				8495FDC71E6BFC8C00EBC56B /* logo.png in Resources */,
 				84CD5D321D6695F0004898C7 /* EditLocationViewController.xib in Resources */,
 				84068DDD1D580F39003B6F5E /* LaunchScreen.storyboard in Resources */,
