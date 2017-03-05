@@ -1,4 +1,4 @@
-![]
+![logo](https://github.com/XuDeHong/CostList/blob/master/logo.png "logo")
 
 # CostList
 
