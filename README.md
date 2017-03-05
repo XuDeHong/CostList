@@ -28,3 +28,9 @@ Xcode、Git、CocoaPods、Sketch、SourceTree
 - 开启指纹识别
 - 数据同步
 - 3D Touch
+
+## 项目展示
+
+- 各功能视频展示：[传送门](http://blog.sina.com.cn/s/blog_d77623b30102x2y0.html)
+- 截图展示：[传送门](http://www.cnblogs.com/guitarandcode/p/6396660.html)
+
