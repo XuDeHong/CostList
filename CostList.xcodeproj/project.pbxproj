@@ -35,6 +35,8 @@
 		847D21D51D9F8F3400B2A5BF /* YearPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D21D31D9F8F3400B2A5BF /* YearPickerViewController.xib */; };
 		8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487858B1D58C96800A2EBFB /* MyTabBar.m */; };
 		848785941D58D25100A2EBFB /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 848785931D58D25100A2EBFB /* UIView+Category.m */; };
+		8495FDC21E6BFC8200EBC56B /* screenshot.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 8495FDC11E6BFC8200EBC56B /* screenshot.PNG */; };
+		8495FDC71E6BFC8C00EBC56B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8495FDC61E6BFC8C00EBC56B /* logo.png */; };
 		8498A6751D81732F00F9607A /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A6741D81732F00F9607A /* ListCell.m */; };
 		849906861DACD97600212BCC /* MonthValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 849906851DACD97600212BCC /* MonthValueFormatter.m */; };
 		84A9F5131DC32764000987BE /* CLLockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4F31DC32764000987BE /* CLLockVC.m */; };
@@ -192,6 +194,8 @@
 		8487858B1D58C96800A2EBFB /* MyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBar.m; sourceTree = "<group>"; };
 		848785921D58D25100A2EBFB /* UIView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
 		848785931D58D25100A2EBFB /* UIView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
+		8495FDC11E6BFC8200EBC56B /* screenshot.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.PNG; sourceTree = "<group>"; };
+		8495FDC61E6BFC8C00EBC56B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		8498A6731D81732F00F9607A /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		8498A6741D81732F00F9607A /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		849906841DACD97600212BCC /* MonthValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthValueFormatter.h; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 		84068DBE1D580F39003B6F5E = {
 			isa = PBXGroup;
 			children = (
+				8495FDC61E6BFC8C00EBC56B /* logo.png */,
+				8495FDC11E6BFC8200EBC56B /* screenshot.PNG */,
 				843BE1C21D93C6EE004F5B77 /* Charts.xcodeproj */,
 				84068DC91D580F39003B6F5E /* CostList */,
 				84068DE61D580F39003B6F5E /* CostListTests */,
@@ -779,9 +785,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8495FDC71E6BFC8C00EBC56B /* logo.png in Resources */,
 				84CD5D321D6695F0004898C7 /* EditLocationViewController.xib in Resources */,
 				84068DDD1D580F39003B6F5E /* LaunchScreen.storyboard in Resources */,
 				847D21D51D9F8F3400B2A5BF /* YearPickerViewController.xib in Resources */,
+				8495FDC21E6BFC8200EBC56B /* screenshot.PNG in Resources */,
 				84CD5D361D66B317004898C7 /* AddItemViewController.storyboard in Resources */,
 				84BF75181D80093800D4C97D /* Localizable.strings in Resources */,
 				84C9D5F51D9135CA00CDF30F /* CategoryIconInfo.plist in Resources */,
