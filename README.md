@@ -18,16 +18,28 @@ Xcode、Git、CocoaPods、Sketch、SourceTree
 
 ## 功能列表
 
+（*黑色表示已基本实现，灰色表示尚未实现*）
+
 - 添加账目
 - 修改账目
 - 删除账目
 - 查找账目
   - 按时间（年份和月份）查找账目
   - 按账目备注查找账目
+- 图表统计功能
+  - 圆饼比例图统计
+  - 折线趋势图统计
 - 设置手势密码
 - 开启指纹识别
 - 数据同步
 - 3D Touch
+- <font color=gray>设置提醒</font>
+- <font color=gray>其他</font>
+  - 一键清空数据
+  - <font color=gray>意见反馈</font>
+  - <font color=gray>分享给好友</font>
+  - <font color=gray>评分鼓励</font>
+  - <font color=gray>关于</font>
 
 ## 项目展示
 
