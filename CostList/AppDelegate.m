@@ -13,6 +13,12 @@
 #import "FingerPrintViewController.h"
 #import "UIViewController+Category.h"
 
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+
+//微信SDK头文件
+#import "WXApi.h"
+
 @interface AppDelegate ()
 
 @property (strong,nonatomic) CLLocationManager *locationManager;   //位置管理器
@@ -54,6 +60,26 @@
     UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeAdd];
     UIApplicationShortcutItem *addItem = [[UIApplicationShortcutItem alloc] initWithType:@"com.XuDeHong.CostList.Add" localizedTitle:NSLocalizedString(@"添加账目", @"添加账目") localizedSubtitle:nil icon:icon userInfo:nil];
     [UIApplication sharedApplication].shortcutItems = @[addItem];
+    
+    //初始化ShareSDK分享功能
+    [ShareSDK registerApp:@"1ba018c1591b8" activePlatforms:@[@(SSDKPlatformTypeWechat)] onImport:^(SSDKPlatformType platformType){
+        switch (platformType) {
+            case SSDKPlatformTypeWechat:
+                [ShareSDKConnector connectWeChat:[WXApi class]];
+                break;
+            default:
+                break;
+        }
+    } onConfiguration:^(SSDKPlatformType platformType,NSMutableDictionary *appInfo){
+        switch (platformType) {
+            case SSDKPlatformTypeWechat:
+                [appInfo SSDKSetupWeChatByAppId:@"wx4b7565ee56bb961c" appSecret:@"9379bb40b6f95f04bb26635c8683c795"];
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 -(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler

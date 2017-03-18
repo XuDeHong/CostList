@@ -10,6 +10,8 @@
 #import "SlideNavigationViewController.h"
 #import "GRRequestsManager.h"
 #import <KVNProgress/KVNProgress.h>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
 
 #define DocumentsDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 
@@ -241,6 +243,40 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+-(void)shareMyApp
+{
+    //1、创建分享参数
+    NSArray* imageArray = @[[UIImage imageNamed:@"logo.png"]];
+    if (imageArray)
+    {
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        [shareParams SSDKSetupShareParamsByText:@"这是我独立开发的一个移动记账APP" images:imageArray url:[NSURL URLWithString:@"https://github.com/XuDeHong/CostList"] title:@"分享移动记账" type:SSDKContentTypeAuto];
+        //有的平台要客户端分享需要加此方法，例如微博
+        [shareParams SSDKEnableUseClientShare];
+        //2、分享（可以弹出我们的分享菜单和编辑界面）
+        [ShareSDK showShareActionSheet:nil items:nil shareParams:shareParams onShareStateChanged:
+         ^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end)
+        {
+            switch (state)
+            {
+                case SSDKResponseStateSuccess:
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功" message:nil delegate:nil cancelButtonTitle:@"确定"otherButtonTitles:nil];[alertView show];
+                  break;
+                }
+                case SSDKResponseStateFail:
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"message:[NSString stringWithFormat:@"%@",error]delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil, nil];
+                        [alert show];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    ];}
+}
+
 #pragma mark - Table View Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -251,6 +287,10 @@
     if(indexPath.section == 0 && indexPath.row == 3)    //数据同步
     {
         [self dataSynchronismAlertSheet];
+    }
+    if(indexPath.section == 2 && indexPath.row == 0)
+    {   //分享应用
+        [self shareMyApp];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
