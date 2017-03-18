@@ -38,11 +38,11 @@ Foudation、UIKit、CoreData、CoreLocation、3D Touch、Touch ID、Charts（第
 - **数据同步**
 - **3D Touch**
 - 设置提醒
-- 其他
+- **其他**
   - **一键清空数据**
   - **意见反馈**
   - **分享给好友**
-  - 评分鼓励
+  - **评分鼓励**
   - **关于**
 
 ## 项目展示

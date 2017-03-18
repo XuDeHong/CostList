@@ -284,17 +284,21 @@
     {
         [self confirmDeleteAllData];
     }
-    if(indexPath.section == 0 && indexPath.row == 3)    //数据同步
+    else if(indexPath.section == 0 && indexPath.row == 3)    //数据同步
     {
         [self dataSynchronismAlertSheet];
     }
-    if (indexPath.section == 1 && indexPath.row == 0)
+    else if (indexPath.section == 1 && indexPath.row == 0)
     {   //意见反馈，调用系统邮箱写邮件
         [[UIApplication sharedApplication]openURL:[NSURL   URLWithString:@"mailto:DeHongBoy@outlook.com"]];
     }
-    if(indexPath.section == 2 && indexPath.row == 0)
+    else if(indexPath.section == 2 && indexPath.row == 0)
     {   //分享应用
         [self shareMyApp];
+    }
+    else if(indexPath.section == 2 && indexPath.row == 1)
+    {   //评分鼓励，跳转到safari
+        [[UIApplication sharedApplication]openURL:[NSURL   URLWithString:@"https://github.com/XuDeHong/CostList"]];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
