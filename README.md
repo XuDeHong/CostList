@@ -40,7 +40,7 @@ Foudation、UIKit、CoreData、CoreLocation、3D Touch、Touch ID、Charts（第
 - 设置提醒
 - 其他
   - **一键清空数据**
-  - 意见反馈
+  - **意见反馈**
   - **分享给好友**
   - 评分鼓励
   - **关于**

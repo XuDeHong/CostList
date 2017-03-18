@@ -288,6 +288,10 @@
     {
         [self dataSynchronismAlertSheet];
     }
+    if (indexPath.section == 1 && indexPath.row == 0)
+    {   //意见反馈，调用系统邮箱写邮件
+        [[UIApplication sharedApplication]openURL:[NSURL   URLWithString:@"mailto:DeHongBoy@outlook.com"]];
+    }
     if(indexPath.section == 2 && indexPath.row == 0)
     {   //分享应用
         [self shareMyApp];
