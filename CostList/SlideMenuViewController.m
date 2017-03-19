@@ -261,14 +261,18 @@
             {
                 case SSDKResponseStateSuccess:
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功" message:nil delegate:nil cancelButtonTitle:@"确定"otherButtonTitles:nil];[alertView show];
+                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"分享成功" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    [controller addAction:action];
+                    [self presentViewController:controller animated:YES completion:nil];
                   break;
                 }
                 case SSDKResponseStateFail:
                 {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"message:[NSString stringWithFormat:@"%@",error]delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil, nil];
-                        [alert show];
-                    break;
+                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"分享失败" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    [controller addAction:action];
+                    [self presentViewController:controller animated:YES completion:nil];
                 }
                 default:
                     break;
