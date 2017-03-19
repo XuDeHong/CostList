@@ -12,6 +12,7 @@
 #import "CLLockVC.h"
 #import "FingerPrintViewController.h"
 #import "UIViewController+Category.h"
+#import <UserNotifications/UserNotifications.h>
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
@@ -49,7 +50,7 @@
     MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
     tabBarController.dataModelHandler = self.dataModelHandler;  //传递指针
     
-    //请求用户获取位置的权限
+    //请求用户是否可以获取位置
     self.locationManager = [[CLLocationManager alloc] init];
     if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
     {
@@ -78,6 +79,19 @@
                 
             default:
                 break;
+        }
+    }];
+    
+    //请求用户是否可以推送本地通知
+    //iOS 10 before
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
+    //iOS 10
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"request authorization succeeded!");
         }
     }];
 }
