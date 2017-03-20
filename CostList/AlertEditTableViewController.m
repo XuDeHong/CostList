@@ -11,6 +11,7 @@
 #import "MyTimePickerController.h"
 #import "CyclePickerViewController.h"
 #import "NotificationModel.h"
+#import <KVNProgress/KVNProgress.h>
 
 @interface AlertEditTableViewController () <EditAlertTitleViewControllerDelegate, MyTimePickerControllerDelegate,CyclePickerViewControllerDelegate>
 
@@ -54,6 +55,72 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)sureBtnClick:(id)sender{
+    [self.view endEditing:YES]; //键盘消失
+    if([self textDataWhetherInput]) //测试数据是否输入
+    {
+        if(self.notificationModel == nil)
+        {
+            //调用代理实现的方法，添加新通知
+            [self.delegate alertEditTableViewController:self addNotification:[self getDataToSave]];
+        }
+        else
+        {
+            //修改已有的通知
+            [self.delegate alertEditTableViewController:self modifiedNotification:[self getDataToSave]];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+-(BOOL)textDataWhetherInput
+{
+    KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+    configuration.circleSize = 60.0f;   //设置success图标大小
+    configuration.errorColor = [UIColor redColor];   //设置success图标颜色
+    configuration.minimumErrorDisplayTime = 0.8f; //设置动画时间
+    configuration.statusFont = [UIFont boldSystemFontOfSize:15.0]; //设置字体大小
+    configuration.backgroundFillColor = [UIColor whiteColor];   //设置背景颜色
+    configuration.backgroundType = KVNProgressBackgroundTypeSolid;  //设置背景类型
+    [KVNProgress setConfiguration:configuration];
+    
+    if((self.titleLabel.text == nil) || ([self.titleLabel.text isEqualToString:@""]))
+    {
+        [KVNProgress showErrorWithStatus:@"请输入内容" completion:nil];
+        return NO;
+    }
+    else if((self.timeLabel.text == nil) || ([self.timeLabel.text isEqualToString:@""]))
+    {
+        [KVNProgress showErrorWithStatus:@"请选择时间" completion:nil];
+        return NO;
+    }
+    else if((self.cycleLabel.text == nil) || ([self.cycleLabel.text isEqualToString:@""]))
+    {
+        [KVNProgress showErrorWithStatus:@"请选择周期" completion:nil];
+        return NO;
+    }
+    else
+        return YES;
+}
+
+-(NotificationModel *)getDataToSave
+{
+    NotificationModel *model = nil;
+    if(self.notificationModel != nil)
+    {
+        model = self.notificationModel;
+    }
+    else
+    {
+        model = [[NotificationModel alloc] init];
+    }
+    
+    model.alertTitle = self.titleLabel.text;
+    model.alertTime = self.timeLabel.text;
+    model.alertCycle = self.cycleLabel.text;
+    return model;
 }
 
 #pragma mark - About edit title methods

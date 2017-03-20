@@ -133,7 +133,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUG-UC-oNM">
-                                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="xxxx年xx月"/>
                                             <connections>
@@ -529,7 +529,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fP6-ju-QHW">
-                                            <rect key="frame" x="113" y="8" width="150" height="29"/>
+                                            <rect key="frame" x="112.5" y="7.5" width="150" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="比例"/>
@@ -1148,29 +1148,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8m-NG-afW">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8m-NG-afW">
                                                     <rect key="frame" x="291" y="19" width="43" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuR-Ab-VO0">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuR-Ab-VO0">
                                                     <rect key="frame" x="22" y="34" width="36" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1I-eh-Uhz">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1I-eh-Uhz">
                                                     <rect key="frame" x="19" y="8" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="K1I-eh-Uhz" firstAttribute="leading" secondItem="VXf-JX-xtZ" secondAttribute="leadingMargin" constant="11" id="UUi-VZ-Afm"/>
+                                                <constraint firstAttribute="topMargin" secondItem="K1I-eh-Uhz" secondAttribute="top" id="YSt-w1-6hJ"/>
+                                                <constraint firstItem="ZuR-Ab-VO0" firstAttribute="leading" secondItem="VXf-JX-xtZ" secondAttribute="leadingMargin" constant="14" id="Yx1-z4-gww"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZuR-Ab-VO0" secondAttribute="bottom" constant="0.5" id="mP7-NA-bDF"/>
+                                                <constraint firstItem="V8m-NG-afW" firstAttribute="top" secondItem="VXf-JX-xtZ" secondAttribute="topMargin" constant="11" id="py1-Xz-0K4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="V8m-NG-afW" secondAttribute="trailing" id="rYo-ro-kjT"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Bdb-8y-lHz" kind="show" identifier="EditNotification" id="Cb1-D2-cle"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1184,10 +1192,13 @@
                     <navigationItem key="navigationItem" title="设置提醒" id="SeF-cv-9pw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gur-ms-W2w">
                             <connections>
-                                <segue destination="Bdb-8y-lHz" kind="show" id="xQI-8B-E9H"/>
+                                <segue destination="Bdb-8y-lHz" kind="show" identifier="AddNotification" id="xQI-8B-E9H"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="myTableView" destination="30J-i4-l9T" id="bvb-JI-Jep"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBw-Tc-b9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1298,7 +1309,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="添加提醒" id="PYg-BL-T8R">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="nMz-dV-3Id"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="nMz-dV-3Id">
+                            <connections>
+                                <action selector="sureBtnClick:" destination="Bdb-8y-lHz" id="Ml5-Uw-1De"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cycleLabel" destination="ezg-Dw-h8l" id="KxI-Pr-ClB"/>
@@ -1348,4 +1363,7 @@
         <image name="spendBtn" width="46" height="27"/>
         <image name="star" width="26" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cb1-D2-cle"/>
+    </inferredMetricsTieBreakers>
 </document>
