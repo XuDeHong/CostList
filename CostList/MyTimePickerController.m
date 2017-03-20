@@ -46,7 +46,8 @@
     else
     {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MM-dd HH:mm"];
+        //必须有年份才能确定一个时间，否则选择器会出现bug
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
         NSDate *currentTimeStr = [formatter dateFromString:self.currentTime];
         [self.datePicker setDate:currentTimeStr animated:YES];
     }
@@ -71,7 +72,8 @@
 - (IBAction)sureBtnClick:(id)sender {
     //获取选中的时间
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd HH:mm"];
+    //必须有年份才能确定一个时间，否则选择器会出现bug
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     [self.delegate myTimePickerController:self didChooseTime:[formatter stringFromDate:self.datePicker.date]];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
