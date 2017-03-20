@@ -7,6 +7,7 @@
 //
 
 #import "AlertListViewController.h"
+#import "NotificationModel.h"
 
 static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态常量
 

@@ -20,7 +20,7 @@
 @interface CyclePickerViewController : UIViewController
 
 @property (nonatomic,weak) id <CyclePickerViewControllerDelegate> delegate;//指向代理
-@property (nonatomic,strong) NSString *currentDate;
+@property (nonatomic,copy) NSString *currentCycle;
 @property (nonatomic,strong) UIView *background;    //半透明黑色背景
 
 @end

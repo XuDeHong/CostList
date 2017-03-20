@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class NotificationModel;
+
 @interface AlertEditTableViewController : UITableViewController
+@property (nonatomic,strong) NotificationModel *notificationModel;
 
 @end

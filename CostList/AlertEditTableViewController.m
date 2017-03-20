@@ -9,6 +9,7 @@
 #import "AlertEditTableViewController.h"
 #import "MyTimePickerController.h"
 #import "CyclePickerViewController.h"
+#import "NotificationModel.h"
 
 @interface AlertEditTableViewController () <MyTimePickerControllerDelegate,CyclePickerViewControllerDelegate>
 
@@ -32,6 +33,19 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    //根据通知模型初始化
+    if(self.notificationModel == nil)
+    {
+        self.timeLabel.text = nil;
+        self.cycleLabel.text = nil;
+    }
+    else
+    {
+        self.alertTitleTextField.text = self.notificationModel.alertTitle;
+        self.timeLabel.text = self.notificationModel.alertTime;
+        self.cycleLabel.text = self.notificationModel.alertCycle;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,6 +101,7 @@
 
 -(void)showCyclePickerView
 {
+    self.cyclePickerViewController.currentCycle = self.cycleLabel.text;
     self.cyclePickerViewController.delegate = self;
     [self presentViewController:self.cyclePickerViewController animated:YES completion:nil];
 }
