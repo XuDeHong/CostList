@@ -53,16 +53,6 @@
     }
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;    //将状态栏设为白色
-}
-
--(BOOL)prefersStatusBarHidden
-{
-    return NO;  //不隐藏状态栏
-}
-
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
@@ -82,8 +72,7 @@
 - (IBAction)sureBtnClick:(id)sender {
     //获取选中的周期
     NSNumber *chooseNum = @([self.cyclePicker selectedRowInComponent:0]);
-    self.currentCycle = _cycleItems[chooseNum];
-    [self.delegate cyclePickerViewController:self didChooseCycle:self.currentCycle];
+    [self.delegate cyclePickerViewController:self didChooseCycle:_cycleItems[chooseNum]];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     //半透明黑色背景消失

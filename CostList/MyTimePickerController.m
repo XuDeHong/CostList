@@ -38,16 +38,18 @@
     self.background.backgroundColor = [UIColor blackColor];
     self.background.alpha = 0.5;
     [self.presentingViewController.view addSubview:_background];
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;    //将状态栏设为白色
-}
-
--(BOOL)prefersStatusBarHidden
-{
-    return NO;  //不隐藏状态栏
+    
+    if(self.currentTime == nil)
+    {
+        [self.datePicker setDate:[NSDate date]];
+    }
+    else
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MM-dd HH:mm"];
+        NSDate *currentTimeStr = [formatter dateFromString:self.currentTime];
+        [self.datePicker setDate:currentTimeStr animated:YES];
+    }
 }
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -68,6 +70,9 @@
 
 - (IBAction)sureBtnClick:(id)sender {
     //获取选中的时间
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd HH:mm"];
+    [self.delegate myTimePickerController:self didChooseTime:[formatter stringFromDate:self.datePicker.date]];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     //半透明黑色背景消失

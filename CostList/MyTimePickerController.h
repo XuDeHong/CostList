@@ -13,14 +13,14 @@
 //定义协议和方法
 @protocol MyTimePickerControllerDelegate <NSObject>
 
--(void)myTimePickerController:(MyTimePickerController *)controller didChooseDate:(NSString *)date;
+-(void)myTimePickerController:(MyTimePickerController *)controller didChooseTime:(NSString *)time;
 
 @end
 
 @interface MyTimePickerController : UIViewController
 
 @property (nonatomic,weak) id <MyTimePickerControllerDelegate> delegate;//指向代理
-@property (nonatomic,strong) NSString *currentDate;
+@property (nonatomic,copy) NSString *currentTime;
 @property (nonatomic,strong) UIView *background;    //半透明黑色背景
 
 @end

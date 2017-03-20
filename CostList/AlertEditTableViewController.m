@@ -54,15 +54,6 @@
 }
 
 #pragma mark - About choose time method
--(void)getCurrentDate
-{
-    //获取当前时间
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSDate *now = [NSDate date];
-    self.timeLabel.text = [formatter stringFromDate:now];
-}
-
 -(MyTimePickerController *)timePickerController
 {
     if(!_timePickerController)
@@ -75,7 +66,7 @@
 -(void)showTimePickerView
 {
     //设置时间选择器的时间为标签中显示的时间
-    self.timePickerController.currentDate = self.timeLabel.text;
+    self.timePickerController.currentTime = self.timeLabel.text;
     //设置代理
     self.timePickerController.delegate = self;
     //显示选择日期
@@ -83,10 +74,10 @@
 }
 
 #pragma mark MyTimePickerController Delegate
--(void)myTimePickerController:(MyTimePickerController *)controller didChooseDate:(NSString *)date
+-(void)myTimePickerController:(MyTimePickerController *)controller didChooseTime:(NSString *)time
 {
     //更新时间标签
-    self.timeLabel.text = date;
+    self.timeLabel.text = time;
 }
 
 #pragma mark - About choose cycle method
