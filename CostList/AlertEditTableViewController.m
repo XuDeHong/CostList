@@ -7,15 +7,17 @@
 //
 
 #import "AlertEditTableViewController.h"
+#import "EditAlertTitleViewController.h"
 #import "MyTimePickerController.h"
 #import "CyclePickerViewController.h"
 #import "NotificationModel.h"
 
-@interface AlertEditTableViewController () <MyTimePickerControllerDelegate,CyclePickerViewControllerDelegate>
+@interface AlertEditTableViewController () <EditAlertTitleViewControllerDelegate, MyTimePickerControllerDelegate,CyclePickerViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *alertTitleTextField;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic,weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic,weak) IBOutlet UILabel *cycleLabel;
+@property (nonatomic,strong) EditAlertTitleViewController *editAlertTitleViewController;
 @property (nonatomic,strong) MyTimePickerController *timePickerController;
 @property (nonatomic,strong) CyclePickerViewController *cyclePickerViewController;
 
@@ -37,12 +39,13 @@
     //根据通知模型初始化
     if(self.notificationModel == nil)
     {
+        self.titleLabel.text = nil;
         self.timeLabel.text = nil;
         self.cycleLabel.text = nil;
     }
     else
     {
-        self.alertTitleTextField.text = self.notificationModel.alertTitle;
+        self.titleLabel.text = self.notificationModel.alertTitle;
         self.timeLabel.text = self.notificationModel.alertTime;
         self.cycleLabel.text = self.notificationModel.alertCycle;
     }
@@ -53,7 +56,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - About choose time method
+#pragma mark - About edit title methods
+-(EditAlertTitleViewController *)editAlertTitleViewController
+{
+    if(!_editAlertTitleViewController)
+    {
+        _editAlertTitleViewController = [[EditAlertTitleViewController alloc] initWithNibName:@"EditAlertTitleViewController" bundle:nil];
+    }
+    return _editAlertTitleViewController;
+}
+
+-(void)showEditAlertTitleView
+{
+    self.editAlertTitleViewController.currentTitle = self.titleLabel.text;
+    //设置代理
+    self.editAlertTitleViewController.delegate = self;
+    //显示编辑视图
+    [self presentViewController:self.editAlertTitleViewController animated:YES completion:nil];
+}
+
+#pragma mark EditAlertTitleViewController Delegate
+-(void)editAlertTitleViewController:(EditAlertTitleViewController *)controller editedAlertTitle:(NSString *)alertTitle
+{
+    self.titleLabel.text = alertTitle;
+}
+
+#pragma mark - About choose time methods
 -(MyTimePickerController *)timePickerController
 {
     if(!_timePickerController)
@@ -80,7 +108,7 @@
     self.timeLabel.text = time;
 }
 
-#pragma mark - About choose cycle method
+#pragma mark - About choose cycle methods
 -(CyclePickerViewController *)cyclePickerViewController
 {
     if(!_cyclePickerViewController)
@@ -108,17 +136,15 @@
 {
     if(indexPath.section == 0 && indexPath.row == 0)
     {   //输入提醒内容
-        [self.alertTitleTextField becomeFirstResponder];
+        [self showEditAlertTitleView];
     }
     else if(indexPath.section == 0 && indexPath.row == 1)
     {   //选择提醒时间
-        [self.alertTitleTextField resignFirstResponder];
         [self showTimePickerView];
         
     }
     else if(indexPath.section == 0 && indexPath.row == 2)
     {   //选择提醒周期
-        [self.alertTitleTextField resignFirstResponder];
         [self showCyclePickerView];
         
     }

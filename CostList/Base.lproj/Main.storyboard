@@ -1204,11 +1204,11 @@
                         <sections>
                             <tableViewSection id="BKe-lV-KUU">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nRG-mL-Jrp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="nRG-mL-Jrp">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nRG-mL-Jrp" id="IQQ-Ff-z6r">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fH3-TX-wPz">
@@ -1217,19 +1217,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入内容" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tzH-kq-NdC">
-                                                    <rect key="frame" x="87" y="7" width="280" height="30"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdI-zg-Edj">
+                                                    <rect key="frame" x="296" y="13" width="38" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="tzH-kq-NdC" firstAttribute="top" secondItem="IQQ-Ff-z6r" secondAttribute="topMargin" constant="-1" id="3vN-CK-Lkd"/>
                                                 <constraint firstItem="fH3-TX-wPz" firstAttribute="top" secondItem="IQQ-Ff-z6r" secondAttribute="topMargin" constant="5" id="5Ae-PA-Q4m"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="tzH-kq-NdC" secondAttribute="trailing" id="CeT-tF-LMa"/>
-                                                <constraint firstItem="tzH-kq-NdC" firstAttribute="leading" secondItem="fH3-TX-wPz" secondAttribute="trailing" constant="8" id="DU5-hi-wNW"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="tzH-kq-NdC" secondAttribute="bottom" constant="-1.5" id="RPn-Y9-ofc"/>
+                                                <constraint firstItem="KdI-zg-Edj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fH3-TX-wPz" secondAttribute="trailing" constant="10" id="81j-Pi-vdO"/>
+                                                <constraint firstItem="KdI-zg-Edj" firstAttribute="top" secondItem="IQQ-Ff-z6r" secondAttribute="topMargin" constant="5" id="aJZ-Nh-UnE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="KdI-zg-Edj" secondAttribute="trailing" id="dKi-9W-eSg"/>
                                                 <constraint firstItem="fH3-TX-wPz" firstAttribute="leading" secondItem="IQQ-Ff-z6r" secondAttribute="leadingMargin" constant="9" id="jjn-Po-pMw"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1302,9 +1301,9 @@
                         <barButtonItem key="rightBarButtonItem" title="保存" id="nMz-dV-3Id"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="alertTitleTextField" destination="tzH-kq-NdC" id="PAS-iw-EMZ"/>
                         <outlet property="cycleLabel" destination="ezg-Dw-h8l" id="KxI-Pr-ClB"/>
                         <outlet property="timeLabel" destination="Gby-mb-5gv" id="rFV-1j-fgr"/>
+                        <outlet property="titleLabel" destination="KdI-zg-Edj" id="lkd-86-fqn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="433-eR-h4F" userLabel="First Responder" sceneMemberID="firstResponder"/>

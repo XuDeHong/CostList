@@ -65,6 +65,8 @@
 		8495FDC71E6BFC8C00EBC56B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8495FDC61E6BFC8C00EBC56B /* logo.png */; };
 		8498A6751D81732F00F9607A /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498A6741D81732F00F9607A /* ListCell.m */; };
 		849906861DACD97600212BCC /* MonthValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 849906851DACD97600212BCC /* MonthValueFormatter.m */; };
+		84A99ABD1E7FD3E800FBAE3B /* EditAlertTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A99ABB1E7FD3E800FBAE3B /* EditAlertTitleViewController.m */; };
+		84A99ABE1E7FD3E800FBAE3B /* EditAlertTitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A99ABC1E7FD3E800FBAE3B /* EditAlertTitleViewController.xib */; };
 		84A9F5131DC32764000987BE /* CLLockVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4F31DC32764000987BE /* CLLockVC.m */; };
 		84A9F5141DC32764000987BE /* CLLockVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A9F4F41DC32764000987BE /* CLLockVC.xib */; };
 		84A9F5151DC32764000987BE /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4F81DC32764000987BE /* CALayer+Anim.m */; };
@@ -260,6 +262,9 @@
 		8498A6741D81732F00F9607A /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		849906841DACD97600212BCC /* MonthValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthValueFormatter.h; sourceTree = "<group>"; };
 		849906851DACD97600212BCC /* MonthValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthValueFormatter.m; sourceTree = "<group>"; };
+		84A99ABA1E7FD3E800FBAE3B /* EditAlertTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlertTitleViewController.h; sourceTree = "<group>"; };
+		84A99ABB1E7FD3E800FBAE3B /* EditAlertTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlertTitleViewController.m; sourceTree = "<group>"; };
+		84A99ABC1E7FD3E800FBAE3B /* EditAlertTitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditAlertTitleViewController.xib; sourceTree = "<group>"; };
 		84A9F4F21DC32764000987BE /* CLLockVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLockVC.h; sourceTree = "<group>"; };
 		84A9F4F31DC32764000987BE /* CLLockVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLockVC.m; sourceTree = "<group>"; };
 		84A9F4F41DC32764000987BE /* CLLockVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLLockVC.xib; sourceTree = "<group>"; };
@@ -491,12 +496,15 @@
 		8410A2A91E7E7FFF0006CCEA /* 设置提醒 */ = {
 			isa = PBXGroup;
 			children = (
+				8410A2BD1E7EDFCF0006CCEA /* NotificationModel.h */,
+				8410A2BE1E7EDFCF0006CCEA /* NotificationModel.m */,
 				8410A2AA1E7E80B20006CCEA /* AlertListViewController.h */,
 				8410A2AB1E7E80B20006CCEA /* AlertListViewController.m */,
 				8410A2AD1E7E8DA00006CCEA /* AlertEditTableViewController.h */,
 				8410A2AE1E7E8DA00006CCEA /* AlertEditTableViewController.m */,
-				8410A2BD1E7EDFCF0006CCEA /* NotificationModel.h */,
-				8410A2BE1E7EDFCF0006CCEA /* NotificationModel.m */,
+				84A99ABA1E7FD3E800FBAE3B /* EditAlertTitleViewController.h */,
+				84A99ABB1E7FD3E800FBAE3B /* EditAlertTitleViewController.m */,
+				84A99ABC1E7FD3E800FBAE3B /* EditAlertTitleViewController.xib */,
 			);
 			name = "设置提醒";
 			sourceTree = "<group>";
@@ -978,6 +986,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A99ABE1E7FD3E800FBAE3B /* EditAlertTitleViewController.xib in Resources */,
 				845A4EEC1E6C68DF00306233 /* architecture.jpg in Resources */,
 				8495FDC71E6BFC8C00EBC56B /* logo.png in Resources */,
 				843BC5CF1E7CD1D1004357CF /* ShareSDK.bundle in Resources */,
@@ -1090,6 +1099,7 @@
 				84A9F51A1DC32764000987BE /* CLLockLabel.m in Sources */,
 				848785941D58D25100A2EBFB /* UIView+Category.m in Sources */,
 				8487858C1D58C96800A2EBFB /* MyTabBar.m in Sources */,
+				84A99ABD1E7FD3E800FBAE3B /* EditAlertTitleViewController.m in Sources */,
 				843084E01D5DA3F70091F0BC /* MonthPickerViewController.m in Sources */,
 				84EF7F461D8A978400B09310 /* CostItem.m in Sources */,
 				8453EA771D99175E00EDFE46 /* UIColor+Category.m in Sources */,
