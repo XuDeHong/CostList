@@ -20,7 +20,7 @@
 //微信SDK头文件
 #import "WXApi.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @property (strong,nonatomic) CLLocationManager *locationManager;   //位置管理器
 @property (strong,nonatomic) DataModelHandler *dataModelHandler;    //数据处理器
@@ -108,6 +108,11 @@
     {
         completionHandler(YES);
     }
+}
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{   //当应用处于前台时，不显示badge，只显示alert和sound
+    completionHandler(UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -9,6 +9,7 @@
 #import "AlertListViewController.h"
 #import "NotificationModel.h"
 #import "AlertEditTableViewController.h"
+#import <UserNotifications/UserNotifications.h>
 
 static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态常量
 
@@ -83,7 +84,22 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     [NSKeyedArchiver archiveRootObject:self.modelArray toFile:[self notificationListFilePath]];
     [self.myTableView reloadData];
     //添加通知
-    //***
+    //第一步，设置通知内容
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"Introduction to Notifications";
+    content.subtitle = @"Session 707";
+    content.body = @"Woah! These new notifications look amazing! Don’t you agree?";
+    content.badge = @1;
+    //第二步，设置触发时间
+    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:120 repeats:NO];
+    //第三步，定义一个标识符标识通知
+    NSString *requestIdentifier = @"sampleRequest";
+    //第四步，根据内容，触发时间，标识符创建一个通知request，并添加到通知中心
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger1];
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        
+    }];
 }
 
 -(void)alertEditTableViewController:(AlertEditTableViewController *)controller modifiedNotification:(NotificationModel *)model

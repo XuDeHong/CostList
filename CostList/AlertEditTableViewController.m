@@ -115,11 +115,13 @@
     else
     {
         model = [[NotificationModel alloc] init];
+        model.alertID = [NotificationModel nextNotificationID];
     }
     
     model.alertTitle = self.titleLabel.text;
     model.alertTime = self.timeLabel.text;
     model.alertCycle = self.cycleLabel.text;
+
     return model;
 }
 

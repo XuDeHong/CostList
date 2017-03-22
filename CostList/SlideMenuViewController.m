@@ -90,13 +90,18 @@
         remotePath = [RemoteDirectory stringByAppendingPathComponent:fileName];
         [self.requestsManager addRequestForUploadFileAtLocalPath:localPath toRemotePath:remotePath];
     }
-    //以PhotoID为名在服务器创建一个空白文件夹
+    //以PhotoID+序号为名在服务器创建一个空白文件夹
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger photoId = [defaults integerForKey:@"PhotoID"];
-    NSString *idFileName = [NSString stringWithFormat:@"ID%ld",(long)photoId];
-    remotePath = [RemoteDirectory stringByAppendingPathComponent:idFileName];
+    NSString *photoIdName = [NSString stringWithFormat:@"PhotoID%ld",(long)photoId];
+    remotePath = [RemoteDirectory stringByAppendingPathComponent:photoIdName];
     [self.requestsManager addRequestForCreateDirectoryAtPath:remotePath];
     
+    //以NotificationID+序号为名在服务器创建一个空白文件夹
+    NSInteger notificationId = [defaults integerForKey:@"NotificationID"];
+    NSString *notificationIdName = [NSString stringWithFormat:@"NotificationID%ld",(long)notificationId];
+    remotePath = [RemoteDirectory stringByAppendingPathComponent:notificationIdName];
+    [self.requestsManager addRequestForCreateDirectoryAtPath:remotePath];
     [self.requestsManager startProcessingRequests];
 }
 
@@ -114,15 +119,23 @@
     //枚举服务器的文件名列表
     for(NSString *fileName in listing)
     {
-        if([fileName containsString:@"ID"])
-        {   //根据空白文件夹名更新用户配置的PhotoID
-            NSString *photoID = [fileName stringByReplacingOccurrencesOfString:@"ID" withString:@""];
+        if([fileName containsString:@"PhotoID"])
+        {   //根据PhotoID+序号文件夹名更新用户配置的PhotoID
+            NSString *photoID = [fileName stringByReplacingOccurrencesOfString:@"PhotoID" withString:@""];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setInteger:[photoID integerValue] forKey:@"PhotoID"];
             [defaults synchronize];
         }
+        else if([fileName containsString:@"NotificationID"])
+        {
+            //根据NotificationID+序号文件夹名更新用户配置的NotificationID
+            NSString *notificationID = [fileName stringByReplacingOccurrencesOfString:@"NotificationID" withString:@""];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setInteger:[notificationID integerValue] forKey:@"NotificationID"];
+            [defaults synchronize];
+        }
         else
-        {   //除空白文件夹外，其余文件都下载到Documents
+        {   //除两个空白文件夹外，其余文件都下载到Documents
             NSString *localPath = [DocumentsDirectory stringByAppendingPathComponent:fileName];
             NSString *remotePath = [RemoteDirectory stringByAppendingPathComponent:fileName];
             [self.requestsManager addRequestForDownloadFileAtRemotePath:remotePath toLocalPath:localPath];

@@ -28,4 +28,13 @@
     [aCoder encodeObject:self.alertCycle forKey:@"alertCycle"];
 }
 
++(NSString *)nextNotificationID
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger notificationId = [defaults integerForKey:@"NotificationID"];
+    [defaults setInteger:notificationId+1 forKey:@"NotificationID"];
+    [defaults synchronize];
+    return [NSString stringWithFormat: @"%ld",notificationId];
+}
+
 @end
