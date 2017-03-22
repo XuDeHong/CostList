@@ -230,37 +230,12 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        NotificationModel *model = self.modelArray[indexPath.row];
         //删除通知
+        NotificationModel *model = self.modelArray[indexPath.row];
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        //遍历已设置但尚未发出的通知列表，如果与要删除的通知吻合，则删除通知
-        [center getPendingNotificationRequestsWithCompletionHandler:^(NSArray <UNNotificationRequest *> *requests){
-            if((requests!=nil) && ([requests count]!=0))
-            {
-                for(UNNotificationRequest *request in requests)
-                {
-                    if([request.identifier isEqualToString:model.alertID])
-                    {
-                        [center removePendingNotificationRequestsWithIdentifiers:@[model.alertID]];
-                        break;
-                    }
-                }
-            }
-        }];
-        //遍历已设置并且已发出的通知列表，如果与要删除的通知吻合，则删除通知
-        [center getDeliveredNotificationsWithCompletionHandler:^(NSArray <UNNotification *> *notifications){
-            if((notifications!=nil)&&([notifications count]!=0))
-            {
-                for(UNNotification *notification in notifications)
-                {
-                    if([notification.request.identifier isEqualToString:model.alertID])
-                    {
-                        [center removeDeliveredNotificationsWithIdentifiers:@[model.alertID]];
-                        break;
-                    }
-                }
-            }
-        }];
+        [center removePendingNotificationRequestsWithIdentifiers:@[model.alertID]];
+        [center removeDeliveredNotificationsWithIdentifiers:@[model.alertID]];
+        
         //删除通知模型
         [self.modelArray removeObject:model];
         //归档保存

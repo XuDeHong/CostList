@@ -17,6 +17,7 @@
         self.alertTitle = [aDecoder decodeObjectForKey:@"alertTitle"];
         self.alertTime = [aDecoder decodeObjectForKey:@"alertTime"];
         self.alertCycle = [aDecoder decodeObjectForKey:@"alertCycle"];
+        self.alertID = [aDecoder decodeObjectForKey:@"alertID"];
     }
     return self;
 }
@@ -26,6 +27,7 @@
     [aCoder encodeObject:self.alertTitle forKey:@"alertTitle"];
     [aCoder encodeObject:self.alertTime forKey:@"alertTime"];
     [aCoder encodeObject:self.alertCycle forKey:@"alertCycle"];
+    [aCoder encodeObject:self.alertID forKey:@"alertID"];
 }
 
 +(NSString *)nextNotificationID
