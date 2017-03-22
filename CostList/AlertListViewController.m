@@ -75,6 +75,81 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     }
 }
 
+-(UNCalendarNotificationTrigger *)getNotificationTriggerFromModel:(NotificationModel *)model
+{
+    int timeArray[5];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    //根据通知的设置获取时间
+    NSDate *date = [formatter dateFromString:model.alertTime];
+    //获取年份
+    [formatter setDateFormat:@"yyyy"];
+    NSString *year = [formatter stringFromDate:date];
+    timeArray[0] = [year intValue];
+    //获取月份
+    [formatter setDateFormat:@"MM"];
+    NSString *month = [formatter stringFromDate:date];
+    timeArray[1] = [month intValue];
+    //获取日期
+    [formatter setDateFormat:@"dd"];
+    NSString *day = [formatter stringFromDate:date];
+    timeArray[2] = [day intValue];
+    //获取小时
+    [formatter setDateFormat:@"HH"];
+    NSString *hour = [formatter stringFromDate:date];
+    timeArray[3] = [hour intValue];
+    //获取分钟
+    [formatter setDateFormat:@"mm"];
+    NSString *minue = [formatter stringFromDate:date];
+    timeArray[4] = [minue intValue];
+    
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    BOOL isRepeats = YES;
+    //根据提醒周期进行不同的设置
+    if([model.alertCycle isEqualToString:@"提醒一次"])
+    {
+        isRepeats = NO;
+        components.year = timeArray[0];
+        components.month = timeArray[1];
+        components.day = timeArray[2];
+        components.hour = timeArray[3];
+        components.minute = timeArray[4];
+    }
+    else if([model.alertCycle isEqualToString:@"每日"])
+    {
+        components.hour = timeArray[3];
+        components.minute = timeArray[4];
+    }
+    else if([model.alertCycle isEqualToString:@"每周"])
+    {
+        NSDateComponents *tempCom = [[NSDateComponents alloc] init];
+        [tempCom setYear:timeArray[0]];
+        [tempCom setMonth:timeArray[1]];
+        [tempCom setDay:timeArray[2]];
+        //通过上面的临时对象计算出星期几
+        components.weekday = [tempCom weekday];
+        components.hour = timeArray[3];
+        components.minute = timeArray[4];
+        
+    }
+    else if([model.alertCycle isEqualToString:@"每月"])
+    {
+        components.day = timeArray[2];
+        components.hour = timeArray[3];
+        components.minute = timeArray[4];
+    }
+    else if([model.alertCycle isEqualToString:@"每年"])
+    {
+        components.month = timeArray[1];
+        components.day = timeArray[2];
+        components.hour = timeArray[3];
+        components.minute = timeArray[4];
+    }
+    
+    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:isRepeats];
+    return trigger;
+}
+
 #pragma mark - AlertEditTableViewController Delegate
 -(void)alertEditTableViewController:(AlertEditTableViewController *)controller addNotification:(NotificationModel *)model
 {
@@ -86,20 +161,17 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     //添加通知
     //第一步，设置通知内容
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = @"Introduction to Notifications";
-    content.subtitle = @"Session 707";
-    content.body = @"Woah! These new notifications look amazing! Don’t you agree?";
-    content.badge = @1;
+    content.title = @"记账提醒";
+    content.body = model.alertTitle;
+    //content.badge = @1;
     //第二步，设置触发时间
-    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:120 repeats:NO];
+    UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
     //第三步，定义一个标识符标识通知
-    NSString *requestIdentifier = @"sampleRequest";
+    NSString *requestIdentifier = model.alertID;
     //第四步，根据内容，触发时间，标识符创建一个通知request，并添加到通知中心
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger1];
-    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-        
-    }];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger];
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {}];
 }
 
 -(void)alertEditTableViewController:(AlertEditTableViewController *)controller modifiedNotification:(NotificationModel *)model
@@ -108,8 +180,21 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     //归档保存
     [NSKeyedArchiver archiveRootObject:self.modelArray toFile:[self notificationListFilePath]];
     [self.myTableView reloadData];
-    //修改通知
-    //***
+    //修改通知，在ID不变的情况下重新添加通知即可
+    //第一步，设置通知内容
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"记账提醒";
+    content.body = model.alertTitle;
+    //content.badge = @1;
+    //第二步，设置触发时间
+    UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
+    //第三步，定义一个标识符标识通知
+    NSString *requestIdentifier = model.alertID;
+    //第四步，根据内容，触发时间，标识符创建一个通知request，并添加到通知中心
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger];
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {}];
+
 }
 
 #pragma mark - Table View DataSource
@@ -145,13 +230,42 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
+        NotificationModel *model = self.modelArray[indexPath.row];
+        //删除通知
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        //遍历已设置但尚未发出的通知列表，如果与要删除的通知吻合，则删除通知
+        [center getPendingNotificationRequestsWithCompletionHandler:^(NSArray <UNNotificationRequest *> *requests){
+            if((requests!=nil) && ([requests count]!=0))
+            {
+                for(UNNotificationRequest *request in requests)
+                {
+                    if([request.identifier isEqualToString:model.alertID])
+                    {
+                        [center removePendingNotificationRequestsWithIdentifiers:@[model.alertID]];
+                        break;
+                    }
+                }
+            }
+        }];
+        //遍历已设置并且已发出的通知列表，如果与要删除的通知吻合，则删除通知
+        [center getDeliveredNotificationsWithCompletionHandler:^(NSArray <UNNotification *> *notifications){
+            if((notifications!=nil)&&([notifications count]!=0))
+            {
+                for(UNNotification *notification in notifications)
+                {
+                    if([notification.request.identifier isEqualToString:model.alertID])
+                    {
+                        [center removeDeliveredNotificationsWithIdentifiers:@[model.alertID]];
+                        break;
+                    }
+                }
+            }
+        }];
         //删除通知模型
-        [self.modelArray removeObject:self.modelArray[indexPath.row]];
+        [self.modelArray removeObject:model];
         //归档保存
         [NSKeyedArchiver archiveRootObject:self.modelArray toFile:[self notificationListFilePath]];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        //删除通知
-        //***
     }
 }
 
