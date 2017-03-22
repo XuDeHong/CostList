@@ -94,14 +94,15 @@
             NSLog(@"request authorization succeeded!");
         }
     }];
+    center.delegate = self; //通知中心的代理为AppDelegate
 }
 
 -(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
-    MyTabBarController *tabbarController = (MyTabBarController *)self.window.rootViewController;
+    MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
     if([shortcutItem.type isEqualToString:@"com.XuDeHong.CostList.Add"])    //快速进入添加账目界面
     {
-        [tabbarController showAddOrEditItemControllerWithDataModel:nil];
+        [tabBarController showAddOrEditItemControllerWithDataModel:nil];
     }
     
     if(completionHandler)
@@ -110,9 +111,26 @@
     }
 }
 
+#pragma mark - UserNotification Delegate
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
 {   //当应用处于前台时，不显示badge，只显示alert和sound
     completionHandler(UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound);
+}
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
+{
+    NSString *categoryIdentifier = response.notification.request.content.categoryIdentifier;
+    //识别需要被处理的拓展
+    if ([categoryIdentifier isEqualToString:@"NotificationCategory"])
+    {   //识别用户点击的是哪个 action
+        if ([response.actionIdentifier isEqualToString:@"addItemAction"])
+        {
+            MyTabBarController *tabBarController = (MyTabBarController *)self.window.rootViewController;
+            [tabBarController showAddOrEditItemControllerWithDataModel:nil];
+            
+        }
+    }
+    completionHandler();
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

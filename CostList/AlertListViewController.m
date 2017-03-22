@@ -38,6 +38,13 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     {//否则新建数组
         self.modelArray = [NSMutableArray arrayWithCapacity:10];
     }
+    
+    //创建通知Action
+    UNNotificationAction *addItemAction = [UNNotificationAction actionWithIdentifier:@"addItemAction" title:@"添加账目" options:UNNotificationActionOptionForeground];
+    //创建Category
+    UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:@"NotificationCategory" actions:@[addItemAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionNone];
+    //将Category注册到通知中心
+    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithArray:@[category]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -163,6 +170,7 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = @"记账提醒";
     content.body = model.alertTitle;
+    content.categoryIdentifier = @"NotificationCategory";
     //content.badge = @1;
     //第二步，设置触发时间
     UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
@@ -185,6 +193,7 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = @"记账提醒";
     content.body = model.alertTitle;
+    content.categoryIdentifier = @"NotificationCategory";
     //content.badge = @1;
     //第二步，设置触发时间
     UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
