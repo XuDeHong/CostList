@@ -171,7 +171,8 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     content.title = @"记账提醒";
     content.body = model.alertTitle;
     content.categoryIdentifier = @"NotificationCategory";
-    //content.badge = @1;
+    content.sound = [UNNotificationSound defaultSound];
+    content.badge = @1;
     //第二步，设置触发时间
     UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
     //第三步，定义一个标识符标识通知
@@ -194,7 +195,8 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     content.title = @"记账提醒";
     content.body = model.alertTitle;
     content.categoryIdentifier = @"NotificationCategory";
-    //content.badge = @1;
+    content.sound = [UNNotificationSound defaultSound];
+    content.badge = @1;
     //第二步，设置触发时间
     UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
     //第三步，定义一个标识符标识通知
