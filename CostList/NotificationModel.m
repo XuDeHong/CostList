@@ -12,7 +12,7 @@
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if([super init])
+    if((self = [super init]))
     {
         self.alertTitle = [aDecoder decodeObjectForKey:@"alertTitle"];
         self.alertTime = [aDecoder decodeObjectForKey:@"alertTime"];

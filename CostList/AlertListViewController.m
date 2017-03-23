@@ -74,7 +74,7 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     {
         AlertEditTableViewController *controller = (AlertEditTableViewController *)segue.destinationViewController;
         controller.delegate = self;
-        controller.title = @"编辑提醒";
+        controller.title = NSLocalizedString(@"编辑提醒", @"编辑提醒");
         
         NSIndexPath *indexPath = [self.myTableView indexPathForCell:sender];
         controller.notificationModel = (NotificationModel *)self.modelArray[indexPath.row];

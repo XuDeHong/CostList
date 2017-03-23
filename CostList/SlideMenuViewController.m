@@ -274,16 +274,16 @@
             {
                 case SSDKResponseStateSuccess:
                 {
-                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"分享成功" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"提示", @"提示")  message:NSLocalizedString(@"分享成功",@"分享成功")  preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定")  style:UIAlertActionStyleDefault handler:nil];
                     [controller addAction:action];
                     [self presentViewController:controller animated:YES completion:nil];
                   break;
                 }
                 case SSDKResponseStateFail:
                 {
-                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"分享失败" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"提示", @"提示") message:NSLocalizedString(@"分享失败",@"分享失败") preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", @"确定") style:UIAlertActionStyleDefault handler:nil];
                     [controller addAction:action];
                     [self presentViewController:controller animated:YES completion:nil];
                 }
