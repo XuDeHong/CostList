@@ -31,8 +31,12 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     if([manager fileExistsAtPath:[self notificationListFilePath]])
     {//如果已有通知列表文件，则初始化
         self.modelArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self notificationListFilePath]];
+        [self.myTableView reloadData];
         //遍历通知列表看是否设置，如果没设置则设置一遍（用于从网络同步数据下来）
-        //***
+        for(NotificationModel *model in self.modelArray)
+        {
+            [self setNotificationForModel:model];
+        }
     }
     else
     {//否则新建数组
@@ -157,6 +161,26 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     return trigger;
 }
 
+-(void)setNotificationForModel:(NotificationModel *)model
+{
+    //第一步，设置通知内容
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"记账提醒";
+    content.body = model.alertTitle;
+    content.categoryIdentifier = @"NotificationCategory";
+    content.sound = [UNNotificationSound defaultSound];
+    content.badge = @1;
+    //第二步，设置触发时间
+    UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
+    //第三步，定义一个标识符标识通知
+    NSString *requestIdentifier = model.alertID;
+    //第四步，根据内容，触发时间，标识符创建一个通知request，并添加到通知中心
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger];
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {}];
+
+}
+
 #pragma mark - AlertEditTableViewController Delegate
 -(void)alertEditTableViewController:(AlertEditTableViewController *)controller addNotification:(NotificationModel *)model
 {
@@ -166,21 +190,7 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     [NSKeyedArchiver archiveRootObject:self.modelArray toFile:[self notificationListFilePath]];
     [self.myTableView reloadData];
     //添加通知
-    //第一步，设置通知内容
-    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = @"记账提醒";
-    content.body = model.alertTitle;
-    content.categoryIdentifier = @"NotificationCategory";
-    content.sound = [UNNotificationSound defaultSound];
-    content.badge = @1;
-    //第二步，设置触发时间
-    UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
-    //第三步，定义一个标识符标识通知
-    NSString *requestIdentifier = model.alertID;
-    //第四步，根据内容，触发时间，标识符创建一个通知request，并添加到通知中心
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger];
-    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {}];
+    [self setNotificationForModel:model];
 }
 
 -(void)alertEditTableViewController:(AlertEditTableViewController *)controller modifiedNotification:(NotificationModel *)model
@@ -190,22 +200,7 @@ static NSString* const alertCellIdentifier = @"AlertCell";  //定义全局静态
     [NSKeyedArchiver archiveRootObject:self.modelArray toFile:[self notificationListFilePath]];
     [self.myTableView reloadData];
     //修改通知，在ID不变的情况下重新添加通知即可
-    //第一步，设置通知内容
-    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = @"记账提醒";
-    content.body = model.alertTitle;
-    content.categoryIdentifier = @"NotificationCategory";
-    content.sound = [UNNotificationSound defaultSound];
-    content.badge = @1;
-    //第二步，设置触发时间
-    UNCalendarNotificationTrigger *trigger = [self getNotificationTriggerFromModel:model];
-    //第三步，定义一个标识符标识通知
-    NSString *requestIdentifier = model.alertID;
-    //第四步，根据内容，触发时间，标识符创建一个通知request，并添加到通知中心
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger];
-    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {}];
-
+    [self setNotificationForModel:model];
 }
 
 #pragma mark - Table View DataSource
