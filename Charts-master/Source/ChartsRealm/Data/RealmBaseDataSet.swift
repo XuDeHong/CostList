@@ -14,6 +14,7 @@ import Foundation
 import Charts
 #endif
 import Realm
+import RealmSwift
 import Realm.Dynamic
 
 open class RealmBaseDataSet: ChartBaseDataSet
@@ -68,9 +69,33 @@ open class RealmBaseDataSet: ChartBaseDataSet
         initialize()
     }
     
+    public convenience init(results: Results<Object>?, xValueField: String?, yValueField: String, label: String?)
+    {
+        var converted: RLMResults<RLMObject>?
+        
+        if results != nil
+        {
+            converted = ObjectiveCSupport.convert(object: results!)
+        }
+        
+        self.init(results: converted, xValueField: xValueField, yValueField: yValueField, label: label)
+    }
+    
     public convenience init(results: RLMResults<RLMObject>?, yValueField: String, label: String?)
     {
         self.init(results: results, xValueField: nil, yValueField: yValueField, label: label)
+    }
+    
+    public convenience init(results: Results<Object>?, yValueField: String, label: String?)
+    {
+        var converted: RLMResults<RLMObject>?
+        
+        if results != nil
+        {
+            converted = ObjectiveCSupport.convert(object: results!)
+        }
+        
+        self.init(results: converted, yValueField: yValueField, label: label)
     }
     
     public convenience init(results: RLMResults<RLMObject>?, xValueField: String?, yValueField: String)
@@ -78,9 +103,33 @@ open class RealmBaseDataSet: ChartBaseDataSet
         self.init(results: results, xValueField: xValueField, yValueField: yValueField, label: "DataSet")
     }
     
+    public convenience init(results: Results<Object>?, xValueField: String?, yValueField: String)
+    {
+        var converted: RLMResults<RLMObject>?
+        
+        if results != nil
+        {
+            converted = ObjectiveCSupport.convert(object: results!)
+        }
+        
+        self.init(results: converted, xValueField: xValueField, yValueField: yValueField)
+    }
+    
     public convenience init(results: RLMResults<RLMObject>?, yValueField: String)
     {
         self.init(results: results, yValueField: yValueField)
+    }
+    
+    public convenience init(results: Results<Object>?, yValueField: String)
+    {
+        var converted: RLMResults<RLMObject>?
+        
+        if results != nil
+        {
+            converted = ObjectiveCSupport.convert(object: results!)
+        }
+        
+        self.init(results: converted, yValueField: yValueField)
     }
     
     public init(realm: RLMRealm?, modelName: String, resultsWhere: String, xValueField: String?, yValueField: String, label: String?)
@@ -103,9 +152,33 @@ open class RealmBaseDataSet: ChartBaseDataSet
         initialize()
     }
     
+    public convenience init(realm: Realm?, modelName: String, resultsWhere: String, xValueField: String?, yValueField: String, label: String?)
+    {
+        var converted: RLMRealm?
+        
+        if realm != nil
+        {
+            converted = ObjectiveCSupport.convert(object: realm!)
+        }
+        
+        self.init(realm: converted, modelName: modelName, resultsWhere: resultsWhere, xValueField: xValueField, yValueField: yValueField, label: label)
+    }
+    
     public convenience init(realm: RLMRealm?, modelName: String, resultsWhere: String, yValueField: String, label: String?)
     {
         self.init(realm: realm, modelName: modelName, resultsWhere: resultsWhere, xValueField: nil, yValueField: yValueField, label: label)
+    }
+    
+    public convenience init(realm: Realm?, modelName: String, resultsWhere: String, yValueField: String, label: String?)
+    {
+        var converted: RLMRealm?
+        
+        if realm != nil
+        {
+            converted = ObjectiveCSupport.convert(object: realm!)
+        }
+        
+        self.init(realm: converted, modelName: modelName, resultsWhere: resultsWhere, yValueField: yValueField, label: label)
     }
     
     open func loadResults(realm: RLMRealm, modelName: String)
@@ -132,6 +205,18 @@ open class RealmBaseDataSet: ChartBaseDataSet
         notifyDataSetChanged()
     }
     
+    @nonobjc
+    open func loadResults(realm: Realm, modelName: String)
+    {
+        loadResults(realm: ObjectiveCSupport.convert(object: realm), modelName: modelName)
+    }
+    
+    @nonobjc
+    open func loadResults(realm: Realm, modelName: String, predicate: NSPredicate?)
+    {
+        loadResults(realm: ObjectiveCSupport.convert(object: realm), modelName: modelName, predicate: predicate)
+    }
+    
     // MARK: - Data functions and accessors
     
     internal var _results: RLMResults<RLMObject>?
@@ -139,11 +224,11 @@ open class RealmBaseDataSet: ChartBaseDataSet
     internal var _xValueField: String?
     internal var _cache = [ChartDataEntry]()
     
-    internal var _yMax: Double = -DBL_MAX
-    internal var _yMin: Double = DBL_MAX
+    internal var _yMax: Double = -Double.greatestFiniteMagnitude
+    internal var _yMin: Double = Double.greatestFiniteMagnitude
     
-    internal var _xMax: Double = -DBL_MAX
-    internal var _xMin: Double = DBL_MAX
+    internal var _xMax: Double = -Double.greatestFiniteMagnitude
+    internal var _xMin: Double = Double.greatestFiniteMagnitude
     
     /// Makes sure that the cache is populated for the specified range
     internal func buildCache()
@@ -190,10 +275,10 @@ open class RealmBaseDataSet: ChartBaseDataSet
             return
         }
         
-        _yMax = -DBL_MAX
-        _yMin = DBL_MAX
-        _xMax = -DBL_MAX
-        _xMin = DBL_MAX
+        _yMax = -Double.greatestFiniteMagnitude
+        _yMin = Double.greatestFiniteMagnitude
+        _xMax = -Double.greatestFiniteMagnitude
+        _xMin = Double.greatestFiniteMagnitude
         
         for e in _cache
         {
@@ -252,13 +337,17 @@ open class RealmBaseDataSet: ChartBaseDataSet
     }
     
     /// - returns: The first Entry object found at the given x-value with binary search.
-    /// If the no Entry at the specifed x-value is found, this method returns the Entry at the closest x-value.
+    /// If the no Entry at the specified x-value is found, this method returns the Entry at the closest x-value according to the rounding.
     /// nil if no Entry object at that x-value.
-    /// - parameter x: the x-value
+    /// - parameter xValue: the x-value
+    /// - parameter closestToY: If there are multiple y-values for the specified x-value,
     /// - parameter rounding: determine whether to round up/down/closest if there is no Entry matching the provided x-value
-    open override func entryForXValue(_ x: Double, rounding: ChartDataSetRounding) -> ChartDataEntry?
+    open override func entryForXValue(
+        _ xValue: Double,
+        closestToY yValue: Double,
+        rounding: ChartDataSetRounding) -> ChartDataEntry?
     {
-        let index = self.entryIndex(x: x, rounding: rounding)
+        let index = self.entryIndex(x: xValue, closestToY: yValue, rounding: rounding)
         if index > -1
         {
             return entryForIndex(index)
@@ -267,16 +356,20 @@ open class RealmBaseDataSet: ChartBaseDataSet
     }
     
     /// - returns: The first Entry object found at the given x-value with binary search.
-    /// If the no Entry at the specifed x-value is found, this method returns the Entry at the closest x-value.
+    /// If the no Entry at the specified x-value is found, this method returns the Entry at the closest x-value.
     /// nil if no Entry object at that x-value.
-    open override func entryForXValue(_ x: Double) -> ChartDataEntry?
+    /// - parameter xValue: the x-value
+    /// - parameter closestToY: If there are multiple y-values for the specified x-value,
+    open override func entryForXValue(
+        _ xValue: Double,
+        closestToY y: Double) -> ChartDataEntry?
     {
-        return entryForXValue(x, rounding: .closest)
+        return entryForXValue(xValue, closestToY: y, rounding: .closest)
     }
     
     /// - returns: All Entry objects found at the given x-value with binary search.
     /// An empty array if no Entry object at that x-value.
-    open override func entriesForXValue(_ x: Double) -> [ChartDataEntry]
+    open override func entriesForXValue(_ xValue: Double) -> [ChartDataEntry]
     {
         /*var entries = [ChartDataEntry]()
         
@@ -306,9 +399,9 @@ open class RealmBaseDataSet: ChartBaseDataSet
             var m = (high + low) / 2
             var entry = _cache[m]
             
-            if x == entry.x
+            if xValue == entry.x
             {
-                while m > 0 && _cache[m - 1].x == x
+                while m > 0 && _cache[m - 1].x == xValue
                 {
                     m -= 1
                 }
@@ -317,7 +410,7 @@ open class RealmBaseDataSet: ChartBaseDataSet
                 while m < high
                 {
                     entry = _cache[m]
-                    if entry.x == x
+                    if entry.x == xValue
                     {
                         entries.append(entry)
                     }
@@ -333,7 +426,7 @@ open class RealmBaseDataSet: ChartBaseDataSet
             }
             else
             {
-                if x > entry.x
+                if xValue > entry.x
                 {
                     low = m + 1
                 }
@@ -347,10 +440,16 @@ open class RealmBaseDataSet: ChartBaseDataSet
         return entries
     }
     
-    /// - returns: The array-index of the specified entry
+    /// - returns: The array-index of the specified entry.
+    /// If the no Entry at the specified x-value is found, this method returns the index of the Entry at the closest x-value according to the rounding.
     ///
-    /// - parameter x: x-value of the entry to search for
-    open override func entryIndex(x: Double, rounding: ChartDataSetRounding) -> Int
+    /// - parameter xValue: x-value of the entry to search for
+    /// - parameter closestToY: If there are multiple y-values for the specified x-value,
+    /// - parameter rounding: Rounding method if exact value was not found
+    open override func entryIndex(
+        x xValue: Double,
+        closestToY yValue: Double,
+        rounding: ChartDataSetRounding) -> Int
     {
         /*guard let results = _results else { return -1 }
         
@@ -364,52 +463,95 @@ open class RealmBaseDataSet: ChartBaseDataSet
         
         var low = 0
         var high = _cache.count - 1
-        var closest = -1
+        var closest = high
         
-        while low <= high
+        while low < high
         {
-            var m = (high + low) / 2
-            let entry = _cache[m]
+            let m = (low + high) / 2
             
-            if x == entry.x
-            {
-                while m > 0 && _cache[m - 1].x == x
-                {
-                    m -= 1
-                }
-                
-                return m
-            }
+            let d1 = _cache[m].x - xValue
+            let d2 = _cache[m + 1].x - xValue
+            let ad1 = abs(d1), ad2 = abs(d2)
             
-            if x > entry.x
+            if ad2 < ad1
             {
+                // [m + 1] is closer to xValue
+                // Search in an higher place
                 low = m + 1
+            }
+            else if ad1 < ad2
+            {
+                // [m] is closer to xValue
+                // Search in a lower place
+                high = m
             }
             else
             {
-                high = m - 1
+                // We have multiple sequential x-value with same distance
+                
+                if d1 >= 0.0
+                {
+                    // Search in a lower place
+                    high = m
+                }
+                else if d1 < 0.0
+                {
+                    // Search in an higher place
+                    low = m + 1
+                }
             }
             
-            closest = m
+            closest = high
         }
         
         if closest != -1
         {
+            let closestXValue = _cache[closest].x
+            
             if rounding == .up
             {
-                let closestXIndex = _cache[closest].x
-                if closestXIndex < x && closest < _cache.count - 1
+                // If rounding up, and found x-value is lower than specified x, and we can go upper...
+                if closestXValue < xValue && closest < _cache.count - 1
                 {
-                    closest = closest + 1
+                    closest += 1
                 }
             }
             else if rounding == .down
             {
-                let closestXIndex = _cache[closest].x
-                if closestXIndex > x && closest > 0
+                // If rounding down, and found x-value is upper than specified x, and we can go lower...
+                if closestXValue > xValue && closest > 0
                 {
-                    closest = closest - 1
+                    closest -= 1
                 }
+            }
+            
+            // Search by closest to y-value
+            if !yValue.isNaN
+            {
+                while closest > 0 && _cache[closest - 1].x == closestXValue
+                {
+                    closest -= 1
+                }
+                
+                var closestYValue = _cache[closest].y
+                var closestYIndex = closest
+                
+                while true
+                {
+                    closest += 1
+                    if closest >= _cache.count { break }
+                    
+                    let value = _cache[closest]
+                    
+                    if value.x != closestXValue { break }
+                    if abs(value.y - yValue) < abs(closestYValue - yValue)
+                    {
+                        closestYValue = yValue
+                        closestYIndex = closest
+                    }
+                }
+                
+                closest = closestYIndex
             }
         }
         

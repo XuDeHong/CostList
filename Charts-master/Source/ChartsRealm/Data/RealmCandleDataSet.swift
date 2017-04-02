@@ -15,6 +15,7 @@ import CoreGraphics
 import Charts
 #endif
 import Realm
+import RealmSwift
 import Realm.Dynamic
 
 open class RealmCandleDataSet: RealmLineScatterCandleRadarDataSet, ICandleChartDataSet
@@ -39,9 +40,33 @@ open class RealmCandleDataSet: RealmLineScatterCandleRadarDataSet, ICandleChartD
         super.init(results: results, xValueField: xValueField, yValueField: "", label: label)
     }
     
+    public convenience init(results: Results<Object>?, xValueField: String, highField: String, lowField: String, openField: String, closeField: String, label: String?)
+    {
+        var converted: RLMResults<RLMObject>?
+        
+        if results != nil
+        {
+            converted = ObjectiveCSupport.convert(object: results!)
+        }
+        
+        self.init(results: converted, xValueField: xValueField, highField: highField, lowField: lowField, openField: openField, closeField: closeField, label: label)
+    }
+    
     public convenience init(results: RLMResults<RLMObject>?, xValueField: String, highField: String, lowField: String, openField: String, closeField: String)
     {
         self.init(results: results, xValueField: xValueField, highField: highField, lowField: lowField, openField: openField, closeField: closeField, label: "DataSet")
+    }
+    
+    public convenience init(results: Results<Object>?, xValueField: String, highField: String, lowField: String, openField: String, closeField: String)
+    {
+        var converted: RLMResults<RLMObject>?
+        
+        if results != nil
+        {
+            converted = ObjectiveCSupport.convert(object: results!)
+        }
+        
+        self.init(results: converted, xValueField: xValueField, highField: highField, lowField: lowField, openField: openField, closeField: closeField)
     }
     
     public init(realm: RLMRealm?, modelName: String, resultsWhere: String, xValueField: String, highField: String, lowField: String, openField: String, closeField: String, label: String?)
@@ -52,6 +77,18 @@ open class RealmCandleDataSet: RealmLineScatterCandleRadarDataSet, ICandleChartD
         _closeField = closeField
         
         super.init(realm: realm, modelName: modelName, resultsWhere: resultsWhere, xValueField: xValueField, yValueField: "", label: label)
+    }
+    
+    public convenience init(realm: Realm?, modelName: String, resultsWhere: String, xValueField: String, highField: String, lowField: String, openField: String, closeField: String, label: String?)
+    {
+        var converted: RLMRealm?
+        
+        if realm != nil
+        {
+            converted = ObjectiveCSupport.convert(object: realm!)
+        }
+        
+        self.init(realm: converted, modelName: modelName, resultsWhere: resultsWhere, xValueField: xValueField, highField: highField, lowField: lowField, openField: openField, closeField: closeField, label: label)
     }
     
     // MARK: - Data functions and accessors
@@ -80,10 +117,10 @@ open class RealmCandleDataSet: RealmLineScatterCandleRadarDataSet, ICandleChartD
             return
         }
         
-        _yMax = -DBL_MAX
-        _yMin = DBL_MAX
-        _xMax = -DBL_MAX
-        _xMin = DBL_MAX
+        _yMax = -Double.greatestFiniteMagnitude
+        _yMin = Double.greatestFiniteMagnitude
+        _xMax = -Double.greatestFiniteMagnitude
+        _xMin = Double.greatestFiniteMagnitude
         
         for e in _cache as! [CandleChartDataEntry]
         {
