@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1136,7 +1136,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="30J-i4-l9T">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="30J-i4-l9T">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
@@ -1145,7 +1145,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ktw-nq-jWW" id="VXf-JX-xtZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8m-NG-afW">
@@ -1154,24 +1154,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuR-Ab-VO0">
-                                                    <rect key="frame" x="22" y="34" width="36" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1I-eh-Uhz">
+                                                    <rect key="frame" x="47" y="13" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1I-eh-Uhz">
-                                                    <rect key="frame" x="19" y="8" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm" translatesAutoresizingMaskIntoConstraints="NO" id="sT7-Sb-Pn8">
+                                                    <rect key="frame" x="11" y="17" width="25" height="25"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuR-Ab-VO0">
+                                                    <rect key="frame" x="47" y="36.5" width="31" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="K1I-eh-Uhz" firstAttribute="leading" secondItem="VXf-JX-xtZ" secondAttribute="leadingMargin" constant="11" id="UUi-VZ-Afm"/>
-                                                <constraint firstAttribute="topMargin" secondItem="K1I-eh-Uhz" secondAttribute="top" id="YSt-w1-6hJ"/>
-                                                <constraint firstItem="ZuR-Ab-VO0" firstAttribute="leading" secondItem="VXf-JX-xtZ" secondAttribute="leadingMargin" constant="14" id="Yx1-z4-gww"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ZuR-Ab-VO0" secondAttribute="bottom" constant="0.5" id="mP7-NA-bDF"/>
+                                                <constraint firstItem="ZuR-Ab-VO0" firstAttribute="leading" secondItem="sT7-Sb-Pn8" secondAttribute="trailing" constant="11" id="1O5-Ak-wo4"/>
+                                                <constraint firstItem="sT7-Sb-Pn8" firstAttribute="top" secondItem="VXf-JX-xtZ" secondAttribute="topMargin" constant="9" id="5eO-V7-c0P"/>
+                                                <constraint firstAttribute="topMargin" secondItem="K1I-eh-Uhz" secondAttribute="top" constant="-5" id="Pon-1S-RUa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZuR-Ab-VO0" secondAttribute="bottom" constant="0.5" id="YWk-qF-r8P"/>
+                                                <constraint firstItem="K1I-eh-Uhz" firstAttribute="leading" secondItem="sT7-Sb-Pn8" secondAttribute="trailing" constant="11" id="gGe-e6-TmA"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="sT7-Sb-Pn8" secondAttribute="leading" constant="-3" id="naE-cl-gh9"/>
                                                 <constraint firstItem="V8m-NG-afW" firstAttribute="top" secondItem="VXf-JX-xtZ" secondAttribute="topMargin" constant="11" id="py1-Xz-0K4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="V8m-NG-afW" secondAttribute="trailing" id="rYo-ro-kjT"/>
                                             </constraints>
@@ -1352,6 +1357,7 @@
         <image name="Line" width="1" height="51"/>
         <image name="ListIcon - Inactive" width="19" height="24"/>
         <image name="about" width="20" height="20"/>
+        <image name="alarm" width="25" height="25"/>
         <image name="cloud" width="26" height="18"/>
         <image name="delete" width="18" height="22"/>
         <image name="incomeBtn" width="46" height="27"/>

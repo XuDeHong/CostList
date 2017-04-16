@@ -138,13 +138,6 @@
 			remoteGlobalIDString = 06B120D51D811E6200D14B02;
 			remoteInfo = ChartsRealm;
 		};
-		843BE1CF1D93C6EE004F5B77 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 843BE1C21D93C6EE004F5B77 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06B120FF1D811F1600D14B02;
-			remoteInfo = ChartsRealmTests;
-		};
 		843BE1D31D93C710004F5B77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 843BE1C21D93C6EE004F5B77 /* Charts.xcodeproj */;
@@ -603,9 +596,8 @@
 			isa = PBXGroup;
 			children = (
 				843BE1CA1D93C6EE004F5B77 /* Charts.framework */,
-				843BE1CC1D93C6EE004F5B77 /* ChartsTests.xctest */,
 				843BE1CE1D93C6EE004F5B77 /* ChartsRealm.framework */,
-				843BE1D01D93C6EE004F5B77 /* ChartsRealmTests.xctest */,
+				843BE1CC1D93C6EE004F5B77 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -972,13 +964,6 @@
 			remoteRef = 843BE1CD1D93C6EE004F5B77 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		843BE1D01D93C6EE004F5B77 /* ChartsRealmTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsRealmTests.xctest;
-			remoteRef = 843BE1CF1D93C6EE004F5B77 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1321,7 +1306,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.XuDeHong.CostList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.XuDeHong.CostList1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CostList/CostList-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1356,7 +1341,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.XuDeHong.CostList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.XuDeHong.CostList1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CostList/CostList-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
